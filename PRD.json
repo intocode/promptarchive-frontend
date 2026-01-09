@@ -153,7 +153,7 @@
       "title": "Write tests for: Add protected route middleware",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "E2E: unauthenticated user redirected from /prompts",
         "E2E: authenticated user redirected from /login",
