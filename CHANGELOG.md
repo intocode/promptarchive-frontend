@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Home page redirect based on auth state (design-003)
+  - Authenticated users redirected to /prompts
+  - Unauthenticated users redirected to /gallery
+  - Removed default Next.js template content
+  - Uses existing AuthContext pattern with LoadingSpinner
 - Header with full navigation (design-002)
   - Navigation links: My Prompts, Gallery, Settings
   - Active route highlighting using usePathname

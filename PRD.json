@@ -99,7 +99,7 @@
       "title": "Configure home page redirect",
       "category": "design-system",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Authenticated users redirect to /prompts",
         "Unauthenticated users redirect to /gallery",
