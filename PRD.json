@@ -5,6 +5,7 @@
     "version": "1.0.0"
   },
   "categories": [
+    "design-system",
     "authentication",
     "prompts-list",
     "prompts-crud",
@@ -21,6 +22,180 @@
     "testing"
   ],
   "tasks": [
+    {
+      "id": "design-001",
+      "title": "Configure typography system",
+      "category": "design-system",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Import Inter font from Google Fonts for UI elements",
+        "Import Spectral font from Google Fonts for prompt content",
+        "Update globals.css with font-family definitions",
+        "Create CSS utility classes .font-ui and .font-content",
+        "Apply Inter as default font for the application"
+      ],
+      "tests": [
+        "E2E: Inter font loads correctly",
+        "E2E: Spectral font loads correctly",
+        "E2E: .font-content class applies serif font"
+      ]
+    },
+    {
+      "id": "design-001-tests",
+      "title": "Write tests for: Configure typography system",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: Inter font loads correctly",
+        "E2E: Spectral font loads correctly",
+        "E2E: .font-content class applies serif font"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "design-002",
+      "title": "Update header with full navigation",
+      "category": "design-system",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Add navigation links: My Prompts, Gallery, Settings",
+        "Style active state for current route",
+        "Logo click navigates to /prompts (auth) or /login (unauth)",
+        "Mobile: hide nav links and show burger menu",
+        "Navigation items follow design spec styling"
+      ],
+      "tests": [
+        "E2E: navigation links render correctly",
+        "E2E: active route is highlighted",
+        "E2E: logo click navigates correctly based on auth state",
+        "E2E: mobile view shows burger menu"
+      ]
+    },
+    {
+      "id": "design-002-tests",
+      "title": "Write tests for: Update header with full navigation",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: navigation links render correctly",
+        "E2E: active route is highlighted",
+        "E2E: logo click navigates correctly based on auth state",
+        "E2E: mobile view shows burger menu"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "design-003",
+      "title": "Configure home page redirect",
+      "category": "design-system",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Authenticated users redirect to /prompts",
+        "Unauthenticated users redirect to /gallery",
+        "Remove Next.js template content from home page",
+        "Redirect happens server-side or immediately on load"
+      ],
+      "tests": [
+        "E2E: authenticated user redirected to /prompts",
+        "E2E: unauthenticated user redirected to /gallery"
+      ]
+    },
+    {
+      "id": "design-003-tests",
+      "title": "Write tests for: Configure home page redirect",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: authenticated user redirected to /prompts",
+        "E2E: unauthenticated user redirected to /gallery"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "design-004",
+      "title": "Apply typography to PromptCard",
+      "category": "design-system",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Prompt content preview uses serif font (Spectral)",
+        "Title uses UI font (Inter)",
+        "Ensure consistent typography across all card instances",
+        "Typography matches design spec for prompt content"
+      ],
+      "tests": [
+        "E2E: prompt content uses serif font",
+        "E2E: title uses UI font"
+      ]
+    },
+    {
+      "id": "design-004-tests",
+      "title": "Write tests for: Apply typography to PromptCard",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: prompt content uses serif font",
+        "E2E: title uses UI font"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "design-005",
+      "title": "Create base modal/dialog component",
+      "category": "design-system",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Add shadcn Dialog component to project",
+        "Configure standard sizes (sm: 400px, md: 500-600px, lg: 800px)",
+        "Style per design spec (500-600px for create modal)",
+        "Close on backdrop click",
+        "Close on Escape key press",
+        "Full screen on mobile (< 768px)"
+      ],
+      "tests": [
+        "E2E: modal opens and closes correctly",
+        "E2E: escape key closes modal",
+        "E2E: backdrop click closes modal",
+        "E2E: modal is full screen on mobile"
+      ]
+    },
+    {
+      "id": "design-005-tests",
+      "title": "Write tests for: Create base modal/dialog component",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: modal opens and closes correctly",
+        "E2E: escape key closes modal",
+        "E2E: backdrop click closes modal",
+        "E2E: modal is full screen on mobile"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
     {
       "id": "auth-001",
       "title": "Implement login form with API integration",

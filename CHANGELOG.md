@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Design system tasks in PRD.json
+  - Added `design-system` category as first category
+  - design-001: Configure typography system (Inter + Spectral fonts)
+  - design-002: Update header with full navigation
+  - design-003: Configure home page redirect
+  - design-004: Apply typography to PromptCard
+  - design-005: Create base modal/dialog component
+  - Corresponding test tasks for each design task
+- UI-UX-DESIGN.md specification document with complete design guidelines
+  - Branding and visual identity (warm neutrals, terracotta accent)
+  - Information architecture (navigation, routes, filters)
+  - Card and list system patterns
+  - Interaction patterns (modals, forms, feedback)
+  - AI features specifications
+  - Mobile responsiveness rules
+- Test user credentials in CLAUDE.md for staging environment
 - Prompts list page with data fetching (prompts-list-003)
   - GET /prompts called with useGetPrompts hook (TanStack Query)
   - List renders PromptCard components in responsive grid (1/2/3 columns)
