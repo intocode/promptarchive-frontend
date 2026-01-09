@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Header with full navigation (design-002)
+  - Navigation links: My Prompts, Gallery, Settings
+  - Active route highlighting using usePathname
+  - Conditional logo navigation (/prompts for auth, /login for unauth)
+  - Mobile burger menu using shadcn/ui Sheet component
+  - Auth-based navigation filtering (My Prompts and Settings require auth)
+  - Added shadcn/ui Sheet component for mobile navigation
 - Typography system configuration (design-001)
   - Inter font from Google Fonts for UI elements (default font)
   - Spectral font from Google Fonts for prompt content
