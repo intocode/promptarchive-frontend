@@ -1,0 +1,1999 @@
+basePath: /v1
+definitions:
+  github_com_intocode_promptarchive_internal_service.AuthorSummary:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.FolderResponse:
+    properties:
+      color:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      position:
+        type: integer
+      prompts_count:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.FolderSummary:
+    properties:
+      color:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.ForkResponse:
+    properties:
+      id:
+        type: string
+      message:
+        type: string
+      title:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.GenerateDescriptionResponse:
+    properties:
+      description:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.GenerateTagsResponse:
+    properties:
+      suggested_tags:
+        items:
+          type: string
+        type: array
+    type: object
+  github_com_intocode_promptarchive_internal_service.ImprovePromptResponse:
+    properties:
+      explanation:
+        type: string
+      improved_content:
+        type: string
+      original_content:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.LikeResponse:
+    properties:
+      is_liked:
+        type: boolean
+      likes_count:
+        type: integer
+    type: object
+  github_com_intocode_promptarchive_internal_service.PromptResponse:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      folder:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.FolderSummary'
+      id:
+        type: string
+      share_token:
+        type: string
+      tags:
+        items:
+          $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TagSummary'
+        type: array
+      title:
+        type: string
+      updated_at:
+        type: string
+      use_count:
+        type: integer
+      version_count:
+        description: Always 0 until Iteration 4
+        type: integer
+      view_count:
+        type: integer
+      visibility:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.PublicPromptDetail:
+    properties:
+      author:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.AuthorSummary'
+      content:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      is_liked:
+        type: boolean
+      likes_count:
+        type: integer
+      title:
+        type: string
+      use_count:
+        type: integer
+      view_count:
+        type: integer
+    type: object
+  github_com_intocode_promptarchive_internal_service.PublicPromptListItem:
+    properties:
+      author:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.AuthorSummary'
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      is_liked:
+        type: boolean
+      likes_count:
+        type: integer
+      preview:
+        type: string
+      title:
+        type: string
+      use_count:
+        type: integer
+      view_count:
+        type: integer
+    type: object
+  github_com_intocode_promptarchive_internal_service.RenderResponse:
+    properties:
+      missing_variables:
+        items:
+          type: string
+        type: array
+      rendered_content:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.ShareLinkResponse:
+    properties:
+      share_token:
+        type: string
+      share_url:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.SharedPromptResponse:
+    properties:
+      author:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.AuthorSummary'
+      content:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.TagResponse:
+    properties:
+      color:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      prompts_count:
+        type: integer
+    type: object
+  github_com_intocode_promptarchive_internal_service.TagSummary:
+    properties:
+      color:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.TokenPair:
+    properties:
+      access_token:
+        type: string
+      expires_at:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.UserResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      is_verified:
+        type: boolean
+      name:
+        type: string
+    type: object
+  github_com_intocode_promptarchive_internal_service.VariableInfo:
+    properties:
+      default_value:
+        type: string
+      name:
+        type: string
+      position:
+        type: integer
+    type: object
+  github_com_intocode_promptarchive_internal_service.VariablesResponse:
+    properties:
+      has_variables:
+        type: boolean
+      variables:
+        items:
+          $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.VariableInfo'
+        type: array
+    type: object
+  github_com_intocode_promptarchive_internal_service.VersionResponse:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      version_number:
+        type: integer
+    type: object
+  internal_handler.AuthResponse:
+    properties:
+      tokens:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TokenPair'
+      user:
+        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.UserResponse'
+    type: object
+  internal_handler.CreateFolderRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 100
+        minLength: 1
+        type: string
+    required:
+    - name
+    type: object
+  internal_handler.CreatePromptRequest:
+    properties:
+      content:
+        maxLength: 50000
+        minLength: 1
+        type: string
+      description:
+        maxLength: 1000
+        type: string
+      folder_id:
+        type: string
+      tag_ids:
+        items:
+          type: string
+        type: array
+      title:
+        maxLength: 200
+        minLength: 1
+        type: string
+      visibility:
+        enum:
+        - private
+        - public
+        - unlisted
+        type: string
+    required:
+    - content
+    - title
+    type: object
+  internal_handler.CreateTagRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 50
+        minLength: 1
+        type: string
+    required:
+    - name
+    type: object
+  internal_handler.Error:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    type: object
+  internal_handler.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  internal_handler.LogoutRequest:
+    properties:
+      refresh_token:
+        type: string
+    required:
+    - refresh_token
+    type: object
+  internal_handler.Meta:
+    properties:
+      page:
+        type: integer
+      per_page:
+        type: integer
+      total:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  internal_handler.RefreshRequest:
+    properties:
+      refresh_token:
+        type: string
+    required:
+    - refresh_token
+    type: object
+  internal_handler.RegisterRequest:
+    properties:
+      email:
+        maxLength: 255
+        type: string
+      name:
+        maxLength: 100
+        minLength: 2
+        type: string
+      password:
+        maxLength: 72
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+  internal_handler.RenderPromptRequest:
+    properties:
+      values:
+        additionalProperties:
+          type: string
+        type: object
+    required:
+    - values
+    type: object
+  internal_handler.ReorderFoldersRequest:
+    properties:
+      folder_ids:
+        items:
+          type: string
+        type: array
+    required:
+    - folder_ids
+    type: object
+  internal_handler.Response:
+    properties:
+      data: {}
+      error:
+        $ref: '#/definitions/internal_handler.Error'
+      meta:
+        $ref: '#/definitions/internal_handler.Meta'
+      success:
+        type: boolean
+    type: object
+  internal_handler.UpdateFolderRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 100
+        minLength: 1
+        type: string
+    type: object
+  internal_handler.UpdatePromptRequest:
+    properties:
+      content:
+        maxLength: 50000
+        minLength: 1
+        type: string
+      description:
+        maxLength: 1000
+        type: string
+      folder_id:
+        type: string
+      tag_ids:
+        items:
+          type: string
+        type: array
+      title:
+        maxLength: 200
+        minLength: 1
+        type: string
+      visibility:
+        enum:
+        - private
+        - public
+        - unlisted
+        type: string
+    type: object
+  internal_handler.UpdateTagRequest:
+    properties:
+      color:
+        type: string
+      name:
+        maxLength: 50
+        minLength: 1
+        type: string
+    type: object
+info:
+  contact:
+    email: support@promptarchive.io
+    name: PromptArchive Support
+    url: https://github.com/intocode/promptarchive/issues
+  description: REST API for storing and managing prompts (Go + Gin + PostgreSQL +
+    Redis)
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: PromptArchive API
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates user credentials and returns JWT tokens
+      parameters:
+      - description: Login credentials
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Login successful
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_handler.AuthResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Invalid credentials
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "429":
+          description: Too many requests
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: User login
+      tags:
+      - Authentication
+  /auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: Invalidates the provided refresh token
+      parameters:
+      - description: Refresh token to invalidate
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.LogoutRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Logout successful
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: Logout
+      tags:
+      - Authentication
+  /auth/logout-all:
+    post:
+      consumes:
+      - application/json
+      description: Invalidates all refresh tokens for the authenticated user
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: All sessions terminated
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Logout from all devices
+      tags:
+      - Authentication
+  /auth/me:
+    get:
+      consumes:
+      - application/json
+      description: Returns the profile of the currently authenticated user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User profile
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.UserResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Get current user
+      tags:
+      - Authentication
+  /auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Generates new access and refresh tokens using a valid refresh token
+      parameters:
+      - description: Refresh token
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.RefreshRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Tokens refreshed
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TokenPair'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Invalid or expired refresh token
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: Refresh access token
+      tags:
+      - Authentication
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new user account and returns authentication tokens
+      parameters:
+      - description: Registration data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: User created successfully
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/internal_handler.AuthResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "409":
+          description: User already exists
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "429":
+          description: Too many requests
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: Register new user
+      tags:
+      - Authentication
+  /folders:
+    get:
+      consumes:
+      - application/json
+      description: Returns all folders for the authenticated user ordered by position
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Folders list
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.FolderResponse'
+                  type: array
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: List folders
+      tags:
+      - Folders
+    post:
+      consumes:
+      - application/json
+      description: Creates a new folder for organizing prompts
+      parameters:
+      - description: Folder data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.CreateFolderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Folder created
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.FolderResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "409":
+          description: Folder name already exists
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Create folder
+      tags:
+      - Folders
+  /folders/{id}:
+    delete:
+      description: Deletes a folder (prompts in the folder will have folder_id set
+        to null)
+      parameters:
+      - description: Folder ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Folder deleted
+        "400":
+          description: Invalid folder ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Folder not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Delete folder
+      tags:
+      - Folders
+    patch:
+      consumes:
+      - application/json
+      description: Updates an existing folder (partial update supported)
+      parameters:
+      - description: Folder ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.UpdateFolderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Folder updated
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.FolderResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Folder not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "409":
+          description: Folder name already exists
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Update folder
+      tags:
+      - Folders
+  /folders/reorder:
+    patch:
+      consumes:
+      - application/json
+      description: Updates the display order of folders by providing ordered folder
+        IDs
+      parameters:
+      - description: Ordered folder IDs
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.ReorderFoldersRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Folders reordered
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  properties:
+                    message:
+                      type: string
+                  type: object
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Reorder folders
+      tags:
+      - Folders
+  /prompts:
+    get:
+      consumes:
+      - application/json
+      description: Returns a paginated list of prompts for the authenticated user
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 20
+        description: Items per page
+        in: query
+        maximum: 100
+        name: per_page
+        type: integer
+      - description: Sort field
+        enum:
+        - created_at
+        - -created_at
+        - updated_at
+        - -updated_at
+        - title
+        - -title
+        - use_count
+        - -use_count
+        in: query
+        name: sort
+        type: string
+      - description: Filter by visibility
+        enum:
+        - private
+        - public
+        - unlisted
+        in: query
+        name: visibility
+        type: string
+      - description: Filter by folder ID (UUID)
+        in: query
+        name: folder_id
+        type: string
+      - description: Filter by tag IDs (comma-separated UUIDs)
+        in: query
+        name: tag_ids
+        type: string
+      - description: Search in title and content
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Prompts list
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PromptResponse'
+                  type: array
+                meta:
+                  $ref: '#/definitions/internal_handler.Meta'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: List prompts
+      tags:
+      - Prompts
+    post:
+      consumes:
+      - application/json
+      description: Creates a new prompt for the authenticated user
+      parameters:
+      - description: Prompt data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.CreatePromptRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Prompt created
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PromptResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Create prompt
+      tags:
+      - Prompts
+  /prompts/{id}:
+    delete:
+      description: Soft-deletes a prompt (can be restored later)
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Prompt deleted
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Access denied
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Delete prompt
+      tags:
+      - Prompts
+    get:
+      consumes:
+      - application/json
+      description: Returns a single prompt by its ID
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Prompt details
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PromptResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Access denied
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Get prompt by ID
+      tags:
+      - Prompts
+    patch:
+      consumes:
+      - application/json
+      description: Updates an existing prompt (partial update supported)
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.UpdatePromptRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Prompt updated
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PromptResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Access denied
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Update prompt
+      tags:
+      - Prompts
+  /prompts/{id}/generate-description:
+    post:
+      consumes:
+      - application/json
+      description: Uses AI to generate a concise description for the prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Generated description
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.GenerateDescriptionResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "429":
+          description: Too many requests
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "503":
+          description: AI service unavailable
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Generate description with AI
+      tags:
+      - AI
+  /prompts/{id}/generate-tags:
+    post:
+      consumes:
+      - application/json
+      description: Uses AI to suggest relevant tags for the prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Suggested tags
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.GenerateTagsResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "429":
+          description: Too many requests
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "503":
+          description: AI service unavailable
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Generate tags with AI
+      tags:
+      - AI
+  /prompts/{id}/improve:
+    post:
+      consumes:
+      - application/json
+      description: Uses AI to analyze and suggest improvements for the prompt content
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Improvement suggestions
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.ImprovePromptResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID or content too long
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "429":
+          description: Too many requests
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "503":
+          description: AI service unavailable
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Improve prompt with AI
+      tags:
+      - AI
+  /prompts/{id}/render:
+    post:
+      consumes:
+      - application/json
+      description: Replaces template variables in prompt content with provided values
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Variable values
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.RenderPromptRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Rendered prompt
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.RenderResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID or validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Render template
+      tags:
+      - Templates
+  /prompts/{id}/share:
+    delete:
+      description: Disables the share link for a prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Share link removed
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Remove share link
+      tags:
+      - Sharing
+    post:
+      consumes:
+      - application/json
+      description: Generates a unique share link for a prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Share link created
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.ShareLinkResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Create share link
+      tags:
+      - Sharing
+  /prompts/{id}/use:
+    post:
+      consumes:
+      - application/json
+      description: Increments the use counter for a prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Use count incremented
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  properties:
+                    use_count:
+                      type: integer
+                  type: object
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Increment use count
+      tags:
+      - Prompts
+  /prompts/{id}/variables:
+    get:
+      consumes:
+      - application/json
+      description: Extracts template variables ({{variable}} and {{variable:default}})
+        from prompt content
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Template variables
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.VariablesResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Get template variables
+      tags:
+      - Templates
+  /prompts/{id}/versions:
+    get:
+      consumes:
+      - application/json
+      description: Returns all historical versions of a prompt's content, newest first
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Versions list
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  properties:
+                    total:
+                      type: integer
+                    versions:
+                      items:
+                        $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.VersionResponse'
+                      type: array
+                  type: object
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: List prompt versions
+      tags:
+      - Versions
+  /prompts/{id}/versions/{vid}/restore:
+    post:
+      consumes:
+      - application/json
+      description: Restores the prompt content to a specific historical version. Current
+        content is saved as a new version.
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Version ID (UUID)
+        in: path
+        name: vid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Prompt restored
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PromptResponse'
+              type: object
+        "400":
+          description: Invalid ID format
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt or version not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Restore prompt version
+      tags:
+      - Versions
+  /public/prompts:
+    get:
+      consumes:
+      - application/json
+      description: Returns a paginated list of public prompts. Authentication is optional
+        - if provided, includes is_liked status.
+      parameters:
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 20
+        description: Items per page
+        in: query
+        maximum: 100
+        name: per_page
+        type: integer
+      - description: Sort field
+        enum:
+        - created_at
+        - -created_at
+        - likes_count
+        - -likes_count
+        in: query
+        name: sort
+        type: string
+      - description: Search in title and content
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Public prompts list
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PublicPromptListItem'
+                  type: array
+                meta:
+                  $ref: '#/definitions/internal_handler.Meta'
+              type: object
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: List public prompts
+      tags:
+      - PublicGallery
+  /public/prompts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Returns a single public prompt with full content. Increments view
+        count. Authentication is optional - if provided, includes is_liked status.
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Public prompt details
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.PublicPromptDetail'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Prompt is not public
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: Get public prompt
+      tags:
+      - PublicGallery
+  /public/prompts/{id}/fork:
+    post:
+      consumes:
+      - application/json
+      description: Creates a copy of a public prompt in the authenticated user's collection
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Prompt forked
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.ForkResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID or cannot fork own prompt
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Prompt is not public
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Fork prompt
+      tags:
+      - PublicGallery
+  /public/prompts/{id}/like:
+    post:
+      consumes:
+      - application/json
+      description: Likes or unlikes a public prompt
+      parameters:
+      - description: Prompt ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Like toggled
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.LikeResponse'
+              type: object
+        "400":
+          description: Invalid prompt ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "403":
+          description: Prompt is not public
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Prompt not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Toggle like
+      tags:
+      - PublicGallery
+  /shared/{share_token}:
+    get:
+      consumes:
+      - application/json
+      description: Returns a prompt using its share token (no authentication required)
+      parameters:
+      - description: Share token (UUID)
+        in: path
+        name: share_token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Shared prompt
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.SharedPromptResponse'
+              type: object
+        "400":
+          description: Invalid share token
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Share link not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      summary: Get shared prompt
+      tags:
+      - Sharing
+  /tags:
+    get:
+      consumes:
+      - application/json
+      description: Returns all tags for the authenticated user. Supports optional
+        search for autocomplete.
+      parameters:
+      - description: Search query for tag name autocomplete
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Tags list
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TagResponse'
+                  type: array
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: List tags
+      tags:
+      - Tags
+    post:
+      consumes:
+      - application/json
+      description: Creates a new tag for labeling prompts
+      parameters:
+      - description: Tag data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.CreateTagRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Tag created
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TagResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "409":
+          description: Tag name already exists
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Create tag
+      tags:
+      - Tags
+  /tags/{id}:
+    delete:
+      description: Deletes a tag (removes tag from all prompts)
+      parameters:
+      - description: Tag ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Tag deleted
+        "400":
+          description: Invalid tag ID
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Tag not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Delete tag
+      tags:
+      - Tags
+    patch:
+      consumes:
+      - application/json
+      description: Updates an existing tag (partial update supported)
+      parameters:
+      - description: Tag ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/internal_handler.UpdateTagRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Tag updated
+          schema:
+            allOf:
+            - $ref: '#/definitions/internal_handler.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/github_com_intocode_promptarchive_internal_service.TagResponse'
+              type: object
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "404":
+          description: Tag not found
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "409":
+          description: Tag name already exists
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler.Response'
+      security:
+      - Bearer: []
+      summary: Update tag
+      tags:
+      - Tags
+schemes:
+- https
+- http
+securityDefinitions:
+  Bearer:
+    description: 'Enter JWT token in format: Bearer <token>'
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

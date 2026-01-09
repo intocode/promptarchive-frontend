@@ -1,0 +1,1395 @@
+{
+  "project": {
+    "name": "PromptArchive Frontend",
+    "description": "Next.js web app for storing, organizing, and sharing AI prompts",
+    "version": "1.0.0"
+  },
+  "categories": [
+    "authentication",
+    "prompts-list",
+    "prompts-crud",
+    "prompts-detail",
+    "template-variables",
+    "ai-features",
+    "folders",
+    "tags",
+    "sharing",
+    "public-gallery",
+    "shared-view",
+    "settings",
+    "ui-polish",
+    "testing"
+  ],
+  "tasks": [
+    {
+      "id": "auth-001",
+      "title": "Implement login form with API integration",
+      "category": "authentication",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Login form validates email and password with Zod schema",
+        "Form submits to POST /auth/login endpoint",
+        "Access and refresh tokens stored in localStorage",
+        "User redirected to /prompts on success",
+        "Loading state shown during request"
+      ],
+      "tests": [
+        "Unit: loginSchema validates correct email format",
+        "Unit: loginSchema requires password min 6 chars",
+        "Integration: successful login stores tokens",
+        "Integration: invalid credentials shows error toast",
+        "Integration: network error shows error toast"
+      ]
+    },
+    {
+      "id": "auth-002",
+      "title": "Implement registration form with API integration",
+      "category": "authentication",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Registration form validates name, email, password",
+        "Form submits to POST /auth/register endpoint",
+        "User redirected to /login on success",
+        "Success toast shown after registration"
+      ],
+      "tests": [
+        "Unit: registerSchema validates all required fields",
+        "Unit: registerSchema validates password confirmation match",
+        "Integration: successful registration redirects to login",
+        "Integration: duplicate email shows error"
+      ]
+    },
+    {
+      "id": "auth-003",
+      "title": "Create auth context/state management",
+      "category": "authentication",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "AuthContext provides user, isAuthenticated, isLoading states",
+        "useAuth hook returns context values",
+        "GET /auth/me called on app mount to restore session",
+        "User state cleared on logout"
+      ],
+      "tests": [
+        "Unit: AuthProvider initializes with null user",
+        "Integration: valid token restores user session",
+        "Integration: invalid token clears localStorage"
+      ]
+    },
+    {
+      "id": "auth-004",
+      "title": "Add protected route middleware",
+      "category": "authentication",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Middleware checks auth state for protected routes",
+        "Unauthenticated users redirected to /login",
+        "Login/register pages redirect authenticated users to /prompts",
+        "Original URL preserved for post-login redirect"
+      ],
+      "tests": [
+        "Integration: unauthenticated user redirected from /prompts",
+        "Integration: authenticated user redirected from /login",
+        "Integration: redirect preserves original destination"
+      ]
+    },
+    {
+      "id": "auth-005",
+      "title": "Add password visibility toggle",
+      "category": "authentication",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Eye icon button toggles password field type",
+        "Icon changes between eye and eye-off",
+        "Works on login and registration forms"
+      ],
+      "tests": [
+        "Unit: toggle changes input type from password to text",
+        "Unit: icon updates on toggle"
+      ]
+    },
+    {
+      "id": "auth-006",
+      "title": "Handle auth errors with toast notifications",
+      "category": "authentication",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Invalid credentials shows error toast",
+        "Network errors show appropriate message",
+        "Rate limit errors show retry message",
+        "Validation errors shown inline on form"
+      ],
+      "tests": [
+        "Integration: 401 error shows invalid credentials toast",
+        "Integration: 429 error shows rate limit toast",
+        "Integration: network error shows connection toast"
+      ]
+    },
+    {
+      "id": "auth-007",
+      "title": "Implement logout functionality",
+      "category": "authentication",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Logout button in header dropdown",
+        "POST /auth/logout called",
+        "Tokens cleared from localStorage",
+        "User redirected to /login"
+      ],
+      "tests": [
+        "Integration: logout clears tokens",
+        "Integration: logout redirects to login",
+        "Integration: logout invalidates session on server"
+      ]
+    },
+    {
+      "id": "auth-008",
+      "title": "Add logout from all devices feature",
+      "category": "authentication",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Button in settings page",
+        "POST /auth/logout-all called",
+        "Confirmation dialog before action",
+        "Success toast shown"
+      ],
+      "tests": [
+        "Integration: logout-all invalidates all sessions",
+        "Integration: confirmation dialog prevents accidental clicks"
+      ]
+    },
+    {
+      "id": "prompts-list-001",
+      "title": "Create PromptCard component (compact view)",
+      "category": "prompts-list",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Card displays title, truncated content, folder, tags",
+        "Shows visibility badge (public/private/shared)",
+        "Displays updated date",
+        "Hover state with subtle elevation",
+        "Click navigates to prompt detail"
+      ],
+      "tests": [
+        "Unit: renders title and content correctly",
+        "Unit: truncates long content with ellipsis",
+        "Unit: displays correct visibility badge",
+        "Snapshot: compact card matches design"
+      ]
+    },
+    {
+      "id": "prompts-list-002",
+      "title": "Create PromptCard component (expanded view)",
+      "category": "prompts-list",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Card shows full content preview",
+        "Action buttons visible (copy, edit, delete)",
+        "Tags displayed as badges",
+        "Quick copy button"
+      ],
+      "tests": [
+        "Unit: expanded card shows full content",
+        "Unit: action buttons are clickable",
+        "Snapshot: expanded card matches design"
+      ]
+    },
+    {
+      "id": "prompts-list-003",
+      "title": "Implement prompts list page with data fetching",
+      "category": "prompts-list",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "GET /prompts called with useQuery",
+        "List renders PromptCard components",
+        "Loading skeleton shown during fetch",
+        "Error state with retry button"
+      ],
+      "tests": [
+        "Integration: fetches and displays prompts",
+        "Integration: shows skeleton during loading",
+        "Integration: shows error state on failure"
+      ]
+    },
+    {
+      "id": "prompts-list-004",
+      "title": "Add pagination (infinite scroll)",
+      "category": "prompts-list",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "useInfiniteQuery for paginated fetching",
+        "Load more triggered on scroll near bottom",
+        "Loading indicator at bottom during fetch",
+        "Handles end of list gracefully"
+      ],
+      "tests": [
+        "Integration: loads next page on scroll",
+        "Integration: stops loading at end of list",
+        "Integration: maintains scroll position"
+      ]
+    },
+    {
+      "id": "prompts-list-005",
+      "title": "Implement search functionality",
+      "category": "prompts-list",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Search input in header or above list",
+        "Debounced search query (300ms)",
+        "Search passed to API as query param",
+        "Clear search button",
+        "Empty search results state"
+      ],
+      "tests": [
+        "Integration: search filters results",
+        "Integration: debounce prevents excessive requests",
+        "Integration: clear button resets search"
+      ]
+    },
+    {
+      "id": "prompts-list-006",
+      "title": "Add filter by folder dropdown",
+      "category": "prompts-list",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Dropdown shows all user folders",
+        "All folders option at top",
+        "Selected folder filters prompts",
+        "Folder count shown in dropdown"
+      ],
+      "tests": [
+        "Integration: folder filter updates list",
+        "Integration: All folders shows all prompts"
+      ]
+    },
+    {
+      "id": "prompts-list-007",
+      "title": "Add filter by tags (multi-select)",
+      "category": "prompts-list",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Multi-select dropdown for tags",
+        "Selected tags shown as badges",
+        "AND/OR filter logic option",
+        "Clear all tags button"
+      ],
+      "tests": [
+        "Integration: tag filter updates list",
+        "Integration: multiple tags filter correctly"
+      ]
+    },
+    {
+      "id": "prompts-list-008",
+      "title": "Add filter by visibility",
+      "category": "prompts-list",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Dropdown with All/Public/Private/Shared options",
+        "Filters prompts by visibility status"
+      ],
+      "tests": [
+        "Integration: visibility filter shows correct prompts"
+      ]
+    },
+    {
+      "id": "prompts-list-009",
+      "title": "Add sort dropdown",
+      "category": "prompts-list",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Sort options: newest, oldest, alphabetical, recently updated",
+        "Selected sort persisted in URL params",
+        "Default sort is newest"
+      ],
+      "tests": [
+        "Integration: sort changes list order",
+        "Integration: sort persists in URL"
+      ]
+    },
+    {
+      "id": "prompts-list-010",
+      "title": "Implement empty state with CTA",
+      "category": "prompts-list",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Illustration and message when no prompts",
+        "Create first prompt CTA button",
+        "Different message for filtered empty state"
+      ],
+      "tests": [
+        "Unit: shows empty state when no prompts",
+        "Unit: shows filtered empty state with filters active"
+      ]
+    },
+    {
+      "id": "prompts-list-011",
+      "title": "Add skeleton loaders during data fetch",
+      "category": "prompts-list",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Skeleton cards match PromptCard dimensions",
+        "Animated pulse effect",
+        "Show 6-8 skeleton cards"
+      ],
+      "tests": [
+        "Unit: skeleton renders correct number of cards",
+        "Snapshot: skeleton matches design"
+      ]
+    },
+    {
+      "id": "prompts-list-012",
+      "title": "Add New Prompt button",
+      "category": "prompts-list",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Prominent button above list",
+        "Opens create prompt modal on click",
+        "Plus icon with text"
+      ],
+      "tests": [
+        "Integration: button opens create modal"
+      ]
+    },
+    {
+      "id": "prompts-crud-001",
+      "title": "Create prompt creation modal",
+      "category": "prompts-crud",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Modal 500-600px width on desktop",
+        "Full screen on mobile",
+        "Close on backdrop click or X button",
+        "Escape key closes modal"
+      ],
+      "tests": [
+        "Unit: modal opens and closes correctly",
+        "Unit: escape key closes modal",
+        "Unit: backdrop click closes modal"
+      ]
+    },
+    {
+      "id": "prompts-crud-002",
+      "title": "Build prompt form with validation",
+      "category": "prompts-crud",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "Title field (required, max 200 chars)",
+        "Content textarea (required)",
+        "Description field (optional)",
+        "Visibility select (private/public)",
+        "Zod validation with inline errors",
+        "Submit button disabled when invalid"
+      ],
+      "tests": [
+        "Unit: validation rejects empty title",
+        "Unit: validation rejects title > 200 chars",
+        "Unit: form shows inline errors",
+        "Integration: valid form enables submit"
+      ]
+    },
+    {
+      "id": "prompts-crud-003",
+      "title": "Implement tag input with autocomplete",
+      "category": "prompts-crud",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Input with autocomplete suggestions from GET /tags",
+        "Tags displayed as removable badges",
+        "Create new tag on enter if not exists",
+        "Max 10 tags per prompt"
+      ],
+      "tests": [
+        "Integration: autocomplete shows existing tags",
+        "Integration: new tag created on enter",
+        "Unit: max 10 tags enforced"
+      ]
+    },
+    {
+      "id": "prompts-crud-004",
+      "title": "Add folder selector",
+      "category": "prompts-crud",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Dropdown with existing folders from GET /folders",
+        "Create new folder option at bottom",
+        "Inline folder creation without closing modal",
+        "No folder option (uncategorized)"
+      ],
+      "tests": [
+        "Integration: shows existing folders",
+        "Integration: creates new folder inline"
+      ]
+    },
+    {
+      "id": "prompts-crud-005",
+      "title": "Implement prompt creation API integration",
+      "category": "prompts-crud",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "POST /prompts on form submit",
+        "Success toast and modal close",
+        "List refreshed with new prompt",
+        "Error handling with toast"
+      ],
+      "tests": [
+        "Integration: creates prompt successfully",
+        "Integration: shows error on failure",
+        "Integration: refreshes list after creation"
+      ]
+    },
+    {
+      "id": "prompts-crud-006",
+      "title": "Implement prompt update API integration",
+      "category": "prompts-crud",
+      "priority": "critical",
+      "passed": false,
+      "dod": [
+        "PUT /prompts/{id} on form submit",
+        "Optimistic update with rollback on error",
+        "Success toast shown"
+      ],
+      "tests": [
+        "Integration: updates prompt successfully",
+        "Integration: rolls back on error"
+      ]
+    },
+    {
+      "id": "prompts-crud-007",
+      "title": "Implement prompt deletion",
+      "category": "prompts-crud",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Delete button with confirmation dialog",
+        "DELETE /prompts/{id} on confirm",
+        "Prompt removed from list",
+        "Success toast shown"
+      ],
+      "tests": [
+        "Integration: deletes prompt on confirm",
+        "Integration: cancellation prevents deletion"
+      ]
+    },
+    {
+      "id": "prompts-crud-008",
+      "title": "Add character counter for content",
+      "category": "prompts-crud",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Counter shows current/max characters",
+        "Warning color when approaching limit",
+        "Works for both title and content"
+      ],
+      "tests": [
+        "Unit: counter updates on input",
+        "Unit: warning style at 90% limit"
+      ]
+    },
+    {
+      "id": "prompts-detail-001",
+      "title": "Create prompt detail page",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Route: /prompts/[id]",
+        "GET /prompts/{id} on page load",
+        "Display title, content, metadata",
+        "Breadcrumb navigation back to list"
+      ],
+      "tests": [
+        "Integration: loads and displays prompt",
+        "Integration: handles not found error"
+      ]
+    },
+    {
+      "id": "prompts-detail-002",
+      "title": "Display prompt metadata",
+      "category": "prompts-detail",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Folder badge with link",
+        "Tags as clickable badges",
+        "Created and updated dates",
+        "Visibility status"
+      ],
+      "tests": [
+        "Unit: renders all metadata correctly"
+      ]
+    },
+    {
+      "id": "prompts-detail-003",
+      "title": "Implement copy functionality",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Copy dropdown with options",
+        "Copy as plain text",
+        "Copy with variables (if template)",
+        "Copy as markdown",
+        "Success toast on copy"
+      ],
+      "tests": [
+        "Integration: copies to clipboard",
+        "Integration: shows success toast"
+      ]
+    },
+    {
+      "id": "prompts-detail-004",
+      "title": "Add edit/delete actions",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Edit button opens inline edit mode",
+        "Delete button with confirmation",
+        "Actions in dropdown menu on mobile"
+      ],
+      "tests": [
+        "Integration: edit mode activates",
+        "Integration: delete with confirmation works"
+      ]
+    },
+    {
+      "id": "prompts-detail-005",
+      "title": "Implement inline editing",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Title and content become editable",
+        "Save/cancel buttons appear",
+        "Escape cancels edit mode",
+        "Changes saved on blur or save click"
+      ],
+      "tests": [
+        "Integration: edit mode enables editing",
+        "Integration: save persists changes",
+        "Integration: cancel discards changes"
+      ]
+    },
+    {
+      "id": "prompts-detail-006",
+      "title": "Show version history panel",
+      "category": "prompts-detail",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Collapsible panel showing versions",
+        "GET /prompts/{id}/versions on expand",
+        "Each version shows date and preview",
+        "Click to view version content"
+      ],
+      "tests": [
+        "Integration: loads versions on expand",
+        "Integration: displays version list"
+      ]
+    },
+    {
+      "id": "prompts-detail-007",
+      "title": "Implement version restore",
+      "category": "prompts-detail",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Restore button on each version",
+        "POST /prompts/{id}/versions/{versionId}/restore",
+        "Confirmation dialog",
+        "Content updated after restore"
+      ],
+      "tests": [
+        "Integration: restores version successfully",
+        "Integration: confirmation prevents accidental restore"
+      ]
+    },
+    {
+      "id": "prompts-detail-008",
+      "title": "Add diff view for comparing versions",
+      "category": "prompts-detail",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Side-by-side or inline diff view",
+        "Additions highlighted in green",
+        "Deletions highlighted in red",
+        "Compare current with any version"
+      ],
+      "tests": [
+        "Unit: diff correctly identifies changes",
+        "Snapshot: diff view matches design"
+      ]
+    },
+    {
+      "id": "template-001",
+      "title": "Create variable extraction UI",
+      "category": "template-variables",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Detect {{variable}} syntax in content",
+        "Display list of extracted variables",
+        "POST /templates/variables to extract",
+        "Highlight variables in content preview"
+      ],
+      "tests": [
+        "Unit: detects variables in content",
+        "Integration: API extracts variables correctly"
+      ]
+    },
+    {
+      "id": "template-002",
+      "title": "Build variable input form",
+      "category": "template-variables",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Form field for each variable",
+        "Required indicator for all variables",
+        "Clear all button",
+        "Remember values option"
+      ],
+      "tests": [
+        "Unit: renders field for each variable",
+        "Unit: validates required fields"
+      ]
+    },
+    {
+      "id": "template-003",
+      "title": "Implement template preview",
+      "category": "template-variables",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Live preview as variables are filled",
+        "POST /templates/render for rendering",
+        "Copy rendered content button"
+      ],
+      "tests": [
+        "Integration: preview updates on input",
+        "Integration: renders template correctly"
+      ]
+    },
+    {
+      "id": "template-004",
+      "title": "Add variable validation",
+      "category": "template-variables",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "All variables required before copy",
+        "Warning for unfilled variables",
+        "Disable copy button until all filled"
+      ],
+      "tests": [
+        "Unit: copy disabled with empty variables",
+        "Unit: warning shown for empty variables"
+      ]
+    },
+    {
+      "id": "ai-001",
+      "title": "Create Improve with AI button and modal",
+      "category": "ai-features",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Button on prompt detail page",
+        "Modal shows loading state",
+        "POST /ai/improve with prompt content",
+        "Display improved version"
+      ],
+      "tests": [
+        "Integration: calls AI improve endpoint",
+        "Integration: displays improved content"
+      ]
+    },
+    {
+      "id": "ai-002",
+      "title": "Implement AI diff view",
+      "category": "ai-features",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Show original vs improved side by side",
+        "Highlight differences",
+        "Accept/reject buttons",
+        "Edit improved version option"
+      ],
+      "tests": [
+        "Unit: diff highlights changes",
+        "Integration: accept updates prompt"
+      ]
+    },
+    {
+      "id": "ai-003",
+      "title": "Add accept/reject AI suggestions",
+      "category": "ai-features",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Accept replaces current content",
+        "Reject closes modal without changes",
+        "Edit allows modifying suggestion first"
+      ],
+      "tests": [
+        "Integration: accept saves improved content",
+        "Integration: reject discards changes"
+      ]
+    },
+    {
+      "id": "ai-004",
+      "title": "Implement Generate Tags feature",
+      "category": "ai-features",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Button to generate tags",
+        "POST /ai/generate-tags",
+        "Display suggested tags",
+        "Select which tags to add"
+      ],
+      "tests": [
+        "Integration: generates tag suggestions",
+        "Integration: adds selected tags to prompt"
+      ]
+    },
+    {
+      "id": "ai-005",
+      "title": "Implement Generate Description feature",
+      "category": "ai-features",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Button to generate description",
+        "POST /ai/generate-description",
+        "Display suggested description",
+        "Accept or edit before saving"
+      ],
+      "tests": [
+        "Integration: generates description",
+        "Integration: saves accepted description"
+      ]
+    },
+    {
+      "id": "ai-006",
+      "title": "Handle API rate limits",
+      "category": "ai-features",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "429 error shows rate limit message",
+        "Retry after countdown shown",
+        "Disable AI buttons during cooldown"
+      ],
+      "tests": [
+        "Integration: shows rate limit message on 429",
+        "Integration: buttons disabled during cooldown"
+      ]
+    },
+    {
+      "id": "folders-001",
+      "title": "Create folders sidebar/dropdown",
+      "category": "folders",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "GET /folders to fetch user folders",
+        "Display as sidebar on desktop, dropdown on mobile",
+        "Show prompt count per folder",
+        "Click to filter prompts by folder"
+      ],
+      "tests": [
+        "Integration: loads and displays folders",
+        "Integration: filters prompts on click"
+      ]
+    },
+    {
+      "id": "folders-002",
+      "title": "Implement create folder modal",
+      "category": "folders",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Form with folder name input",
+        "POST /folders on submit",
+        "Folder added to list without refresh",
+        "Success toast shown"
+      ],
+      "tests": [
+        "Integration: creates folder successfully",
+        "Integration: new folder appears in list"
+      ]
+    },
+    {
+      "id": "folders-003",
+      "title": "Add rename folder functionality",
+      "category": "folders",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Edit button on folder item",
+        "Inline rename input",
+        "PUT /folders/{id} on save",
+        "Escape to cancel"
+      ],
+      "tests": [
+        "Integration: renames folder successfully"
+      ]
+    },
+    {
+      "id": "folders-004",
+      "title": "Add delete folder functionality",
+      "category": "folders",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Delete button with confirmation",
+        "Option to move prompts or delete them",
+        "DELETE /folders/{id}",
+        "Folder removed from list"
+      ],
+      "tests": [
+        "Integration: deletes folder successfully",
+        "Integration: handles prompts in folder"
+      ]
+    },
+    {
+      "id": "folders-005",
+      "title": "Implement drag-drop folder reordering",
+      "category": "folders",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Drag handle on folder items",
+        "Visual feedback during drag",
+        "PUT /folders/reorder on drop",
+        "Optimistic UI update"
+      ],
+      "tests": [
+        "Integration: reorders folders on drag-drop"
+      ]
+    },
+    {
+      "id": "tags-001",
+      "title": "Create tags management UI",
+      "category": "tags",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Tags section in settings or dedicated page",
+        "GET /tags to list all tags",
+        "Show usage count per tag"
+      ],
+      "tests": [
+        "Integration: loads and displays tags"
+      ]
+    },
+    {
+      "id": "tags-002",
+      "title": "Implement create tag functionality",
+      "category": "tags",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Input to create new tag",
+        "POST /tags on submit",
+        "Tag added to list"
+      ],
+      "tests": [
+        "Integration: creates tag successfully"
+      ]
+    },
+    {
+      "id": "tags-003",
+      "title": "Add rename tag functionality",
+      "category": "tags",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Edit button on tag item",
+        "PUT /tags/{id} on save",
+        "All prompts updated with new tag name"
+      ],
+      "tests": [
+        "Integration: renames tag successfully"
+      ]
+    },
+    {
+      "id": "tags-004",
+      "title": "Add delete tag functionality",
+      "category": "tags",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Delete button with confirmation",
+        "DELETE /tags/{id}",
+        "Tag removed from all prompts"
+      ],
+      "tests": [
+        "Integration: deletes tag successfully"
+      ]
+    },
+    {
+      "id": "tags-005",
+      "title": "Build tag autocomplete component",
+      "category": "tags",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Input with dropdown suggestions",
+        "GET /tags/search for autocomplete",
+        "Keyboard navigation (up/down/enter)",
+        "Create new tag option"
+      ],
+      "tests": [
+        "Integration: shows suggestions on type",
+        "Integration: keyboard navigation works"
+      ]
+    },
+    {
+      "id": "sharing-001",
+      "title": "Add Share button on prompt detail",
+      "category": "sharing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Share button visible on detail page",
+        "Opens share modal on click"
+      ],
+      "tests": [
+        "Unit: share button renders",
+        "Integration: opens share modal"
+      ]
+    },
+    {
+      "id": "sharing-002",
+      "title": "Create share link generation modal",
+      "category": "sharing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "POST /prompts/{id}/share to generate link",
+        "Display generated link",
+        "Copy link button",
+        "Success toast on copy"
+      ],
+      "tests": [
+        "Integration: generates share link",
+        "Integration: copies link to clipboard"
+      ]
+    },
+    {
+      "id": "sharing-003",
+      "title": "Display active share links",
+      "category": "sharing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "List existing share links",
+        "Show creation date",
+        "Copy button per link"
+      ],
+      "tests": [
+        "Integration: displays existing links"
+      ]
+    },
+    {
+      "id": "sharing-004",
+      "title": "Implement share link deletion",
+      "category": "sharing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Delete button per share link",
+        "DELETE /prompts/{id}/share/{token}",
+        "Confirmation dialog",
+        "Link removed from list"
+      ],
+      "tests": [
+        "Integration: deletes share link"
+      ]
+    },
+    {
+      "id": "gallery-001",
+      "title": "Connect gallery page to API",
+      "category": "public-gallery",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "GET /gallery to fetch public prompts",
+        "Display as card grid",
+        "Pagination with load more"
+      ],
+      "tests": [
+        "Integration: loads public prompts",
+        "Integration: pagination works"
+      ]
+    },
+    {
+      "id": "gallery-002",
+      "title": "Implement search in public prompts",
+      "category": "public-gallery",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Search input in gallery header",
+        "Debounced search query",
+        "Results filtered by search term"
+      ],
+      "tests": [
+        "Integration: search filters gallery results"
+      ]
+    },
+    {
+      "id": "gallery-003",
+      "title": "Add sort by popularity/date",
+      "category": "public-gallery",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Sort dropdown: popular, newest, most forked",
+        "Sort param passed to API"
+      ],
+      "tests": [
+        "Integration: sort changes result order"
+      ]
+    },
+    {
+      "id": "gallery-004",
+      "title": "Create public prompt detail page",
+      "category": "public-gallery",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Route: /gallery/[id]",
+        "GET /gallery/{id}",
+        "Display prompt content and metadata",
+        "Author info shown"
+      ],
+      "tests": [
+        "Integration: loads and displays public prompt"
+      ]
+    },
+    {
+      "id": "gallery-005",
+      "title": "Implement Fork functionality",
+      "category": "public-gallery",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Fork button on public prompt",
+        "POST /gallery/{id}/fork",
+        "Redirect to user's copy of prompt",
+        "Login required - show prompt if not authenticated"
+      ],
+      "tests": [
+        "Integration: forks prompt to user account",
+        "Integration: requires authentication"
+      ]
+    },
+    {
+      "id": "gallery-006",
+      "title": "Add like/unlike functionality",
+      "category": "public-gallery",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Heart icon button",
+        "POST /gallery/{id}/like to like",
+        "DELETE /gallery/{id}/like to unlike",
+        "Like count updates optimistically"
+      ],
+      "tests": [
+        "Integration: likes prompt successfully",
+        "Integration: unlikes prompt successfully"
+      ]
+    },
+    {
+      "id": "gallery-007",
+      "title": "Display like and fork counts",
+      "category": "public-gallery",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Show like count with heart icon",
+        "Show fork count with fork icon",
+        "Counts update after actions"
+      ],
+      "tests": [
+        "Unit: renders counts correctly"
+      ]
+    },
+    {
+      "id": "shared-001",
+      "title": "Connect shared prompt page to API",
+      "category": "shared-view",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "GET /shared/{token}",
+        "Display prompt content",
+        "Handle invalid/expired token error"
+      ],
+      "tests": [
+        "Integration: loads shared prompt",
+        "Integration: shows error for invalid token"
+      ]
+    },
+    {
+      "id": "shared-002",
+      "title": "Add copy functionality to shared view",
+      "category": "shared-view",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Copy button copies content",
+        "Success toast shown"
+      ],
+      "tests": [
+        "Integration: copies to clipboard"
+      ]
+    },
+    {
+      "id": "shared-003",
+      "title": "Show create account CTA",
+      "category": "shared-view",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Banner prompting to create account",
+        "Link to register page",
+        "Dismissible banner"
+      ],
+      "tests": [
+        "Unit: renders CTA banner"
+      ]
+    },
+    {
+      "id": "settings-001",
+      "title": "Implement profile section",
+      "category": "settings",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Display current name and email",
+        "Edit name functionality",
+        "PUT /auth/me to update"
+      ],
+      "tests": [
+        "Integration: updates profile successfully"
+      ]
+    },
+    {
+      "id": "settings-002",
+      "title": "Add password change functionality",
+      "category": "settings",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Current password, new password, confirm fields",
+        "Validation for password strength",
+        "PUT /auth/password to change"
+      ],
+      "tests": [
+        "Integration: changes password successfully",
+        "Integration: validates current password"
+      ]
+    },
+    {
+      "id": "settings-003",
+      "title": "Implement sign out all devices",
+      "category": "settings",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Button with confirmation dialog",
+        "POST /auth/logout-all",
+        "Redirect to login after"
+      ],
+      "tests": [
+        "Integration: logs out all sessions"
+      ]
+    },
+    {
+      "id": "ui-001",
+      "title": "Implement dark mode toggle",
+      "category": "ui-polish",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Toggle in header or settings",
+        "next-themes integration",
+        "Persist preference in localStorage",
+        "System preference detection"
+      ],
+      "tests": [
+        "Integration: toggles theme correctly",
+        "Integration: persists preference"
+      ]
+    },
+    {
+      "id": "ui-002",
+      "title": "Add keyboard shortcuts",
+      "category": "ui-polish",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Cmd+K for search",
+        "Cmd+N for new prompt",
+        "Escape to close modals",
+        "Help modal showing shortcuts"
+      ],
+      "tests": [
+        "Integration: shortcuts trigger actions"
+      ]
+    },
+    {
+      "id": "ui-003",
+      "title": "Implement mobile responsive design",
+      "category": "ui-polish",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Mobile navigation menu",
+        "Touch-friendly tap targets",
+        "Full-screen modals on mobile",
+        "Responsive card grid"
+      ],
+      "tests": [
+        "Visual: renders correctly on mobile viewport"
+      ]
+    },
+    {
+      "id": "ui-004",
+      "title": "Add loading states for all async operations",
+      "category": "ui-polish",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Button loading spinners",
+        "Skeleton loaders for content",
+        "Disable interactions during loading"
+      ],
+      "tests": [
+        "Unit: loading states render correctly"
+      ]
+    },
+    {
+      "id": "ui-005",
+      "title": "Implement error boundaries",
+      "category": "ui-polish",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "React error boundary component",
+        "Fallback UI for crashes",
+        "Error reporting integration"
+      ],
+      "tests": [
+        "Unit: error boundary catches errors"
+      ]
+    },
+    {
+      "id": "ui-006",
+      "title": "Add 404 and error pages",
+      "category": "ui-polish",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Custom 404 page with navigation",
+        "Generic error page",
+        "Consistent styling with app"
+      ],
+      "tests": [
+        "Unit: 404 page renders correctly"
+      ]
+    },
+    {
+      "id": "testing-001",
+      "title": "Set up testing framework",
+      "category": "testing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Vitest configured",
+        "React Testing Library set up",
+        "Test scripts in package.json"
+      ],
+      "tests": [
+        "Unit: sample test passes"
+      ]
+    },
+    {
+      "id": "testing-002",
+      "title": "Write unit tests for validation schemas",
+      "category": "testing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Tests for auth schemas",
+        "Tests for prompt schemas",
+        "Tests for folder/tag schemas"
+      ],
+      "tests": [
+        "All validation schema tests pass"
+      ]
+    },
+    {
+      "id": "testing-003",
+      "title": "Write integration tests for auth flow",
+      "category": "testing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Login flow test",
+        "Registration flow test",
+        "Logout flow test"
+      ],
+      "tests": [
+        "All auth integration tests pass"
+      ]
+    },
+    {
+      "id": "testing-004",
+      "title": "Write E2E tests for critical paths",
+      "category": "testing",
+      "priority": "low",
+      "passed": false,
+      "dod": [
+        "Playwright or Cypress set up",
+        "Login and create prompt flow",
+        "Edit and delete prompt flow"
+      ],
+      "tests": [
+        "All E2E tests pass"
+      ]
+    }
+  ]
+}
