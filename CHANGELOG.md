@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- TanStack Query (`@tanstack/react-query`) with QueryClientProvider
+- Orval for API client generation from swagger.yaml
+- shadcn/ui component library (New York style)
+- Zod, react-hook-form, @hookform/resolvers for form handling
+- Axios instance with JWT refresh interceptors
+- Custom theme: warm beige/sand background with terracotta accent
+- Project folder structure: components/, hooks/, lib/api/, lib/validations/, types/
+
 ### Changed
 
 ### Fixed
