@@ -43,6 +43,24 @@
       ]
     },
     {
+      "id": "auth-001-tests",
+      "title": "Write tests for: Implement login form with API integration",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: loginSchema validates correct email format",
+        "Unit: loginSchema requires password min 6 chars",
+        "Integration: successful login stores tokens",
+        "Integration: invalid credentials shows error toast",
+        "Integration: network error shows error toast"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "auth-002",
       "title": "Implement registration form with API integration",
       "category": "authentication",
@@ -59,6 +77,23 @@
         "Unit: registerSchema validates password confirmation match",
         "Integration: successful registration redirects to login",
         "Integration: duplicate email shows error"
+      ]
+    },
+    {
+      "id": "auth-002-tests",
+      "title": "Write tests for: Implement registration form with API integration",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: registerSchema validates all required fields",
+        "Unit: registerSchema validates password confirmation match",
+        "Integration: successful registration redirects to login",
+        "Integration: duplicate email shows error"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -80,6 +115,22 @@
       ]
     },
     {
+      "id": "auth-003-tests",
+      "title": "Write tests for: Create auth context/state management",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: AuthProvider initializes with null user",
+        "Integration: valid token restores user session",
+        "Integration: invalid token clears localStorage"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "auth-004",
       "title": "Add protected route middleware",
       "category": "authentication",
@@ -98,6 +149,22 @@
       ]
     },
     {
+      "id": "auth-004-tests",
+      "title": "Write tests for: Add protected route middleware",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: unauthenticated user redirected from /prompts",
+        "Integration: authenticated user redirected from /login",
+        "Integration: redirect preserves original destination"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "auth-005",
       "title": "Add password visibility toggle",
       "category": "authentication",
@@ -111,6 +178,21 @@
       "tests": [
         "Unit: toggle changes input type from password to text",
         "Unit: icon updates on toggle"
+      ]
+    },
+    {
+      "id": "auth-005-tests",
+      "title": "Write tests for: Add password visibility toggle",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: toggle changes input type from password to text",
+        "Unit: icon updates on toggle"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -132,6 +214,22 @@
       ]
     },
     {
+      "id": "auth-006-tests",
+      "title": "Write tests for: Handle auth errors with toast notifications",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: 401 error shows invalid credentials toast",
+        "Integration: 429 error shows rate limit toast",
+        "Integration: network error shows connection toast"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "auth-007",
       "title": "Implement logout functionality",
       "category": "authentication",
@@ -147,6 +245,22 @@
         "Integration: logout clears tokens",
         "Integration: logout redirects to login",
         "Integration: logout invalidates session on server"
+      ]
+    },
+    {
+      "id": "auth-007-tests",
+      "title": "Write tests for: Implement logout functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: logout clears tokens",
+        "Integration: logout redirects to login",
+        "Integration: logout invalidates session on server"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -170,6 +284,23 @@
       ]
     },
     {
+      "id": "prompts-list-001-tests",
+      "title": "Write tests for: Create PromptCard component (compact view)",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: renders title and content correctly",
+        "Unit: truncates long content with ellipsis",
+        "Unit: displays correct visibility badge",
+        "Snapshot: compact card matches design"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-002",
       "title": "Create PromptCard component (expanded view)",
       "category": "prompts-list",
@@ -185,6 +316,22 @@
         "Unit: expanded card shows full content",
         "Unit: action buttons are clickable",
         "Snapshot: expanded card matches design"
+      ]
+    },
+    {
+      "id": "prompts-list-002-tests",
+      "title": "Write tests for: Create PromptCard component (expanded view)",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: expanded card shows full content",
+        "Unit: action buttons are clickable",
+        "Snapshot: expanded card matches design"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -206,6 +353,22 @@
       ]
     },
     {
+      "id": "prompts-list-003-tests",
+      "title": "Write tests for: Implement prompts list page with data fetching",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: fetches and displays prompts",
+        "Integration: shows skeleton during loading",
+        "Integration: shows error state on failure"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-004",
       "title": "Add pagination (infinite scroll)",
       "category": "prompts-list",
@@ -221,6 +384,22 @@
         "Integration: loads next page on scroll",
         "Integration: stops loading at end of list",
         "Integration: maintains scroll position"
+      ]
+    },
+    {
+      "id": "prompts-list-004-tests",
+      "title": "Write tests for: Add pagination (infinite scroll)",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads next page on scroll",
+        "Integration: stops loading at end of list",
+        "Integration: maintains scroll position"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -243,6 +422,22 @@
       ]
     },
     {
+      "id": "prompts-list-005-tests",
+      "title": "Write tests for: Implement search functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: search filters results",
+        "Integration: debounce prevents excessive requests",
+        "Integration: clear button resets search"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-006",
       "title": "Add filter by folder dropdown",
       "category": "prompts-list",
@@ -257,6 +452,21 @@
       "tests": [
         "Integration: folder filter updates list",
         "Integration: All folders shows all prompts"
+      ]
+    },
+    {
+      "id": "prompts-list-006-tests",
+      "title": "Write tests for: Add filter by folder dropdown",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: folder filter updates list",
+        "Integration: All folders shows all prompts"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -277,6 +487,21 @@
       ]
     },
     {
+      "id": "prompts-list-007-tests",
+      "title": "Write tests for: Add filter by tags (multi-select)",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: tag filter updates list",
+        "Integration: multiple tags filter correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-008",
       "title": "Add filter by visibility",
       "category": "prompts-list",
@@ -287,6 +512,20 @@
         "Filters prompts by visibility status"
       ],
       "tests": ["Integration: visibility filter shows correct prompts"]
+    },
+    {
+      "id": "prompts-list-008-tests",
+      "title": "Write tests for: Add filter by visibility",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: visibility filter shows correct prompts"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "prompts-list-009",
@@ -302,6 +541,21 @@
       "tests": [
         "Integration: sort changes list order",
         "Integration: sort persists in URL"
+      ]
+    },
+    {
+      "id": "prompts-list-009-tests",
+      "title": "Write tests for: Add sort dropdown",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: sort changes list order",
+        "Integration: sort persists in URL"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -321,6 +575,21 @@
       ]
     },
     {
+      "id": "prompts-list-010-tests",
+      "title": "Write tests for: Implement empty state with CTA",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: shows empty state when no prompts",
+        "Unit: shows filtered empty state with filters active"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-011",
       "title": "Add skeleton loaders during data fetch",
       "category": "prompts-list",
@@ -337,6 +606,21 @@
       ]
     },
     {
+      "id": "prompts-list-011-tests",
+      "title": "Write tests for: Add skeleton loaders during data fetch",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: skeleton renders correct number of cards",
+        "Snapshot: skeleton matches design"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-list-012",
       "title": "Add New Prompt button",
       "category": "prompts-list",
@@ -348,6 +632,20 @@
         "Plus icon with text"
       ],
       "tests": ["Integration: button opens create modal"]
+    },
+    {
+      "id": "prompts-list-012-tests",
+      "title": "Write tests for: Add New Prompt button",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: button opens create modal"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "prompts-crud-001",
@@ -365,6 +663,22 @@
         "Unit: modal opens and closes correctly",
         "Unit: escape key closes modal",
         "Unit: backdrop click closes modal"
+      ]
+    },
+    {
+      "id": "prompts-crud-001-tests",
+      "title": "Write tests for: Create prompt creation modal",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: modal opens and closes correctly",
+        "Unit: escape key closes modal",
+        "Unit: backdrop click closes modal"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -389,6 +703,23 @@
       ]
     },
     {
+      "id": "prompts-crud-002-tests",
+      "title": "Write tests for: Build prompt form with validation",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: validation rejects empty title",
+        "Unit: validation rejects title > 200 chars",
+        "Unit: form shows inline errors",
+        "Integration: valid form enables submit"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-crud-003",
       "title": "Implement tag input with autocomplete",
       "category": "prompts-crud",
@@ -407,6 +738,22 @@
       ]
     },
     {
+      "id": "prompts-crud-003-tests",
+      "title": "Write tests for: Implement tag input with autocomplete",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: autocomplete shows existing tags",
+        "Integration: new tag created on enter",
+        "Unit: max 10 tags enforced"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-crud-004",
       "title": "Add folder selector",
       "category": "prompts-crud",
@@ -421,6 +768,21 @@
       "tests": [
         "Integration: shows existing folders",
         "Integration: creates new folder inline"
+      ]
+    },
+    {
+      "id": "prompts-crud-004-tests",
+      "title": "Write tests for: Add folder selector",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: shows existing folders",
+        "Integration: creates new folder inline"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -442,6 +804,22 @@
       ]
     },
     {
+      "id": "prompts-crud-005-tests",
+      "title": "Write tests for: Implement prompt creation API integration",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: creates prompt successfully",
+        "Integration: shows error on failure",
+        "Integration: refreshes list after creation"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-crud-006",
       "title": "Implement prompt update API integration",
       "category": "prompts-crud",
@@ -455,6 +833,21 @@
       "tests": [
         "Integration: updates prompt successfully",
         "Integration: rolls back on error"
+      ]
+    },
+    {
+      "id": "prompts-crud-006-tests",
+      "title": "Write tests for: Implement prompt update API integration",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: updates prompt successfully",
+        "Integration: rolls back on error"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -475,6 +868,21 @@
       ]
     },
     {
+      "id": "prompts-crud-007-tests",
+      "title": "Write tests for: Implement prompt deletion",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: deletes prompt on confirm",
+        "Integration: cancellation prevents deletion"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-crud-008",
       "title": "Add character counter for content",
       "category": "prompts-crud",
@@ -488,6 +896,21 @@
       "tests": [
         "Unit: counter updates on input",
         "Unit: warning style at 90% limit"
+      ]
+    },
+    {
+      "id": "prompts-crud-008-tests",
+      "title": "Write tests for: Add character counter for content",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: counter updates on input",
+        "Unit: warning style at 90% limit"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -508,6 +931,21 @@
       ]
     },
     {
+      "id": "prompts-detail-001-tests",
+      "title": "Write tests for: Create prompt detail page",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads and displays prompt",
+        "Integration: handles not found error"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-detail-002",
       "title": "Display prompt metadata",
       "category": "prompts-detail",
@@ -520,6 +958,20 @@
         "Visibility status"
       ],
       "tests": ["Unit: renders all metadata correctly"]
+    },
+    {
+      "id": "prompts-detail-002-tests",
+      "title": "Write tests for: Display prompt metadata",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: renders all metadata correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "prompts-detail-003",
@@ -540,6 +992,21 @@
       ]
     },
     {
+      "id": "prompts-detail-003-tests",
+      "title": "Write tests for: Implement copy functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: copies to clipboard",
+        "Integration: shows success toast"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-detail-004",
       "title": "Add edit/delete actions",
       "category": "prompts-detail",
@@ -553,6 +1020,21 @@
       "tests": [
         "Integration: edit mode activates",
         "Integration: delete with confirmation works"
+      ]
+    },
+    {
+      "id": "prompts-detail-004-tests",
+      "title": "Write tests for: Add edit/delete actions",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: edit mode activates",
+        "Integration: delete with confirmation works"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -574,6 +1056,22 @@
       ]
     },
     {
+      "id": "prompts-detail-005-tests",
+      "title": "Write tests for: Implement inline editing",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: edit mode enables editing",
+        "Integration: save persists changes",
+        "Integration: cancel discards changes"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-detail-006",
       "title": "Show version history panel",
       "category": "prompts-detail",
@@ -588,6 +1086,21 @@
       "tests": [
         "Integration: loads versions on expand",
         "Integration: displays version list"
+      ]
+    },
+    {
+      "id": "prompts-detail-006-tests",
+      "title": "Write tests for: Show version history panel",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads versions on expand",
+        "Integration: displays version list"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -608,6 +1121,21 @@
       ]
     },
     {
+      "id": "prompts-detail-007-tests",
+      "title": "Write tests for: Implement version restore",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: restores version successfully",
+        "Integration: confirmation prevents accidental restore"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-detail-008",
       "title": "Add diff view for comparing versions",
       "category": "prompts-detail",
@@ -622,6 +1150,21 @@
       "tests": [
         "Unit: diff correctly identifies changes",
         "Snapshot: diff view matches design"
+      ]
+    },
+    {
+      "id": "prompts-detail-008-tests",
+      "title": "Write tests for: Add diff view for comparing versions",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: diff correctly identifies changes",
+        "Snapshot: diff view matches design"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -642,6 +1185,21 @@
       ]
     },
     {
+      "id": "template-001-tests",
+      "title": "Write tests for: Create variable extraction UI",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: detects variables in content",
+        "Integration: API extracts variables correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "template-002",
       "title": "Build variable input form",
       "category": "template-variables",
@@ -656,6 +1214,21 @@
       "tests": [
         "Unit: renders field for each variable",
         "Unit: validates required fields"
+      ]
+    },
+    {
+      "id": "template-002-tests",
+      "title": "Write tests for: Build variable input form",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: renders field for each variable",
+        "Unit: validates required fields"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -675,6 +1248,21 @@
       ]
     },
     {
+      "id": "template-003-tests",
+      "title": "Write tests for: Implement template preview",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: preview updates on input",
+        "Integration: renders template correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "template-004",
       "title": "Add variable validation",
       "category": "template-variables",
@@ -688,6 +1276,21 @@
       "tests": [
         "Unit: copy disabled with empty variables",
         "Unit: warning shown for empty variables"
+      ]
+    },
+    {
+      "id": "template-004-tests",
+      "title": "Write tests for: Add variable validation",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: copy disabled with empty variables",
+        "Unit: warning shown for empty variables"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -708,6 +1311,21 @@
       ]
     },
     {
+      "id": "ai-001-tests",
+      "title": "Write tests for: Create Improve with AI button and modal",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: calls AI improve endpoint",
+        "Integration: displays improved content"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ai-002",
       "title": "Implement AI diff view",
       "category": "ai-features",
@@ -725,6 +1343,21 @@
       ]
     },
     {
+      "id": "ai-002-tests",
+      "title": "Write tests for: Implement AI diff view",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: diff highlights changes",
+        "Integration: accept updates prompt"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ai-003",
       "title": "Add accept/reject AI suggestions",
       "category": "ai-features",
@@ -738,6 +1371,21 @@
       "tests": [
         "Integration: accept saves improved content",
         "Integration: reject discards changes"
+      ]
+    },
+    {
+      "id": "ai-003-tests",
+      "title": "Write tests for: Add accept/reject AI suggestions",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: accept saves improved content",
+        "Integration: reject discards changes"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -758,6 +1406,21 @@
       ]
     },
     {
+      "id": "ai-004-tests",
+      "title": "Write tests for: Implement Generate Tags feature",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: generates tag suggestions",
+        "Integration: adds selected tags to prompt"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ai-005",
       "title": "Implement Generate Description feature",
       "category": "ai-features",
@@ -775,6 +1438,21 @@
       ]
     },
     {
+      "id": "ai-005-tests",
+      "title": "Write tests for: Implement Generate Description feature",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: generates description",
+        "Integration: saves accepted description"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ai-006",
       "title": "Handle API rate limits",
       "category": "ai-features",
@@ -788,6 +1466,21 @@
       "tests": [
         "Integration: shows rate limit message on 429",
         "Integration: buttons disabled during cooldown"
+      ]
+    },
+    {
+      "id": "ai-006-tests",
+      "title": "Write tests for: Handle API rate limits",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: shows rate limit message on 429",
+        "Integration: buttons disabled during cooldown"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -808,6 +1501,21 @@
       ]
     },
     {
+      "id": "folders-001-tests",
+      "title": "Write tests for: Create folders sidebar/dropdown",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads and displays folders",
+        "Integration: filters prompts on click"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "folders-002",
       "title": "Implement create folder modal",
       "category": "folders",
@@ -825,6 +1533,21 @@
       ]
     },
     {
+      "id": "folders-002-tests",
+      "title": "Write tests for: Implement create folder modal",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: creates folder successfully",
+        "Integration: new folder appears in list"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "folders-003",
       "title": "Add rename folder functionality",
       "category": "folders",
@@ -837,6 +1560,20 @@
         "Escape to cancel"
       ],
       "tests": ["Integration: renames folder successfully"]
+    },
+    {
+      "id": "folders-003-tests",
+      "title": "Write tests for: Add rename folder functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: renames folder successfully"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "folders-004",
@@ -856,6 +1593,21 @@
       ]
     },
     {
+      "id": "folders-004-tests",
+      "title": "Write tests for: Add delete folder functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: deletes folder successfully",
+        "Integration: handles prompts in folder"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "folders-005",
       "title": "Implement drag-drop folder reordering",
       "category": "folders",
@@ -868,6 +1620,20 @@
         "Optimistic UI update"
       ],
       "tests": ["Integration: reorders folders on drag-drop"]
+    },
+    {
+      "id": "folders-005-tests",
+      "title": "Write tests for: Implement drag-drop folder reordering",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: reorders folders on drag-drop"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "tags-001",
@@ -883,6 +1649,20 @@
       "tests": ["Integration: loads and displays tags"]
     },
     {
+      "id": "tags-001-tests",
+      "title": "Write tests for: Create tags management UI",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads and displays tags"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "tags-002",
       "title": "Implement create tag functionality",
       "category": "tags",
@@ -894,6 +1674,20 @@
         "Tag added to list"
       ],
       "tests": ["Integration: creates tag successfully"]
+    },
+    {
+      "id": "tags-002-tests",
+      "title": "Write tests for: Implement create tag functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: creates tag successfully"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "tags-003",
@@ -909,6 +1703,20 @@
       "tests": ["Integration: renames tag successfully"]
     },
     {
+      "id": "tags-003-tests",
+      "title": "Write tests for: Add rename tag functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: renames tag successfully"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "tags-004",
       "title": "Add delete tag functionality",
       "category": "tags",
@@ -920,6 +1728,20 @@
         "Tag removed from all prompts"
       ],
       "tests": ["Integration: deletes tag successfully"]
+    },
+    {
+      "id": "tags-004-tests",
+      "title": "Write tests for: Add delete tag functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: deletes tag successfully"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "tags-005",
@@ -939,6 +1761,21 @@
       ]
     },
     {
+      "id": "tags-005-tests",
+      "title": "Write tests for: Build tag autocomplete component",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: shows suggestions on type",
+        "Integration: keyboard navigation works"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "sharing-001",
       "title": "Add Share button on prompt detail",
       "category": "sharing",
@@ -949,6 +1786,21 @@
         "Opens share modal on click"
       ],
       "tests": ["Unit: share button renders", "Integration: opens share modal"]
+    },
+    {
+      "id": "sharing-001-tests",
+      "title": "Write tests for: Add Share button on prompt detail",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: share button renders",
+        "Integration: opens share modal"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "sharing-002",
@@ -968,6 +1820,21 @@
       ]
     },
     {
+      "id": "sharing-002-tests",
+      "title": "Write tests for: Create share link generation modal",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: generates share link",
+        "Integration: copies link to clipboard"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "sharing-004",
       "title": "Implement share link deletion",
       "category": "sharing",
@@ -980,6 +1847,20 @@
         "Link removed from list"
       ],
       "tests": ["Integration: deletes share link"]
+    },
+    {
+      "id": "sharing-004-tests",
+      "title": "Write tests for: Implement share link deletion",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: deletes share link"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "gallery-001",
@@ -998,6 +1879,21 @@
       ]
     },
     {
+      "id": "gallery-001-tests",
+      "title": "Write tests for: Connect gallery page to API",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads public prompts",
+        "Integration: pagination works"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "gallery-002",
       "title": "Implement search in public prompts",
       "category": "public-gallery",
@@ -1009,6 +1905,20 @@
         "Results filtered by search term"
       ],
       "tests": ["Integration: search filters gallery results"]
+    },
+    {
+      "id": "gallery-002-tests",
+      "title": "Write tests for: Implement search in public prompts",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: search filters gallery results"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "gallery-003",
@@ -1023,6 +1933,20 @@
       "tests": ["Integration: sort changes result order"]
     },
     {
+      "id": "gallery-003-tests",
+      "title": "Write tests for: Add sort by popularity/date",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: sort changes result order"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "gallery-004",
       "title": "Create public prompt detail page",
       "category": "public-gallery",
@@ -1035,6 +1959,20 @@
         "Author info shown"
       ],
       "tests": ["Integration: loads and displays public prompt"]
+    },
+    {
+      "id": "gallery-004-tests",
+      "title": "Write tests for: Create public prompt detail page",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads and displays public prompt"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "gallery-005",
@@ -1054,6 +1992,21 @@
       ]
     },
     {
+      "id": "gallery-005-tests",
+      "title": "Write tests for: Implement Fork functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: forks prompt to user account",
+        "Integration: requires authentication"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "gallery-006",
       "title": "Add like/unlike functionality",
       "category": "public-gallery",
@@ -1070,6 +2023,21 @@
       ]
     },
     {
+      "id": "gallery-006-tests",
+      "title": "Write tests for: Add like/unlike functionality",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: likes prompt successfully",
+        "Integration: unlikes prompt successfully"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "gallery-007",
       "title": "Display like and fork counts",
       "category": "public-gallery",
@@ -1081,6 +2049,20 @@
         "Counts update after actions"
       ],
       "tests": ["Unit: renders counts correctly"]
+    },
+    {
+      "id": "gallery-007-tests",
+      "title": "Write tests for: Display like and fork counts",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: renders counts correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "shared-001",
@@ -1099,6 +2081,21 @@
       ]
     },
     {
+      "id": "shared-001-tests",
+      "title": "Write tests for: Connect shared prompt page to API",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: loads shared prompt",
+        "Integration: shows error for invalid token"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "shared-002",
       "title": "Add copy functionality to shared view",
       "category": "shared-view",
@@ -1106,6 +2103,20 @@
       "passed": false,
       "dod": ["Copy button copies content", "Success toast shown"],
       "tests": ["Integration: copies to clipboard"]
+    },
+    {
+      "id": "shared-002-tests",
+      "title": "Write tests for: Add copy functionality to shared view",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: copies to clipboard"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "shared-003",
@@ -1119,6 +2130,20 @@
         "Dismissible banner"
       ],
       "tests": ["Unit: renders CTA banner"]
+    },
+    {
+      "id": "shared-003-tests",
+      "title": "Write tests for: Show create account CTA",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: renders CTA banner"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "settings-001",
@@ -1135,6 +2160,21 @@
       "tests": [
         "Integration: logs out all sessions",
         "Integration: confirmation dialog prevents accidental clicks"
+      ]
+    },
+    {
+      "id": "settings-001-tests",
+      "title": "Write tests for: Implement sign out all devices",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: logs out all sessions",
+        "Integration: confirmation dialog prevents accidental clicks"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
       ]
     },
     {
@@ -1155,6 +2195,21 @@
       ]
     },
     {
+      "id": "ui-001-tests",
+      "title": "Write tests for: Implement dark mode toggle",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: toggles theme correctly",
+        "Integration: persists preference"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ui-002",
       "title": "Add keyboard shortcuts",
       "category": "ui-polish",
@@ -1167,6 +2222,20 @@
         "Help modal showing shortcuts"
       ],
       "tests": ["Integration: shortcuts trigger actions"]
+    },
+    {
+      "id": "ui-002-tests",
+      "title": "Write tests for: Add keyboard shortcuts",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Integration: shortcuts trigger actions"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "ui-003",
@@ -1183,6 +2252,20 @@
       "tests": ["Visual: renders correctly on mobile viewport"]
     },
     {
+      "id": "ui-003-tests",
+      "title": "Write tests for: Implement mobile responsive design",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Visual: renders correctly on mobile viewport"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ui-004",
       "title": "Add loading states for all async operations",
       "category": "ui-polish",
@@ -1194,6 +2277,20 @@
         "Disable interactions during loading"
       ],
       "tests": ["Unit: loading states render correctly"]
+    },
+    {
+      "id": "ui-004-tests",
+      "title": "Write tests for: Add loading states for all async operations",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: loading states render correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "ui-005",
@@ -1209,6 +2306,20 @@
       "tests": ["Unit: error boundary catches errors"]
     },
     {
+      "id": "ui-005-tests",
+      "title": "Write tests for: Implement error boundaries",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: error boundary catches errors"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "ui-006",
       "title": "Add 404 and error pages",
       "category": "ui-polish",
@@ -1220,6 +2331,20 @@
         "Consistent styling with app"
       ],
       "tests": ["Unit: 404 page renders correctly"]
+    },
+    {
+      "id": "ui-006-tests",
+      "title": "Write tests for: Add 404 and error pages",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: 404 page renders correctly"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "testing-001",
@@ -1235,6 +2360,20 @@
       "tests": ["Unit: sample test passes"]
     },
     {
+      "id": "testing-001-tests",
+      "title": "Write tests for: Set up testing framework",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "Unit: sample test passes"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "testing-002",
       "title": "Write unit tests for validation schemas",
       "category": "testing",
@@ -1248,6 +2387,20 @@
       "tests": ["All validation schema tests pass"]
     },
     {
+      "id": "testing-002-tests",
+      "title": "Write tests for: Write unit tests for validation schemas",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "All validation schema tests pass"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "testing-003",
       "title": "Write integration tests for auth flow",
       "category": "testing",
@@ -1255,6 +2408,20 @@
       "passed": false,
       "dod": ["Login flow test", "Registration flow test", "Logout flow test"],
       "tests": ["All auth integration tests pass"]
+    },
+    {
+      "id": "testing-003-tests",
+      "title": "Write tests for: Write integration tests for auth flow",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "All auth integration tests pass"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     },
     {
       "id": "testing-004",
@@ -1268,6 +2435,20 @@
         "Edit and delete prompt flow"
       ],
       "tests": ["All E2E tests pass"]
+    },
+    {
+      "id": "testing-004-tests",
+      "title": "Write tests for: Write E2E tests for critical paths",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "All E2E tests pass"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
     }
   ]
 }

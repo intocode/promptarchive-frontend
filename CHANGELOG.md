@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Test task entries in PRD.json for all existing features (auth, prompts, templates, AI, folders, sharing, gallery, settings)
 - Login page with form validation (`/login`)
 - Login form component with Zod validation (email, password min 8 chars)
 - Sonner toast notifications for error/success messages
