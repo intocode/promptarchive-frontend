@@ -339,7 +339,7 @@
       "title": "Implement prompts list page with data fetching",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "GET /prompts called with useQuery",
         "List renders PromptCard components",

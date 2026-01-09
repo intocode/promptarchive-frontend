@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Prompts list page with data fetching (prompts-list-003)
+  - GET /prompts called with useGetPrompts hook (TanStack Query)
+  - List renders PromptCard components in responsive grid (1/2/3 columns)
+  - Loading skeleton shown during fetch (6 skeleton cards)
+  - Error state with retry button
+  - Empty state for when no prompts exist
+  - Added shadcn/ui Skeleton component
+  - Added PromptCardSkeleton component (`src/components/prompts/prompt-card-skeleton.tsx`)
 - PromptCard component for compact prompt display (prompts-list-001)
   - Card displays title (truncated), content preview, folder, and tags
   - Visibility badge with appropriate styling (Public/Private/Unlisted)
