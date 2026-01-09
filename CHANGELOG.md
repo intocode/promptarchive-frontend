@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Base modal/dialog component (design-005)
+  - Added shadcn/ui Dialog component with size variants (sm: 400px, md: 550px, lg: 800px)
+  - Mobile full-screen behavior (< 768px viewport)
+  - Close on backdrop click and Escape key (built into Radix primitives)
+  - Size prop on DialogContent with `data-size` attribute for styling
+  - Exports: Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose
+
 ### Changed
 
 - Updated PRD.json with refined task specifications
