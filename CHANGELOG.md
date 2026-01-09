@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- PromptCard compact view updates (prompts-list-001)
+  - Visibility icon (Lock for private, Globe for public/unlisted) replacing text badge
+  - Usage counter displaying use_count field
+  - Quick copy button with clipboard feedback (Check icon)
+  - Removed content preview for compact mode per design spec
+  - Updated PromptCardSkeleton to match new compact layout
+- useCopyToClipboard hook (`src/hooks/use-copy-to-clipboard.ts`)
+  - Reusable clipboard functionality with toast notifications
+  - Returns copy function and copied state for UI feedback
 - Base modal/dialog component (design-005)
   - Added shadcn/ui Dialog component with size variants (sm: 400px, md: 550px, lg: 800px)
   - Mobile full-screen behavior (< 768px viewport)

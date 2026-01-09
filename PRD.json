@@ -163,7 +163,7 @@
       "title": "Create base modal/dialog component",
       "category": "design-system",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Add shadcn Dialog component to project",
         "Configure standard sizes (sm: 400px, md: 500-600px, lg: 800px)",
@@ -443,7 +443,7 @@
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Card displays: title, folder badge, tags (max 3 visible + counter)",
         "Shows visibility icon (lock for private, globe for public/unlisted)",
