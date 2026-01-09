@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { usePostAuthLogin } from "@/lib/api/generated/endpoints/authentication/authentication";
 import { useAuth } from "@/hooks/use-auth";
+import { setAuthCookie } from "@/lib/utils/auth-cookie";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-export function LoginForm() {
+export function LoginForm(): React.ReactElement {
   const router = useRouter();
   const { login } = useAuth();
 
@@ -41,10 +42,14 @@ export function LoginForm() {
         if (tokens?.refresh_token) {
           localStorage.setItem("refresh_token", tokens.refresh_token);
         }
+        setAuthCookie();
         if (response.data?.user) {
           login(response.data.user);
         }
-        router.push("/prompts");
+        const searchParams = new URLSearchParams(window.location.search);
+        const redirectTo = searchParams.get("redirect");
+        const isValidRedirect = redirectTo && redirectTo.startsWith("/") && !redirectTo.startsWith("//");
+        router.push(isValidRedirect ? redirectTo : "/prompts");
       },
       onError: (error) => {
         toast.error(error.error?.message ?? "Invalid credentials");

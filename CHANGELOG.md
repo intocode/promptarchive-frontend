@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Protected route middleware (auth-004)
+  - Next.js proxy for server-side route protection (`src/proxy.ts`)
+  - Auth cookie utilities for syncing auth state (`src/lib/utils/auth-cookie.ts`)
+  - AuthGuard component for protected pages (`src/components/auth/auth-guard.tsx`)
+  - GuestGuard component for guest-only pages (`src/components/auth/guest-guard.tsx`)
+  - LoadingSpinner shared component (`src/components/ui/loading-spinner.tsx`)
+  - Protected /prompts and /settings routes with placeholder pages
+  - Redirect to original URL after login via query param
+  - Authenticated users redirected from login/register to /prompts
 - Auth context/state management (auth-003)
   - AuthContext with user, isAuthenticated, isLoading states (`src/lib/contexts/auth-context.tsx`)
   - useAuth hook for consuming auth context (`src/hooks/use-auth.ts`)

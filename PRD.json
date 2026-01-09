@@ -135,7 +135,7 @@
       "title": "Add protected route middleware",
       "category": "authentication",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Middleware checks auth state for protected routes",
         "Unauthenticated users redirected to /login",
