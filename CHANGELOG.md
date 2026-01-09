@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated PRD.json with refined task specifications
+  - PromptCard (compact): Updated DoD to include usage counter, copy button, visibility icon, no content preview
+  - PromptCard (expanded): Added description field, content preview (100-200 chars), full statistics
+  - Sort dropdown: Added sort options (Recently Modified, Date Created, Most Used, Most Forked)
+  - View mode toggle: New task for compact/expanded view switching
+  - Prompt form: Simplified to exclude folder/tag selectors (moved to detail page)
+  - Version history: Changed to slide-in panel from right side
+  - Inline tag/folder selection: New tasks for prompt detail page
+  - AI features: Updated UI specs for improve modal, diff view, tag suggestions
+  - Rate limit: Simplified to toast-only feedback (no cooldown timer)
+  - Gallery: Updated card layout specs, sorting options
+  - Mobile: Clarified limited functionality (view/browse/copy only)
+
 ### Added
 
 - Home page redirect based on auth state (design-003)
