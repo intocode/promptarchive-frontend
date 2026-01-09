@@ -8,7 +8,8 @@
       "Bash(npm ls:*)",
       "Bash(npm run build:*)",
       "Bash(npm run lint:*)",
-      "Bash(npm run generate-api:*)"
+      "Bash(npm run generate-api:*)",
+      "Skill(shadcn)"
     ]
   }
 }

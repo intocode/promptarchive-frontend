@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Login page with form validation (`/login`)
+- Login form component with Zod validation (email, password min 8 chars)
+- Sonner toast notifications for error/success messages
+- shadcn/ui form components (form, input, button, label)
+- Auth validation schemas (`src/lib/validations/auth.ts`)
 - TanStack Query (`@tanstack/react-query`) with QueryClientProvider
 - Orval for API client generation from swagger.yaml
 - shadcn/ui component library (New York style)
@@ -23,6 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Aligned API paths in PRD.json with actual backend routes
 
 ### Fixed
+
+- Axios interceptor now skips token refresh for auth endpoints (prevents redirect loop on login failure)
 
 ### Removed
 
