@@ -150,23 +150,6 @@
       ]
     },
     {
-      "id": "auth-008",
-      "title": "Add logout from all devices feature",
-      "category": "authentication",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Button in settings page",
-        "POST /auth/logout-all called",
-        "Confirmation dialog before action",
-        "Success toast shown"
-      ],
-      "tests": [
-        "Integration: logout-all invalidates all sessions",
-        "Integration: confirmation dialog prevents accidental clicks"
-      ]
-    },
-    {
       "id": "prompts-list-001",
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
@@ -303,9 +286,7 @@
         "Dropdown with All/Public/Private/Shared options",
         "Filters prompts by visibility status"
       ],
-      "tests": [
-        "Integration: visibility filter shows correct prompts"
-      ]
+      "tests": ["Integration: visibility filter shows correct prompts"]
     },
     {
       "id": "prompts-list-009",
@@ -366,9 +347,7 @@
         "Opens create prompt modal on click",
         "Plus icon with text"
       ],
-      "tests": [
-        "Integration: button opens create modal"
-      ]
+      "tests": ["Integration: button opens create modal"]
     },
     {
       "id": "prompts-crud-001",
@@ -469,7 +448,7 @@
       "priority": "critical",
       "passed": false,
       "dod": [
-        "PUT /prompts/{id} on form submit",
+        "PATCH /prompts/{id} on form submit",
         "Optimistic update with rollback on error",
         "Success toast shown"
       ],
@@ -540,9 +519,7 @@
         "Created and updated dates",
         "Visibility status"
       ],
-      "tests": [
-        "Unit: renders all metadata correctly"
-      ]
+      "tests": ["Unit: renders all metadata correctly"]
     },
     {
       "id": "prompts-detail-003",
@@ -621,7 +598,7 @@
       "passed": false,
       "dod": [
         "Restore button on each version",
-        "POST /prompts/{id}/versions/{versionId}/restore",
+        "POST /prompts/{id}/versions/{vid}/restore",
         "Confirmation dialog",
         "Content updated after restore"
       ],
@@ -656,7 +633,7 @@
       "dod": [
         "Detect {{variable}} syntax in content",
         "Display list of extracted variables",
-        "POST /templates/variables to extract",
+        "GET /prompts/{id}/variables to extract",
         "Highlight variables in content preview"
       ],
       "tests": [
@@ -689,7 +666,7 @@
       "passed": false,
       "dod": [
         "Live preview as variables are filled",
-        "POST /templates/render for rendering",
+        "POST /prompts/{id}/render for rendering",
         "Copy rendered content button"
       ],
       "tests": [
@@ -722,7 +699,7 @@
       "dod": [
         "Button on prompt detail page",
         "Modal shows loading state",
-        "POST /ai/improve with prompt content",
+        "POST /prompts/{id}/improve to get AI improvements",
         "Display improved version"
       ],
       "tests": [
@@ -771,7 +748,7 @@
       "passed": false,
       "dod": [
         "Button to generate tags",
-        "POST /ai/generate-tags",
+        "POST /prompts/{id}/generate-tags",
         "Display suggested tags",
         "Select which tags to add"
       ],
@@ -788,7 +765,7 @@
       "passed": false,
       "dod": [
         "Button to generate description",
-        "POST /ai/generate-description",
+        "POST /prompts/{id}/generate-description",
         "Display suggested description",
         "Accept or edit before saving"
       ],
@@ -856,12 +833,10 @@
       "dod": [
         "Edit button on folder item",
         "Inline rename input",
-        "PUT /folders/{id} on save",
+        "PATCH /folders/{id} on save",
         "Escape to cancel"
       ],
-      "tests": [
-        "Integration: renames folder successfully"
-      ]
+      "tests": ["Integration: renames folder successfully"]
     },
     {
       "id": "folders-004",
@@ -889,12 +864,10 @@
       "dod": [
         "Drag handle on folder items",
         "Visual feedback during drag",
-        "PUT /folders/reorder on drop",
+        "PATCH /folders/reorder on drop",
         "Optimistic UI update"
       ],
-      "tests": [
-        "Integration: reorders folders on drag-drop"
-      ]
+      "tests": ["Integration: reorders folders on drag-drop"]
     },
     {
       "id": "tags-001",
@@ -907,9 +880,7 @@
         "GET /tags to list all tags",
         "Show usage count per tag"
       ],
-      "tests": [
-        "Integration: loads and displays tags"
-      ]
+      "tests": ["Integration: loads and displays tags"]
     },
     {
       "id": "tags-002",
@@ -922,9 +893,7 @@
         "POST /tags on submit",
         "Tag added to list"
       ],
-      "tests": [
-        "Integration: creates tag successfully"
-      ]
+      "tests": ["Integration: creates tag successfully"]
     },
     {
       "id": "tags-003",
@@ -934,12 +903,10 @@
       "passed": false,
       "dod": [
         "Edit button on tag item",
-        "PUT /tags/{id} on save",
+        "PATCH /tags/{id} on save",
         "All prompts updated with new tag name"
       ],
-      "tests": [
-        "Integration: renames tag successfully"
-      ]
+      "tests": ["Integration: renames tag successfully"]
     },
     {
       "id": "tags-004",
@@ -952,9 +919,7 @@
         "DELETE /tags/{id}",
         "Tag removed from all prompts"
       ],
-      "tests": [
-        "Integration: deletes tag successfully"
-      ]
+      "tests": ["Integration: deletes tag successfully"]
     },
     {
       "id": "tags-005",
@@ -964,7 +929,7 @@
       "passed": false,
       "dod": [
         "Input with dropdown suggestions",
-        "GET /tags/search for autocomplete",
+        "GET /tags?search={query} for autocomplete",
         "Keyboard navigation (up/down/enter)",
         "Create new tag option"
       ],
@@ -983,10 +948,7 @@
         "Share button visible on detail page",
         "Opens share modal on click"
       ],
-      "tests": [
-        "Unit: share button renders",
-        "Integration: opens share modal"
-      ]
+      "tests": ["Unit: share button renders", "Integration: opens share modal"]
     },
     {
       "id": "sharing-002",
@@ -1006,21 +968,6 @@
       ]
     },
     {
-      "id": "sharing-003",
-      "title": "Display active share links",
-      "category": "sharing",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "List existing share links",
-        "Show creation date",
-        "Copy button per link"
-      ],
-      "tests": [
-        "Integration: displays existing links"
-      ]
-    },
-    {
       "id": "sharing-004",
       "title": "Implement share link deletion",
       "category": "sharing",
@@ -1028,13 +975,11 @@
       "passed": false,
       "dod": [
         "Delete button per share link",
-        "DELETE /prompts/{id}/share/{token}",
+        "DELETE /prompts/{id}/share",
         "Confirmation dialog",
         "Link removed from list"
       ],
-      "tests": [
-        "Integration: deletes share link"
-      ]
+      "tests": ["Integration: deletes share link"]
     },
     {
       "id": "gallery-001",
@@ -1043,7 +988,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "GET /gallery to fetch public prompts",
+        "GET /public/prompts to fetch public prompts",
         "Display as card grid",
         "Pagination with load more"
       ],
@@ -1063,9 +1008,7 @@
         "Debounced search query",
         "Results filtered by search term"
       ],
-      "tests": [
-        "Integration: search filters gallery results"
-      ]
+      "tests": ["Integration: search filters gallery results"]
     },
     {
       "id": "gallery-003",
@@ -1077,9 +1020,7 @@
         "Sort dropdown: popular, newest, most forked",
         "Sort param passed to API"
       ],
-      "tests": [
-        "Integration: sort changes result order"
-      ]
+      "tests": ["Integration: sort changes result order"]
     },
     {
       "id": "gallery-004",
@@ -1089,13 +1030,11 @@
       "passed": false,
       "dod": [
         "Route: /gallery/[id]",
-        "GET /gallery/{id}",
+        "GET /public/prompts/{id}",
         "Display prompt content and metadata",
         "Author info shown"
       ],
-      "tests": [
-        "Integration: loads and displays public prompt"
-      ]
+      "tests": ["Integration: loads and displays public prompt"]
     },
     {
       "id": "gallery-005",
@@ -1105,7 +1044,7 @@
       "passed": false,
       "dod": [
         "Fork button on public prompt",
-        "POST /gallery/{id}/fork",
+        "POST /public/prompts/{id}/fork",
         "Redirect to user's copy of prompt",
         "Login required - show prompt if not authenticated"
       ],
@@ -1122,8 +1061,7 @@
       "passed": false,
       "dod": [
         "Heart icon button",
-        "POST /gallery/{id}/like to like",
-        "DELETE /gallery/{id}/like to unlike",
+        "POST /public/prompts/{id}/like to toggle like/unlike",
         "Like count updates optimistically"
       ],
       "tests": [
@@ -1142,9 +1080,7 @@
         "Show fork count with fork icon",
         "Counts update after actions"
       ],
-      "tests": [
-        "Unit: renders counts correctly"
-      ]
+      "tests": ["Unit: renders counts correctly"]
     },
     {
       "id": "shared-001",
@@ -1168,13 +1104,8 @@
       "category": "shared-view",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "Copy button copies content",
-        "Success toast shown"
-      ],
-      "tests": [
-        "Integration: copies to clipboard"
-      ]
+      "dod": ["Copy button copies content", "Success toast shown"],
+      "tests": ["Integration: copies to clipboard"]
     },
     {
       "id": "shared-003",
@@ -1187,54 +1118,23 @@
         "Link to register page",
         "Dismissible banner"
       ],
-      "tests": [
-        "Unit: renders CTA banner"
-      ]
+      "tests": ["Unit: renders CTA banner"]
     },
     {
       "id": "settings-001",
-      "title": "Implement profile section",
-      "category": "settings",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Display current name and email",
-        "Edit name functionality",
-        "PUT /auth/me to update"
-      ],
-      "tests": [
-        "Integration: updates profile successfully"
-      ]
-    },
-    {
-      "id": "settings-002",
-      "title": "Add password change functionality",
-      "category": "settings",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Current password, new password, confirm fields",
-        "Validation for password strength",
-        "PUT /auth/password to change"
-      ],
-      "tests": [
-        "Integration: changes password successfully",
-        "Integration: validates current password"
-      ]
-    },
-    {
-      "id": "settings-003",
       "title": "Implement sign out all devices",
       "category": "settings",
       "priority": "low",
       "passed": false,
       "dod": [
-        "Button with confirmation dialog",
+        "Button in settings page with confirmation dialog",
         "POST /auth/logout-all",
+        "Success toast shown",
         "Redirect to login after"
       ],
       "tests": [
-        "Integration: logs out all sessions"
+        "Integration: logs out all sessions",
+        "Integration: confirmation dialog prevents accidental clicks"
       ]
     },
     {
@@ -1266,9 +1166,7 @@
         "Escape to close modals",
         "Help modal showing shortcuts"
       ],
-      "tests": [
-        "Integration: shortcuts trigger actions"
-      ]
+      "tests": ["Integration: shortcuts trigger actions"]
     },
     {
       "id": "ui-003",
@@ -1282,9 +1180,7 @@
         "Full-screen modals on mobile",
         "Responsive card grid"
       ],
-      "tests": [
-        "Visual: renders correctly on mobile viewport"
-      ]
+      "tests": ["Visual: renders correctly on mobile viewport"]
     },
     {
       "id": "ui-004",
@@ -1297,9 +1193,7 @@
         "Skeleton loaders for content",
         "Disable interactions during loading"
       ],
-      "tests": [
-        "Unit: loading states render correctly"
-      ]
+      "tests": ["Unit: loading states render correctly"]
     },
     {
       "id": "ui-005",
@@ -1312,9 +1206,7 @@
         "Fallback UI for crashes",
         "Error reporting integration"
       ],
-      "tests": [
-        "Unit: error boundary catches errors"
-      ]
+      "tests": ["Unit: error boundary catches errors"]
     },
     {
       "id": "ui-006",
@@ -1327,9 +1219,7 @@
         "Generic error page",
         "Consistent styling with app"
       ],
-      "tests": [
-        "Unit: 404 page renders correctly"
-      ]
+      "tests": ["Unit: 404 page renders correctly"]
     },
     {
       "id": "testing-001",
@@ -1342,9 +1232,7 @@
         "React Testing Library set up",
         "Test scripts in package.json"
       ],
-      "tests": [
-        "Unit: sample test passes"
-      ]
+      "tests": ["Unit: sample test passes"]
     },
     {
       "id": "testing-002",
@@ -1357,9 +1245,7 @@
         "Tests for prompt schemas",
         "Tests for folder/tag schemas"
       ],
-      "tests": [
-        "All validation schema tests pass"
-      ]
+      "tests": ["All validation schema tests pass"]
     },
     {
       "id": "testing-003",
@@ -1367,14 +1253,8 @@
       "category": "testing",
       "priority": "low",
       "passed": false,
-      "dod": [
-        "Login flow test",
-        "Registration flow test",
-        "Logout flow test"
-      ],
-      "tests": [
-        "All auth integration tests pass"
-      ]
+      "dod": ["Login flow test", "Registration flow test", "Logout flow test"],
+      "tests": ["All auth integration tests pass"]
     },
     {
       "id": "testing-004",
@@ -1387,9 +1267,7 @@
         "Login and create prompt flow",
         "Edit and delete prompt flow"
       ],
-      "tests": [
-        "All E2E tests pass"
-      ]
+      "tests": ["All E2E tests pass"]
     }
   ]
 }

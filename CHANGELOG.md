@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated PRD.json API endpoints to match backend implementation (PUT → PATCH for updates)
+- Aligned API paths in PRD.json with actual backend routes
+
 ### Fixed
 
 ### Removed
+
+- Removed swagger.yaml (API specs managed in backend repo)
+- Removed deprecated PRD items: auth-008 (logout all devices duplicate), sharing-003 (active share links display), settings-001 (profile section), settings-002 (password change)
