@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Protected /prompts and /settings routes with placeholder pages
   - Redirect to original URL after login via query param
   - Authenticated users redirected from login/register to /prompts
+- E2E tests for protected route middleware (auth-004-tests)
+  - Test: Unauthenticated user redirected from /prompts to /login
+  - Test: Redirect includes original URL as query parameter
+  - Test: Authenticated user redirected from /login to /prompts
+  - Test: Redirect preserves original destination after login
 - Auth context/state management (auth-003)
   - AuthContext with user, isAuthenticated, isLoading states (`src/lib/contexts/auth-context.tsx`)
   - useAuth hook for consuming auth context (`src/hooks/use-auth.ts`)
