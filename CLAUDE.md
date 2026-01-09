@@ -44,6 +44,7 @@ src/
 3. **API work**: Use `/api-work` skill for guidance
 4. **Components**: Use `/shadcn` skill to add shadcn/ui components
 5. **Git**: Always update `CHANGELOG.md` before commit, use `/commit-pr`
+6. **Code cleanup**: Use the `code-simplifier` agent at the end of long coding sessions to refine recently modified code for clarity and consistency
 
 ## Skills Available
 

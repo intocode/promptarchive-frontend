@@ -33,16 +33,16 @@ let failedQueue: Array<{
   reject: (error: AxiosError) => void;
 }> = [];
 
-const processQueue = (error: AxiosError | null, token: string | null) => {
-  failedQueue.forEach((prom) => {
+function processQueue(error: AxiosError | null, token: string | null): void {
+  for (const promise of failedQueue) {
     if (error) {
-      prom.reject(error);
+      promise.reject(error);
     } else {
-      prom.resolve(token!);
+      promise.resolve(token!);
     }
-  });
+  }
   failedQueue = [];
-};
+}
 
 axiosInstance.interceptors.response.use(
   (response) => response,
@@ -51,16 +51,16 @@ axiosInstance.interceptors.response.use(
       _retry?: boolean;
     };
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // Skip token refresh for auth endpoints
+    const isAuthEndpoint = originalRequest.url?.startsWith("/auth/");
+
+    if (error.response?.status === 401 && !originalRequest._retry && !isAuthEndpoint) {
       if (isRefreshing) {
-        return new Promise((resolve, reject) => {
+        const token = await new Promise<string>((resolve, reject) => {
           failedQueue.push({ resolve, reject });
-        })
-          .then((token) => {
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            return axiosInstance(originalRequest);
-          })
-          .catch((err) => Promise.reject(err));
+        });
+        originalRequest.headers.Authorization = `Bearer ${token}`;
+        return axiosInstance(originalRequest);
       }
 
       originalRequest._retry = true;
