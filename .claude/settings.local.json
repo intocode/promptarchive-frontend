@@ -13,7 +13,13 @@
       "Bash(tree:*)",
       "Bash(npx playwright install:*)",
       "Bash(npm run test:e2e:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(find:*)",
+      "Bash(git -C /Users/kuduzow/Desktop/promptarchive-frontend log --all --oneline)",
+      "Bash(git -C /Users/kuduzow/Desktop/promptarchive-frontend show 6f32699:PRD.json)",
+      "Bash(npm run dev:*)",
+      "Bash(cat:*)",
+      "Bash(npm test:*)"
     ]
   }
 }
