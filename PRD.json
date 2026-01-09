@@ -443,19 +443,23 @@
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": true,
+      "passed": false,
       "dod": [
-        "Card displays title, truncated content, folder, tags",
-        "Shows visibility badge (public/private/shared)",
-        "Displays updated date",
-        "Hover state with subtle elevation",
-        "Click navigates to prompt detail"
+        "Card displays: title, folder badge, tags (max 3 visible + counter)",
+        "Shows visibility icon (lock for private, globe for public/unlisted)",
+        "Displays relative date (e.g., '2 days ago')",
+        "Shows usage counter (use_count field)",
+        "Quick copy button on card (copies content to clipboard)",
+        "Hover state with subtle shadow elevation",
+        "Click navigates to /prompts/{id}",
+        "NO content preview in compact mode"
       ],
       "tests": [
-        "E2E: renders title and content correctly",
-        "E2E: truncates long content with ellipsis",
-        "E2E: displays correct visibility badge",
-        "E2E: compact card matches design"
+        "E2E: renders title, folder, tags correctly",
+        "E2E: shows correct visibility icon",
+        "E2E: displays usage counter",
+        "E2E: copy button copies prompt content",
+        "E2E: compact card has NO content preview"
       ]
     },
     {
@@ -465,10 +469,11 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: renders title and content correctly",
-        "E2E: truncates long content with ellipsis",
-        "E2E: displays correct visibility badge",
-        "E2E: compact card matches design"
+        "E2E: renders title, folder, tags correctly",
+        "E2E: shows correct visibility icon",
+        "E2E: displays usage counter",
+        "E2E: copy button copies prompt content",
+        "E2E: compact card has NO content preview"
       ],
       "tests": [
         "All tests pass",
@@ -482,15 +487,18 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Card shows full content preview",
-        "Action buttons visible (copy, edit, delete)",
-        "Tags displayed as badges",
-        "Quick copy button"
+        "Includes all compact mode elements (title, folder, tags, visibility icon, date, usage counter, copy button)",
+        "Shows description field (if exists)",
+        "Content preview truncated at 100-200 characters with ellipsis",
+        "Full statistics: usage count, view count, fork count",
+        "Copy button only (edit/delete on prompt detail page, NOT on card)",
+        "Expanded card uses more vertical space for content"
       ],
       "tests": [
-        "E2E: expanded card shows full content",
-        "E2E: action buttons are clickable",
-        "E2E: expanded card matches design"
+        "E2E: expanded card shows description",
+        "E2E: content preview 100-200 chars with ellipsis",
+        "E2E: displays full statistics",
+        "E2E: NO edit/delete buttons on card"
       ]
     },
     {
@@ -500,9 +508,10 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: expanded card shows full content",
-        "E2E: action buttons are clickable",
-        "E2E: expanded card matches design"
+        "E2E: expanded card shows description",
+        "E2E: content preview 100-200 chars with ellipsis",
+        "E2E: displays full statistics",
+        "E2E: NO edit/delete buttons on card"
       ],
       "tests": [
         "All tests pass",
@@ -704,29 +713,37 @@
     },
     {
       "id": "prompts-list-009",
-      "title": "Add sort dropdown",
+      "title": "Add sort dropdown for My Prompts",
       "category": "prompts-list",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Sort options: newest, oldest, alphabetical, recently updated",
-        "Selected sort persisted in URL params",
-        "Default sort is newest"
+        "Sort dropdown in My Prompts page header",
+        "Options: Recently Modified (default), Date Created, Most Used, Most Forked",
+        "Recently Modified = sorted by -updated_at",
+        "Date Created = sorted by -created_at",
+        "Most Used = sorted by -use_count",
+        "Most Forked = sorted by fork count",
+        "Selected sort persisted in URL params"
       ],
       "tests": [
+        "E2E: default sort is Recently Modified",
         "E2E: sort changes list order",
-        "E2E: sort persists in URL"
+        "E2E: sort persists in URL",
+        "E2E: all four sort options work"
       ]
     },
     {
       "id": "prompts-list-009-tests",
-      "title": "Write tests for: Add sort dropdown",
+      "title": "Write tests for: Add sort dropdown for My Prompts",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
+        "E2E: default sort is Recently Modified",
         "E2E: sort changes list order",
-        "E2E: sort persists in URL"
+        "E2E: sort persists in URL",
+        "E2E: all four sort options work"
       ],
       "tests": [
         "All tests pass",
@@ -823,6 +840,41 @@
       ]
     },
     {
+      "id": "prompts-list-013",
+      "title": "Add view mode toggle (compact/expanded)",
+      "category": "prompts-list",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Toggle button in My Prompts page header",
+        "Two modes: compact (default) and expanded",
+        "Icon indicates current mode (list icon / grid icon)",
+        "Saves preference to localStorage",
+        "Hidden on mobile (< 768px) - always compact"
+      ],
+      "tests": [
+        "E2E: toggle switches between modes",
+        "E2E: preference saved to localStorage",
+        "E2E: toggle hidden on mobile viewport"
+      ]
+    },
+    {
+      "id": "prompts-list-013-tests",
+      "title": "Write tests for: Add view mode toggle",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: toggle switches between modes",
+        "E2E: preference saved to localStorage",
+        "E2E: toggle hidden on mobile viewport"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
       "id": "prompts-crud-001",
       "title": "Create prompt creation modal",
       "category": "prompts-crud",
@@ -858,102 +910,42 @@
     },
     {
       "id": "prompts-crud-002",
-      "title": "Build prompt form with validation",
+      "title": "Build prompt creation form with validation",
       "category": "prompts-crud",
       "priority": "critical",
       "passed": false,
       "dod": [
         "Title field (required, max 200 chars)",
-        "Content textarea (required)",
-        "Description field (optional)",
-        "Visibility select (private/public)",
-        "Zod validation with inline errors",
-        "Submit button disabled when invalid"
+        "Content textarea (required, max 50KB, auto-expanding height)",
+        "Description field (optional, max 1000 chars)",
+        "Visibility select with 3 options: private/public/unlisted",
+        "NO folder selector in creation form (added on prompt detail page)",
+        "NO tag input in creation form (added on prompt detail page)",
+        "Zod validation with inline errors shown on submit (not real-time)",
+        "Submit button disabled when form invalid"
       ],
       "tests": [
         "E2E: validation rejects empty title",
         "E2E: validation rejects title > 200 chars",
-        "E2E: form shows inline errors",
-        "E2E: valid form enables submit"
+        "E2E: content field auto-expands",
+        "E2E: visibility has unlisted option",
+        "E2E: NO folder/tag fields in form",
+        "E2E: errors shown on submit, not real-time"
       ]
     },
     {
       "id": "prompts-crud-002-tests",
-      "title": "Write tests for: Build prompt form with validation",
+      "title": "Write tests for: Build prompt creation form with validation",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
         "E2E: validation rejects empty title",
         "E2E: validation rejects title > 200 chars",
-        "E2E: form shows inline errors",
-        "E2E: valid form enables submit"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-crud-003",
-      "title": "Implement tag input with autocomplete",
-      "category": "prompts-crud",
-      "priority": "high",
-      "passed": false,
-      "dod": [
-        "Input with autocomplete suggestions from GET /tags",
-        "Tags displayed as removable badges",
-        "Create new tag on enter if not exists",
-        "Max 10 tags per prompt"
-      ],
-      "tests": [
-        "E2E: autocomplete shows existing tags",
-        "E2E: new tag created on enter",
-        "E2E: max 10 tags enforced"
-      ]
-    },
-    {
-      "id": "prompts-crud-003-tests",
-      "title": "Write tests for: Implement tag input with autocomplete",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: autocomplete shows existing tags",
-        "E2E: new tag created on enter",
-        "E2E: max 10 tags enforced"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-crud-004",
-      "title": "Add folder selector",
-      "category": "prompts-crud",
-      "priority": "high",
-      "passed": false,
-      "dod": [
-        "Dropdown with existing folders from GET /folders",
-        "Create new folder option at bottom",
-        "Inline folder creation without closing modal",
-        "No folder option (uncategorized)"
-      ],
-      "tests": [
-        "E2E: shows existing folders",
-        "E2E: creates new folder inline"
-      ]
-    },
-    {
-      "id": "prompts-crud-004-tests",
-      "title": "Write tests for: Add folder selector",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: shows existing folders",
-        "E2E: creates new folder inline"
+        "E2E: content field auto-expands",
+        "E2E: visibility has unlisted option",
+        "E2E: NO folder/tag fields in form",
+        "E2E: errors shown on submit, not real-time"
       ],
       "tests": [
         "All tests pass",
@@ -1248,30 +1240,37 @@
     },
     {
       "id": "prompts-detail-006",
-      "title": "Show version history panel",
+      "title": "Show version history slide-in panel",
       "category": "prompts-detail",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Collapsible panel showing versions",
-        "GET /prompts/{id}/versions on expand",
-        "Each version shows date and preview",
-        "Click to view version content"
+        "Button 'History' opens slide-in panel from RIGHT side",
+        "Panel overlays content (Sheet component, side='right')",
+        "GET /prompts/{id}/versions called on panel open",
+        "List shows version date and content preview",
+        "Click version to view full content in panel",
+        "Restore button on each version",
+        "Click outside or X button closes panel"
       ],
       "tests": [
-        "E2E: loads versions on expand",
-        "E2E: displays version list"
+        "E2E: panel slides in from right",
+        "E2E: loads versions on open",
+        "E2E: displays version list with dates",
+        "E2E: clicking outside closes panel"
       ]
     },
     {
       "id": "prompts-detail-006-tests",
-      "title": "Write tests for: Show version history panel",
+      "title": "Write tests for: Show version history slide-in panel",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: loads versions on expand",
-        "E2E: displays version list"
+        "E2E: panel slides in from right",
+        "E2E: loads versions on open",
+        "E2E: displays version list with dates",
+        "E2E: clicking outside closes panel"
       ],
       "tests": [
         "All tests pass",
@@ -1336,6 +1335,86 @@
       "dod": [
         "E2E: diff correctly identifies changes",
         "E2E: diff view matches design"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "prompts-detail-009",
+      "title": "Implement inline tag selection on prompt detail page",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Tags section on prompt detail page shows current tags as badges",
+        "Click on tags section opens dropdown with search/autocomplete",
+        "Dropdown shows existing tags from GET /tags",
+        "Create new tag option at bottom of dropdown",
+        "Selected tags update via PATCH /prompts/{id} immediately",
+        "Each tag has X button to remove",
+        "Max 10 tags per prompt enforced with error message"
+      ],
+      "tests": [
+        "E2E: click opens tag dropdown",
+        "E2E: autocomplete filters tags",
+        "E2E: can create new tag inline",
+        "E2E: max 10 tags enforced",
+        "E2E: tag changes saved immediately"
+      ]
+    },
+    {
+      "id": "prompts-detail-009-tests",
+      "title": "Write tests for: Inline tag selection",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: click opens tag dropdown",
+        "E2E: autocomplete filters tags",
+        "E2E: can create new tag inline",
+        "E2E: max 10 tags enforced",
+        "E2E: tag changes saved immediately"
+      ],
+      "tests": [
+        "All tests pass",
+        "Code coverage meets requirements"
+      ]
+    },
+    {
+      "id": "prompts-detail-010",
+      "title": "Implement inline folder selection on prompt detail page",
+      "category": "prompts-detail",
+      "priority": "high",
+      "passed": false,
+      "dod": [
+        "Folder badge on prompt detail page shows current folder",
+        "Click on folder badge opens dropdown",
+        "Dropdown shows folders from GET /folders",
+        "Uncategorized option (no folder) at top",
+        "Create new folder option at bottom",
+        "Folder updates via PATCH /prompts/{id} immediately"
+      ],
+      "tests": [
+        "E2E: click opens folder dropdown",
+        "E2E: shows existing folders",
+        "E2E: uncategorized option works",
+        "E2E: can create new folder inline",
+        "E2E: folder change saved immediately"
+      ]
+    },
+    {
+      "id": "prompts-detail-010-tests",
+      "title": "Write tests for: Inline folder selection",
+      "category": "testing",
+      "priority": "medium",
+      "passed": false,
+      "dod": [
+        "E2E: click opens folder dropdown",
+        "E2E: shows existing folders",
+        "E2E: can create new folder inline",
+        "E2E: folder change saved immediately"
       ],
       "tests": [
         "All tests pass",
@@ -1413,13 +1492,17 @@
       "priority": "high",
       "passed": false,
       "dod": [
-        "Live preview as variables are filled",
-        "POST /prompts/{id}/render for rendering",
-        "Copy rendered content button"
+        "Inline form on prompt detail page for {{variables}}",
+        "Live preview updates as variables are filled",
+        "Rendered result shown BELOW the form",
+        "Copy button next to rendered result",
+        "POST /prompts/{id}/render for server-side rendering"
       ],
       "tests": [
+        "E2E: variable form shows inline on page",
         "E2E: preview updates on input",
-        "E2E: renders template correctly"
+        "E2E: result shown below form",
+        "E2E: copy button copies rendered content"
       ]
     },
     {
@@ -1429,8 +1512,10 @@
       "priority": "medium",
       "passed": false,
       "dod": [
+        "E2E: variable form shows inline on page",
         "E2E: preview updates on input",
-        "E2E: renders template correctly"
+        "E2E: result shown below form",
+        "E2E: copy button copies rendered content"
       ],
       "tests": [
         "All tests pass",
@@ -1475,14 +1560,17 @@
       "priority": "high",
       "passed": false,
       "dod": [
-        "Button on prompt detail page",
-        "Modal shows loading state",
+        "Button on prompt detail page header",
+        "Modal shows loading state with animated dots (like in chat apps)",
         "POST /prompts/{id}/improve to get AI improvements",
-        "Display improved version"
+        "Display improved version in modal",
+        "Explanation from API is NOT shown (per design spec)"
       ],
       "tests": [
-        "E2E: calls AI improve endpoint",
-        "E2E: displays improved content"
+        "E2E: button opens AI improve modal",
+        "E2E: loading shows animated dots",
+        "E2E: displays improved content",
+        "E2E: explanation is hidden"
       ]
     },
     {
@@ -1492,8 +1580,10 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: calls AI improve endpoint",
-        "E2E: displays improved content"
+        "E2E: button opens AI improve modal",
+        "E2E: loading shows animated dots",
+        "E2E: displays improved content",
+        "E2E: explanation is hidden"
       ],
       "tests": [
         "All tests pass",
@@ -1507,13 +1597,16 @@
       "priority": "high",
       "passed": false,
       "dod": [
-        "Show original vs improved side by side",
-        "Highlight differences",
-        "Accept/reject buttons",
-        "Edit improved version option"
+        "Show original vs improved side by side (or inline diff)",
+        "Deleted text highlighted in RED color",
+        "Added text highlighted in GREEN color",
+        "Accept/reject buttons below diff",
+        "Edit improved version option before accepting"
       ],
       "tests": [
-        "E2E: diff highlights changes",
+        "E2E: diff shows deletions in red",
+        "E2E: diff shows additions in green",
+        "E2E: accept/reject buttons visible",
         "E2E: accept updates prompt"
       ]
     },
@@ -1524,7 +1617,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: diff highlights changes",
+        "E2E: diff shows deletions in red",
+        "E2E: diff shows additions in green",
+        "E2E: accept/reject buttons visible",
         "E2E: accept updates prompt"
       ],
       "tests": [
@@ -1570,14 +1665,20 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Button to generate tags",
+        "Button to generate tags on prompt detail page",
         "POST /prompts/{id}/generate-tags",
-        "Display suggested tags",
-        "Select which tags to add"
+        "Suggested tag shown in GRAY color",
+        "Click on suggested tag accepts it and shows next suggestion",
+        "Auto-stop by timeout if user doesn't click",
+        "Max 10 tags total enforced",
+        "Loading state with animated dots"
       ],
       "tests": [
         "E2E: generates tag suggestions",
-        "E2E: adds selected tags to prompt"
+        "E2E: suggested tag shown in gray",
+        "E2E: click accepts and shows next",
+        "E2E: auto-stop after timeout",
+        "E2E: max 10 tags enforced"
       ]
     },
     {
@@ -1588,7 +1689,10 @@
       "passed": false,
       "dod": [
         "E2E: generates tag suggestions",
-        "E2E: adds selected tags to prompt"
+        "E2E: suggested tag shown in gray",
+        "E2E: click accepts and shows next",
+        "E2E: auto-stop after timeout",
+        "E2E: max 10 tags enforced"
       ],
       "tests": [
         "All tests pass",
@@ -1634,13 +1738,15 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "429 error shows rate limit message",
-        "Retry after countdown shown",
-        "Disable AI buttons during cooldown"
+        "Rate limit info NOT shown in UI proactively",
+        "429 error shows error message in toast",
+        "Message: 'Rate limit reached, please try again later'",
+        "AI buttons remain enabled (no cooldown timer in UI)"
       ],
       "tests": [
-        "E2E: shows rate limit message on 429",
-        "E2E: buttons disabled during cooldown"
+        "E2E: 429 shows error toast",
+        "E2E: no rate limit counter in UI",
+        "E2E: buttons stay enabled after error"
       ]
     },
     {
@@ -1650,8 +1756,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: shows rate limit message on 429",
-        "E2E: buttons disabled during cooldown"
+        "E2E: 429 shows error toast",
+        "E2E: no rate limit counter in UI",
+        "E2E: buttons stay enabled after error"
       ],
       "tests": [
         "All tests pass",
@@ -2039,28 +2146,41 @@
     },
     {
       "id": "gallery-001",
-      "title": "Connect gallery page to API",
+      "title": "Connect gallery page to API with proper card layout",
       "category": "public-gallery",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "GET /public/prompts to fetch public prompts",
-        "Display as card grid",
-        "Pagination with load more"
+        "GET /public/prompts with pagination",
+        "Card grid layout (expanded mode only, no view toggle)",
+        "Card shows: title, author name (text only, no link)",
+        "Card shows: content preview (200 chars max with ellipsis)",
+        "Card shows: view_count, use_count (forks) with icons",
+        "Card shows: relative date (e.g., '2 days ago')",
+        "Tags are NOT displayed on gallery cards",
+        "Load more button for pagination"
       ],
       "tests": [
         "E2E: loads public prompts",
+        "E2E: card shows author name without link",
+        "E2E: content truncated at 200 chars",
+        "E2E: shows views and forks counts",
+        "E2E: date shown in relative format",
+        "E2E: tags are NOT visible on cards",
         "E2E: pagination works"
       ]
     },
     {
       "id": "gallery-001-tests",
-      "title": "Write tests for: Connect gallery page to API",
+      "title": "Write tests for: Connect gallery page to API with proper card layout",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
         "E2E: loads public prompts",
+        "E2E: card shows author name without link",
+        "E2E: content truncated at 200 chars",
+        "E2E: tags are NOT visible on cards",
         "E2E: pagination works"
       ],
       "tests": [
@@ -2097,24 +2217,34 @@
     },
     {
       "id": "gallery-003",
-      "title": "Add sort by popularity/date",
+      "title": "Add gallery sorting options",
       "category": "public-gallery",
       "priority": "low",
       "passed": false,
       "dod": [
-        "Sort dropdown: popular, newest, most forked",
-        "Sort param passed to API"
+        "Sort dropdown in gallery header",
+        "Options: Popular (default), Newest, Most Viewed",
+        "Popular = sorted by use_count (forks) in last 30 days",
+        "Newest = sorted by created_at descending",
+        "Most Viewed = sorted by view_count descending",
+        "Sort param passed to API as query parameter"
       ],
-      "tests": ["E2E: sort changes result order"]
+      "tests": [
+        "E2E: default sort is Popular",
+        "E2E: sort changes result order",
+        "E2E: all three sort options work"
+      ]
     },
     {
       "id": "gallery-003-tests",
-      "title": "Write tests for: Add sort by popularity/date",
+      "title": "Write tests for: Add gallery sorting options",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: sort changes result order"
+        "E2E: default sort is Popular",
+        "E2E: sort changes result order",
+        "E2E: all three sort options work"
       ],
       "tests": [
         "All tests pass",
@@ -2414,26 +2544,43 @@
     },
     {
       "id": "ui-003",
-      "title": "Implement mobile responsive design",
+      "title": "Implement mobile responsive design with limited functionality",
       "category": "ui-polish",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Mobile navigation menu",
-        "Touch-friendly tap targets",
+        "Mobile breakpoint: < 768px",
+        "Burger menu navigation (already implemented)",
+        "Touch-friendly tap targets (min 44x44px)",
         "Full-screen modals on mobile",
-        "Responsive card grid"
+        "Cards: ONLY compact mode (no view toggle on mobile)",
+        "HIDE 'New Prompt' button on mobile",
+        "HIDE edit/delete actions on mobile",
+        "Viewing, browsing, copying ONLY allowed on mobile",
+        "Responsive card grid (1 column on mobile)"
       ],
-      "tests": ["E2E: renders correctly on mobile viewport"]
+      "tests": [
+        "E2E: renders correctly on mobile viewport",
+        "E2E: burger menu shows navigation",
+        "E2E: create button hidden on mobile",
+        "E2E: edit/delete hidden on mobile",
+        "E2E: cards show compact mode only on mobile",
+        "E2E: copy functionality works on mobile"
+      ]
     },
     {
       "id": "ui-003-tests",
-      "title": "Write tests for: Implement mobile responsive design",
+      "title": "Write tests for: Implement mobile responsive design with limited functionality",
       "category": "testing",
       "priority": "medium",
       "passed": false,
       "dod": [
-        "E2E: renders correctly on mobile viewport"
+        "E2E: renders correctly on mobile viewport",
+        "E2E: burger menu shows navigation",
+        "E2E: create button hidden on mobile",
+        "E2E: edit/delete hidden on mobile",
+        "E2E: cards show compact mode only on mobile",
+        "E2E: copy functionality works on mobile"
       ],
       "tests": [
         "All tests pass",
