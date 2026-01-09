@@ -268,7 +268,7 @@
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Card displays title, truncated content, folder, tags",
         "Shows visibility badge (public/private/shared)",

@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- PromptCard component for compact prompt display (prompts-list-001)
+  - Card displays title (truncated), content preview, folder, and tags
+  - Visibility badge with appropriate styling (Public/Private/Unlisted)
+  - Relative date formatting for updated timestamp
+  - Hover effect with shadow elevation
+  - Click navigation to prompt detail page
+  - Added shadcn/ui Card and Badge components
+  - Added formatRelativeDate utility function (`src/lib/utils.ts`)
 - Auth error handling with toast notifications (auth-006)
   - New auth-error utility for centralized error handling (`src/lib/utils/auth-error.ts`)
   - Network errors show "Unable to connect" message
