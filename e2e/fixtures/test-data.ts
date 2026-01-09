@@ -80,3 +80,42 @@ export const TEST_CREDENTIALS = {
     password: "short",
   },
 } as const;
+
+export const REGISTER_CREDENTIALS = {
+  valid: {
+    name: "Test User",
+    email: "newuser@example.com",
+    password: "password123",
+    confirmPassword: "password123",
+  },
+  duplicateEmail: {
+    name: "Test User",
+    email: "existing@example.com",
+    password: "password123",
+    confirmPassword: "password123",
+  },
+  shortName: {
+    name: "A",
+    email: "newuser@example.com",
+    password: "password123",
+    confirmPassword: "password123",
+  },
+  invalidEmail: {
+    name: "Test User",
+    email: "invalid-email",
+    password: "password123",
+    confirmPassword: "password123",
+  },
+  shortPassword: {
+    name: "Test User",
+    email: "newuser@example.com",
+    password: "short",
+    confirmPassword: "short",
+  },
+  mismatchPassword: {
+    name: "Test User",
+    email: "newuser@example.com",
+    password: "password123",
+    confirmPassword: "differentpassword",
+  },
+} as const;

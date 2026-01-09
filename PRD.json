@@ -84,7 +84,7 @@
       "title": "Write tests for: Implement registration form with API integration",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Unit: registerSchema validates all required fields",
         "Unit: registerSchema validates password confirmation match",

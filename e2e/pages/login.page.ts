@@ -6,14 +6,14 @@ export class LoginPage {
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
   readonly submitButton: Locator;
-  readonly errorToast: Locator;
+  readonly toastMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.emailInput = page.getByLabel("Email");
     this.passwordInput = page.getByLabel("Password");
     this.submitButton = page.getByRole("button", { name: /sign in/i });
-    this.errorToast = page.locator("[data-sonner-toast]");
+    this.toastMessage = page.locator("[data-sonner-toast]");
   }
 
   async goto(): Promise<void> {
@@ -44,8 +44,8 @@ export class LoginPage {
   }
 
   async expectErrorToast(message: string): Promise<void> {
-    await expect(this.errorToast).toBeVisible();
-    await expect(this.errorToast).toContainText(message);
+    await expect(this.toastMessage).toBeVisible();
+    await expect(this.toastMessage).toContainText(message);
   }
 
   async expectLoadingState(): Promise<void> {

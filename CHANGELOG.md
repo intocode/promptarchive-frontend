@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- E2E tests for registration form (auth-002-tests)
+  - RegisterPage Page Object Model (`e2e/pages/register.page.ts`)
+  - Registration test suite with 13 test cases covering success, failure, validation, and initial state
+  - Register endpoint mock in API fixtures (201 success, 409 duplicate email)
+  - REGISTER_CREDENTIALS test data for various validation scenarios
 - Pre-commit hook with Husky that runs linting, build, and E2E tests before each commit
 - Registration page with form validation (`/register`)
 - Registration form component with Zod validation (name, email, password with confirmation)

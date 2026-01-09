@@ -1,6 +1,8 @@
 import type { Page, Route } from "@playwright/test";
-import { mockTokens, mockPromptsList } from "./test-data";
+import { mockTokens, mockPromptsList, mockUser } from "./test-data";
 import type { MockUser, MockPrompt } from "./test-data";
+
+const DUPLICATE_EMAIL = "existing@example.com";
 
 const API_PATTERN = "**/v1";
 
@@ -32,6 +34,36 @@ export async function mockAuthEndpoints(
         body: JSON.stringify({ error: { message: "Invalid credentials" } }),
       });
     }
+  });
+
+  await page.route(`${API_PATTERN}/auth/register`, async (route: Route) => {
+    if (route.request().method() !== "POST") {
+      await route.continue();
+      return;
+    }
+
+    const body = JSON.parse(route.request().postData() || "{}");
+
+    if (body.email === DUPLICATE_EMAIL) {
+      await route.fulfill({
+        status: 409,
+        contentType: "application/json",
+        body: JSON.stringify({ error: { message: "Email already registered" } }),
+      });
+      return;
+    }
+
+    const newUser = mockUser({
+      id: `user-${Date.now()}`,
+      email: body.email,
+      name: body.name,
+    });
+
+    await route.fulfill({
+      status: 201,
+      contentType: "application/json",
+      body: JSON.stringify({ data: { user: newUser, tokens } }),
+    });
   });
 
   await page.route(`${API_PATTERN}/auth/me`, async (route: Route) => {
