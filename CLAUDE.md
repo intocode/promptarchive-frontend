@@ -37,6 +37,15 @@ src/
 | `/gallery`, `/gallery/[id]` | No   | Public gallery |
 | `/shared/[token]`           | No   | Shared prompt  |
 
+## Test Users (Staging)
+
+| Email               | Password       | Description                    |
+| ------------------- | -------------- | ------------------------------ |
+| `test@example.com`  | `password123`  | Main test user                 |
+| `liker@example.com` | `password123`  | User for testing likes         |
+
+API: `https://api.prompt.intocode.ru` — run `GET /v1/seed` to reset test data.
+
 ## Key Rules
 
 1. **Generated files**: DO NOT edit `src/lib/api/generated/` or `src/types/api/`
