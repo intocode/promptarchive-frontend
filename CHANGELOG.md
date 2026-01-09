@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Auth context/state management (auth-003)
+  - AuthContext with user, isAuthenticated, isLoading states (`src/lib/contexts/auth-context.tsx`)
+  - useAuth hook for consuming auth context (`src/hooks/use-auth.ts`)
+  - Session restoration on app mount via GET /auth/me
+  - Login form now updates auth context on successful login
+- E2E tests for auth context (auth-003-tests)
+  - Test: AuthProvider initializes with null user when no token exists
+  - Test: Valid token restores user session
+  - Test: Invalid token clears localStorage
 - E2E tests for registration form (auth-002-tests)
   - RegisterPage Page Object Model (`e2e/pages/register.page.ts`)
   - Registration test suite with 13 test cases covering success, failure, validation, and initial state

@@ -35,11 +35,11 @@
         "Loading state shown during request"
       ],
       "tests": [
-        "Unit: loginSchema validates correct email format",
-        "Unit: loginSchema requires password min 6 chars",
-        "Integration: successful login stores tokens",
-        "Integration: invalid credentials shows error toast",
-        "Integration: network error shows error toast"
+        "E2E: loginSchema validates correct email format",
+        "E2E: loginSchema requires password min 6 chars",
+        "E2E: successful login stores tokens",
+        "E2E: invalid credentials shows error toast",
+        "E2E: network error shows error toast"
       ]
     },
     {
@@ -49,11 +49,11 @@
       "priority": "medium",
       "passed": true,
       "dod": [
-        "Unit: loginSchema validates correct email format",
-        "Unit: loginSchema requires password min 6 chars",
-        "Integration: successful login stores tokens",
-        "Integration: invalid credentials shows error toast",
-        "Integration: network error shows error toast"
+        "E2E: loginSchema validates correct email format",
+        "E2E: loginSchema requires password min 6 chars",
+        "E2E: successful login stores tokens",
+        "E2E: invalid credentials shows error toast",
+        "E2E: network error shows error toast"
       ],
       "tests": [
         "All tests pass",
@@ -73,10 +73,10 @@
         "Success toast shown after registration"
       ],
       "tests": [
-        "Unit: registerSchema validates all required fields",
-        "Unit: registerSchema validates password confirmation match",
-        "Integration: successful registration redirects to login",
-        "Integration: duplicate email shows error"
+        "E2E: registerSchema validates all required fields",
+        "E2E: registerSchema validates password confirmation match",
+        "E2E: successful registration redirects to login",
+        "E2E: duplicate email shows error"
       ]
     },
     {
@@ -86,10 +86,10 @@
       "priority": "medium",
       "passed": true,
       "dod": [
-        "Unit: registerSchema validates all required fields",
-        "Unit: registerSchema validates password confirmation match",
-        "Integration: successful registration redirects to login",
-        "Integration: duplicate email shows error"
+        "E2E: registerSchema validates all required fields",
+        "E2E: registerSchema validates password confirmation match",
+        "E2E: successful registration redirects to login",
+        "E2E: duplicate email shows error"
       ],
       "tests": [
         "All tests pass",
@@ -101,7 +101,7 @@
       "title": "Create auth context/state management",
       "category": "authentication",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "AuthContext provides user, isAuthenticated, isLoading states",
         "useAuth hook returns context values",
@@ -109,9 +109,9 @@
         "User state cleared on logout"
       ],
       "tests": [
-        "Unit: AuthProvider initializes with null user",
-        "Integration: valid token restores user session",
-        "Integration: invalid token clears localStorage"
+        "E2E: AuthProvider initializes with null user",
+        "E2E: valid token restores user session",
+        "E2E: invalid token clears localStorage"
       ]
     },
     {
@@ -119,11 +119,11 @@
       "title": "Write tests for: Create auth context/state management",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
-        "Unit: AuthProvider initializes with null user",
-        "Integration: valid token restores user session",
-        "Integration: invalid token clears localStorage"
+        "E2E: AuthProvider initializes with null user",
+        "E2E: valid token restores user session",
+        "E2E: invalid token clears localStorage"
       ],
       "tests": [
         "All tests pass",
@@ -143,9 +143,9 @@
         "Original URL preserved for post-login redirect"
       ],
       "tests": [
-        "Integration: unauthenticated user redirected from /prompts",
-        "Integration: authenticated user redirected from /login",
-        "Integration: redirect preserves original destination"
+        "E2E: unauthenticated user redirected from /prompts",
+        "E2E: authenticated user redirected from /login",
+        "E2E: redirect preserves original destination"
       ]
     },
     {
@@ -155,9 +155,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: unauthenticated user redirected from /prompts",
-        "Integration: authenticated user redirected from /login",
-        "Integration: redirect preserves original destination"
+        "E2E: unauthenticated user redirected from /prompts",
+        "E2E: authenticated user redirected from /login",
+        "E2E: redirect preserves original destination"
       ],
       "tests": [
         "All tests pass",
@@ -176,8 +176,8 @@
         "Works on login and registration forms"
       ],
       "tests": [
-        "Unit: toggle changes input type from password to text",
-        "Unit: icon updates on toggle"
+        "E2E: toggle changes input type from password to text",
+        "E2E: icon updates on toggle"
       ]
     },
     {
@@ -187,8 +187,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: toggle changes input type from password to text",
-        "Unit: icon updates on toggle"
+        "E2E: toggle changes input type from password to text",
+        "E2E: icon updates on toggle"
       ],
       "tests": [
         "All tests pass",
@@ -208,9 +208,9 @@
         "Validation errors shown inline on form"
       ],
       "tests": [
-        "Integration: 401 error shows invalid credentials toast",
-        "Integration: 429 error shows rate limit toast",
-        "Integration: network error shows connection toast"
+        "E2E: 401 error shows invalid credentials toast",
+        "E2E: 429 error shows rate limit toast",
+        "E2E: network error shows connection toast"
       ]
     },
     {
@@ -220,9 +220,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: 401 error shows invalid credentials toast",
-        "Integration: 429 error shows rate limit toast",
-        "Integration: network error shows connection toast"
+        "E2E: 401 error shows invalid credentials toast",
+        "E2E: 429 error shows rate limit toast",
+        "E2E: network error shows connection toast"
       ],
       "tests": [
         "All tests pass",
@@ -242,9 +242,9 @@
         "User redirected to /login"
       ],
       "tests": [
-        "Integration: logout clears tokens",
-        "Integration: logout redirects to login",
-        "Integration: logout invalidates session on server"
+        "E2E: logout clears tokens",
+        "E2E: logout redirects to login",
+        "E2E: logout invalidates session on server"
       ]
     },
     {
@@ -254,9 +254,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: logout clears tokens",
-        "Integration: logout redirects to login",
-        "Integration: logout invalidates session on server"
+        "E2E: logout clears tokens",
+        "E2E: logout redirects to login",
+        "E2E: logout invalidates session on server"
       ],
       "tests": [
         "All tests pass",
@@ -277,10 +277,10 @@
         "Click navigates to prompt detail"
       ],
       "tests": [
-        "Unit: renders title and content correctly",
-        "Unit: truncates long content with ellipsis",
-        "Unit: displays correct visibility badge",
-        "Snapshot: compact card matches design"
+        "E2E: renders title and content correctly",
+        "E2E: truncates long content with ellipsis",
+        "E2E: displays correct visibility badge",
+        "E2E: compact card matches design"
       ]
     },
     {
@@ -290,10 +290,10 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: renders title and content correctly",
-        "Unit: truncates long content with ellipsis",
-        "Unit: displays correct visibility badge",
-        "Snapshot: compact card matches design"
+        "E2E: renders title and content correctly",
+        "E2E: truncates long content with ellipsis",
+        "E2E: displays correct visibility badge",
+        "E2E: compact card matches design"
       ],
       "tests": [
         "All tests pass",
@@ -313,9 +313,9 @@
         "Quick copy button"
       ],
       "tests": [
-        "Unit: expanded card shows full content",
-        "Unit: action buttons are clickable",
-        "Snapshot: expanded card matches design"
+        "E2E: expanded card shows full content",
+        "E2E: action buttons are clickable",
+        "E2E: expanded card matches design"
       ]
     },
     {
@@ -325,9 +325,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: expanded card shows full content",
-        "Unit: action buttons are clickable",
-        "Snapshot: expanded card matches design"
+        "E2E: expanded card shows full content",
+        "E2E: action buttons are clickable",
+        "E2E: expanded card matches design"
       ],
       "tests": [
         "All tests pass",
@@ -347,9 +347,9 @@
         "Error state with retry button"
       ],
       "tests": [
-        "Integration: fetches and displays prompts",
-        "Integration: shows skeleton during loading",
-        "Integration: shows error state on failure"
+        "E2E: fetches and displays prompts",
+        "E2E: shows skeleton during loading",
+        "E2E: shows error state on failure"
       ]
     },
     {
@@ -359,9 +359,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: fetches and displays prompts",
-        "Integration: shows skeleton during loading",
-        "Integration: shows error state on failure"
+        "E2E: fetches and displays prompts",
+        "E2E: shows skeleton during loading",
+        "E2E: shows error state on failure"
       ],
       "tests": [
         "All tests pass",
@@ -381,9 +381,9 @@
         "Handles end of list gracefully"
       ],
       "tests": [
-        "Integration: loads next page on scroll",
-        "Integration: stops loading at end of list",
-        "Integration: maintains scroll position"
+        "E2E: loads next page on scroll",
+        "E2E: stops loading at end of list",
+        "E2E: maintains scroll position"
       ]
     },
     {
@@ -393,9 +393,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads next page on scroll",
-        "Integration: stops loading at end of list",
-        "Integration: maintains scroll position"
+        "E2E: loads next page on scroll",
+        "E2E: stops loading at end of list",
+        "E2E: maintains scroll position"
       ],
       "tests": [
         "All tests pass",
@@ -416,9 +416,9 @@
         "Empty search results state"
       ],
       "tests": [
-        "Integration: search filters results",
-        "Integration: debounce prevents excessive requests",
-        "Integration: clear button resets search"
+        "E2E: search filters results",
+        "E2E: debounce prevents excessive requests",
+        "E2E: clear button resets search"
       ]
     },
     {
@@ -428,9 +428,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: search filters results",
-        "Integration: debounce prevents excessive requests",
-        "Integration: clear button resets search"
+        "E2E: search filters results",
+        "E2E: debounce prevents excessive requests",
+        "E2E: clear button resets search"
       ],
       "tests": [
         "All tests pass",
@@ -450,8 +450,8 @@
         "Folder count shown in dropdown"
       ],
       "tests": [
-        "Integration: folder filter updates list",
-        "Integration: All folders shows all prompts"
+        "E2E: folder filter updates list",
+        "E2E: All folders shows all prompts"
       ]
     },
     {
@@ -461,8 +461,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: folder filter updates list",
-        "Integration: All folders shows all prompts"
+        "E2E: folder filter updates list",
+        "E2E: All folders shows all prompts"
       ],
       "tests": [
         "All tests pass",
@@ -482,8 +482,8 @@
         "Clear all tags button"
       ],
       "tests": [
-        "Integration: tag filter updates list",
-        "Integration: multiple tags filter correctly"
+        "E2E: tag filter updates list",
+        "E2E: multiple tags filter correctly"
       ]
     },
     {
@@ -493,8 +493,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: tag filter updates list",
-        "Integration: multiple tags filter correctly"
+        "E2E: tag filter updates list",
+        "E2E: multiple tags filter correctly"
       ],
       "tests": [
         "All tests pass",
@@ -511,7 +511,7 @@
         "Dropdown with All/Public/Private/Shared options",
         "Filters prompts by visibility status"
       ],
-      "tests": ["Integration: visibility filter shows correct prompts"]
+      "tests": ["E2E: visibility filter shows correct prompts"]
     },
     {
       "id": "prompts-list-008-tests",
@@ -520,7 +520,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: visibility filter shows correct prompts"
+        "E2E: visibility filter shows correct prompts"
       ],
       "tests": [
         "All tests pass",
@@ -539,8 +539,8 @@
         "Default sort is newest"
       ],
       "tests": [
-        "Integration: sort changes list order",
-        "Integration: sort persists in URL"
+        "E2E: sort changes list order",
+        "E2E: sort persists in URL"
       ]
     },
     {
@@ -550,8 +550,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: sort changes list order",
-        "Integration: sort persists in URL"
+        "E2E: sort changes list order",
+        "E2E: sort persists in URL"
       ],
       "tests": [
         "All tests pass",
@@ -570,8 +570,8 @@
         "Different message for filtered empty state"
       ],
       "tests": [
-        "Unit: shows empty state when no prompts",
-        "Unit: shows filtered empty state with filters active"
+        "E2E: shows empty state when no prompts",
+        "E2E: shows filtered empty state with filters active"
       ]
     },
     {
@@ -581,8 +581,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: shows empty state when no prompts",
-        "Unit: shows filtered empty state with filters active"
+        "E2E: shows empty state when no prompts",
+        "E2E: shows filtered empty state with filters active"
       ],
       "tests": [
         "All tests pass",
@@ -601,8 +601,8 @@
         "Show 6-8 skeleton cards"
       ],
       "tests": [
-        "Unit: skeleton renders correct number of cards",
-        "Snapshot: skeleton matches design"
+        "E2E: skeleton renders correct number of cards",
+        "E2E: skeleton matches design"
       ]
     },
     {
@@ -612,8 +612,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: skeleton renders correct number of cards",
-        "Snapshot: skeleton matches design"
+        "E2E: skeleton renders correct number of cards",
+        "E2E: skeleton matches design"
       ],
       "tests": [
         "All tests pass",
@@ -631,7 +631,7 @@
         "Opens create prompt modal on click",
         "Plus icon with text"
       ],
-      "tests": ["Integration: button opens create modal"]
+      "tests": ["E2E: button opens create modal"]
     },
     {
       "id": "prompts-list-012-tests",
@@ -640,7 +640,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: button opens create modal"
+        "E2E: button opens create modal"
       ],
       "tests": [
         "All tests pass",
@@ -660,9 +660,9 @@
         "Escape key closes modal"
       ],
       "tests": [
-        "Unit: modal opens and closes correctly",
-        "Unit: escape key closes modal",
-        "Unit: backdrop click closes modal"
+        "E2E: modal opens and closes correctly",
+        "E2E: escape key closes modal",
+        "E2E: backdrop click closes modal"
       ]
     },
     {
@@ -672,9 +672,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: modal opens and closes correctly",
-        "Unit: escape key closes modal",
-        "Unit: backdrop click closes modal"
+        "E2E: modal opens and closes correctly",
+        "E2E: escape key closes modal",
+        "E2E: backdrop click closes modal"
       ],
       "tests": [
         "All tests pass",
@@ -696,10 +696,10 @@
         "Submit button disabled when invalid"
       ],
       "tests": [
-        "Unit: validation rejects empty title",
-        "Unit: validation rejects title > 200 chars",
-        "Unit: form shows inline errors",
-        "Integration: valid form enables submit"
+        "E2E: validation rejects empty title",
+        "E2E: validation rejects title > 200 chars",
+        "E2E: form shows inline errors",
+        "E2E: valid form enables submit"
       ]
     },
     {
@@ -709,10 +709,10 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: validation rejects empty title",
-        "Unit: validation rejects title > 200 chars",
-        "Unit: form shows inline errors",
-        "Integration: valid form enables submit"
+        "E2E: validation rejects empty title",
+        "E2E: validation rejects title > 200 chars",
+        "E2E: form shows inline errors",
+        "E2E: valid form enables submit"
       ],
       "tests": [
         "All tests pass",
@@ -732,9 +732,9 @@
         "Max 10 tags per prompt"
       ],
       "tests": [
-        "Integration: autocomplete shows existing tags",
-        "Integration: new tag created on enter",
-        "Unit: max 10 tags enforced"
+        "E2E: autocomplete shows existing tags",
+        "E2E: new tag created on enter",
+        "E2E: max 10 tags enforced"
       ]
     },
     {
@@ -744,9 +744,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: autocomplete shows existing tags",
-        "Integration: new tag created on enter",
-        "Unit: max 10 tags enforced"
+        "E2E: autocomplete shows existing tags",
+        "E2E: new tag created on enter",
+        "E2E: max 10 tags enforced"
       ],
       "tests": [
         "All tests pass",
@@ -766,8 +766,8 @@
         "No folder option (uncategorized)"
       ],
       "tests": [
-        "Integration: shows existing folders",
-        "Integration: creates new folder inline"
+        "E2E: shows existing folders",
+        "E2E: creates new folder inline"
       ]
     },
     {
@@ -777,8 +777,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: shows existing folders",
-        "Integration: creates new folder inline"
+        "E2E: shows existing folders",
+        "E2E: creates new folder inline"
       ],
       "tests": [
         "All tests pass",
@@ -798,9 +798,9 @@
         "Error handling with toast"
       ],
       "tests": [
-        "Integration: creates prompt successfully",
-        "Integration: shows error on failure",
-        "Integration: refreshes list after creation"
+        "E2E: creates prompt successfully",
+        "E2E: shows error on failure",
+        "E2E: refreshes list after creation"
       ]
     },
     {
@@ -810,9 +810,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: creates prompt successfully",
-        "Integration: shows error on failure",
-        "Integration: refreshes list after creation"
+        "E2E: creates prompt successfully",
+        "E2E: shows error on failure",
+        "E2E: refreshes list after creation"
       ],
       "tests": [
         "All tests pass",
@@ -831,8 +831,8 @@
         "Success toast shown"
       ],
       "tests": [
-        "Integration: updates prompt successfully",
-        "Integration: rolls back on error"
+        "E2E: updates prompt successfully",
+        "E2E: rolls back on error"
       ]
     },
     {
@@ -842,8 +842,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: updates prompt successfully",
-        "Integration: rolls back on error"
+        "E2E: updates prompt successfully",
+        "E2E: rolls back on error"
       ],
       "tests": [
         "All tests pass",
@@ -863,8 +863,8 @@
         "Success toast shown"
       ],
       "tests": [
-        "Integration: deletes prompt on confirm",
-        "Integration: cancellation prevents deletion"
+        "E2E: deletes prompt on confirm",
+        "E2E: cancellation prevents deletion"
       ]
     },
     {
@@ -874,8 +874,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: deletes prompt on confirm",
-        "Integration: cancellation prevents deletion"
+        "E2E: deletes prompt on confirm",
+        "E2E: cancellation prevents deletion"
       ],
       "tests": [
         "All tests pass",
@@ -894,8 +894,8 @@
         "Works for both title and content"
       ],
       "tests": [
-        "Unit: counter updates on input",
-        "Unit: warning style at 90% limit"
+        "E2E: counter updates on input",
+        "E2E: warning style at 90% limit"
       ]
     },
     {
@@ -905,8 +905,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: counter updates on input",
-        "Unit: warning style at 90% limit"
+        "E2E: counter updates on input",
+        "E2E: warning style at 90% limit"
       ],
       "tests": [
         "All tests pass",
@@ -926,8 +926,8 @@
         "Breadcrumb navigation back to list"
       ],
       "tests": [
-        "Integration: loads and displays prompt",
-        "Integration: handles not found error"
+        "E2E: loads and displays prompt",
+        "E2E: handles not found error"
       ]
     },
     {
@@ -937,8 +937,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads and displays prompt",
-        "Integration: handles not found error"
+        "E2E: loads and displays prompt",
+        "E2E: handles not found error"
       ],
       "tests": [
         "All tests pass",
@@ -957,7 +957,7 @@
         "Created and updated dates",
         "Visibility status"
       ],
-      "tests": ["Unit: renders all metadata correctly"]
+      "tests": ["E2E: renders all metadata correctly"]
     },
     {
       "id": "prompts-detail-002-tests",
@@ -966,7 +966,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: renders all metadata correctly"
+        "E2E: renders all metadata correctly"
       ],
       "tests": [
         "All tests pass",
@@ -987,8 +987,8 @@
         "Success toast on copy"
       ],
       "tests": [
-        "Integration: copies to clipboard",
-        "Integration: shows success toast"
+        "E2E: copies to clipboard",
+        "E2E: shows success toast"
       ]
     },
     {
@@ -998,8 +998,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: copies to clipboard",
-        "Integration: shows success toast"
+        "E2E: copies to clipboard",
+        "E2E: shows success toast"
       ],
       "tests": [
         "All tests pass",
@@ -1018,8 +1018,8 @@
         "Actions in dropdown menu on mobile"
       ],
       "tests": [
-        "Integration: edit mode activates",
-        "Integration: delete with confirmation works"
+        "E2E: edit mode activates",
+        "E2E: delete with confirmation works"
       ]
     },
     {
@@ -1029,8 +1029,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: edit mode activates",
-        "Integration: delete with confirmation works"
+        "E2E: edit mode activates",
+        "E2E: delete with confirmation works"
       ],
       "tests": [
         "All tests pass",
@@ -1050,9 +1050,9 @@
         "Changes saved on blur or save click"
       ],
       "tests": [
-        "Integration: edit mode enables editing",
-        "Integration: save persists changes",
-        "Integration: cancel discards changes"
+        "E2E: edit mode enables editing",
+        "E2E: save persists changes",
+        "E2E: cancel discards changes"
       ]
     },
     {
@@ -1062,9 +1062,9 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: edit mode enables editing",
-        "Integration: save persists changes",
-        "Integration: cancel discards changes"
+        "E2E: edit mode enables editing",
+        "E2E: save persists changes",
+        "E2E: cancel discards changes"
       ],
       "tests": [
         "All tests pass",
@@ -1084,8 +1084,8 @@
         "Click to view version content"
       ],
       "tests": [
-        "Integration: loads versions on expand",
-        "Integration: displays version list"
+        "E2E: loads versions on expand",
+        "E2E: displays version list"
       ]
     },
     {
@@ -1095,8 +1095,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads versions on expand",
-        "Integration: displays version list"
+        "E2E: loads versions on expand",
+        "E2E: displays version list"
       ],
       "tests": [
         "All tests pass",
@@ -1116,8 +1116,8 @@
         "Content updated after restore"
       ],
       "tests": [
-        "Integration: restores version successfully",
-        "Integration: confirmation prevents accidental restore"
+        "E2E: restores version successfully",
+        "E2E: confirmation prevents accidental restore"
       ]
     },
     {
@@ -1127,8 +1127,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: restores version successfully",
-        "Integration: confirmation prevents accidental restore"
+        "E2E: restores version successfully",
+        "E2E: confirmation prevents accidental restore"
       ],
       "tests": [
         "All tests pass",
@@ -1148,8 +1148,8 @@
         "Compare current with any version"
       ],
       "tests": [
-        "Unit: diff correctly identifies changes",
-        "Snapshot: diff view matches design"
+        "E2E: diff correctly identifies changes",
+        "E2E: diff view matches design"
       ]
     },
     {
@@ -1159,8 +1159,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: diff correctly identifies changes",
-        "Snapshot: diff view matches design"
+        "E2E: diff correctly identifies changes",
+        "E2E: diff view matches design"
       ],
       "tests": [
         "All tests pass",
@@ -1180,8 +1180,8 @@
         "Highlight variables in content preview"
       ],
       "tests": [
-        "Unit: detects variables in content",
-        "Integration: API extracts variables correctly"
+        "E2E: detects variables in content",
+        "E2E: API extracts variables correctly"
       ]
     },
     {
@@ -1191,8 +1191,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: detects variables in content",
-        "Integration: API extracts variables correctly"
+        "E2E: detects variables in content",
+        "E2E: API extracts variables correctly"
       ],
       "tests": [
         "All tests pass",
@@ -1212,8 +1212,8 @@
         "Remember values option"
       ],
       "tests": [
-        "Unit: renders field for each variable",
-        "Unit: validates required fields"
+        "E2E: renders field for each variable",
+        "E2E: validates required fields"
       ]
     },
     {
@@ -1223,8 +1223,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: renders field for each variable",
-        "Unit: validates required fields"
+        "E2E: renders field for each variable",
+        "E2E: validates required fields"
       ],
       "tests": [
         "All tests pass",
@@ -1243,8 +1243,8 @@
         "Copy rendered content button"
       ],
       "tests": [
-        "Integration: preview updates on input",
-        "Integration: renders template correctly"
+        "E2E: preview updates on input",
+        "E2E: renders template correctly"
       ]
     },
     {
@@ -1254,8 +1254,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: preview updates on input",
-        "Integration: renders template correctly"
+        "E2E: preview updates on input",
+        "E2E: renders template correctly"
       ],
       "tests": [
         "All tests pass",
@@ -1274,8 +1274,8 @@
         "Disable copy button until all filled"
       ],
       "tests": [
-        "Unit: copy disabled with empty variables",
-        "Unit: warning shown for empty variables"
+        "E2E: copy disabled with empty variables",
+        "E2E: warning shown for empty variables"
       ]
     },
     {
@@ -1285,8 +1285,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: copy disabled with empty variables",
-        "Unit: warning shown for empty variables"
+        "E2E: copy disabled with empty variables",
+        "E2E: warning shown for empty variables"
       ],
       "tests": [
         "All tests pass",
@@ -1306,8 +1306,8 @@
         "Display improved version"
       ],
       "tests": [
-        "Integration: calls AI improve endpoint",
-        "Integration: displays improved content"
+        "E2E: calls AI improve endpoint",
+        "E2E: displays improved content"
       ]
     },
     {
@@ -1317,8 +1317,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: calls AI improve endpoint",
-        "Integration: displays improved content"
+        "E2E: calls AI improve endpoint",
+        "E2E: displays improved content"
       ],
       "tests": [
         "All tests pass",
@@ -1338,8 +1338,8 @@
         "Edit improved version option"
       ],
       "tests": [
-        "Unit: diff highlights changes",
-        "Integration: accept updates prompt"
+        "E2E: diff highlights changes",
+        "E2E: accept updates prompt"
       ]
     },
     {
@@ -1349,8 +1349,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: diff highlights changes",
-        "Integration: accept updates prompt"
+        "E2E: diff highlights changes",
+        "E2E: accept updates prompt"
       ],
       "tests": [
         "All tests pass",
@@ -1369,8 +1369,8 @@
         "Edit allows modifying suggestion first"
       ],
       "tests": [
-        "Integration: accept saves improved content",
-        "Integration: reject discards changes"
+        "E2E: accept saves improved content",
+        "E2E: reject discards changes"
       ]
     },
     {
@@ -1380,8 +1380,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: accept saves improved content",
-        "Integration: reject discards changes"
+        "E2E: accept saves improved content",
+        "E2E: reject discards changes"
       ],
       "tests": [
         "All tests pass",
@@ -1401,8 +1401,8 @@
         "Select which tags to add"
       ],
       "tests": [
-        "Integration: generates tag suggestions",
-        "Integration: adds selected tags to prompt"
+        "E2E: generates tag suggestions",
+        "E2E: adds selected tags to prompt"
       ]
     },
     {
@@ -1412,8 +1412,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: generates tag suggestions",
-        "Integration: adds selected tags to prompt"
+        "E2E: generates tag suggestions",
+        "E2E: adds selected tags to prompt"
       ],
       "tests": [
         "All tests pass",
@@ -1433,8 +1433,8 @@
         "Accept or edit before saving"
       ],
       "tests": [
-        "Integration: generates description",
-        "Integration: saves accepted description"
+        "E2E: generates description",
+        "E2E: saves accepted description"
       ]
     },
     {
@@ -1444,8 +1444,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: generates description",
-        "Integration: saves accepted description"
+        "E2E: generates description",
+        "E2E: saves accepted description"
       ],
       "tests": [
         "All tests pass",
@@ -1464,8 +1464,8 @@
         "Disable AI buttons during cooldown"
       ],
       "tests": [
-        "Integration: shows rate limit message on 429",
-        "Integration: buttons disabled during cooldown"
+        "E2E: shows rate limit message on 429",
+        "E2E: buttons disabled during cooldown"
       ]
     },
     {
@@ -1475,8 +1475,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: shows rate limit message on 429",
-        "Integration: buttons disabled during cooldown"
+        "E2E: shows rate limit message on 429",
+        "E2E: buttons disabled during cooldown"
       ],
       "tests": [
         "All tests pass",
@@ -1496,8 +1496,8 @@
         "Click to filter prompts by folder"
       ],
       "tests": [
-        "Integration: loads and displays folders",
-        "Integration: filters prompts on click"
+        "E2E: loads and displays folders",
+        "E2E: filters prompts on click"
       ]
     },
     {
@@ -1507,8 +1507,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads and displays folders",
-        "Integration: filters prompts on click"
+        "E2E: loads and displays folders",
+        "E2E: filters prompts on click"
       ],
       "tests": [
         "All tests pass",
@@ -1528,8 +1528,8 @@
         "Success toast shown"
       ],
       "tests": [
-        "Integration: creates folder successfully",
-        "Integration: new folder appears in list"
+        "E2E: creates folder successfully",
+        "E2E: new folder appears in list"
       ]
     },
     {
@@ -1539,8 +1539,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: creates folder successfully",
-        "Integration: new folder appears in list"
+        "E2E: creates folder successfully",
+        "E2E: new folder appears in list"
       ],
       "tests": [
         "All tests pass",
@@ -1559,7 +1559,7 @@
         "PATCH /folders/{id} on save",
         "Escape to cancel"
       ],
-      "tests": ["Integration: renames folder successfully"]
+      "tests": ["E2E: renames folder successfully"]
     },
     {
       "id": "folders-003-tests",
@@ -1568,7 +1568,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: renames folder successfully"
+        "E2E: renames folder successfully"
       ],
       "tests": [
         "All tests pass",
@@ -1588,8 +1588,8 @@
         "Folder removed from list"
       ],
       "tests": [
-        "Integration: deletes folder successfully",
-        "Integration: handles prompts in folder"
+        "E2E: deletes folder successfully",
+        "E2E: handles prompts in folder"
       ]
     },
     {
@@ -1599,8 +1599,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: deletes folder successfully",
-        "Integration: handles prompts in folder"
+        "E2E: deletes folder successfully",
+        "E2E: handles prompts in folder"
       ],
       "tests": [
         "All tests pass",
@@ -1619,7 +1619,7 @@
         "PATCH /folders/reorder on drop",
         "Optimistic UI update"
       ],
-      "tests": ["Integration: reorders folders on drag-drop"]
+      "tests": ["E2E: reorders folders on drag-drop"]
     },
     {
       "id": "folders-005-tests",
@@ -1628,7 +1628,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: reorders folders on drag-drop"
+        "E2E: reorders folders on drag-drop"
       ],
       "tests": [
         "All tests pass",
@@ -1646,7 +1646,7 @@
         "GET /tags to list all tags",
         "Show usage count per tag"
       ],
-      "tests": ["Integration: loads and displays tags"]
+      "tests": ["E2E: loads and displays tags"]
     },
     {
       "id": "tags-001-tests",
@@ -1655,7 +1655,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads and displays tags"
+        "E2E: loads and displays tags"
       ],
       "tests": [
         "All tests pass",
@@ -1673,7 +1673,7 @@
         "POST /tags on submit",
         "Tag added to list"
       ],
-      "tests": ["Integration: creates tag successfully"]
+      "tests": ["E2E: creates tag successfully"]
     },
     {
       "id": "tags-002-tests",
@@ -1682,7 +1682,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: creates tag successfully"
+        "E2E: creates tag successfully"
       ],
       "tests": [
         "All tests pass",
@@ -1700,7 +1700,7 @@
         "PATCH /tags/{id} on save",
         "All prompts updated with new tag name"
       ],
-      "tests": ["Integration: renames tag successfully"]
+      "tests": ["E2E: renames tag successfully"]
     },
     {
       "id": "tags-003-tests",
@@ -1709,7 +1709,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: renames tag successfully"
+        "E2E: renames tag successfully"
       ],
       "tests": [
         "All tests pass",
@@ -1727,7 +1727,7 @@
         "DELETE /tags/{id}",
         "Tag removed from all prompts"
       ],
-      "tests": ["Integration: deletes tag successfully"]
+      "tests": ["E2E: deletes tag successfully"]
     },
     {
       "id": "tags-004-tests",
@@ -1736,7 +1736,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: deletes tag successfully"
+        "E2E: deletes tag successfully"
       ],
       "tests": [
         "All tests pass",
@@ -1756,8 +1756,8 @@
         "Create new tag option"
       ],
       "tests": [
-        "Integration: shows suggestions on type",
-        "Integration: keyboard navigation works"
+        "E2E: shows suggestions on type",
+        "E2E: keyboard navigation works"
       ]
     },
     {
@@ -1767,8 +1767,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: shows suggestions on type",
-        "Integration: keyboard navigation works"
+        "E2E: shows suggestions on type",
+        "E2E: keyboard navigation works"
       ],
       "tests": [
         "All tests pass",
@@ -1785,7 +1785,7 @@
         "Share button visible on detail page",
         "Opens share modal on click"
       ],
-      "tests": ["Unit: share button renders", "Integration: opens share modal"]
+      "tests": ["E2E: share button renders", "E2E: opens share modal"]
     },
     {
       "id": "sharing-001-tests",
@@ -1794,8 +1794,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: share button renders",
-        "Integration: opens share modal"
+        "E2E: share button renders",
+        "E2E: opens share modal"
       ],
       "tests": [
         "All tests pass",
@@ -1815,8 +1815,8 @@
         "Success toast on copy"
       ],
       "tests": [
-        "Integration: generates share link",
-        "Integration: copies link to clipboard"
+        "E2E: generates share link",
+        "E2E: copies link to clipboard"
       ]
     },
     {
@@ -1826,8 +1826,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: generates share link",
-        "Integration: copies link to clipboard"
+        "E2E: generates share link",
+        "E2E: copies link to clipboard"
       ],
       "tests": [
         "All tests pass",
@@ -1846,7 +1846,7 @@
         "Confirmation dialog",
         "Link removed from list"
       ],
-      "tests": ["Integration: deletes share link"]
+      "tests": ["E2E: deletes share link"]
     },
     {
       "id": "sharing-004-tests",
@@ -1855,7 +1855,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: deletes share link"
+        "E2E: deletes share link"
       ],
       "tests": [
         "All tests pass",
@@ -1874,8 +1874,8 @@
         "Pagination with load more"
       ],
       "tests": [
-        "Integration: loads public prompts",
-        "Integration: pagination works"
+        "E2E: loads public prompts",
+        "E2E: pagination works"
       ]
     },
     {
@@ -1885,8 +1885,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads public prompts",
-        "Integration: pagination works"
+        "E2E: loads public prompts",
+        "E2E: pagination works"
       ],
       "tests": [
         "All tests pass",
@@ -1904,7 +1904,7 @@
         "Debounced search query",
         "Results filtered by search term"
       ],
-      "tests": ["Integration: search filters gallery results"]
+      "tests": ["E2E: search filters gallery results"]
     },
     {
       "id": "gallery-002-tests",
@@ -1913,7 +1913,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: search filters gallery results"
+        "E2E: search filters gallery results"
       ],
       "tests": [
         "All tests pass",
@@ -1930,7 +1930,7 @@
         "Sort dropdown: popular, newest, most forked",
         "Sort param passed to API"
       ],
-      "tests": ["Integration: sort changes result order"]
+      "tests": ["E2E: sort changes result order"]
     },
     {
       "id": "gallery-003-tests",
@@ -1939,7 +1939,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: sort changes result order"
+        "E2E: sort changes result order"
       ],
       "tests": [
         "All tests pass",
@@ -1958,7 +1958,7 @@
         "Display prompt content and metadata",
         "Author info shown"
       ],
-      "tests": ["Integration: loads and displays public prompt"]
+      "tests": ["E2E: loads and displays public prompt"]
     },
     {
       "id": "gallery-004-tests",
@@ -1967,7 +1967,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads and displays public prompt"
+        "E2E: loads and displays public prompt"
       ],
       "tests": [
         "All tests pass",
@@ -1987,8 +1987,8 @@
         "Login required - show prompt if not authenticated"
       ],
       "tests": [
-        "Integration: forks prompt to user account",
-        "Integration: requires authentication"
+        "E2E: forks prompt to user account",
+        "E2E: requires authentication"
       ]
     },
     {
@@ -1998,8 +1998,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: forks prompt to user account",
-        "Integration: requires authentication"
+        "E2E: forks prompt to user account",
+        "E2E: requires authentication"
       ],
       "tests": [
         "All tests pass",
@@ -2018,8 +2018,8 @@
         "Like count updates optimistically"
       ],
       "tests": [
-        "Integration: likes prompt successfully",
-        "Integration: unlikes prompt successfully"
+        "E2E: likes prompt successfully",
+        "E2E: unlikes prompt successfully"
       ]
     },
     {
@@ -2029,8 +2029,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: likes prompt successfully",
-        "Integration: unlikes prompt successfully"
+        "E2E: likes prompt successfully",
+        "E2E: unlikes prompt successfully"
       ],
       "tests": [
         "All tests pass",
@@ -2048,7 +2048,7 @@
         "Show fork count with fork icon",
         "Counts update after actions"
       ],
-      "tests": ["Unit: renders counts correctly"]
+      "tests": ["E2E: renders counts correctly"]
     },
     {
       "id": "gallery-007-tests",
@@ -2057,7 +2057,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: renders counts correctly"
+        "E2E: renders counts correctly"
       ],
       "tests": [
         "All tests pass",
@@ -2076,8 +2076,8 @@
         "Handle invalid/expired token error"
       ],
       "tests": [
-        "Integration: loads shared prompt",
-        "Integration: shows error for invalid token"
+        "E2E: loads shared prompt",
+        "E2E: shows error for invalid token"
       ]
     },
     {
@@ -2087,8 +2087,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: loads shared prompt",
-        "Integration: shows error for invalid token"
+        "E2E: loads shared prompt",
+        "E2E: shows error for invalid token"
       ],
       "tests": [
         "All tests pass",
@@ -2102,7 +2102,7 @@
       "priority": "medium",
       "passed": false,
       "dod": ["Copy button copies content", "Success toast shown"],
-      "tests": ["Integration: copies to clipboard"]
+      "tests": ["E2E: copies to clipboard"]
     },
     {
       "id": "shared-002-tests",
@@ -2111,7 +2111,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: copies to clipboard"
+        "E2E: copies to clipboard"
       ],
       "tests": [
         "All tests pass",
@@ -2129,7 +2129,7 @@
         "Link to register page",
         "Dismissible banner"
       ],
-      "tests": ["Unit: renders CTA banner"]
+      "tests": ["E2E: renders CTA banner"]
     },
     {
       "id": "shared-003-tests",
@@ -2138,7 +2138,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: renders CTA banner"
+        "E2E: renders CTA banner"
       ],
       "tests": [
         "All tests pass",
@@ -2158,8 +2158,8 @@
         "Redirect to login after"
       ],
       "tests": [
-        "Integration: logs out all sessions",
-        "Integration: confirmation dialog prevents accidental clicks"
+        "E2E: logs out all sessions",
+        "E2E: confirmation dialog prevents accidental clicks"
       ]
     },
     {
@@ -2169,8 +2169,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: logs out all sessions",
-        "Integration: confirmation dialog prevents accidental clicks"
+        "E2E: logs out all sessions",
+        "E2E: confirmation dialog prevents accidental clicks"
       ],
       "tests": [
         "All tests pass",
@@ -2190,8 +2190,8 @@
         "System preference detection"
       ],
       "tests": [
-        "Integration: toggles theme correctly",
-        "Integration: persists preference"
+        "E2E: toggles theme correctly",
+        "E2E: persists preference"
       ]
     },
     {
@@ -2201,8 +2201,8 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: toggles theme correctly",
-        "Integration: persists preference"
+        "E2E: toggles theme correctly",
+        "E2E: persists preference"
       ],
       "tests": [
         "All tests pass",
@@ -2221,7 +2221,7 @@
         "Escape to close modals",
         "Help modal showing shortcuts"
       ],
-      "tests": ["Integration: shortcuts trigger actions"]
+      "tests": ["E2E: shortcuts trigger actions"]
     },
     {
       "id": "ui-002-tests",
@@ -2230,7 +2230,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Integration: shortcuts trigger actions"
+        "E2E: shortcuts trigger actions"
       ],
       "tests": [
         "All tests pass",
@@ -2249,7 +2249,7 @@
         "Full-screen modals on mobile",
         "Responsive card grid"
       ],
-      "tests": ["Visual: renders correctly on mobile viewport"]
+      "tests": ["E2E: renders correctly on mobile viewport"]
     },
     {
       "id": "ui-003-tests",
@@ -2258,7 +2258,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Visual: renders correctly on mobile viewport"
+        "E2E: renders correctly on mobile viewport"
       ],
       "tests": [
         "All tests pass",
@@ -2276,7 +2276,7 @@
         "Skeleton loaders for content",
         "Disable interactions during loading"
       ],
-      "tests": ["Unit: loading states render correctly"]
+      "tests": ["E2E: loading states render correctly"]
     },
     {
       "id": "ui-004-tests",
@@ -2285,7 +2285,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: loading states render correctly"
+        "E2E: loading states render correctly"
       ],
       "tests": [
         "All tests pass",
@@ -2303,7 +2303,7 @@
         "Fallback UI for crashes",
         "Error reporting integration"
       ],
-      "tests": ["Unit: error boundary catches errors"]
+      "tests": ["E2E: error boundary catches errors"]
     },
     {
       "id": "ui-005-tests",
@@ -2312,7 +2312,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: error boundary catches errors"
+        "E2E: error boundary catches errors"
       ],
       "tests": [
         "All tests pass",
@@ -2330,7 +2330,7 @@
         "Generic error page",
         "Consistent styling with app"
       ],
-      "tests": ["Unit: 404 page renders correctly"]
+      "tests": ["E2E: 404 page renders correctly"]
     },
     {
       "id": "ui-006-tests",
@@ -2339,7 +2339,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: 404 page renders correctly"
+        "E2E: 404 page renders correctly"
       ],
       "tests": [
         "All tests pass",
@@ -2357,7 +2357,7 @@
         "React Testing Library set up",
         "Test scripts in package.json"
       ],
-      "tests": ["Unit: sample test passes"]
+      "tests": ["E2E: sample test passes"]
     },
     {
       "id": "testing-001-tests",
@@ -2366,7 +2366,7 @@
       "priority": "medium",
       "passed": false,
       "dod": [
-        "Unit: sample test passes"
+        "E2E: sample test passes"
       ],
       "tests": [
         "All tests pass",
