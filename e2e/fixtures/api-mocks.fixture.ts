@@ -48,7 +48,9 @@ export async function mockAuthEndpoints(
       await route.fulfill({
         status: 409,
         contentType: "application/json",
-        body: JSON.stringify({ error: { message: "Email already registered" } }),
+        body: JSON.stringify({
+          error: { code: "email_already_exists", message: "Email already registered" },
+        }),
       });
       return;
     }

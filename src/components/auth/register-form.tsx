@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -10,6 +11,7 @@ import {
   type RegisterFormData,
 } from "@/lib/validations/auth";
 import { usePostAuthRegister } from "@/lib/api/generated/endpoints/authentication/authentication";
+import { handleAuthError } from "@/lib/utils/auth-error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,8 +23,18 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+function getButtonText(
+  isPending: boolean,
+  rateLimitSeconds: number
+): string {
+  if (isPending) return "Creating account...";
+  if (rateLimitSeconds > 0) return `Try again in ${rateLimitSeconds}s`;
+  return "Create account";
+}
+
 export function RegisterForm(): React.ReactElement {
   const router = useRouter();
+  const [rateLimitSeconds, setRateLimitSeconds] = useState(0);
 
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -34,6 +46,17 @@ export function RegisterForm(): React.ReactElement {
     },
   });
 
+  // Countdown timer for rate limit
+  useEffect(() => {
+    if (rateLimitSeconds <= 0) return;
+
+    const timer = setInterval(() => {
+      setRateLimitSeconds((prev) => Math.max(0, prev - 1));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [rateLimitSeconds]);
+
   const { mutate: register, isPending } = usePostAuthRegister({
     mutation: {
       onSuccess: () => {
@@ -41,7 +64,14 @@ export function RegisterForm(): React.ReactElement {
         router.push("/login");
       },
       onError: (error) => {
-        toast.error(error.error?.message ?? "Registration failed");
+        const { isRateLimited, retryAfter } = handleAuthError<RegisterFormData>({
+          error,
+          setError: form.setError,
+          defaultMessage: "Registration failed",
+        });
+        if (isRateLimited && retryAfter) {
+          setRateLimitSeconds(retryAfter);
+        }
       },
     },
   });
@@ -134,8 +164,12 @@ export function RegisterForm(): React.ReactElement {
           )}
         />
 
-        <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? "Creating account..." : "Create account"}
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isPending || rateLimitSeconds > 0}
+        >
+          {getButtonText(isPending, rateLimitSeconds)}
         </Button>
       </form>
     </Form>

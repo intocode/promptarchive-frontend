@@ -200,7 +200,7 @@
       "title": "Handle auth errors with toast notifications",
       "category": "authentication",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Invalid credentials shows error toast",
         "Network errors show appropriate message",

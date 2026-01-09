@@ -36,7 +36,7 @@ test.describe("Feature: User Registration", () => {
   });
 
   test.describe("Scenario: Failed registration with duplicate email", () => {
-    test("should show error toast for duplicate email", async ({ page }) => {
+    test("should show inline error for duplicate email", async ({ page }) => {
       const registerPage = new RegisterPage(page);
       await registerPage.goto();
       await registerPage.register(
@@ -45,9 +45,8 @@ test.describe("Feature: User Registration", () => {
         REGISTER_CREDENTIALS.duplicateEmail.password,
         REGISTER_CREDENTIALS.duplicateEmail.confirmPassword
       );
-      // The API returns "Email already registered" but the error structure from Axios
-      // doesn't match what the component expects, so it falls back to "Registration failed"
-      await registerPage.expectErrorToast("Registration failed");
+      // Duplicate email shows inline error on the email field, not a toast
+      await registerPage.expectValidationError("This email is already registered");
     });
 
     test("should not redirect on failed registration", async ({ page }) => {
@@ -59,7 +58,7 @@ test.describe("Feature: User Registration", () => {
         REGISTER_CREDENTIALS.duplicateEmail.password,
         REGISTER_CREDENTIALS.duplicateEmail.confirmPassword
       );
-      await registerPage.expectErrorToast("Registration failed");
+      await registerPage.expectValidationError("This email is already registered");
       await expect(page).toHaveURL("/register");
     });
   });

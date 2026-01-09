@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Auth error handling with toast notifications (auth-006)
+  - New auth-error utility for centralized error handling (`src/lib/utils/auth-error.ts`)
+  - Network errors show "Unable to connect" message
+  - Rate limit (429) errors show countdown and disable submit button
+  - Server errors (5xx) show "Something went wrong" message
+  - Duplicate email errors shown inline on email field
+  - Invalid credentials shown via toast notification
+  - Rate limit countdown timer in login and register forms
 - Logout functionality (auth-007)
   - Header component with brand logo and user menu (`src/components/layout/header.tsx`)
   - UserMenu component with user avatar dropdown (`src/components/layout/user-menu.tsx`)
