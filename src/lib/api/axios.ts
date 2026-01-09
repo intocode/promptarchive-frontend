@@ -3,6 +3,7 @@ import axios, {
   AxiosRequestConfig,
   InternalAxiosRequestConfig,
 } from "axios";
+import { clearAuthCookie } from "@/lib/utils/auth-cookie";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
@@ -83,6 +84,7 @@ axiosInstance.interceptors.response.use(
         processQueue(refreshError as AxiosError, null);
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
+        clearAuthCookie();
         window.location.href = "/login";
         return Promise.reject(refreshError);
       } finally {

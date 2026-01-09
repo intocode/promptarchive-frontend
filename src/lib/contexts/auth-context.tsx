@@ -11,6 +11,7 @@ import {
 import { useQueryClient } from "@tanstack/react-query";
 import { getAuthMe } from "@/lib/api/generated/endpoints/authentication/authentication";
 import type { GithubComIntocodePromptarchiveInternalServiceUserResponse } from "@/types/api";
+import { setAuthCookie, clearAuthCookie } from "@/lib/utils/auth-cookie";
 
 export type User = GithubComIntocodePromptarchiveInternalServiceUserResponse;
 
@@ -30,7 +31,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps): React.ReactElement {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const queryClient = useQueryClient();
@@ -48,10 +49,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const response = await getAuthMe();
         if (response.data) {
           setUser(response.data);
+          setAuthCookie();
         }
       } catch {
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
+        clearAuthCookie();
         setUser(null);
       } finally {
         setIsLoading(false);
@@ -69,6 +72,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser(null);
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
+    clearAuthCookie();
     queryClient.clear();
   }, [queryClient]);
 

@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-export function RegisterForm() {
+export function RegisterForm(): React.ReactElement {
   const router = useRouter();
 
   const form = useForm<RegisterFormData>({
