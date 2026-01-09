@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- E2E testing infrastructure with Playwright
+  - `playwright.config.ts` with Chromium project, auth setup, and web server config
+  - Page Object Model pattern (`e2e/pages/login.page.ts`)
+  - API mock fixtures with Playwright route interception (`e2e/fixtures/`)
+  - Auth fixtures for authenticated/unauthenticated test scenarios
+  - Login flow test suite with 13 test cases covering success, failure, and validation
+  - GitHub Actions workflow for CI (`e2e-tests.yml`)
+  - npm scripts: `test:e2e`, `test:e2e:ui`, `test:e2e:debug`, `test:e2e:headed`, `test:e2e:report`, `test:e2e:codegen`
 - Test task entries in PRD.json for all existing features (auth, prompts, templates, AI, folders, sharing, gallery, settings)
 - Login page with form validation (`/login`)
 - Login form component with Zod validation (email, password min 8 chars)
