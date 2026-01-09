@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Registration page with form validation (`/register`)
+- Registration form component with Zod validation (name, email, password with confirmation)
+- Register schema with password match validation (`src/lib/validations/auth.ts`)
 - E2E testing infrastructure with Playwright
   - `playwright.config.ts` with Chromium project, auth setup, and web server config
   - Page Object Model pattern (`e2e/pages/login.page.ts`)

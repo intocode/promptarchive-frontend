@@ -26,7 +26,7 @@
       "title": "Implement login form with API integration",
       "category": "authentication",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Login form validates email and password with Zod schema",
         "Form submits to POST /auth/login endpoint",
@@ -47,7 +47,7 @@
       "title": "Write tests for: Implement login form with API integration",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Unit: loginSchema validates correct email format",
         "Unit: loginSchema requires password min 6 chars",
@@ -65,7 +65,7 @@
       "title": "Implement registration form with API integration",
       "category": "authentication",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Registration form validates name, email, password",
         "Form submits to POST /auth/register endpoint",
