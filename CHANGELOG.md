@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Logout functionality (auth-007)
+  - Header component with brand logo and user menu (`src/components/layout/header.tsx`)
+  - UserMenu component with user avatar dropdown (`src/components/layout/user-menu.tsx`)
+  - useLogout hook that calls POST /auth/logout API (`src/hooks/use-logout.ts`)
+  - Logout clears tokens from localStorage and redirects to /login
+  - Graceful error handling - clears local state even if API call fails
+  - Added shadcn/ui Avatar and DropdownMenu components
 - Protected route middleware (auth-004)
   - Next.js proxy for server-side route protection (`src/proxy.ts`)
   - Auth cookie utilities for syncing auth state (`src/lib/utils/auth-cookie.ts`)
@@ -65,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Prompts and Settings layouts now include Header component for authenticated pages
 - Updated PRD.json API endpoints to match backend implementation (PUT → PATCH for updates)
 - Aligned API paths in PRD.json with actual backend routes
 
