@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Pre-commit hook with Husky that runs linting, build, and E2E tests before each commit
 - Registration page with form validation (`/register`)
 - Registration form component with Zod validation (name, email, password with confirmation)
 - Register schema with password match validation (`src/lib/validations/auth.ts`)
