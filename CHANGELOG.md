@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Typography system configuration (design-001)
+  - Inter font from Google Fonts for UI elements (default font)
+  - Spectral font from Google Fonts for prompt content
+  - CSS variables `--font-inter` and `--font-spectral` via next/font
+  - `--font-sans` updated to use Inter with system font fallbacks
+  - `--font-serif` added for Spectral with serif fallbacks
+  - Utility classes `.font-ui` and `.font-content` in `@layer utilities`
 - Design system tasks in PRD.json
   - Added `design-system` category as first category
   - design-001: Configure typography system (Inter + Spectral fonts)
