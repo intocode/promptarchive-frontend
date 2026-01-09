@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     // Generated files (Orval API client)
     "src/lib/api/generated/**",
     "src/types/api/**",
+    // E2E tests (Playwright uses `use` function which conflicts with React hooks rules)
+    "e2e/**",
   ]),
 ]);
 
