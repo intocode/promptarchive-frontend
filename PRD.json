@@ -62,7 +62,7 @@
       "title": "Update header with full navigation",
       "category": "design-system",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Add navigation links: My Prompts, Gallery, Settings",
         "Style active state for current route",
