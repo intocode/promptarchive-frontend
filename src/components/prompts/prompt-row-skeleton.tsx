@@ -16,7 +16,6 @@ export function PromptRowSkeleton({
         className
       )}
     >
-      {/* Left: Title and Metadata */}
       <div className="flex-1 min-w-0 space-y-2">
         <Skeleton className="h-4 w-3/4" />
         <div className="flex flex-wrap items-center gap-2">
@@ -26,7 +25,6 @@ export function PromptRowSkeleton({
         </div>
       </div>
 
-      {/* Right: Status and Actions */}
       <div className="flex items-center gap-3 shrink-0">
         <Skeleton className="h-4 w-4 rounded-full" />
         <Skeleton className="h-4 w-20" />

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Extracted AuthenticatedLayout component to reduce layout duplication
+- Consolidated visibility configuration into shared utility module
+- Added explicit React.ReactElement return types to page components
+- Removed redundant section comments from prompt-row components
+
 ### Added
 
 - Prompt detail page (prompts-detail-001)

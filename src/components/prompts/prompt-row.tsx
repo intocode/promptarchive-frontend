@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Copy, Check, Folder, Globe, Lock } from "lucide-react";
+import { Copy, Check, Folder } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { cn, formatRelativeDate } from "@/lib/utils";
+import { getVisibilityConfig } from "@/lib/utils/visibility";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,19 +16,6 @@ interface PromptRowProps {
 }
 
 const MAX_VISIBLE_TAGS = 3;
-
-const VISIBILITY_CONFIG = {
-  public: { icon: Globe, label: "Public prompt" },
-  private: { icon: Lock, label: "Private prompt" },
-  unlisted: { icon: Globe, label: "Unlisted prompt" },
-} as const;
-
-type VisibilityType = keyof typeof VISIBILITY_CONFIG;
-
-function getVisibilityConfig(visibility: string | undefined) {
-  const key = (visibility ?? "private") as VisibilityType;
-  return VISIBILITY_CONFIG[key] ?? VISIBILITY_CONFIG.private;
-}
 
 export function PromptRow({
   prompt,
@@ -59,7 +47,6 @@ export function PromptRow({
         className
       )}
     >
-      {/* Left: Title and Metadata */}
       <div className="flex-1 min-w-0 space-y-1">
         <h3 className="text-sm font-medium truncate">{title}</h3>
         <div className="flex flex-wrap items-center gap-2">
@@ -80,7 +67,6 @@ export function PromptRow({
         </div>
       </div>
 
-      {/* Right: Status and Actions */}
       <div className="flex items-center gap-3 shrink-0 text-sm text-muted-foreground">
         <VisibilityIcon
           className="h-4 w-4"
