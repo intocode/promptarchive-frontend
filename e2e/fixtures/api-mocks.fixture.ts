@@ -113,128 +113,147 @@ export async function mockPromptsEndpoints(
   page: Page,
   prompts: MockPrompt[] = mockPromptsList(10)
 ): Promise<void> {
-  await page.route(`${API_PATTERN}/prompts*`, async (route: Route) => {
-    if (route.request().method() !== "GET") {
-      await route.continue();
-      return;
-    }
-
+  // Single consolidated route handler for all prompts endpoints
+  await page.route("**/v1/prompts**", async (route: Route) => {
+    const method = route.request().method();
     const url = new URL(route.request().url());
-    const search = url.searchParams.get("search");
-    const pageNum = parseInt(url.searchParams.get("page") || "1");
-    const limit = parseInt(url.searchParams.get("limit") || "20");
-    const folderId = url.searchParams.get("folder_id");
-    const visibility = url.searchParams.get("visibility");
+    const pathname = url.pathname;
 
-    let filtered = [...prompts];
+    // Check if this is a detail request (has ID in path)
+    const detailMatch = pathname.match(/\/prompts\/([^/?]+)$/);
 
-    if (search) {
-      const searchLower = search.toLowerCase();
-      filtered = filtered.filter(
-        (p) =>
-          p.title.toLowerCase().includes(searchLower) ||
-          p.content.toLowerCase().includes(searchLower)
-      );
-    }
+    if (detailMatch) {
+      const promptId = detailMatch[1];
 
-    if (folderId) {
-      filtered = filtered.filter((p) => p.folder_id === folderId);
-    }
+      if (method === "GET") {
+        const prompt = prompts.find((p) => p.id === promptId);
+        if (prompt) {
+          await route.fulfill({
+            status: 200,
+            contentType: "application/json",
+            body: JSON.stringify({ data: prompt }),
+          });
+        } else {
+          await route.fulfill({
+            status: 404,
+            contentType: "application/json",
+            body: JSON.stringify({ error: { message: "Prompt not found" } }),
+          });
+        }
+        return;
+      }
 
-    if (visibility) {
-      filtered = filtered.filter((p) => p.visibility === visibility);
-    }
+      if (method === "PATCH") {
+        const body = JSON.parse(route.request().postData() || "{}");
+        const existingPrompt = prompts.find((p) => p.id === promptId);
 
-    const start = (pageNum - 1) * limit;
-    const paginated = filtered.slice(start, start + limit);
+        if (!existingPrompt) {
+          await route.fulfill({
+            status: 404,
+            contentType: "application/json",
+            body: JSON.stringify({ error: { message: "Prompt not found" } }),
+          });
+          return;
+        }
 
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({
-        data: paginated,
-        meta: {
-          total: filtered.length,
-          page: pageNum,
-          limit,
-          total_pages: Math.ceil(filtered.length / limit),
-        },
-      }),
-    });
-  });
+        const updatedPrompt: MockPrompt = {
+          ...existingPrompt,
+          ...body,
+          updated_at: new Date().toISOString(),
+        };
 
-  await page.route(`${API_PATTERN}/prompts`, async (route: Route) => {
-    if (route.request().method() !== "POST") {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ data: updatedPrompt }),
+        });
+        return;
+      }
+
+      if (method === "DELETE") {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ data: { message: "Deleted successfully" } }),
+        });
+        return;
+      }
+
       await route.continue();
       return;
     }
 
-    const body = JSON.parse(route.request().postData() || "{}");
-    const now = new Date().toISOString();
+    // Handle list and create endpoints (/prompts or /prompts?...)
+    if (method === "GET") {
+      const search = url.searchParams.get("search");
+      const pageNum = parseInt(url.searchParams.get("page") || "1");
+      const limit = parseInt(url.searchParams.get("limit") || "20");
+      const folderId = url.searchParams.get("folder_id");
+      const visibility = url.searchParams.get("visibility");
 
-    const newPrompt: MockPrompt = {
-      id: `prompt-${Date.now()}`,
-      title: body.title || "Untitled",
-      content: body.content || "",
-      description: body.description,
-      visibility: body.visibility || "private",
-      tags: body.tags || [],
-      folder_id: body.folder_id,
-      created_at: now,
-      updated_at: now,
-    };
+      let filtered = [...prompts];
 
-    await route.fulfill({
-      status: 201,
-      contentType: "application/json",
-      body: JSON.stringify({ data: newPrompt }),
-    });
-  });
+      if (search) {
+        const searchLower = search.toLowerCase();
+        filtered = filtered.filter(
+          (p) =>
+            p.title.toLowerCase().includes(searchLower) ||
+            p.content.toLowerCase().includes(searchLower)
+        );
+      }
 
-  await page.route(/\/prompts\/[^/]+$/, async (route: Route) => {
-    if (route.request().method() !== "PATCH") {
-      await route.continue();
-      return;
-    }
+      if (folderId) {
+        filtered = filtered.filter((p) => p.folder_id === folderId);
+      }
 
-    const url = route.request().url();
-    const id = url.split("/").pop();
-    const body = JSON.parse(route.request().postData() || "{}");
-    const existingPrompt = prompts.find((p) => p.id === id);
+      if (visibility) {
+        filtered = filtered.filter((p) => p.visibility === visibility);
+      }
 
-    if (!existingPrompt) {
+      const start = (pageNum - 1) * limit;
+      const paginated = filtered.slice(start, start + limit);
+
       await route.fulfill({
-        status: 404,
+        status: 200,
         contentType: "application/json",
-        body: JSON.stringify({ error: { message: "Prompt not found" } }),
+        body: JSON.stringify({
+          data: paginated,
+          meta: {
+            total: filtered.length,
+            page: pageNum,
+            limit,
+            total_pages: Math.ceil(filtered.length / limit),
+          },
+        }),
       });
       return;
     }
 
-    const updatedPrompt: MockPrompt = {
-      ...existingPrompt,
-      ...body,
-      updated_at: new Date().toISOString(),
-    };
+    if (method === "POST") {
+      const body = JSON.parse(route.request().postData() || "{}");
+      const now = new Date().toISOString();
 
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({ data: updatedPrompt }),
-    });
-  });
+      const newPrompt: MockPrompt = {
+        id: `prompt-${Date.now()}`,
+        title: body.title || "Untitled",
+        content: body.content || "",
+        description: body.description,
+        visibility: body.visibility || "private",
+        tags: body.tags || [],
+        folder_id: body.folder_id,
+        created_at: now,
+        updated_at: now,
+      };
 
-  await page.route(/\/prompts\/[^/]+$/, async (route: Route) => {
-    if (route.request().method() !== "DELETE") {
-      await route.continue();
+      await route.fulfill({
+        status: 201,
+        contentType: "application/json",
+        body: JSON.stringify({ data: newPrompt }),
+      });
       return;
     }
 
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({ data: { message: "Deleted successfully" } }),
-    });
+    await route.continue();
   });
 }
 
@@ -245,4 +264,89 @@ export async function setupApiMocks(
 ): Promise<void> {
   await mockAuthEndpoints(page, user);
   await mockPromptsEndpoints(page, prompts);
+}
+
+export async function mockPromptDetailEndpoint(
+  page: Page,
+  prompt: MockPrompt
+): Promise<void> {
+  await page.route(`${API_PATTERN}/prompts/${prompt.id}`, async (route: Route) => {
+    if (route.request().method() !== "GET") {
+      await route.continue();
+      return;
+    }
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ data: prompt }),
+    });
+  });
+}
+
+export async function mockPromptNotFound(
+  page: Page,
+  promptId: string
+): Promise<void> {
+  await page.route(`${API_PATTERN}/prompts/${promptId}`, async (route: Route) => {
+    if (route.request().method() !== "GET") {
+      await route.continue();
+      return;
+    }
+
+    await route.fulfill({
+      status: 404,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Prompt not found" } }),
+    });
+  });
+}
+
+export async function mockPromptsListError(page: Page): Promise<void> {
+  await page.route("**/v1/prompts**", async (route: Route) => {
+    if (route.request().method() !== "GET") {
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Internal server error" } }),
+    });
+  });
+}
+
+export async function mockCreatePromptError(page: Page): Promise<void> {
+  await page.route("**/v1/prompts", async (route: Route) => {
+    if (route.request().method() !== "POST") {
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Failed to create prompt" } }),
+    });
+  });
+}
+
+export async function mockUpdatePromptError(
+  page: Page,
+  promptId: string
+): Promise<void> {
+  await page.route(`**/v1/prompts/${promptId}`, async (route: Route) => {
+    if (route.request().method() !== "PATCH") {
+      // Use fallback to pass to next route handler instead of network
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Failed to update prompt" } }),
+    });
+  });
 }

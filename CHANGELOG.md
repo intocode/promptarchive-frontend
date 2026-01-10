@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Comprehensive E2E test coverage for all uncovered pages
+  - Prompts List Page tests (12 tests): initial load, empty state, error state, navigation, copy
+  - Create Prompt Modal tests (14 tests): form validation, success/error flows, cancel behavior
+  - Prompt Detail Page tests (22 tests): view mode, edit mode, error state, copy, API errors
+  - Settings Page tests (4 tests): page access, protected route redirect
+  - Home Page Redirect tests (2 tests): auth-based routing
+  - Page Object Models: PromptsListPage, PromptDetailPage, CreatePromptModal, SettingsPage, HomePage
+  - API mock helpers: mockPromptsListError, mockCreatePromptError, mockUpdatePromptError
+  - Consolidated route handling with route.fallback() for proper handler chaining
+  - Added clipboard permissions to Playwright config for copy tests
+
 ### Changed
 
 - Extracted AuthenticatedLayout component to reduce layout duplication
