@@ -742,7 +742,7 @@
       "title": "Add sort dropdown for My Prompts",
       "category": "prompts-list",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Sort dropdown in My Prompts page header",
         "Options: Recently Modified (default), Date Created, Most Used, Most Forked",
@@ -1171,7 +1171,7 @@
       "title": "Implement copy functionality",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Copy dropdown with options",
         "Copy as plain text",
@@ -1204,7 +1204,7 @@
       "title": "Add edit/delete actions",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Edit button opens inline edit mode",
         "Delete button with confirmation",
@@ -1235,7 +1235,7 @@
       "title": "Implement inline editing",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Title and content become editable",
         "Save/cancel buttons appear",

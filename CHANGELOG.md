@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Inline editing on prompt detail page (prompts-detail-005)
+  - Click Edit to transform title, content, description into editable fields in place
+  - Visibility selector shown inline during edit mode
+  - Save/Cancel buttons replace Edit/Delete when editing
+  - Escape key cancels edit mode and restores original values
+  - Auto-save on blur: clicking outside the edit area saves changes
+  - Only sends changed fields to API (delta updates)
+  - Removed separate EditPromptForm component in favor of inline editing
+- Mobile-responsive actions dropdown on prompt detail page (prompts-detail-004)
+  - Desktop (≥768px): Edit and Delete buttons shown as before
+  - Mobile (<768px): Actions collapsed into three-dot dropdown menu
+  - PromptActionsDropdown component with Edit and Delete options
+  - Delete option uses destructive styling
+- Copy dropdown with multiple format options (prompts-detail-003)
+  - Copy dropdown menu on prompt detail page replaces single button
+  - Copy as Plain Text: copies raw prompt content
+  - Copy as Markdown: copies formatted with title, description, content, and tags
+  - Copy with Variables: shown only when prompt contains {{variable}} templates
+  - CopyPromptDropdown component using shadcn DropdownMenu
+- Sort dropdown for prompts list (prompts-list-009)
+  - Sort dropdown in My Prompts page header with ArrowDownUp icon
+  - Options: Recently Modified (default), Date Created, Most Used
+  - Sort selection persisted in URL params (?sort=...)
+  - Default sort is -updated_at, omitted from URL for cleaner links
+  - PromptsSortDropdown component using shadcn Select
 - Search functionality for prompts list (prompts-list-009)
   - Search input with magnifying glass icon in prompts list header
   - Debounced search query (300ms) to minimize API calls

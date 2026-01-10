@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 import { AlertCircle, FileText, Loader2, Plus, RefreshCw, Search } from "lucide-react";
 
 import type { ViewMode } from "@/hooks/use-view-mode";
+import type { GetPromptsSort } from "@/types/api";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useInfinitePrompts } from "@/hooks/use-infinite-prompts";
 import { useViewMode } from "@/hooks/use-view-mode";
@@ -15,6 +17,7 @@ import { PromptRow } from "@/components/prompts/prompt-row";
 import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
 import { CreatePromptModal } from "@/components/prompts/create-prompt-modal";
 import { PromptsSearch } from "@/components/prompts/prompts-search";
+import { PromptsSortDropdown, DEFAULT_SORT } from "@/components/prompts/prompts-sort";
 import { ViewModeToggle } from "@/components/prompts/view-mode-toggle";
 
 const SKELETON_COUNT = 6;
@@ -111,12 +114,14 @@ function EmptyState({
 interface PromptsContentProps {
   viewMode: ViewMode;
   search?: string;
+  sort: GetPromptsSort;
   onCreatePrompt?: () => void;
 }
 
 function PromptsContent({
   viewMode,
   search,
+  sort,
   onCreatePrompt,
 }: PromptsContentProps): React.ReactElement {
   const {
@@ -127,7 +132,7 @@ function PromptsContent({
     isLoading,
     isError,
     refetch,
-  } = useInfinitePrompts(search ? { search } : undefined);
+  } = useInfinitePrompts({ search, sort });
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -190,11 +195,26 @@ function PromptsContent({
 }
 
 export default function PromptsPage(): React.ReactElement {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const { viewMode, toggleViewMode } = useViewMode();
 
   const debouncedSearch = useDebounce(searchInput, 300);
+  const sortParam = searchParams.get("sort");
+  const sort = (sortParam as GetPromptsSort) || DEFAULT_SORT;
+
+  const handleSortChange = (newSort: GetPromptsSort) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSort === DEFAULT_SORT) {
+      params.delete("sort");
+    } else {
+      params.set("sort", newSort);
+    }
+    const query = params.toString();
+    router.push(query ? `?${query}` : "/prompts", { scroll: false });
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -206,6 +226,7 @@ export default function PromptsPage(): React.ReactElement {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <PromptsSortDropdown value={sort} onChange={handleSortChange} />
           <ViewModeToggle viewMode={viewMode} onToggle={toggleViewMode} />
           <Button onClick={() => setIsCreateModalOpen(true)}>
             <Plus className="h-4 w-4" />
@@ -221,6 +242,7 @@ export default function PromptsPage(): React.ReactElement {
       <PromptsContent
         viewMode={viewMode}
         search={debouncedSearch}
+        sort={sort}
         onCreatePrompt={() => setIsCreateModalOpen(true)}
       />
 
