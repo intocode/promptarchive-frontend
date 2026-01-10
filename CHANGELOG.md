@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Search functionality for prompts list (prompts-list-009)
+  - Search input with magnifying glass icon in prompts list header
+  - Debounced search query (300ms) to minimize API calls
+  - Clear button appears when search has content
+  - Search filters prompts via API `search` query parameter
+  - useDebounce hook for reusable debounce logic
+  - PromptsSearch component with search/clear UI
+- Enhanced empty state with CTA (prompts-list-006)
+  - Illustration icon in empty state
+  - "Create your first prompt" CTA button opens create modal
+  - Different empty state for filtered results vs no prompts
+  - Filtered empty state shows search term and suggestion to clear
+- E2E tests for empty state and search functionality
+  - Tests for empty state illustration and CTA button
+  - Tests for filtered empty state with search active
+  - PromptsListPage page object updated with new locators
+
 - View mode toggle for prompts list (prompts-list-013, prompts-list-002)
   - Toggle button in My Prompts page header switches between compact and expanded views
   - Compact view: Row-based list layout with minimal information

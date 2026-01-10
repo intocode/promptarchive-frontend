@@ -617,7 +617,7 @@
       "title": "Implement search functionality",
       "category": "prompts-list",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Search input in header or above list",
         "Debounced search query (300ms)",
@@ -781,7 +781,7 @@
       "title": "Implement empty state with CTA",
       "category": "prompts-list",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Illustration and message when no prompts",
         "Create first prompt CTA button",
@@ -797,7 +797,7 @@
       "title": "Write tests for: Implement empty state with CTA",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "E2E: shows empty state when no prompts",
         "E2E: shows filtered empty state with filters active"
