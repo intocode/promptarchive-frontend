@@ -35,6 +35,7 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         storageState: authFile,
+        permissions: ["clipboard-read", "clipboard-write"],
       },
       dependencies: ["setup"],
     },

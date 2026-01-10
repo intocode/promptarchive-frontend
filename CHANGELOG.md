@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Prompt deletion functionality (prompts-crud-007)
+  - Delete button on prompt detail page with destructive styling
+  - DeletePromptDialog component with AlertDialog for confirmation
+  - useDeletePrompt hook with cache invalidation and toast notifications
+  - Redirects to /prompts after successful deletion
+  - Added shadcn AlertDialog component for confirmation dialogs
 - Comprehensive E2E test coverage for all uncovered pages
   - Prompts List Page tests (12 tests): initial load, empty state, error state, navigation, copy
   - Create Prompt Modal tests (14 tests): form validation, success/error flows, cancel behavior
