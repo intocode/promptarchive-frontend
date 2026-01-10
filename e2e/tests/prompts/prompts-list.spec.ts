@@ -65,13 +65,71 @@ test.describe("Feature: Prompts List Page", () => {
       await promptsPage.expectEmptyState();
     });
 
-    test("should show 'No prompts yet' message", async ({ authenticatedPage }) => {
+    test("should show illustration and CTA button in empty state", async ({
+      authenticatedPage,
+    }) => {
       await mockPromptsEndpoints(authenticatedPage, []);
 
       const promptsPage = new PromptsListPage(authenticatedPage);
       await promptsPage.goto();
 
-      await expect(promptsPage.emptyState).toContainText("No prompts yet");
+      await promptsPage.expectEmptyStateWithCTA();
+    });
+
+    test("should open create modal when clicking empty state CTA", async ({
+      authenticatedPage,
+    }) => {
+      await mockPromptsEndpoints(authenticatedPage, []);
+
+      const promptsPage = new PromptsListPage(authenticatedPage);
+      await promptsPage.goto();
+
+      await promptsPage.createFirstPromptButton.click();
+
+      await expect(
+        authenticatedPage.getByRole("heading", { name: "Create New Prompt" })
+      ).toBeVisible();
+    });
+  });
+
+  test.describe("Scenario: Filtered empty state", () => {
+    test("should show filtered empty state with search active", async ({
+      authenticatedPage,
+    }) => {
+      // Mock prompts - the mock handler filters based on search query param
+      const prompts = mockPromptsList(5);
+      await mockPromptsEndpoints(authenticatedPage, prompts);
+
+      const promptsPage = new PromptsListPage(authenticatedPage);
+      await promptsPage.goto();
+
+      // Wait for prompts to load first
+      await promptsPage.expectPromptsLoaded(5);
+
+      // Search for non-existent term (mock filters and returns empty)
+      await promptsPage.searchInput.fill("xyznonexistent");
+      await authenticatedPage.waitForTimeout(400); // Wait for debounce
+
+      await promptsPage.expectFilteredEmptyState();
+    });
+
+    test("should show different message for filtered empty state", async ({
+      authenticatedPage,
+    }) => {
+      const prompts = mockPromptsList(5);
+      await mockPromptsEndpoints(authenticatedPage, prompts);
+
+      const promptsPage = new PromptsListPage(authenticatedPage);
+      await promptsPage.goto();
+
+      await promptsPage.expectPromptsLoaded(5);
+
+      // Search for non-existent term
+      await promptsPage.searchInput.fill("xyznonexistent");
+      await authenticatedPage.waitForTimeout(400);
+
+      await expect(promptsPage.filteredEmptyState).toContainText("No prompts found");
+      await expect(promptsPage.filteredEmptyState).toContainText("xyznonexistent");
     });
   });
 

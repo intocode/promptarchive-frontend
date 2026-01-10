@@ -16,8 +16,14 @@ export class PromptsListPage {
   // States
   readonly loadingSkeleton: Locator;
   readonly emptyState: Locator;
+  readonly emptyStateIllustration: Locator;
+  readonly createFirstPromptButton: Locator;
+  readonly filteredEmptyState: Locator;
   readonly errorState: Locator;
   readonly retryButton: Locator;
+
+  // Search
+  readonly searchInput: Locator;
 
   // Toast
   readonly toastMessage: Locator;
@@ -36,9 +42,19 @@ export class PromptsListPage {
 
     // States
     this.loadingSkeleton = page.locator('[class*="animate-pulse"]').first();
-    this.emptyState = page.getByText("No prompts yet");
+    this.emptyState = page.getByText("Start your prompt collection");
+    this.emptyStateIllustration = page.locator(".rounded-full.bg-muted");
+    this.createFirstPromptButton = page.getByRole("button", {
+      name: /create your first prompt/i,
+    });
+    this.filteredEmptyState = page.locator(
+      "div.flex.flex-col.items-center.justify-center.py-16"
+    );
     this.errorState = page.getByText("Failed to load prompts");
     this.retryButton = page.getByRole("button", { name: /try again/i });
+
+    // Search
+    this.searchInput = page.getByPlaceholder("Search prompts...");
 
     // Toast
     this.toastMessage = page.locator("[data-sonner-toast]");
@@ -89,6 +105,16 @@ export class PromptsListPage {
 
   async expectEmptyState(): Promise<void> {
     await expect(this.emptyState).toBeVisible();
+  }
+
+  async expectFilteredEmptyState(): Promise<void> {
+    await expect(this.filteredEmptyState).toBeVisible();
+  }
+
+  async expectEmptyStateWithCTA(): Promise<void> {
+    await expect(this.emptyState).toBeVisible();
+    await expect(this.emptyStateIllustration).toBeVisible();
+    await expect(this.createFirstPromptButton).toBeVisible();
   }
 
   async expectPromptsLoaded(count: number): Promise<void> {

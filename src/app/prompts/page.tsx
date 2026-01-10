@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { AlertCircle, Loader2, Plus, RefreshCw } from "lucide-react";
+import { AlertCircle, FileText, Loader2, Plus, RefreshCw, Search } from "lucide-react";
 
 import type { ViewMode } from "@/hooks/use-view-mode";
+import { useDebounce } from "@/hooks/use-debounce";
 import { useInfinitePrompts } from "@/hooks/use-infinite-prompts";
 import { useViewMode } from "@/hooks/use-view-mode";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { PromptCardSkeleton } from "@/components/prompts/prompt-card-skeleton";
 import { PromptRow } from "@/components/prompts/prompt-row";
 import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
 import { CreatePromptModal } from "@/components/prompts/create-prompt-modal";
+import { PromptsSearch } from "@/components/prompts/prompts-search";
 import { ViewModeToggle } from "@/components/prompts/view-mode-toggle";
 
 const SKELETON_COUNT = 6;
@@ -63,22 +65,60 @@ function ErrorState({ onRetry }: ErrorStateProps): React.ReactElement {
   );
 }
 
-function EmptyState(): React.ReactElement {
+interface EmptyStateProps {
+  search?: string;
+  onCreatePrompt?: () => void;
+}
+
+function EmptyState({
+  search,
+  onCreatePrompt,
+}: EmptyStateProps): React.ReactElement {
+  if (search) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 text-center">
+        <div className="mb-4 rounded-full bg-muted p-4">
+          <Search className="h-8 w-8 text-muted-foreground" />
+        </div>
+        <h2 className="text-lg font-semibold">No prompts found</h2>
+        <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+          No prompts match &quot;{search}&quot;. Try a different search term or
+          clear the filter.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center py-12 text-center">
-      <h2 className="text-lg font-semibold">No prompts yet</h2>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Your prompts will appear here once you create them.
+    <div className="flex flex-col items-center justify-center py-16 text-center">
+      <div className="mb-4 rounded-full bg-muted p-4">
+        <FileText className="h-8 w-8 text-muted-foreground" />
+      </div>
+      <h2 className="text-lg font-semibold">Start your prompt collection</h2>
+      <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+        Create your first prompt to begin organizing your AI workflows.
       </p>
+      {onCreatePrompt && (
+        <Button onClick={onCreatePrompt} className="mt-6">
+          <Plus className="h-4 w-4" />
+          Create your first prompt
+        </Button>
+      )}
     </div>
   );
 }
 
 interface PromptsContentProps {
   viewMode: ViewMode;
+  search?: string;
+  onCreatePrompt?: () => void;
 }
 
-function PromptsContent({ viewMode }: PromptsContentProps): React.ReactElement {
+function PromptsContent({
+  viewMode,
+  search,
+  onCreatePrompt,
+}: PromptsContentProps): React.ReactElement {
   const {
     data,
     fetchNextPage,
@@ -87,7 +127,7 @@ function PromptsContent({ viewMode }: PromptsContentProps): React.ReactElement {
     isLoading,
     isError,
     refetch,
-  } = useInfinitePrompts();
+  } = useInfinitePrompts(search ? { search } : undefined);
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -111,7 +151,7 @@ function PromptsContent({ viewMode }: PromptsContentProps): React.ReactElement {
   const prompts = data?.pages.flatMap((page) => page.data ?? []) ?? [];
 
   if (prompts.length === 0) {
-    return <EmptyState />;
+    return <EmptyState search={search} onCreatePrompt={onCreatePrompt} />;
   }
 
   if (viewMode === "expanded") {
@@ -151,7 +191,10 @@ function PromptsContent({ viewMode }: PromptsContentProps): React.ReactElement {
 
 export default function PromptsPage(): React.ReactElement {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const { viewMode, toggleViewMode } = useViewMode();
+
+  const debouncedSearch = useDebounce(searchInput, 300);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -171,7 +214,15 @@ export default function PromptsPage(): React.ReactElement {
         </div>
       </div>
 
-      <PromptsContent viewMode={viewMode} />
+      <div className="mb-4">
+        <PromptsSearch value={searchInput} onChange={setSearchInput} />
+      </div>
+
+      <PromptsContent
+        viewMode={viewMode}
+        search={debouncedSearch}
+        onCreatePrompt={() => setIsCreateModalOpen(true)}
+      />
 
       <CreatePromptModal
         open={isCreateModalOpen}
