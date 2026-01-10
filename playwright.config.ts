@@ -20,6 +20,7 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "on-first-retry",
+    permissions: ["clipboard-read", "clipboard-write"],
   },
 
   projects: [
