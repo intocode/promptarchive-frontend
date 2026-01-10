@@ -1,19 +1,16 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
 
+import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import {
-  createPromptSchema,
-  type CreatePromptFormData,
+  updatePromptSchema,
+  type UpdatePromptFormData,
 } from "@/lib/validations/prompt";
 import { VISIBILITY_OPTIONS } from "@/lib/constants";
-import {
-  usePostPrompts,
-  getGetPromptsQueryKey,
-} from "@/lib/api/generated/endpoints/prompts/prompts";
+import { useUpdatePrompt } from "@/hooks/use-update-prompt";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AutoExpandTextarea } from "@/components/ui/auto-expand-textarea";
@@ -33,48 +30,57 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-interface CreatePromptFormProps {
+interface EditPromptFormProps {
+  prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
   onSuccess?: () => void;
   onCancel?: () => void;
 }
 
-export function CreatePromptForm({
+export function EditPromptForm({
+  prompt,
   onSuccess,
   onCancel,
-}: CreatePromptFormProps): React.ReactElement {
-  const queryClient = useQueryClient();
-
-  const form = useForm<CreatePromptFormData>({
-    resolver: zodResolver(createPromptSchema),
+}: EditPromptFormProps): React.ReactElement {
+  const form = useForm<UpdatePromptFormData>({
+    resolver: zodResolver(updatePromptSchema),
     defaultValues: {
-      title: "",
-      content: "",
-      description: "",
-      visibility: "private",
+      title: prompt.title ?? "",
+      content: prompt.content ?? "",
+      description: prompt.description ?? "",
+      visibility: (prompt.visibility as "private" | "public" | "unlisted") ?? "private",
     },
     mode: "onSubmit",
   });
 
-  const { mutate: createPrompt, isPending } = usePostPrompts({
-    mutation: {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: getGetPromptsQueryKey() });
-        toast.success("Prompt created successfully");
-        onSuccess?.();
-      },
-      onError: () => {
-        toast.error("Failed to create prompt. Please try again.");
-      },
-    },
-  });
+  const { updatePrompt, isPending } = useUpdatePrompt(prompt.id!, { onSuccess });
 
-  function onSubmit(data: CreatePromptFormData) {
-    createPrompt({
-      data: {
-        ...data,
-        description: data.description || undefined,
-      },
-    });
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent): void {
+      if (event.key === "Escape") {
+        onCancel?.();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onCancel]);
+
+  function onSubmit(data: UpdatePromptFormData): void {
+    const changes: Record<string, unknown> = {};
+
+    if (data.title !== prompt.title) changes.title = data.title;
+    if (data.content !== prompt.content) changes.content = data.content;
+    if (data.description !== (prompt.description ?? "")) {
+      changes.description = data.description || undefined;
+    }
+    if (data.visibility !== prompt.visibility) changes.visibility = data.visibility;
+
+    if (Object.keys(changes).length === 0) {
+      onCancel?.();
+      return;
+    }
+
+    updatePrompt(changes);
   }
 
   return (
@@ -126,6 +132,7 @@ export function CreatePromptForm({
                 <Input
                   placeholder="Brief description of your prompt"
                   {...field}
+                  value={field.value ?? ""}
                 />
               </FormControl>
               <FormMessage />
@@ -139,7 +146,7 @@ export function CreatePromptForm({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Visibility</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select visibility" />
@@ -159,13 +166,11 @@ export function CreatePromptForm({
         />
 
         <div className="flex justify-end gap-2 pt-4">
-          {onCancel && (
-            <Button type="button" variant="outline" onClick={onCancel}>
-              Cancel
-            </Button>
-          )}
+          <Button type="button" variant="outline" onClick={onCancel}>
+            Cancel
+          </Button>
           <Button type="submit" disabled={isPending}>
-            {isPending ? "Creating..." : "Create Prompt"}
+            {isPending ? "Saving..." : "Save Changes"}
           </Button>
         </div>
       </form>

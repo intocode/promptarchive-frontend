@@ -19,3 +19,7 @@ export const createPromptSchema = z.object({
 });
 
 export type CreatePromptFormData = z.infer<typeof createPromptSchema>;
+
+export const updatePromptSchema = createPromptSchema.partial();
+
+export type UpdatePromptFormData = z.infer<typeof updatePromptSchema>;
