@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Prompt detail page (prompts-detail-001)
+  - Dynamic route at `/prompts/[id]` for viewing individual prompts
+  - Fetches prompt data using `useGetPromptsId` hook on page load
+  - Displays title, content (with serif font), and full metadata
+  - Metadata includes: visibility icon/label, folder badge, relative date, use count, view count
+  - Tags displayed as badges
+  - Description shown when present
+  - Content block with copy button and clipboard feedback
+  - Breadcrumb navigation back to prompts list
+  - Loading skeleton during data fetch
+  - Error state with retry button for not found/permission errors
+  - Components: PromptDetailContent, PromptDetailSkeleton, PromptDetailError
 - Prompt creation flow (prompts-list-012, prompts-crud-001, prompts-crud-002)
   - "New Prompt" button in prompts page header with Plus icon
   - CreatePromptModal component using Dialog with size="md" (550px)
