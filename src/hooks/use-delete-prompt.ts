@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import {
   useDeletePromptsId,
   getGetPromptsIdQueryKey,
-  getGetPromptsQueryKey,
 } from "@/lib/api/generated/endpoints/prompts/prompts";
 
 interface UseDeletePromptOptions {
@@ -26,9 +25,7 @@ export function useDeletePrompt(
         queryClient.removeQueries({
           queryKey: getGetPromptsIdQueryKey(promptId),
         });
-        queryClient.invalidateQueries({
-          queryKey: getGetPromptsQueryKey(),
-        });
+        queryClient.invalidateQueries({ queryKey: ["/prompts"] });
 
         toast.success("Prompt deleted successfully");
         options?.onSuccess?.();

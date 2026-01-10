@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- View mode toggle for prompts list (prompts-list-013, prompts-list-002)
+  - Toggle button in My Prompts page header switches between compact and expanded views
+  - Compact view: Row-based list layout with minimal information
+  - Expanded view: Card grid with content preview (150 chars), description, view count
+  - View preference persists in localStorage (key: promptarchive-view-mode)
+  - Toggle hidden on mobile (< 768px) - always shows compact view
+  - useViewMode hook using useSyncExternalStore for proper SSR handling
+  - PromptCard component for expanded grid view
+  - PromptCardSkeleton component for loading state
+  - ViewModeToggle component with List/LayoutGrid icons
 - Prompt deletion functionality (prompts-crud-007)
   - Delete button on prompt detail page with destructive styling
   - DeletePromptDialog component with AlertDialog for confirmation
