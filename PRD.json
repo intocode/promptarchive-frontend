@@ -511,7 +511,7 @@
       "title": "Create PromptCard component (expanded view)",
       "category": "prompts-list",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Includes all compact mode elements (title, folder, tags, visibility icon, date, usage counter, copy button)",
         "Shows description field (if exists)",
@@ -583,7 +583,7 @@
       "title": "Add pagination (infinite scroll)",
       "category": "prompts-list",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "useInfiniteQuery for paginated fetching",
         "Load more triggered on scroll near bottom",
@@ -870,7 +870,7 @@
       "title": "Add view mode toggle (compact/expanded)",
       "category": "prompts-list",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Toggle button in My Prompts page header",
         "Two modes: compact (default) and expanded",

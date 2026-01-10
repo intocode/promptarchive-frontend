@@ -10,10 +10,7 @@ import {
   type CreatePromptFormData,
 } from "@/lib/validations/prompt";
 import { VISIBILITY_OPTIONS } from "@/lib/constants";
-import {
-  usePostPrompts,
-  getGetPromptsQueryKey,
-} from "@/lib/api/generated/endpoints/prompts/prompts";
+import { usePostPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AutoExpandTextarea } from "@/components/ui/auto-expand-textarea";
@@ -58,7 +55,7 @@ export function CreatePromptForm({
   const { mutate: createPrompt, isPending } = usePostPrompts({
     mutation: {
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: getGetPromptsQueryKey() });
+        queryClient.invalidateQueries({ queryKey: ["/prompts"] });
         toast.success("Prompt created successfully");
         onSuccess?.();
       },

@@ -1,17 +1,39 @@
 "use client";
 
-import { useState } from "react";
-import { AlertCircle, Plus, RefreshCw } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { AlertCircle, Loader2, Plus, RefreshCw } from "lucide-react";
 
-import { useGetPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
+import type { ViewMode } from "@/hooks/use-view-mode";
+import { useInfinitePrompts } from "@/hooks/use-infinite-prompts";
+import { useViewMode } from "@/hooks/use-view-mode";
 import { Button } from "@/components/ui/button";
+import { PromptCard } from "@/components/prompts/prompt-card";
+import { PromptCardSkeleton } from "@/components/prompts/prompt-card-skeleton";
 import { PromptRow } from "@/components/prompts/prompt-row";
 import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
 import { CreatePromptModal } from "@/components/prompts/create-prompt-modal";
+import { ViewModeToggle } from "@/components/prompts/view-mode-toggle";
 
 const SKELETON_COUNT = 6;
 
-function PromptsListSkeleton(): React.ReactElement {
+interface PromptsListSkeletonProps {
+  viewMode: ViewMode;
+}
+
+function PromptsListSkeleton({
+  viewMode,
+}: PromptsListSkeletonProps): React.ReactElement {
+  if (viewMode === "expanded") {
+    return (
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
+          <PromptCardSkeleton key={index} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="divide-y divide-border rounded-lg border border-border bg-card">
       {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
@@ -52,34 +74,84 @@ function EmptyState(): React.ReactElement {
   );
 }
 
-function PromptsContent(): React.ReactElement {
-  const { data, isLoading, isError, refetch } = useGetPrompts();
+interface PromptsContentProps {
+  viewMode: ViewMode;
+}
+
+function PromptsContent({ viewMode }: PromptsContentProps): React.ReactElement {
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+    refetch,
+  } = useInfinitePrompts();
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+    rootMargin: "100px",
+  });
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (isLoading) {
-    return <PromptsListSkeleton />;
+    return <PromptsListSkeleton viewMode={viewMode} />;
   }
 
   if (isError) {
     return <ErrorState onRetry={refetch} />;
   }
 
-  const prompts = data?.data ?? [];
+  const prompts = data?.pages.flatMap((page) => page.data ?? []) ?? [];
 
   if (prompts.length === 0) {
     return <EmptyState />;
   }
 
+  if (viewMode === "expanded") {
+    return (
+      <div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {prompts.map((prompt) => (
+            <PromptCard key={prompt.id} prompt={prompt} />
+          ))}
+        </div>
+
+        <div ref={ref} className="flex justify-center py-4">
+          {isFetchingNextPage && (
+            <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="divide-y divide-border rounded-lg border border-border bg-card">
-      {prompts.map((prompt) => (
-        <PromptRow key={prompt.id} prompt={prompt} />
-      ))}
+    <div>
+      <div className="divide-y divide-border rounded-lg border border-border bg-card">
+        {prompts.map((prompt) => (
+          <PromptRow key={prompt.id} prompt={prompt} />
+        ))}
+      </div>
+
+      <div ref={ref} className="flex justify-center py-4">
+        {isFetchingNextPage && (
+          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        )}
+      </div>
     </div>
   );
 }
 
 export default function PromptsPage(): React.ReactElement {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const { viewMode, toggleViewMode } = useViewMode();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -90,13 +162,16 @@ export default function PromptsPage(): React.ReactElement {
             Manage and organize your AI prompts
           </p>
         </div>
-        <Button onClick={() => setIsCreateModalOpen(true)}>
-          <Plus className="h-4 w-4" />
-          New Prompt
-        </Button>
+        <div className="flex items-center gap-2">
+          <ViewModeToggle viewMode={viewMode} onToggle={toggleViewMode} />
+          <Button onClick={() => setIsCreateModalOpen(true)}>
+            <Plus className="h-4 w-4" />
+            New Prompt
+          </Button>
+        </div>
       </div>
 
-      <PromptsContent />
+      <PromptsContent viewMode={viewMode} />
 
       <CreatePromptModal
         open={isCreateModalOpen}
