@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Converted PromptCard to PromptRow with row-based layout (prompts-list-001-bugfix)
+  - Renamed `prompt-card.tsx` to `prompt-row.tsx` for semantic clarity
+  - Replaced card grid layout with flex row list layout
+  - Row contains: title, folder badge, tags (max 3), visibility icon, date, use_count, copy button
+  - Hover state changed from shadow to subtle background color (`bg-accent/50`)
+  - Responsive layout: stacks vertically on mobile, horizontal row on desktop
+  - Container uses `divide-y` border styling for clean list appearance
+  - Updated skeleton component to match row layout
+
 ### Added
 
 - PromptCard compact view updates (prompts-list-001)
