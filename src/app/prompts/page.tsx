@@ -1,11 +1,13 @@
 "use client";
 
-import { AlertCircle, RefreshCw } from "lucide-react";
+import { useState } from "react";
+import { AlertCircle, Plus, RefreshCw } from "lucide-react";
 
 import { useGetPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
 import { Button } from "@/components/ui/button";
 import { PromptRow } from "@/components/prompts/prompt-row";
 import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
+import { CreatePromptModal } from "@/components/prompts/create-prompt-modal";
 
 const SKELETON_COUNT = 6;
 
@@ -77,16 +79,29 @@ function PromptsContent(): React.ReactElement {
 }
 
 export default function PromptsPage(): React.ReactElement {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold">My Prompts</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Manage and organize your AI prompts
-        </p>
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold">My Prompts</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Manage and organize your AI prompts
+          </p>
+        </div>
+        <Button onClick={() => setIsCreateModalOpen(true)}>
+          <Plus className="h-4 w-4" />
+          New Prompt
+        </Button>
       </div>
 
       <PromptsContent />
+
+      <CreatePromptModal
+        open={isCreateModalOpen}
+        onOpenChange={setIsCreateModalOpen}
+      />
     </div>
   );
 }

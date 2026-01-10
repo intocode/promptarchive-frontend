@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Prompt creation flow (prompts-list-012, prompts-crud-001, prompts-crud-002)
+  - "New Prompt" button in prompts page header with Plus icon
+  - CreatePromptModal component using Dialog with size="md" (550px)
+  - CreatePromptForm with Zod validation and react-hook-form
+  - Form fields: title (max 200 chars), content (auto-expanding, max 50KB), description (optional, max 1000 chars), visibility select (private/public/unlisted)
+  - Validation errors shown on submit only (mode: "onSubmit")
+  - API integration with usePostPrompts mutation hook
+  - Query invalidation to refresh prompts list after creation
+  - Toast notifications for success/error feedback
+  - AutoExpandTextarea component for dynamic content field height
+  - Added shadcn/ui Textarea and Select components
+
 ### Changed
 
 - Converted PromptCard to PromptRow with row-based layout (prompts-list-001-bugfix)

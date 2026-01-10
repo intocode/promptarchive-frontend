@@ -443,7 +443,7 @@
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Card displays: title, folder badge, tags (max 3 visible + counter)",
         "Shows visibility icon (lock for private, globe for public/unlisted)",
@@ -843,7 +843,7 @@
       "title": "Add New Prompt button",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Prominent button above list",
         "Opens create prompt modal on click",
@@ -905,7 +905,7 @@
       "title": "Create prompt creation modal",
       "category": "prompts-crud",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Modal 500-600px width on desktop",
         "Full screen on mobile",
@@ -939,7 +939,7 @@
       "title": "Build prompt creation form with validation",
       "category": "prompts-crud",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Title field (required, max 200 chars)",
         "Content textarea (required, max 50KB, auto-expanding height)",
