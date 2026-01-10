@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check, Folder, Pencil } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Copy, Check, Folder, Pencil, Trash2 } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
@@ -10,6 +11,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EditPromptForm } from "./edit-prompt-form";
+import { DeletePromptDialog } from "./delete-prompt-dialog";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
@@ -18,7 +20,9 @@ interface PromptDetailContentProps {
 export function PromptDetailContent({
   prompt,
 }: PromptDetailContentProps): React.ReactElement {
+  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const {
     title,
@@ -61,15 +65,25 @@ export function PromptDetailContent({
       <div className="space-y-4">
         <div className="flex items-start justify-between gap-4">
           <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setIsEditing(true)}
-            className="shrink-0"
-          >
-            <Pencil className="h-4 w-4 mr-2" />
-            Edit
-          </Button>
+          <div className="flex items-center gap-2 shrink-0">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsEditing(true)}
+            >
+              <Pencil className="h-4 w-4 mr-2" />
+              Edit
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowDeleteDialog(true)}
+              className="text-destructive hover:text-destructive"
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete
+            </Button>
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -132,6 +146,14 @@ export function PromptDetailContent({
       <p className="text-xs text-muted-foreground">
         Created {formatRelativeDate(created_at)}
       </p>
+
+      <DeletePromptDialog
+        open={showDeleteDialog}
+        onOpenChange={setShowDeleteDialog}
+        promptId={prompt.id ?? ""}
+        promptTitle={title ?? "Untitled"}
+        onSuccess={() => router.push("/prompts")}
+      />
     </div>
   );
 }

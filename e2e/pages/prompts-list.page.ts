@@ -105,6 +105,12 @@ export class PromptsListPage {
   }
 
   async expectCopySuccess(): Promise<void> {
-    await expect(this.page.locator(".text-green-600")).toBeVisible();
+    // Wait for either the green check icon or the success toast
+    await expect(
+      this.page
+        .locator(".text-green-600")
+        .or(this.page.locator("[data-sonner-toast]").filter({ hasText: /copied/i }))
+        .first()
+    ).toBeVisible();
   }
 }

@@ -1048,7 +1048,7 @@
       "title": "Implement prompt deletion",
       "category": "prompts-crud",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Delete button with confirmation dialog",
         "DELETE /prompts/{id} on confirm",
