@@ -1017,7 +1017,7 @@
       "title": "Implement prompt update API integration",
       "category": "prompts-crud",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "PATCH /prompts/{id} on form submit",
         "Optimistic update with rollback on error",

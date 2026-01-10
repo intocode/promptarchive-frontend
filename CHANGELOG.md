@@ -16,6 +16,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Prompt update API integration (prompts-crud-006)
+  - Edit button on prompt detail page opens inline edit form
+  - EditPromptForm component with title, content, description, visibility fields
+  - useUpdatePrompt hook with optimistic updates and error rollback
+  - PATCH /prompts/{id} called with only changed fields
+  - Query invalidation for prompt detail and list after successful update
+  - Toast notifications for success/error feedback
+  - Escape key cancels edit mode
+  - Update validation schema added to prompt validations
 - Prompt detail page (prompts-detail-001)
   - Dynamic route at `/prompts/[id]` for viewing individual prompts
   - Fetches prompt data using `useGetPromptsId` hook on page load

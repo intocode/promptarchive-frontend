@@ -1,6 +1,7 @@
 "use client";
 
-import { Copy, Check, Folder } from "lucide-react";
+import { useState } from "react";
+import { Copy, Check, Folder, Pencil } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
@@ -8,6 +9,7 @@ import { getVisibilityConfig } from "@/lib/utils/visibility";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { EditPromptForm } from "./edit-prompt-form";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
@@ -16,6 +18,8 @@ interface PromptDetailContentProps {
 export function PromptDetailContent({
   prompt,
 }: PromptDetailContentProps): React.ReactElement {
+  const [isEditing, setIsEditing] = useState(false);
+
   const {
     title,
     content,
@@ -34,14 +38,39 @@ export function PromptDetailContent({
 
   const { copy, copied } = useCopyToClipboard();
 
-  async function handleCopy(): Promise<void> {
-    await copy(content ?? "");
+  function handleCopy(): void {
+    copy(content ?? "");
+  }
+
+  function exitEditMode(): void {
+    setIsEditing(false);
+  }
+
+  if (isEditing) {
+    return (
+      <EditPromptForm
+        prompt={prompt}
+        onSuccess={exitEditMode}
+        onCancel={exitEditMode}
+      />
+    );
   }
 
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
+        <div className="flex items-start justify-between gap-4">
+          <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsEditing(true)}
+            className="shrink-0"
+          >
+            <Pencil className="h-4 w-4 mr-2" />
+            Edit
+          </Button>
+        </div>
 
         <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-1.5">
