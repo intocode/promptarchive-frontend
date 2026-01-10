@@ -983,7 +983,7 @@
       "title": "Implement prompt creation API integration",
       "category": "prompts-crud",
       "priority": "critical",
-      "passed": false,
+      "passed": true,
       "dod": [
         "POST /prompts on form submit",
         "Success toast and modal close",
@@ -1111,7 +1111,7 @@
       "title": "Create prompt detail page",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Route: /prompts/[id]",
         "GET /prompts/{id} on page load",
