@@ -1,5 +1,4 @@
-import { AuthGuard } from "@/components/auth/auth-guard";
-import { Header } from "@/components/layout/header";
+import { AuthenticatedLayout } from "@/components/layout/authenticated-layout";
 
 interface SettingsLayoutProps {
   children: React.ReactNode;
@@ -8,10 +7,5 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({
   children,
 }: SettingsLayoutProps): React.ReactElement {
-  return (
-    <AuthGuard>
-      <Header />
-      <main>{children}</main>
-    </AuthGuard>
-  );
+  return <AuthenticatedLayout>{children}</AuthenticatedLayout>;
 }

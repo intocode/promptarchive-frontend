@@ -1,28 +1,16 @@
 "use client";
 
-import { Copy, Check, Folder, Globe, Lock, Eye } from "lucide-react";
+import { Copy, Check, Folder } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
+import { getVisibilityConfig } from "@/lib/utils/visibility";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
-}
-
-const VISIBILITY_CONFIG = {
-  public: { icon: Globe, label: "Public" },
-  private: { icon: Lock, label: "Private" },
-  unlisted: { icon: Eye, label: "Unlisted" },
-} as const;
-
-type VisibilityType = keyof typeof VISIBILITY_CONFIG;
-
-function getVisibilityConfig(visibility: string | undefined) {
-  const key = (visibility ?? "private") as VisibilityType;
-  return VISIBILITY_CONFIG[key] ?? VISIBILITY_CONFIG.private;
 }
 
 export function PromptDetailContent({

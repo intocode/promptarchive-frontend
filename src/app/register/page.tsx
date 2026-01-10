@@ -3,7 +3,7 @@ import Link from "next/link";
 import { RegisterForm } from "@/components/auth/register-form";
 import { GuestGuard } from "@/components/auth/guest-guard";
 
-export default function RegisterPage() {
+export default function RegisterPage(): React.ReactElement {
   return (
     <GuestGuard>
       <div className="flex min-h-screen items-center justify-center px-4">
