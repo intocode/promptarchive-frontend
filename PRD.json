@@ -443,7 +443,7 @@
       "title": "Create PromptCard component (compact view)",
       "category": "prompts-list",
       "priority": "critical",
-      "passed": true,
+      "passed": false,
       "dod": [
         "Card displays: title, folder badge, tags (max 3 visible + counter)",
         "Shows visibility icon (lock for private, globe for public/unlisted)",
@@ -460,6 +460,32 @@
         "E2E: displays usage counter",
         "E2E: copy button copies prompt content",
         "E2E: compact card has NO content preview"
+      ]
+    },
+    {
+      "id": "prompts-list-001-bugfix",
+      "title": "BUGFIX: Convert PromptCard from card grid to compact row list",
+      "category": "prompts-list",
+      "priority": "critical",
+      "passed": true,
+      "description": "Current implementation mismatch: UI-UX-DESIGN.md specifies that compact mode should display prompts as ROWS (table-like list), while expanded mode should display prompts as CARDS. However, the current PromptCard implementation uses Card component in a grid layout (visually expanded/card style) but without content preview (functionally compact). This is a hybrid that doesn't match either specification. The fix should convert the current view to a proper row/list layout as specified for compact mode in the design system.",
+      "dod": [
+        "Replace grid card layout with row-based list layout",
+        "Each prompt displayed as a horizontal row, not a card",
+        "Row contains: title, folder badge, tags (max 3 + counter), visibility icon, relative date, use_count, copy button",
+        "NO Card component wrapper - use simple row/flex layout",
+        "Maintain hover state (subtle background change instead of shadow)",
+        "Click on row navigates to /prompts/{id}",
+        "Copy button aligned to the right of the row",
+        "Responsive: stack elements on smaller screens if needed",
+        "Remove PromptCardSkeleton or update to row skeleton"
+      ],
+      "tests": [
+        "E2E: prompts displayed as horizontal rows, not cards",
+        "E2E: row layout matches compact mode specification",
+        "E2E: all data fields visible in row",
+        "E2E: copy button works in row layout",
+        "E2E: click navigates to prompt detail"
       ]
     },
     {

@@ -4,16 +4,16 @@ import { AlertCircle, RefreshCw } from "lucide-react";
 
 import { useGetPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
 import { Button } from "@/components/ui/button";
-import { PromptCard } from "@/components/prompts/prompt-card";
-import { PromptCardSkeleton } from "@/components/prompts/prompt-card-skeleton";
+import { PromptRow } from "@/components/prompts/prompt-row";
+import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
 
 const SKELETON_COUNT = 6;
 
 function PromptsListSkeleton(): React.ReactElement {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="divide-y divide-border rounded-lg border border-border bg-card">
       {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
-        <PromptCardSkeleton key={index} />
+        <PromptRowSkeleton key={index} />
       ))}
     </div>
   );
@@ -50,12 +50,33 @@ function EmptyState(): React.ReactElement {
   );
 }
 
-export default function PromptsPage(): React.ReactElement {
+function PromptsContent(): React.ReactElement {
   const { data, isLoading, isError, refetch } = useGetPrompts();
 
-  const prompts = data?.data ?? [];
-  const hasPrompts = prompts.length > 0;
+  if (isLoading) {
+    return <PromptsListSkeleton />;
+  }
 
+  if (isError) {
+    return <ErrorState onRetry={refetch} />;
+  }
+
+  const prompts = data?.data ?? [];
+
+  if (prompts.length === 0) {
+    return <EmptyState />;
+  }
+
+  return (
+    <div className="divide-y divide-border rounded-lg border border-border bg-card">
+      {prompts.map((prompt) => (
+        <PromptRow key={prompt.id} prompt={prompt} />
+      ))}
+    </div>
+  );
+}
+
+export default function PromptsPage(): React.ReactElement {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
@@ -65,19 +86,7 @@ export default function PromptsPage(): React.ReactElement {
         </p>
       </div>
 
-      {isLoading && <PromptsListSkeleton />}
-
-      {isError && <ErrorState onRetry={() => refetch()} />}
-
-      {!isLoading && !isError && !hasPrompts && <EmptyState />}
-
-      {!isLoading && !isError && hasPrompts && (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {prompts.map((prompt) => (
-            <PromptCard key={prompt.id} prompt={prompt} />
-          ))}
-        </div>
-      )}
+      <PromptsContent />
     </div>
   );
 }
