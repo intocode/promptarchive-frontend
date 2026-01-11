@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Improve with AI feature (ai-001, ai-002, ai-003)
+  - "Improve with AI" button on prompt detail page header with Sparkles icon
+  - Mobile dropdown menu option for Improve with AI
+  - Modal with animated bouncing dots loading state
+  - Inline diff view showing removed text in red (line-through) and added text in green
+  - Accept/Reject/Edit buttons in modal footer
+  - Edit mode allows modifying improved content before accepting
+  - Accept saves improved content via PATCH /prompts/{id}
+  - Reject closes modal without changes
+  - Rate limit (429) errors shown via toast notification
+  - `diff` library (jsdiff) for word-level diff computation
+  - New files:
+    - `src/lib/utils/diff.ts` - computeWordDiff utility
+    - `src/components/prompts/improve-loading-state.tsx` - Animated loading dots
+    - `src/components/prompts/diff-view.tsx` - Inline diff display component
+    - `src/components/prompts/improve-prompt-modal.tsx` - Main modal component
+    - `src/hooks/use-improve-prompt.ts` - Hook wrapping AI improve API
 - Live template preview functionality (template-003)
   - Preview section shown below variable input form when values are entered
   - Real-time rendering of template with filled variable values
