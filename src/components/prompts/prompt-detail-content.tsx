@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Pencil, Trash2, Copy, Check, Sparkles, History } from "lucide-react";
+import { Pencil, Trash2, Copy, Check, Sparkles, History, Share2 } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
@@ -37,6 +37,7 @@ import { InlineTagEditor } from "@/components/tags/inline-tag-editor";
 import { InlineFolderEditor } from "@/components/folders/inline-folder-editor";
 import { ImprovePromptModal } from "./improve-prompt-modal";
 import { VersionHistorySheet } from "./version-history-sheet";
+import { ShareModal } from "./share-modal";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
@@ -50,6 +51,7 @@ export function PromptDetailContent({
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [showImproveModal, setShowImproveModal] = useState(false);
   const [showHistorySheet, setShowHistorySheet] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const editContainerRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -232,6 +234,14 @@ export function PromptDetailContent({
                   <Button
                     variant="outline"
                     size="sm"
+                    onClick={() => setShowShareModal(true)}
+                  >
+                    <Share2 className="h-4 w-4 mr-2" />
+                    Share
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => setIsEditing(true)}
                   >
                     <Pencil className="h-4 w-4 mr-2" />
@@ -254,6 +264,7 @@ export function PromptDetailContent({
                     onDelete={() => setShowDeleteDialog(true)}
                     onImprove={() => setShowImproveModal(true)}
                     onHistory={() => setShowHistorySheet(true)}
+                    onShare={() => setShowShareModal(true)}
                   />
                 </div>
               </>
@@ -424,6 +435,12 @@ export function PromptDetailContent({
         onOpenChange={setShowHistorySheet}
         promptId={prompt.id ?? ""}
         currentContent={content ?? ""}
+      />
+
+      <ShareModal
+        open={showShareModal}
+        onOpenChange={setShowShareModal}
+        promptId={prompt.id ?? ""}
       />
     </div>
   );
