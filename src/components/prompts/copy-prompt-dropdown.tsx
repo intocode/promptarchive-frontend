@@ -1,10 +1,14 @@
 "use client";
 
-import { Copy, Check, FileText, FileCode, Braces } from "lucide-react";
+import { Copy, Check, FileText, FileCode, Braces, AlertTriangle } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServiceTagSummary } from "@/types/api";
 import { HAS_VARIABLES_PATTERN } from "@/lib/constants/templates";
-import { renderTemplate } from "@/lib/utils/templates";
+import {
+  renderTemplate,
+  areAllVariablesFilled,
+  getUnfilledVariables,
+} from "@/lib/utils/templates";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +17,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface CopyPromptDropdownProps {
   content: string;
@@ -32,6 +41,12 @@ export function CopyPromptDropdown({
   const { copy, copied } = useCopyToClipboard();
 
   const hasVariables = HAS_VARIABLES_PATTERN.test(content);
+  const allVariablesFilled = hasVariables
+    ? areAllVariablesFilled(content, variableValues ?? {})
+    : true;
+  const unfilledVars = hasVariables
+    ? getUnfilledVariables(content, variableValues ?? {})
+    : [];
 
   function copyPlainText(): void {
     copy(content);
@@ -80,12 +95,29 @@ export function CopyPromptDropdown({
           Copy as Markdown
         </DropdownMenuItem>
         {hasVariables && (
-          <DropdownMenuItem
-            onClick={() => copy(renderTemplate(content, variableValues ?? {}))}
-          >
-            <Braces className="h-4 w-4 mr-2" />
-            Copy with Variables
-          </DropdownMenuItem>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <DropdownMenuItem
+                disabled={!allVariablesFilled}
+                onClick={() =>
+                  allVariablesFilled &&
+                  copy(renderTemplate(content, variableValues ?? {}))
+                }
+                className={!allVariablesFilled ? "opacity-50" : ""}
+              >
+                <Braces className="h-4 w-4 mr-2" />
+                Copy with Variables
+                {!allVariablesFilled && (
+                  <AlertTriangle className="h-3 w-3 ml-auto text-amber-500" />
+                )}
+              </DropdownMenuItem>
+            </TooltipTrigger>
+            {!allVariablesFilled && (
+              <TooltipContent side="left">
+                <p>Fill all variables: {unfilledVars.join(", ")}</p>
+              </TooltipContent>
+            )}
+          </Tooltip>
         )}
       </DropdownMenuContent>
     </DropdownMenu>

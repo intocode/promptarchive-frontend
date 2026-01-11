@@ -8,7 +8,6 @@
     "design-system",
     "authentication",
     "prompts-list",
-    "prompts-crud",
     "prompts-detail",
     "template-variables",
     "ai-features",
@@ -18,55 +17,15 @@
     "public-gallery",
     "shared-view",
     "settings",
-    "ui-polish",
-    "testing"
+    "ui-polish"
   ],
   "tasks": [
-    {
-      "id": "design-001-tests",
-      "title": "Write tests for: Configure typography system",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: Inter font loads correctly",
-        "E2E: Spectral font loads correctly",
-        "E2E: .font-content class applies serif font"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "design-002-tests",
-      "title": "Write tests for: Update header with full navigation",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: navigation links render correctly",
-        "E2E: active route is highlighted",
-        "E2E: logo click navigates correctly based on auth state",
-        "E2E: mobile view shows burger menu"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "design-003-tests",
-      "title": "Write tests for: Configure home page redirect",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: authenticated user redirected to /prompts",
-        "E2E: unauthenticated user redirected to /gallery"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
     {
       "id": "design-004",
       "title": "Apply typography to PromptCard",
       "category": "design-system",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Prompt content preview uses serif font (Spectral)",
         "Title uses UI font (Inter)",
@@ -77,394 +36,6 @@
         "E2E: prompt content uses serif font",
         "E2E: title uses UI font"
       ]
-    },
-    {
-      "id": "design-004-tests",
-      "title": "Write tests for: Apply typography to PromptCard",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: prompt content uses serif font", "E2E: title uses UI font"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "design-005-tests",
-      "title": "Write tests for: Create base modal/dialog component",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: modal opens and closes correctly",
-        "E2E: escape key closes modal",
-        "E2E: backdrop click closes modal",
-        "E2E: modal is full screen on mobile"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "auth-005",
-      "title": "Add password visibility toggle",
-      "category": "authentication",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Eye icon button toggles password field type",
-        "Icon changes between eye and eye-off",
-        "Works on login and registration forms"
-      ],
-      "tests": [
-        "E2E: toggle changes input type from password to text",
-        "E2E: icon updates on toggle"
-      ]
-    },
-    {
-      "id": "auth-005-tests",
-      "title": "Write tests for: Add password visibility toggle",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: toggle changes input type from password to text",
-        "E2E: icon updates on toggle"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "auth-006-tests",
-      "title": "Write tests for: Handle auth errors with toast notifications",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: 401 error shows invalid credentials toast",
-        "E2E: 429 error shows rate limit toast",
-        "E2E: network error shows connection toast"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "auth-007-tests",
-      "title": "Write tests for: Implement logout functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: logout clears tokens",
-        "E2E: logout redirects to login",
-        "E2E: logout invalidates session on server"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-001-tests",
-      "title": "Write tests for: Create PromptCard component (compact view)",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: renders title, folder, tags correctly",
-        "E2E: shows correct visibility icon",
-        "E2E: displays usage counter",
-        "E2E: copy button copies prompt content",
-        "E2E: compact card has NO content preview"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-002-tests",
-      "title": "Write tests for: Create PromptCard component (expanded view)",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: expanded card shows description",
-        "E2E: content preview 100-200 chars with ellipsis",
-        "E2E: displays full statistics",
-        "E2E: NO edit/delete buttons on card"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-003-tests",
-      "title": "Write tests for: Implement prompts list page with data fetching",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: fetches and displays prompts",
-        "E2E: shows skeleton during loading",
-        "E2E: shows error state on failure"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-004-tests",
-      "title": "Write tests for: Add pagination (infinite scroll)",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: loads next page on scroll",
-        "E2E: stops loading at end of list",
-        "E2E: maintains scroll position"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-005-tests",
-      "title": "Write tests for: Implement search functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: search filters results",
-        "E2E: debounce prevents excessive requests",
-        "E2E: clear button resets search"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-006",
-      "title": "Add filter by folder dropdown",
-      "category": "prompts-list",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Dropdown shows all user folders",
-        "All folders option at top",
-        "Selected folder filters prompts",
-        "Folder count shown in dropdown"
-      ],
-      "tests": [
-        "E2E: folder filter updates list",
-        "E2E: All folders shows all prompts"
-      ]
-    },
-    {
-      "id": "prompts-list-006-tests",
-      "title": "Write tests for: Add filter by folder dropdown",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: folder filter updates list",
-        "E2E: All folders shows all prompts"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-007",
-      "title": "Add filter by tags (multi-select)",
-      "category": "prompts-list",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Multi-select dropdown for tags",
-        "Selected tags shown as badges",
-        "AND/OR filter logic option",
-        "Clear all tags button"
-      ],
-      "tests": [
-        "E2E: tag filter updates list",
-        "E2E: multiple tags filter correctly"
-      ]
-    },
-    {
-      "id": "prompts-list-007-tests",
-      "title": "Write tests for: Add filter by tags (multi-select)",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: tag filter updates list",
-        "E2E: multiple tags filter correctly"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-008",
-      "title": "Add filter by visibility",
-      "category": "prompts-list",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Dropdown with All/Public/Private/Shared options",
-        "Filters prompts by visibility status"
-      ],
-      "tests": ["E2E: visibility filter shows correct prompts"]
-    },
-    {
-      "id": "prompts-list-008-tests",
-      "title": "Write tests for: Add filter by visibility",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: visibility filter shows correct prompts"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-009-tests",
-      "title": "Write tests for: Add sort dropdown for My Prompts",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: default sort is Recently Modified",
-        "E2E: sort changes list order",
-        "E2E: sort persists in URL",
-        "E2E: all four sort options work"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-011",
-      "title": "Add skeleton loaders during data fetch",
-      "category": "prompts-list",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Skeleton cards match PromptCard dimensions",
-        "Animated pulse effect",
-        "Show 6-8 skeleton cards"
-      ],
-      "tests": [
-        "E2E: skeleton renders correct number of cards",
-        "E2E: skeleton matches design"
-      ]
-    },
-    {
-      "id": "prompts-list-011-tests",
-      "title": "Write tests for: Add skeleton loaders during data fetch",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: skeleton renders correct number of cards",
-        "E2E: skeleton matches design"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-012-tests",
-      "title": "Write tests for: Add New Prompt button",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: button opens create modal"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-list-013-tests",
-      "title": "Write tests for: Add view mode toggle",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: toggle switches between modes",
-        "E2E: preference saved to localStorage",
-        "E2E: toggle hidden on mobile viewport"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-001-tests",
-      "title": "Write tests for: Create prompt creation modal",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: modal opens and closes correctly",
-        "E2E: escape key closes modal",
-        "E2E: backdrop click closes modal"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-002-tests",
-      "title": "Write tests for: Build prompt creation form with validation",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: validation rejects empty title",
-        "E2E: validation rejects title > 200 chars",
-        "E2E: content field auto-expands",
-        "E2E: visibility has unlisted option",
-        "E2E: NO folder/tag fields in form",
-        "E2E: errors shown on submit, not real-time"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-005-tests",
-      "title": "Write tests for: Implement prompt creation API integration",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: creates prompt successfully",
-        "E2E: shows error on failure",
-        "E2E: refreshes list after creation"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-006-tests",
-      "title": "Write tests for: Implement prompt update API integration",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: updates prompt successfully", "E2E: rolls back on error"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-007-tests",
-      "title": "Write tests for: Implement prompt deletion",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: deletes prompt on confirm",
-        "E2E: cancellation prevents deletion"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-crud-008",
-      "title": "Add character counter for content",
-      "category": "prompts-crud",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Counter shows current/max characters",
-        "Warning color when approaching limit",
-        "Works for both title and content"
-      ],
-      "tests": [
-        "E2E: counter updates on input",
-        "E2E: warning style at 90% limit"
-      ]
-    },
-    {
-      "id": "prompts-crud-008-tests",
-      "title": "Write tests for: Add character counter for content",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: counter updates on input",
-        "E2E: warning style at 90% limit"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-001-tests",
-      "title": "Write tests for: Create prompt detail page",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: loads and displays prompt", "E2E: handles not found error"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-002",
@@ -479,75 +50,6 @@
         "Visibility status"
       ],
       "tests": ["E2E: renders all metadata correctly"]
-    },
-    {
-      "id": "prompts-detail-002-tests",
-      "title": "Write tests for: Display prompt metadata",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: renders all metadata correctly"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-003-tests",
-      "title": "Write tests for: Implement copy functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: copies to clipboard", "E2E: shows success toast"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-004-tests",
-      "title": "Write tests for: Add edit/delete actions",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: edit mode activates",
-        "E2E: delete with confirmation works"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-005-tests",
-      "title": "Write tests for: Implement inline editing",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: edit mode enables editing",
-        "E2E: save persists changes",
-        "E2E: cancel discards changes"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-006-tests",
-      "title": "Write tests for: Show version history slide-in panel",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: panel slides in from right",
-        "E2E: loads versions on open",
-        "E2E: displays version list with dates",
-        "E2E: clicking outside closes panel"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-007-tests",
-      "title": "Write tests for: Implement version restore",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: restores version successfully",
-        "E2E: confirmation prevents accidental restore"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-008",
@@ -567,90 +69,11 @@
       ]
     },
     {
-      "id": "prompts-detail-008-tests",
-      "title": "Write tests for: Add diff view for comparing versions",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: diff correctly identifies changes",
-        "E2E: diff view matches design"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-009-tests",
-      "title": "Write tests for: Inline tag selection",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: click opens tag dropdown",
-        "E2E: autocomplete filters tags",
-        "E2E: can create new tag inline",
-        "E2E: max 10 tags enforced",
-        "E2E: tag changes saved immediately"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "prompts-detail-010-tests",
-      "title": "Write tests for: Inline folder selection",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: click opens folder dropdown",
-        "E2E: shows existing folders",
-        "E2E: can create new folder inline",
-        "E2E: folder change saved immediately"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "template-001-tests",
-      "title": "Write tests for: Create variable extraction UI",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: detects variables in content",
-        "E2E: API extracts variables correctly"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "template-002-tests",
-      "title": "Write tests for: Build variable input form",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: renders field for each variable",
-        "E2E: validates required fields"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "template-003-tests",
-      "title": "Write tests for: Implement template preview",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: variable form shows inline on page",
-        "E2E: preview updates on input",
-        "E2E: result shown below form",
-        "E2E: copy button copies rendered content"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "template-004",
       "title": "Add variable validation",
       "category": "template-variables",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "All variables required before copy",
         "Warning for unfilled variables",
@@ -660,73 +83,6 @@
         "E2E: copy disabled with empty variables",
         "E2E: warning shown for empty variables"
       ]
-    },
-    {
-      "id": "template-004-tests",
-      "title": "Write tests for: Add variable validation",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: copy disabled with empty variables",
-        "E2E: warning shown for empty variables"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "ai-001-tests",
-      "title": "Write tests for: Create Improve with AI button and modal",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: button opens AI improve modal",
-        "E2E: loading shows animated dots",
-        "E2E: displays improved content",
-        "E2E: explanation is hidden"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "ai-002-tests",
-      "title": "Write tests for: Implement AI diff view",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: diff shows deletions in red",
-        "E2E: diff shows additions in green",
-        "E2E: accept/reject buttons visible",
-        "E2E: accept updates prompt"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "ai-003-tests",
-      "title": "Write tests for: Add accept/reject AI suggestions",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: accept saves improved content",
-        "E2E: reject discards changes"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "ai-004-tests",
-      "title": "Write tests for: Implement Generate Tags feature",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: generates tag suggestions",
-        "E2E: suggested tag shown in gray",
-        "E2E: click accepts and shows next",
-        "E2E: auto-stop after timeout",
-        "E2E: max 10 tags enforced"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-005",
@@ -743,20 +99,11 @@
       "tests": ["E2E: generates description", "E2E: saves accepted description"]
     },
     {
-      "id": "ai-005-tests",
-      "title": "Write tests for: Implement Generate Description feature",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: generates description", "E2E: saves accepted description"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "ai-006",
       "title": "Handle API rate limits",
       "category": "ai-features",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Rate limit info NOT shown in UI proactively",
         "429 error shows error message in toast",
@@ -768,19 +115,6 @@
         "E2E: no rate limit counter in UI",
         "E2E: buttons stay enabled after error"
       ]
-    },
-    {
-      "id": "ai-006-tests",
-      "title": "Write tests for: Handle API rate limits",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: 429 shows error toast",
-        "E2E: no rate limit counter in UI",
-        "E2E: buttons stay enabled after error"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-001",
@@ -800,18 +134,6 @@
       ]
     },
     {
-      "id": "folders-001-tests",
-      "title": "Write tests for: Create folders sidebar/dropdown",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: loads and displays folders",
-        "E2E: filters prompts on click"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "folders-002",
       "title": "Implement create folder modal",
       "category": "folders",
@@ -829,18 +151,6 @@
       ]
     },
     {
-      "id": "folders-002-tests",
-      "title": "Write tests for: Implement create folder modal",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: creates folder successfully",
-        "E2E: new folder appears in list"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "folders-003",
       "title": "Add rename folder functionality",
       "category": "folders",
@@ -853,15 +163,6 @@
         "Escape to cancel"
       ],
       "tests": ["E2E: renames folder successfully"]
-    },
-    {
-      "id": "folders-003-tests",
-      "title": "Write tests for: Add rename folder functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: renames folder successfully"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-004",
@@ -881,18 +182,6 @@
       ]
     },
     {
-      "id": "folders-004-tests",
-      "title": "Write tests for: Add delete folder functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: deletes folder successfully",
-        "E2E: handles prompts in folder"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "folders-005",
       "title": "Implement drag-drop folder reordering",
       "category": "folders",
@@ -905,15 +194,6 @@
         "Optimistic UI update"
       ],
       "tests": ["E2E: reorders folders on drag-drop"]
-    },
-    {
-      "id": "folders-005-tests",
-      "title": "Write tests for: Implement drag-drop folder reordering",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: reorders folders on drag-drop"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-001",
@@ -929,15 +209,6 @@
       "tests": ["E2E: loads and displays tags"]
     },
     {
-      "id": "tags-001-tests",
-      "title": "Write tests for: Create tags management UI",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: loads and displays tags"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "tags-002",
       "title": "Implement create tag functionality",
       "category": "tags",
@@ -949,15 +220,6 @@
         "Tag added to list"
       ],
       "tests": ["E2E: creates tag successfully"]
-    },
-    {
-      "id": "tags-002-tests",
-      "title": "Write tests for: Implement create tag functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: creates tag successfully"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-003",
@@ -973,15 +235,6 @@
       "tests": ["E2E: renames tag successfully"]
     },
     {
-      "id": "tags-003-tests",
-      "title": "Write tests for: Add rename tag functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: renames tag successfully"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "tags-004",
       "title": "Add delete tag functionality",
       "category": "tags",
@@ -993,45 +246,6 @@
         "Tag removed from all prompts"
       ],
       "tests": ["E2E: deletes tag successfully"]
-    },
-    {
-      "id": "tags-004-tests",
-      "title": "Write tests for: Add delete tag functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: deletes tag successfully"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "tags-005-tests",
-      "title": "Write tests for: Build tag autocomplete component",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: shows suggestions on type",
-        "E2E: keyboard navigation works"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "sharing-001-tests",
-      "title": "Write tests for: Add Share button on prompt detail",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: share button renders", "E2E: opens share modal"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "sharing-002-tests",
-      "title": "Write tests for: Create share link generation modal",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: generates share link", "E2E: copies link to clipboard"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "sharing-004",
@@ -1048,50 +262,17 @@
       "tests": ["E2E: deletes share link"]
     },
     {
-      "id": "sharing-004-tests",
-      "title": "Write tests for: Implement share link deletion",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: deletes share link"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "gallery-001-tests",
-      "title": "Write tests for: Connect gallery page to API with proper card layout",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: loads public prompts",
-        "E2E: card shows author name without link",
-        "E2E: content truncated at 200 chars",
-        "E2E: tags are NOT visible on cards",
-        "E2E: pagination works"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "gallery-002",
       "title": "Implement search in public prompts",
       "category": "public-gallery",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Search input in gallery header",
         "Debounced search query",
         "Results filtered by search term"
       ],
       "tests": ["E2E: search filters gallery results"]
-    },
-    {
-      "id": "gallery-002-tests",
-      "title": "Write tests for: Implement search in public prompts",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: search filters gallery results"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-003",
@@ -1114,67 +295,11 @@
       ]
     },
     {
-      "id": "gallery-003-tests",
-      "title": "Write tests for: Add gallery sorting options",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: default sort is Popular",
-        "E2E: sort changes result order",
-        "E2E: all three sort options work"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-
-    {
-      "id": "gallery-004-tests",
-      "title": "Write tests for: Create public prompt detail page",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: loads and displays public prompt"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "gallery-005-tests",
-      "title": "Write tests for: Implement Fork functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: forks prompt to user account",
-        "E2E: requires authentication"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "gallery-006-tests",
-      "title": "Write tests for: Add like/unlike functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: likes prompt successfully",
-        "E2E: unlikes prompt successfully"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "gallery-007-tests",
-      "title": "Write tests for: Display like and fork counts",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: renders counts correctly"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "shared-001",
       "title": "Connect shared prompt page to API",
       "category": "shared-view",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "GET /shared/{token}",
         "Display prompt content",
@@ -1186,31 +311,13 @@
       ]
     },
     {
-      "id": "shared-001-tests",
-      "title": "Write tests for: Connect shared prompt page to API",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: loads shared prompt", "E2E: shows error for invalid token"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "shared-002",
       "title": "Add copy functionality to shared view",
       "category": "shared-view",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": ["Copy button copies content", "Success toast shown"],
       "tests": ["E2E: copies to clipboard"]
-    },
-    {
-      "id": "shared-002-tests",
-      "title": "Write tests for: Add copy functionality to shared view",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: copies to clipboard"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "shared-003",
@@ -1224,15 +331,6 @@
         "Dismissible banner"
       ],
       "tests": ["E2E: renders CTA banner"]
-    },
-    {
-      "id": "shared-003-tests",
-      "title": "Write tests for: Show create account CTA",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: renders CTA banner"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "settings-001",
@@ -1252,18 +350,6 @@
       ]
     },
     {
-      "id": "settings-001-tests",
-      "title": "Write tests for: Implement sign out all devices",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: logs out all sessions",
-        "E2E: confirmation dialog prevents accidental clicks"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "ui-001",
       "title": "Implement dark mode toggle",
       "category": "ui-polish",
@@ -1278,15 +364,6 @@
       "tests": ["E2E: toggles theme correctly", "E2E: persists preference"]
     },
     {
-      "id": "ui-001-tests",
-      "title": "Write tests for: Implement dark mode toggle",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: toggles theme correctly", "E2E: persists preference"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "ui-002",
       "title": "Add keyboard shortcuts",
       "category": "ui-polish",
@@ -1299,15 +376,6 @@
         "Help modal showing shortcuts"
       ],
       "tests": ["E2E: shortcuts trigger actions"]
-    },
-    {
-      "id": "ui-002-tests",
-      "title": "Write tests for: Add keyboard shortcuts",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: shortcuts trigger actions"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-003",
@@ -1336,22 +404,6 @@
       ]
     },
     {
-      "id": "ui-003-tests",
-      "title": "Write tests for: Implement mobile responsive design with limited functionality",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": [
-        "E2E: renders correctly on mobile viewport",
-        "E2E: burger menu shows navigation",
-        "E2E: create button hidden on mobile",
-        "E2E: edit/delete hidden on mobile",
-        "E2E: cards show compact mode only on mobile",
-        "E2E: copy functionality works on mobile"
-      ],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "ui-004",
       "title": "Add loading states for all async operations",
       "category": "ui-polish",
@@ -1363,15 +415,6 @@
         "Disable interactions during loading"
       ],
       "tests": ["E2E: loading states render correctly"]
-    },
-    {
-      "id": "ui-004-tests",
-      "title": "Write tests for: Add loading states for all async operations",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: loading states render correctly"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-005",
@@ -1387,15 +430,6 @@
       "tests": ["E2E: error boundary catches errors"]
     },
     {
-      "id": "ui-005-tests",
-      "title": "Write tests for: Implement error boundaries",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: error boundary catches errors"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
       "id": "ui-006",
       "title": "Add 404 and error pages",
       "category": "ui-polish",
@@ -1407,99 +441,6 @@
         "Consistent styling with app"
       ],
       "tests": ["E2E: 404 page renders correctly"]
-    },
-    {
-      "id": "ui-006-tests",
-      "title": "Write tests for: Add 404 and error pages",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: 404 page renders correctly"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "testing-001",
-      "title": "Set up testing framework",
-      "category": "testing",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Vitest configured",
-        "React Testing Library set up",
-        "Test scripts in package.json"
-      ],
-      "tests": ["E2E: sample test passes"]
-    },
-    {
-      "id": "testing-001-tests",
-      "title": "Write tests for: Set up testing framework",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["E2E: sample test passes"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "testing-002",
-      "title": "Write unit tests for validation schemas",
-      "category": "testing",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Tests for auth schemas",
-        "Tests for prompt schemas",
-        "Tests for folder/tag schemas"
-      ],
-      "tests": ["All validation schema tests pass"]
-    },
-    {
-      "id": "testing-002-tests",
-      "title": "Write tests for: Write unit tests for validation schemas",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["All validation schema tests pass"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "testing-003",
-      "title": "Write integration tests for auth flow",
-      "category": "testing",
-      "priority": "low",
-      "passed": false,
-      "dod": ["Login flow test", "Registration flow test", "Logout flow test"],
-      "tests": ["All auth integration tests pass"]
-    },
-    {
-      "id": "testing-003-tests",
-      "title": "Write tests for: Write integration tests for auth flow",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["All auth integration tests pass"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
-    },
-    {
-      "id": "testing-004",
-      "title": "Write E2E tests for critical paths",
-      "category": "testing",
-      "priority": "low",
-      "passed": false,
-      "dod": [
-        "Playwright or Cypress set up",
-        "Login and create prompt flow",
-        "Edit and delete prompt flow"
-      ],
-      "tests": ["All E2E tests pass"]
-    },
-    {
-      "id": "testing-004-tests",
-      "title": "Write tests for: Write E2E tests for critical paths",
-      "category": "testing",
-      "priority": "medium",
-      "passed": false,
-      "dod": ["All E2E tests pass"],
-      "tests": ["All tests pass", "Code coverage meets requirements"]
     }
   ]
 }

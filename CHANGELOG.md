@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Shared prompt page (shared-001, shared-002)
+  - `/shared/[token]` route for viewing shared prompts via token
+  - SharedPromptDetailContent component with title, author, description, content
+  - Copy button with clipboard functionality and toast feedback
+  - Error state for invalid/expired tokens with retry and home navigation
+  - Loading skeleton during data fetch
+  - Uses `useGetSharedShareToken` hook from generated API client
+- Variable validation for template copy (template-004)
+  - "Copy with Variables" option disabled when not all variables are filled
+  - Warning icon (amber) shown for unfilled variables
+  - Tooltip displays list of unfilled variable names
+  - `areAllVariablesFilled()` and `getUnfilledVariables()` utilities in templates.ts
+  - Added shadcn/ui Tooltip component
 - Prompts list filters (prompts-list-007, prompts-list-008, prompts-list-010, prompts-list-011)
   - Filter by folder dropdown showing all user folders with "All folders" option
   - Filter by tags multi-select with tag badges for selected tags
