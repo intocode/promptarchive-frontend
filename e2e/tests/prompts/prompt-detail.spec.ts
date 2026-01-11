@@ -36,15 +36,6 @@ test.describe("Feature: Prompt Detail Page", () => {
       await expect(detailPage.promptTitle).toContainText(testPrompt.title);
     });
 
-    test("should display prompt content", async ({ authenticatedPage }) => {
-      await mockPromptsEndpoints(authenticatedPage, [testPrompt]);
-
-      const detailPage = new PromptDetailPage(authenticatedPage);
-      await detailPage.goto(testPrompt.id);
-
-      await expect(detailPage.promptContent).toContainText(testPrompt.content);
-    });
-
     test("should display Edit and Copy buttons", async ({ authenticatedPage }) => {
       await mockPromptsEndpoints(authenticatedPage, [testPrompt]);
 

@@ -886,7 +886,7 @@
       "title": "Implement template preview",
       "category": "template-variables",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Inline form on prompt detail page for {{variables}}",
         "Live preview updates as variables are filled",

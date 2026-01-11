@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Live template preview functionality (template-003)
+  - Preview section shown below variable input form when values are entered
+  - Real-time rendering of template with filled variable values
+  - Copy button next to preview to copy rendered content
+  - "Copy with Variables" dropdown option now uses rendered content
+  - Client-side `renderTemplate()` utility for instant feedback
 - Variable input form for templates (template-002)
   - Form on prompt detail page to fill in template variables
   - Input field for each detected `{{variable}}` with required indicator (*)

@@ -4,6 +4,7 @@ import { Copy, Check, FileText, FileCode, Braces } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServiceTagSummary } from "@/types/api";
 import { HAS_VARIABLES_PATTERN } from "@/lib/constants/templates";
+import { renderTemplate } from "@/lib/utils/templates";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,7 @@ interface CopyPromptDropdownProps {
   title: string;
   description?: string;
   tags?: GithubComIntocodePromptarchiveInternalServiceTagSummary[];
+  variableValues?: Record<string, string>;
 }
 
 export function CopyPromptDropdown({
@@ -25,6 +27,7 @@ export function CopyPromptDropdown({
   title,
   description,
   tags,
+  variableValues,
 }: CopyPromptDropdownProps): React.ReactElement {
   const { copy, copied } = useCopyToClipboard();
 
@@ -77,7 +80,9 @@ export function CopyPromptDropdown({
           Copy as Markdown
         </DropdownMenuItem>
         {hasVariables && (
-          <DropdownMenuItem onClick={copyPlainText}>
+          <DropdownMenuItem
+            onClick={() => copy(renderTemplate(content, variableValues ?? {}))}
+          >
             <Braces className="h-4 w-4 mr-2" />
             Copy with Variables
           </DropdownMenuItem>
