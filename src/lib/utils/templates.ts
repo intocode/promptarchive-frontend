@@ -58,3 +58,32 @@ export function renderTemplate(
     return match;
   });
 }
+
+/**
+ * Check if all variables have been filled (either with a value or default)
+ */
+export function areAllVariablesFilled(
+  content: string,
+  values: Record<string, string>
+): boolean {
+  const variables = extractVariables(content);
+  return variables.every((v) => {
+    const value = values[v.name];
+    return (value !== undefined && value !== "") || v.defaultValue !== undefined;
+  });
+}
+
+/**
+ * Get list of unfilled variable names (no value and no default)
+ */
+export function getUnfilledVariables(
+  content: string,
+  values: Record<string, string>
+): string[] {
+  return extractVariables(content)
+    .filter((v) => {
+      const value = values[v.name];
+      return (value === undefined || value === "") && v.defaultValue === undefined;
+    })
+    .map((v) => v.name);
+}
