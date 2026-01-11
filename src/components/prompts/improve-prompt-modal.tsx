@@ -24,7 +24,7 @@ interface ImprovePromptModalProps {
   currentContent: string;
 }
 
-type ModalState = "loading" | "diff" | "edit";
+type ModalState = "diff" | "edit";
 
 export function ImprovePromptModal({
   open,
@@ -32,11 +32,11 @@ export function ImprovePromptModal({
   promptId,
   currentContent,
 }: ImprovePromptModalProps): React.ReactElement {
-  const [modalState, setModalState] = useState<ModalState>("loading");
+  const [modalState, setModalState] = useState<ModalState>("diff");
   const [improvedContent, setImprovedContent] = useState("");
   const [editedContent, setEditedContent] = useState("");
 
-  const { improvePrompt, isPending, data, reset } = useImprovePrompt({
+  const { improvePrompt, isPending } = useImprovePrompt({
     onSuccess: (result) => {
       setImprovedContent(result.improved_content ?? "");
       setEditedContent(result.improved_content ?? "");
@@ -53,16 +53,10 @@ export function ImprovePromptModal({
     },
   });
 
-  // Start improving when modal opens
+  // Start improving when component mounts (component is keyed by modal open state in parent)
   useEffect(() => {
-    if (open) {
-      setModalState("loading");
-      setImprovedContent("");
-      setEditedContent("");
-      reset();
-      improvePrompt(promptId);
-    }
-  }, [open, promptId]);
+    improvePrompt(promptId);
+  }, [promptId, improvePrompt]);
 
   function handleAccept() {
     const contentToSave = modalState === "edit" ? editedContent : improvedContent;
@@ -82,7 +76,7 @@ export function ImprovePromptModal({
     setModalState("diff");
   }
 
-  const isLoading = isPending || modalState === "loading";
+  const isLoading = isPending;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

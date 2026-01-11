@@ -9,6 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Public gallery page with infinite scroll (gallery-002)
+  - Gallery page at `/gallery` with grid card layout (1/2/3 columns responsive)
+  - Infinite scroll pagination using react-intersection-observer
+  - Search input with debounced query (300ms)
+  - Empty states for no results and no search matches
+  - Error state with retry button
+  - Loading skeletons matching card layout
+  - PublicPromptCard component showing title, author, date, view/use counts
+  - useInfinitePublicPrompts hook with TanStack Query infinite queries
+- Version history slide-in panel (prompts-detail-006)
+  - History button in prompt detail header and mobile dropdown
+  - Sheet component sliding from right side
+  - Version list with version number, date, and content preview
+  - Click version to select and compare with current content
+  - Diff view showing changes between selected version and current
+  - Restore button with confirmation dialog
+  - useRestoreVersion hook with cache invalidation
+  - VersionHistorySheet component
+- Generate Tags AI feature for inline tag editor (ai-004)
+  - Sparkles button in inline tag editor to generate tag suggestions
+  - Sequential tag suggestions shown one at a time
+  - Accept (click tag name) or dismiss (X button) each suggestion
+  - 5-second auto-dismiss timeout per suggestion
+  - useGenerateTags hook wrapping POST /prompts/{id}/generate-tags
+  - TagSuggestion component with accept/dismiss UI
+  - LoadingDots animation during generation
+
 - Improve with AI feature (ai-001, ai-002, ai-003)
   - "Improve with AI" button on prompt detail page header with Sparkles icon
   - Mobile dropdown menu option for Improve with AI

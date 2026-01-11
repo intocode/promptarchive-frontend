@@ -639,7 +639,7 @@
       "title": "Show version history slide-in panel",
       "category": "prompts-detail",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button 'History' opens slide-in panel from RIGHT side",
         "Panel overlays content (Sheet component, side='right')",
@@ -1059,7 +1059,7 @@
       "title": "Implement Generate Tags feature",
       "category": "ai-features",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button to generate tags on prompt detail page",
         "POST /prompts/{id}/generate-tags",
@@ -1545,7 +1545,7 @@
       "title": "Connect gallery page to API with proper card layout",
       "category": "public-gallery",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "GET /public/prompts with pagination",
         "Card grid layout (expanded mode only, no view toggle)",
