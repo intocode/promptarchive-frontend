@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Pencil, Trash2, Copy, Check } from "lucide-react";
+import { Pencil, Trash2, Copy, Check, Sparkles } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
@@ -35,6 +35,7 @@ import { VariablesList } from "./variables-list";
 import { VariableInputForm } from "./variable-input-form";
 import { InlineTagEditor } from "@/components/tags/inline-tag-editor";
 import { InlineFolderEditor } from "@/components/folders/inline-folder-editor";
+import { ImprovePromptModal } from "./improve-prompt-modal";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
@@ -46,6 +47,7 @@ export function PromptDetailContent({
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showImproveModal, setShowImproveModal] = useState(false);
   const editContainerRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -207,6 +209,14 @@ export function PromptDetailContent({
                   <Button
                     variant="outline"
                     size="sm"
+                    onClick={() => setShowImproveModal(true)}
+                  >
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Improve with AI
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
                     onClick={() => setIsEditing(true)}
                   >
                     <Pencil className="h-4 w-4 mr-2" />
@@ -227,6 +237,7 @@ export function PromptDetailContent({
                   <PromptActionsDropdown
                     onEdit={() => setIsEditing(true)}
                     onDelete={() => setShowDeleteDialog(true)}
+                    onImprove={() => setShowImproveModal(true)}
                   />
                 </div>
               </>
@@ -381,6 +392,13 @@ export function PromptDetailContent({
         promptId={prompt.id ?? ""}
         promptTitle={title ?? "Untitled"}
         onSuccess={() => router.push("/prompts")}
+      />
+
+      <ImprovePromptModal
+        open={showImproveModal}
+        onOpenChange={setShowImproveModal}
+        promptId={prompt.id ?? ""}
+        currentContent={content ?? ""}
       />
     </div>
   );

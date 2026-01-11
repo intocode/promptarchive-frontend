@@ -954,7 +954,7 @@
       "title": "Create Improve with AI button and modal",
       "category": "ai-features",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button on prompt detail page header",
         "Modal shows loading state with animated dots (like in chat apps)",
@@ -991,7 +991,7 @@
       "title": "Implement AI diff view",
       "category": "ai-features",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Show original vs improved side by side (or inline diff)",
         "Deleted text highlighted in RED color",
@@ -1028,7 +1028,7 @@
       "title": "Add accept/reject AI suggestions",
       "category": "ai-features",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Accept replaces current content",
         "Reject closes modal without changes",
