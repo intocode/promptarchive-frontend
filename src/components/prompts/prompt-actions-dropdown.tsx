@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal, Pencil, Trash2, Sparkles } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash2, Sparkles, History } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,12 +15,14 @@ interface PromptActionsDropdownProps {
   onEdit: () => void;
   onDelete: () => void;
   onImprove?: () => void;
+  onHistory?: () => void;
 }
 
 export function PromptActionsDropdown({
   onEdit,
   onDelete,
   onImprove,
+  onHistory,
 }: PromptActionsDropdownProps): React.ReactElement {
   return (
     <DropdownMenu>
@@ -39,6 +41,12 @@ export function PromptActionsDropdown({
           <DropdownMenuItem onClick={onImprove}>
             <Sparkles className="h-4 w-4 mr-2" />
             Improve with AI
+          </DropdownMenuItem>
+        )}
+        {onHistory && (
+          <DropdownMenuItem onClick={onHistory}>
+            <History className="h-4 w-4 mr-2" />
+            History
           </DropdownMenuItem>
         )}
         <DropdownMenuItem onClick={onEdit}>
