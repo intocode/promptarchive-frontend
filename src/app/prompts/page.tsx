@@ -6,9 +6,10 @@ import { useInView } from "react-intersection-observer";
 import { AlertCircle, FileText, Loader2, Plus, RefreshCw, Search } from "lucide-react";
 
 import type { ViewMode } from "@/hooks/use-view-mode";
-import type { GetPromptsSort } from "@/types/api";
+import type { GetPromptsSort, GetPromptsVisibility } from "@/types/api";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useInfinitePrompts } from "@/hooks/use-infinite-prompts";
+import { usePromptsFilters } from "@/hooks/use-prompts-filters";
 import { useViewMode } from "@/hooks/use-view-mode";
 import { Button } from "@/components/ui/button";
 import { PromptCard } from "@/components/prompts/prompt-card";
@@ -16,6 +17,11 @@ import { PromptCardSkeleton } from "@/components/prompts/prompt-card-skeleton";
 import { PromptRow } from "@/components/prompts/prompt-row";
 import { PromptRowSkeleton } from "@/components/prompts/prompt-row-skeleton";
 import { CreatePromptModal } from "@/components/prompts/create-prompt-modal";
+import {
+  ActiveFilters,
+  PromptsFilters,
+  PromptsFiltersMobile,
+} from "@/components/prompts/filters";
 import { PromptsSearch } from "@/components/prompts/prompts-search";
 import { PromptsSortDropdown, DEFAULT_SORT } from "@/components/prompts/prompts-sort";
 import { ViewModeToggle } from "@/components/prompts/view-mode-toggle";
@@ -70,14 +76,18 @@ function ErrorState({ onRetry }: ErrorStateProps): React.ReactElement {
 
 interface EmptyStateProps {
   search?: string;
+  hasActiveFilters?: boolean;
   onCreatePrompt?: () => void;
+  onClearFilters?: () => void;
 }
 
 function EmptyState({
   search,
+  hasActiveFilters,
   onCreatePrompt,
+  onClearFilters,
 }: EmptyStateProps): React.ReactElement {
-  if (search) {
+  if (search || hasActiveFilters) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <div className="mb-4 rounded-full bg-muted p-4">
@@ -85,9 +95,16 @@ function EmptyState({
         </div>
         <h2 className="text-lg font-semibold">No prompts found</h2>
         <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-          No prompts match &quot;{search}&quot;. Try a different search term or
-          clear the filter.
+          {search
+            ? `No prompts match "${search}".`
+            : "No prompts match the selected filters."}{" "}
+          Try adjusting your search or filters.
         </p>
+        {hasActiveFilters && onClearFilters && (
+          <Button variant="outline" onClick={onClearFilters} className="mt-4">
+            Clear all filters
+          </Button>
+        )}
       </div>
     );
   }
@@ -115,14 +132,24 @@ interface PromptsContentProps {
   viewMode: ViewMode;
   search?: string;
   sort: GetPromptsSort;
+  folderId?: string;
+  tagIds: string[];
+  visibility?: GetPromptsVisibility;
+  hasActiveFilters: boolean;
   onCreatePrompt?: () => void;
+  onClearFilters?: () => void;
 }
 
 function PromptsContent({
   viewMode,
   search,
   sort,
+  folderId,
+  tagIds,
+  visibility,
+  hasActiveFilters,
   onCreatePrompt,
+  onClearFilters,
 }: PromptsContentProps): React.ReactElement {
   const {
     data,
@@ -132,7 +159,13 @@ function PromptsContent({
     isLoading,
     isError,
     refetch,
-  } = useInfinitePrompts({ search, sort });
+  } = useInfinitePrompts({
+    search,
+    sort,
+    folder_id: folderId,
+    tag_ids: tagIds.length > 0 ? tagIds.join(",") : undefined,
+    visibility,
+  });
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -156,7 +189,14 @@ function PromptsContent({
   const prompts = data?.pages.flatMap((page) => page.data ?? []) ?? [];
 
   if (prompts.length === 0) {
-    return <EmptyState search={search} onCreatePrompt={onCreatePrompt} />;
+    return (
+      <EmptyState
+        search={search}
+        hasActiveFilters={hasActiveFilters}
+        onCreatePrompt={onCreatePrompt}
+        onClearFilters={onClearFilters}
+      />
+    );
   }
 
   if (viewMode === "expanded") {
@@ -201,6 +241,16 @@ export default function PromptsPage(): React.ReactElement {
   const [searchInput, setSearchInput] = useState("");
   const { viewMode, toggleViewMode } = useViewMode();
 
+  const {
+    filters,
+    setFolderId,
+    setTagIds,
+    setVisibility,
+    clearAllFilters,
+    hasActiveFilters,
+    activeFilterCount,
+  } = usePromptsFilters();
+
   const debouncedSearch = useDebounce(searchInput, 300);
   const sortParam = searchParams.get("sort");
   const sort = (sortParam as GetPromptsSort) || DEFAULT_SORT;
@@ -228,12 +278,49 @@ export default function PromptsPage(): React.ReactElement {
         <div className="flex items-center gap-2">
           <PromptsSortDropdown value={sort} onChange={handleSortChange} />
           <ViewModeToggle viewMode={viewMode} onToggle={toggleViewMode} />
-          <Button onClick={() => setIsCreateModalOpen(true)}>
+          <Button onClick={() => setIsCreateModalOpen(true)} className="hidden md:flex">
             <Plus className="h-4 w-4" />
             New Prompt
           </Button>
         </div>
       </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <PromptsFilters
+          folderId={filters.folderId}
+          tagIds={filters.tagIds}
+          visibility={filters.visibility}
+          onFolderChange={setFolderId}
+          onTagsChange={setTagIds}
+          onVisibilityChange={setVisibility}
+          onClearAll={clearAllFilters}
+          hasActiveFilters={hasActiveFilters}
+        />
+        <PromptsFiltersMobile
+          folderId={filters.folderId}
+          tagIds={filters.tagIds}
+          visibility={filters.visibility}
+          onFolderChange={setFolderId}
+          onTagsChange={setTagIds}
+          onVisibilityChange={setVisibility}
+          onClearAll={clearAllFilters}
+          activeFilterCount={activeFilterCount}
+        />
+      </div>
+
+      {hasActiveFilters && (
+        <div className="mb-4 hidden md:block">
+          <ActiveFilters
+            folderId={filters.folderId}
+            tagIds={filters.tagIds}
+            visibility={filters.visibility}
+            onRemoveFolder={() => setFolderId(undefined)}
+            onRemoveTag={(id) => setTagIds(filters.tagIds.filter((t) => t !== id))}
+            onRemoveVisibility={() => setVisibility(undefined)}
+            onClearAll={clearAllFilters}
+          />
+        </div>
+      )}
 
       <div className="mb-4">
         <PromptsSearch value={searchInput} onChange={setSearchInput} />
@@ -243,7 +330,12 @@ export default function PromptsPage(): React.ReactElement {
         viewMode={viewMode}
         search={debouncedSearch}
         sort={sort}
+        folderId={filters.folderId}
+        tagIds={filters.tagIds}
+        visibility={filters.visibility}
+        hasActiveFilters={hasActiveFilters}
         onCreatePrompt={() => setIsCreateModalOpen(true)}
+        onClearFilters={clearAllFilters}
       />
 
       <CreatePromptModal

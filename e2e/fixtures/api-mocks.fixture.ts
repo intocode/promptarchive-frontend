@@ -109,10 +109,33 @@ export async function mockAuthEndpoints(
   });
 }
 
+export async function mockFoldersEndpoint(page: Page): Promise<void> {
+  await page.route("**/v1/folders**", async (route: Route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ data: [] }),
+    });
+  });
+}
+
+export async function mockTagsEndpoint(page: Page): Promise<void> {
+  await page.route("**/v1/tags**", async (route: Route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ data: [] }),
+    });
+  });
+}
+
 export async function mockPromptsEndpoints(
   page: Page,
   prompts: MockPrompt[] = mockPromptsList(10)
 ): Promise<void> {
+  // Mock folders and tags for filter components
+  await mockFoldersEndpoint(page);
+  await mockTagsEndpoint(page);
   // Single consolidated route handler for all prompts endpoints
   await page.route("**/v1/prompts**", async (route: Route) => {
     const method = route.request().method();

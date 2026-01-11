@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Prompts list filters (prompts-list-007, prompts-list-008, prompts-list-010, prompts-list-011)
+  - Filter by folder dropdown showing all user folders with "All folders" option
+  - Filter by tags multi-select with tag badges for selected tags
+  - Filter by visibility dropdown (All/Public/Private/Shared options)
+  - Skeleton loaders during data fetch matching PromptCard dimensions
+  - Active filters shown as dismissible badges with clear all button
+  - Mobile-responsive filters in collapsible sheet
+  - Filter state synced to URL params (folder, tags, visibility)
+  - usePromptsFilters hook for centralized filter state management
+  - New filter components: FolderFilter, TagFilter, VisibilityFilter, ActiveFilters, PromptsFilters, PromptsFiltersMobile
 - E2E tests for auth error handling (auth-006-tests)
   - Tests for rate limit (429) errors showing toast with retry time
   - Tests for rate limit disabling submit button
