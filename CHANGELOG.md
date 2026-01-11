@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- E2E tests for auth error handling (auth-006-tests)
+  - Tests for rate limit (429) errors showing toast with retry time
+  - Tests for rate limit disabling submit button
+  - Tests for network errors showing connection toast
+  - Tests for server errors (500) showing generic error toast
+  - Tests for token not being stored on errors
+  - API mock helpers: mockLoginRateLimit, mockLoginServerError, mockLoginNetworkError
+- E2E tests for logout functionality (auth-007-tests)
+  - Tests for successful logout clearing tokens from localStorage
+  - Tests for logout redirecting to login page
+  - Tests for logout preventing access to protected routes
+  - Tests for logout with server error still clearing local tokens
+  - Tests for showing error toast on server error but still redirecting
+  - API mock helper: mockLogoutError
+- E2E tests for password visibility toggle (auth-005-tests)
+  - Tests for password field starting with type="password"
+  - Tests for toggle changing input type to text
+  - Tests for toggle returning type to password on second click
+  - Tests for accessible labels (Show password/Hide password)
+  - Tests for register page with independent toggles for both password fields
+- Password visibility toggle on login and register forms (auth-005)
+  - Eye/EyeOff icon button to toggle password visibility
+  - Accessible aria-label changes between "Show password" and "Hide password"
+  - Register form has independent toggles for password and confirm password fields
 - Share prompt functionality (sharing-001, sharing-002)
   - Share button in prompt detail header and mobile dropdown
   - ShareModal component with share link generation

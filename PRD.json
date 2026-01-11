@@ -33,10 +33,7 @@
         "E2E: Spectral font loads correctly",
         "E2E: .font-content class applies serif font"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "design-002-tests",
@@ -50,10 +47,7 @@
         "E2E: logo click navigates correctly based on auth state",
         "E2E: mobile view shows burger menu"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "design-003-tests",
@@ -65,10 +59,7 @@
         "E2E: authenticated user redirected to /prompts",
         "E2E: unauthenticated user redirected to /gallery"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "design-004",
@@ -93,14 +84,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: prompt content uses serif font",
-        "E2E: title uses UI font"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: prompt content uses serif font", "E2E: title uses UI font"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "design-005-tests",
@@ -114,17 +99,14 @@
         "E2E: backdrop click closes modal",
         "E2E: modal is full screen on mobile"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "auth-005",
       "title": "Add password visibility toggle",
       "category": "authentication",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Eye icon button toggles password field type",
         "Icon changes between eye and eye-off",
@@ -140,47 +122,38 @@
       "title": "Write tests for: Add password visibility toggle",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "E2E: toggle changes input type from password to text",
         "E2E: icon updates on toggle"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "auth-006-tests",
       "title": "Write tests for: Handle auth errors with toast notifications",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "E2E: 401 error shows invalid credentials toast",
         "E2E: 429 error shows rate limit toast",
         "E2E: network error shows connection toast"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "auth-007-tests",
       "title": "Write tests for: Implement logout functionality",
       "category": "testing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "E2E: logout clears tokens",
         "E2E: logout redirects to login",
         "E2E: logout invalidates session on server"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-001-tests",
@@ -195,10 +168,7 @@
         "E2E: copy button copies prompt content",
         "E2E: compact card has NO content preview"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-002-tests",
@@ -212,10 +182,7 @@
         "E2E: displays full statistics",
         "E2E: NO edit/delete buttons on card"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-003-tests",
@@ -228,10 +195,7 @@
         "E2E: shows skeleton during loading",
         "E2E: shows error state on failure"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-004-tests",
@@ -244,10 +208,7 @@
         "E2E: stops loading at end of list",
         "E2E: maintains scroll position"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-005-tests",
@@ -260,10 +221,7 @@
         "E2E: debounce prevents excessive requests",
         "E2E: clear button resets search"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-006",
@@ -292,10 +250,7 @@
         "E2E: folder filter updates list",
         "E2E: All folders shows all prompts"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-007",
@@ -324,10 +279,7 @@
         "E2E: tag filter updates list",
         "E2E: multiple tags filter correctly"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-008",
@@ -347,13 +299,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: visibility filter shows correct prompts"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: visibility filter shows correct prompts"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-009-tests",
@@ -367,10 +314,7 @@
         "E2E: sort persists in URL",
         "E2E: all four sort options work"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-011",
@@ -398,10 +342,7 @@
         "E2E: skeleton renders correct number of cards",
         "E2E: skeleton matches design"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-012-tests",
@@ -409,13 +350,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: button opens create modal"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: button opens create modal"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-list-013-tests",
@@ -428,10 +364,7 @@
         "E2E: preference saved to localStorage",
         "E2E: toggle hidden on mobile viewport"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-001-tests",
@@ -444,10 +377,7 @@
         "E2E: escape key closes modal",
         "E2E: backdrop click closes modal"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-002-tests",
@@ -463,10 +393,7 @@
         "E2E: NO folder/tag fields in form",
         "E2E: errors shown on submit, not real-time"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-005-tests",
@@ -479,10 +406,7 @@
         "E2E: shows error on failure",
         "E2E: refreshes list after creation"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-006-tests",
@@ -490,14 +414,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: updates prompt successfully",
-        "E2E: rolls back on error"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: updates prompt successfully", "E2E: rolls back on error"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-007-tests",
@@ -509,10 +427,7 @@
         "E2E: deletes prompt on confirm",
         "E2E: cancellation prevents deletion"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-crud-008",
@@ -540,10 +455,7 @@
         "E2E: counter updates on input",
         "E2E: warning style at 90% limit"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-001-tests",
@@ -551,14 +463,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: loads and displays prompt",
-        "E2E: handles not found error"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: loads and displays prompt", "E2E: handles not found error"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-002",
@@ -580,13 +486,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: renders all metadata correctly"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: renders all metadata correctly"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-003-tests",
@@ -594,14 +495,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: copies to clipboard",
-        "E2E: shows success toast"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: copies to clipboard", "E2E: shows success toast"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-004-tests",
@@ -613,10 +508,7 @@
         "E2E: edit mode activates",
         "E2E: delete with confirmation works"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-005-tests",
@@ -629,32 +521,7 @@
         "E2E: save persists changes",
         "E2E: cancel discards changes"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-detail-006",
-      "title": "Show version history slide-in panel",
-      "category": "prompts-detail",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Button 'History' opens slide-in panel from RIGHT side",
-        "Panel overlays content (Sheet component, side='right')",
-        "GET /prompts/{id}/versions called on panel open",
-        "List shows version date and content preview",
-        "Click version to view full content in panel",
-        "Restore button on each version",
-        "Click outside or X button closes panel"
-      ],
-      "tests": [
-        "E2E: panel slides in from right",
-        "E2E: loads versions on open",
-        "E2E: displays version list with dates",
-        "E2E: clicking outside closes panel"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-006-tests",
@@ -668,27 +535,7 @@
         "E2E: displays version list with dates",
         "E2E: clicking outside closes panel"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-detail-007",
-      "title": "Implement version restore",
-      "category": "prompts-detail",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Restore button on each version",
-        "POST /prompts/{id}/versions/{vid}/restore",
-        "Confirmation dialog",
-        "Content updated after restore"
-      ],
-      "tests": [
-        "E2E: restores version successfully",
-        "E2E: confirmation prevents accidental restore"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-007-tests",
@@ -700,10 +547,7 @@
         "E2E: restores version successfully",
         "E2E: confirmation prevents accidental restore"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-008",
@@ -732,33 +576,7 @@
         "E2E: diff correctly identifies changes",
         "E2E: diff view matches design"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-detail-009",
-      "title": "Implement inline tag selection on prompt detail page",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Tags section on prompt detail page shows current tags as badges",
-        "Click on tags section opens dropdown with search/autocomplete",
-        "Dropdown shows existing tags from GET /tags",
-        "Create new tag option at bottom of dropdown",
-        "Selected tags update via PATCH /prompts/{id} immediately",
-        "Each tag has X button to remove",
-        "Max 10 tags per prompt enforced with error message"
-      ],
-      "tests": [
-        "E2E: click opens tag dropdown",
-        "E2E: autocomplete filters tags",
-        "E2E: can create new tag inline",
-        "E2E: max 10 tags enforced",
-        "E2E: tag changes saved immediately"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-009-tests",
@@ -773,32 +591,7 @@
         "E2E: max 10 tags enforced",
         "E2E: tag changes saved immediately"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-detail-010",
-      "title": "Implement inline folder selection on prompt detail page",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Folder badge on prompt detail page shows current folder",
-        "Click on folder badge opens dropdown",
-        "Dropdown shows folders from GET /folders",
-        "Uncategorized option (no folder) at top",
-        "Create new folder option at bottom",
-        "Folder updates via PATCH /prompts/{id} immediately"
-      ],
-      "tests": [
-        "E2E: click opens folder dropdown",
-        "E2E: shows existing folders",
-        "E2E: uncategorized option works",
-        "E2E: can create new folder inline",
-        "E2E: folder change saved immediately"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "prompts-detail-010-tests",
@@ -812,27 +605,7 @@
         "E2E: can create new folder inline",
         "E2E: folder change saved immediately"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "template-001",
-      "title": "Create variable extraction UI",
-      "category": "template-variables",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Detect {{variable}} syntax in content",
-        "Display list of extracted variables",
-        "GET /prompts/{id}/variables to extract",
-        "Highlight variables in content preview"
-      ],
-      "tests": [
-        "E2E: detects variables in content",
-        "E2E: API extracts variables correctly"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "template-001-tests",
@@ -844,27 +617,7 @@
         "E2E: detects variables in content",
         "E2E: API extracts variables correctly"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "template-002",
-      "title": "Build variable input form",
-      "category": "template-variables",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Form field for each variable",
-        "Required indicator for all variables",
-        "Clear all button",
-        "Remember values option"
-      ],
-      "tests": [
-        "E2E: renders field for each variable",
-        "E2E: validates required fields"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "template-002-tests",
@@ -876,30 +629,7 @@
         "E2E: renders field for each variable",
         "E2E: validates required fields"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "template-003",
-      "title": "Implement template preview",
-      "category": "template-variables",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Inline form on prompt detail page for {{variables}}",
-        "Live preview updates as variables are filled",
-        "Rendered result shown BELOW the form",
-        "Copy button next to rendered result",
-        "POST /prompts/{id}/render for server-side rendering"
-      ],
-      "tests": [
-        "E2E: variable form shows inline on page",
-        "E2E: preview updates on input",
-        "E2E: result shown below form",
-        "E2E: copy button copies rendered content"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "template-003-tests",
@@ -913,10 +643,7 @@
         "E2E: result shown below form",
         "E2E: copy button copies rendered content"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "template-004",
@@ -944,30 +671,7 @@
         "E2E: copy disabled with empty variables",
         "E2E: warning shown for empty variables"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "ai-001",
-      "title": "Create Improve with AI button and modal",
-      "category": "ai-features",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Button on prompt detail page header",
-        "Modal shows loading state with animated dots (like in chat apps)",
-        "POST /prompts/{id}/improve to get AI improvements",
-        "Display improved version in modal",
-        "Explanation from API is NOT shown (per design spec)"
-      ],
-      "tests": [
-        "E2E: button opens AI improve modal",
-        "E2E: loading shows animated dots",
-        "E2E: displays improved content",
-        "E2E: explanation is hidden"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-001-tests",
@@ -981,30 +685,7 @@
         "E2E: displays improved content",
         "E2E: explanation is hidden"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "ai-002",
-      "title": "Implement AI diff view",
-      "category": "ai-features",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Show original vs improved side by side (or inline diff)",
-        "Deleted text highlighted in RED color",
-        "Added text highlighted in GREEN color",
-        "Accept/reject buttons below diff",
-        "Edit improved version option before accepting"
-      ],
-      "tests": [
-        "E2E: diff shows deletions in red",
-        "E2E: diff shows additions in green",
-        "E2E: accept/reject buttons visible",
-        "E2E: accept updates prompt"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-002-tests",
@@ -1018,26 +699,7 @@
         "E2E: accept/reject buttons visible",
         "E2E: accept updates prompt"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "ai-003",
-      "title": "Add accept/reject AI suggestions",
-      "category": "ai-features",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Accept replaces current content",
-        "Reject closes modal without changes",
-        "Edit allows modifying suggestion first"
-      ],
-      "tests": [
-        "E2E: accept saves improved content",
-        "E2E: reject discards changes"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-003-tests",
@@ -1049,33 +711,7 @@
         "E2E: accept saves improved content",
         "E2E: reject discards changes"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "ai-004",
-      "title": "Implement Generate Tags feature",
-      "category": "ai-features",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Button to generate tags on prompt detail page",
-        "POST /prompts/{id}/generate-tags",
-        "Suggested tag shown in GRAY color",
-        "Click on suggested tag accepts it and shows next suggestion",
-        "Auto-stop by timeout if user doesn't click",
-        "Max 10 tags total enforced",
-        "Loading state with animated dots"
-      ],
-      "tests": [
-        "E2E: generates tag suggestions",
-        "E2E: suggested tag shown in gray",
-        "E2E: click accepts and shows next",
-        "E2E: auto-stop after timeout",
-        "E2E: max 10 tags enforced"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-004-tests",
@@ -1090,10 +726,7 @@
         "E2E: auto-stop after timeout",
         "E2E: max 10 tags enforced"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-005",
@@ -1107,10 +740,7 @@
         "Display suggested description",
         "Accept or edit before saving"
       ],
-      "tests": [
-        "E2E: generates description",
-        "E2E: saves accepted description"
-      ]
+      "tests": ["E2E: generates description", "E2E: saves accepted description"]
     },
     {
       "id": "ai-005-tests",
@@ -1118,14 +748,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: generates description",
-        "E2E: saves accepted description"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: generates description", "E2E: saves accepted description"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ai-006",
@@ -1156,10 +780,7 @@
         "E2E: no rate limit counter in UI",
         "E2E: buttons stay enabled after error"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-001",
@@ -1188,10 +809,7 @@
         "E2E: loads and displays folders",
         "E2E: filters prompts on click"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-002",
@@ -1220,10 +838,7 @@
         "E2E: creates folder successfully",
         "E2E: new folder appears in list"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-003",
@@ -1245,13 +860,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: renames folder successfully"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: renames folder successfully"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-004",
@@ -1280,10 +890,7 @@
         "E2E: deletes folder successfully",
         "E2E: handles prompts in folder"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "folders-005",
@@ -1305,13 +912,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: reorders folders on drag-drop"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: reorders folders on drag-drop"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-001",
@@ -1332,13 +934,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: loads and displays tags"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: loads and displays tags"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-002",
@@ -1359,13 +956,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: creates tag successfully"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: creates tag successfully"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-003",
@@ -1386,13 +978,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: renames tag successfully"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: renames tag successfully"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-004",
@@ -1413,30 +1000,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: deletes tag successfully"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "tags-005",
-      "title": "Build tag autocomplete component",
-      "category": "tags",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Input with dropdown suggestions",
-        "GET /tags?search={query} for autocomplete",
-        "Keyboard navigation (up/down/enter)",
-        "Create new tag option"
-      ],
-      "tests": [
-        "E2E: shows suggestions on type",
-        "E2E: keyboard navigation works"
-      ]
+      "dod": ["E2E: deletes tag successfully"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "tags-005-tests",
@@ -1448,22 +1013,7 @@
         "E2E: shows suggestions on type",
         "E2E: keyboard navigation works"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "sharing-001",
-      "title": "Add Share button on prompt detail",
-      "category": "sharing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Share button visible on detail page",
-        "Opens share modal on click"
-      ],
-      "tests": ["E2E: share button renders", "E2E: opens share modal"]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "sharing-001-tests",
@@ -1471,31 +1021,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: share button renders",
-        "E2E: opens share modal"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "sharing-002",
-      "title": "Create share link generation modal",
-      "category": "sharing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "POST /prompts/{id}/share to generate link",
-        "Display generated link",
-        "Copy link button",
-        "Success toast on copy"
-      ],
-      "tests": [
-        "E2E: generates share link",
-        "E2E: copies link to clipboard"
-      ]
+      "dod": ["E2E: share button renders", "E2E: opens share modal"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "sharing-002-tests",
@@ -1503,14 +1030,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: generates share link",
-        "E2E: copies link to clipboard"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: generates share link", "E2E: copies link to clipboard"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "sharing-004",
@@ -1532,39 +1053,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: deletes share link"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "gallery-001",
-      "title": "Connect gallery page to API with proper card layout",
-      "category": "public-gallery",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "GET /public/prompts with pagination",
-        "Card grid layout (expanded mode only, no view toggle)",
-        "Card shows: title, author name (text only, no link)",
-        "Card shows: content preview (200 chars max with ellipsis)",
-        "Card shows: view_count, use_count (forks) with icons",
-        "Card shows: relative date (e.g., '2 days ago')",
-        "Tags are NOT displayed on gallery cards",
-        "Load more button for pagination"
-      ],
-      "tests": [
-        "E2E: loads public prompts",
-        "E2E: card shows author name without link",
-        "E2E: content truncated at 200 chars",
-        "E2E: shows views and forks counts",
-        "E2E: date shown in relative format",
-        "E2E: tags are NOT visible on cards",
-        "E2E: pagination works"
-      ]
+      "dod": ["E2E: deletes share link"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-001-tests",
@@ -1579,10 +1069,7 @@
         "E2E: tags are NOT visible on cards",
         "E2E: pagination works"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-002",
@@ -1603,13 +1090,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: search filters gallery results"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: search filters gallery results"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-003",
@@ -1642,55 +1124,17 @@
         "E2E: sort changes result order",
         "E2E: all three sort options work"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
-    {
-      "id": "gallery-004",
-      "title": "Create public prompt detail page",
-      "category": "public-gallery",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Route: /gallery/[id]",
-        "GET /public/prompts/{id}",
-        "Display prompt content and metadata",
-        "Author info shown"
-      ],
-      "tests": ["E2E: loads and displays public prompt"]
-    },
+
     {
       "id": "gallery-004-tests",
       "title": "Write tests for: Create public prompt detail page",
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: loads and displays public prompt"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "gallery-005",
-      "title": "Implement Fork functionality",
-      "category": "public-gallery",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Fork button on public prompt",
-        "POST /public/prompts/{id}/fork",
-        "Redirect to user's copy of prompt",
-        "Login required - show prompt if not authenticated"
-      ],
-      "tests": [
-        "E2E: forks prompt to user account",
-        "E2E: requires authentication"
-      ]
+      "dod": ["E2E: loads and displays public prompt"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-005-tests",
@@ -1702,26 +1146,7 @@
         "E2E: forks prompt to user account",
         "E2E: requires authentication"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "gallery-006",
-      "title": "Add like/unlike functionality",
-      "category": "public-gallery",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Heart icon button",
-        "POST /public/prompts/{id}/like to toggle like/unlike",
-        "Like count updates optimistically"
-      ],
-      "tests": [
-        "E2E: likes prompt successfully",
-        "E2E: unlikes prompt successfully"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-006-tests",
@@ -1733,23 +1158,7 @@
         "E2E: likes prompt successfully",
         "E2E: unlikes prompt successfully"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "gallery-007",
-      "title": "Display like and fork counts",
-      "category": "public-gallery",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Show like count with heart icon",
-        "Show fork count with fork icon",
-        "Counts update after actions"
-      ],
-      "tests": ["E2E: renders counts correctly"]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "gallery-007-tests",
@@ -1757,13 +1166,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: renders counts correctly"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: renders counts correctly"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "shared-001",
@@ -1787,14 +1191,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: loads shared prompt",
-        "E2E: shows error for invalid token"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: loads shared prompt", "E2E: shows error for invalid token"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "shared-002",
@@ -1811,13 +1209,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: copies to clipboard"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: copies to clipboard"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "shared-003",
@@ -1838,13 +1231,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: renders CTA banner"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: renders CTA banner"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "settings-001",
@@ -1873,10 +1261,7 @@
         "E2E: logs out all sessions",
         "E2E: confirmation dialog prevents accidental clicks"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-001",
@@ -1890,10 +1275,7 @@
         "Persist preference in localStorage",
         "System preference detection"
       ],
-      "tests": [
-        "E2E: toggles theme correctly",
-        "E2E: persists preference"
-      ]
+      "tests": ["E2E: toggles theme correctly", "E2E: persists preference"]
     },
     {
       "id": "ui-001-tests",
@@ -1901,14 +1283,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: toggles theme correctly",
-        "E2E: persists preference"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: toggles theme correctly", "E2E: persists preference"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-002",
@@ -1930,13 +1306,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: shortcuts trigger actions"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: shortcuts trigger actions"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-003",
@@ -1978,10 +1349,7 @@
         "E2E: cards show compact mode only on mobile",
         "E2E: copy functionality works on mobile"
       ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-004",
@@ -2002,13 +1370,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: loading states render correctly"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: loading states render correctly"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-005",
@@ -2029,13 +1392,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: error boundary catches errors"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: error boundary catches errors"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "ui-006",
@@ -2056,13 +1414,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: 404 page renders correctly"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: 404 page renders correctly"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "testing-001",
@@ -2083,13 +1436,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "E2E: sample test passes"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["E2E: sample test passes"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "testing-002",
@@ -2110,13 +1458,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "All validation schema tests pass"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["All validation schema tests pass"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "testing-003",
@@ -2133,13 +1476,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "All auth integration tests pass"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["All auth integration tests pass"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     },
     {
       "id": "testing-004",
@@ -2160,13 +1498,8 @@
       "category": "testing",
       "priority": "medium",
       "passed": false,
-      "dod": [
-        "All E2E tests pass"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
+      "dod": ["All E2E tests pass"],
+      "tests": ["All tests pass", "Code coverage meets requirements"]
     }
   ]
 }

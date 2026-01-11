@@ -5,13 +5,15 @@ export class LoginPage {
   readonly page: Page;
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
+  readonly passwordToggle: Locator;
   readonly submitButton: Locator;
   readonly toastMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.emailInput = page.getByLabel("Email");
-    this.passwordInput = page.getByLabel("Password");
+    this.passwordInput = page.locator("input[autocomplete='current-password']");
+    this.passwordToggle = page.getByRole("button", { name: /show password|hide password/i });
     this.submitButton = page.getByRole("button", { name: /sign in/i });
     this.toastMessage = page.locator("[data-sonner-toast]");
   }

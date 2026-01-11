@@ -350,3 +350,58 @@ export async function mockUpdatePromptError(
     });
   });
 }
+
+export async function mockLoginRateLimit(
+  page: Page,
+  retryAfter = 60
+): Promise<void> {
+  await page.route(`${API_PATTERN}/auth/login`, async (route: Route) => {
+    if (route.request().method() !== "POST") {
+      await route.continue();
+      return;
+    }
+
+    await route.fulfill({
+      status: 429,
+      contentType: "application/json",
+      headers: { "retry-after": String(retryAfter) },
+      body: JSON.stringify({ error: { message: "Too many requests" } }),
+    });
+  });
+}
+
+export async function mockLoginServerError(page: Page): Promise<void> {
+  await page.route(`${API_PATTERN}/auth/login`, async (route: Route) => {
+    if (route.request().method() !== "POST") {
+      await route.continue();
+      return;
+    }
+
+    await route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Internal server error" } }),
+    });
+  });
+}
+
+export async function mockLoginNetworkError(page: Page): Promise<void> {
+  await page.route(`${API_PATTERN}/auth/login`, async (route: Route) => {
+    if (route.request().method() !== "POST") {
+      await route.continue();
+      return;
+    }
+
+    await route.abort("failed");
+  });
+}
+
+export async function mockLogoutError(page: Page): Promise<void> {
+  await page.route(`${API_PATTERN}/auth/logout`, async (route: Route) => {
+    await route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { message: "Logout failed" } }),
+    });
+  });
+}
