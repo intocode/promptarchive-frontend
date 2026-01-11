@@ -4,12 +4,13 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2, Copy, Check } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
 import { getVisibilityConfig } from "@/lib/utils/visibility";
-import { extractVariables } from "@/lib/utils/templates";
+import { extractVariables, renderTemplate } from "@/lib/utils/templates";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import {
   updatePromptSchema,
   type UpdatePromptFormData,
@@ -70,6 +71,14 @@ export function PromptDetailContent({
   }, [content]);
 
   const promptHasVariables = clientVariables.length > 0;
+
+  // State for variable values from the input form
+  const [variableValues, setVariableValues] = useState<Record<string, string>>(
+    {}
+  );
+
+  // Copy hook for rendered content
+  const { copy: copyRendered, copied: copiedRendered } = useCopyToClipboard();
 
   const form = useForm<UpdatePromptFormData>({
     resolver: zodResolver(updatePromptSchema),
@@ -292,6 +301,7 @@ export function PromptDetailContent({
                 title={title ?? "Untitled"}
                 description={description}
                 tags={tags}
+                variableValues={variableValues}
               />
             </div>
           )}
@@ -325,7 +335,38 @@ export function PromptDetailContent({
                 name: v.name,
                 defaultValue: v.defaultValue,
               }))}
+              onValuesChange={setVariableValues}
             />
+
+            {/* Template Preview - shown when variables have values */}
+            {Object.keys(variableValues).length > 0 && (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-muted-foreground">
+                    Preview
+                  </h3>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      copyRendered(renderTemplate(content ?? "", variableValues))
+                    }
+                  >
+                    {copiedRendered ? (
+                      <Check className="h-4 w-4 mr-2 text-green-600" />
+                    ) : (
+                      <Copy className="h-4 w-4 mr-2" />
+                    )}
+                    Copy
+                  </Button>
+                </div>
+                <div className="rounded-lg border bg-muted/30 p-4">
+                  <pre className="font-content whitespace-pre-wrap text-sm leading-relaxed">
+                    {renderTemplate(content ?? "", variableValues)}
+                  </pre>
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>
