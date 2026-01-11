@@ -678,7 +678,7 @@
       "title": "Implement version restore",
       "category": "prompts-detail",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Restore button on each version",
         "POST /prompts/{id}/versions/{vid}/restore",
@@ -1458,7 +1458,7 @@
       "title": "Add Share button on prompt detail",
       "category": "sharing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Share button visible on detail page",
         "Opens share modal on click"
@@ -1485,7 +1485,7 @@
       "title": "Create share link generation modal",
       "category": "sharing",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "POST /prompts/{id}/share to generate link",
         "Display generated link",
@@ -1652,7 +1652,7 @@
       "title": "Create public prompt detail page",
       "category": "public-gallery",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Route: /gallery/[id]",
         "GET /public/prompts/{id}",
@@ -1680,7 +1680,7 @@
       "title": "Implement Fork functionality",
       "category": "public-gallery",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Fork button on public prompt",
         "POST /public/prompts/{id}/fork",
@@ -1712,7 +1712,7 @@
       "title": "Add like/unlike functionality",
       "category": "public-gallery",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Heart icon button",
         "POST /public/prompts/{id}/like to toggle like/unlike",
@@ -1743,7 +1743,7 @@
       "title": "Display like and fork counts",
       "category": "public-gallery",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Show like count with heart icon",
         "Show fork count with fork icon",

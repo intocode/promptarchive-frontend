@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Share prompt functionality (sharing-001, sharing-002)
+  - Share button in prompt detail header and mobile dropdown
+  - ShareModal component with share link generation
+  - Copy share link to clipboard with success feedback
+  - useSharePrompt hook wrapping POST /prompts/{id}/share
+- Public gallery detail page (gallery-004, gallery-005, gallery-006, gallery-007)
+  - `/gallery/[id]` route for viewing public prompts
+  - Read-only view with title, author, description, content
+  - View count, fork count, and likes count display
+  - Copy content button
+  - Like/unlike toggle with optimistic updates
+  - Fork to My Prompts button with auth check
+  - Skeleton and error components for loading states
 - Public gallery page with infinite scroll (gallery-002)
   - Gallery page at `/gallery` with grid card layout (1/2/3 columns responsive)
   - Infinite scroll pagination using react-intersection-observer

@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal, Pencil, Trash2, Sparkles, History } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash2, Sparkles, History, Share2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,7 @@ interface PromptActionsDropdownProps {
   onDelete: () => void;
   onImprove?: () => void;
   onHistory?: () => void;
+  onShare?: () => void;
 }
 
 export function PromptActionsDropdown({
@@ -23,6 +24,7 @@ export function PromptActionsDropdown({
   onDelete,
   onImprove,
   onHistory,
+  onShare,
 }: PromptActionsDropdownProps): React.ReactElement {
   return (
     <DropdownMenu>
@@ -47,6 +49,12 @@ export function PromptActionsDropdown({
           <DropdownMenuItem onClick={onHistory}>
             <History className="h-4 w-4 mr-2" />
             History
+          </DropdownMenuItem>
+        )}
+        {onShare && (
+          <DropdownMenuItem onClick={onShare}>
+            <Share2 className="h-4 w-4 mr-2" />
+            Share
           </DropdownMenuItem>
         )}
         <DropdownMenuItem onClick={onEdit}>
