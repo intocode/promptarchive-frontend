@@ -228,7 +228,7 @@
       "title": "Add filter by folder dropdown",
       "category": "prompts-list",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Dropdown shows all user folders",
         "All folders option at top",
@@ -257,7 +257,7 @@
       "title": "Add filter by tags (multi-select)",
       "category": "prompts-list",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Multi-select dropdown for tags",
         "Selected tags shown as badges",
@@ -286,7 +286,7 @@
       "title": "Add filter by visibility",
       "category": "prompts-list",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Dropdown with All/Public/Private/Shared options",
         "Filters prompts by visibility status"
@@ -321,7 +321,7 @@
       "title": "Add skeleton loaders during data fetch",
       "category": "prompts-list",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Skeleton cards match PromptCard dimensions",
         "Animated pulse effect",
