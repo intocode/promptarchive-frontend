@@ -100,6 +100,8 @@ export class PromptDetailPage {
 
   async copyContent(): Promise<void> {
     await this.copyButton.click();
+    // Click the "Copy as Plain Text" menu item in the dropdown
+    await this.page.getByRole("menuitem", { name: /copy as plain text/i }).click();
   }
 
   async enterEditMode(): Promise<void> {

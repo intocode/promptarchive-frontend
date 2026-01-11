@@ -6,7 +6,9 @@ export class RegisterPage {
   readonly nameInput: Locator;
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
+  readonly passwordToggle: Locator;
   readonly confirmPasswordInput: Locator;
+  readonly confirmPasswordToggle: Locator;
   readonly submitButton: Locator;
   readonly toastMessage: Locator;
   readonly loginLink: Locator;
@@ -15,8 +17,10 @@ export class RegisterPage {
     this.page = page;
     this.nameInput = page.getByLabel("Name");
     this.emailInput = page.getByLabel("Email");
-    this.passwordInput = page.getByLabel("Password", { exact: true });
-    this.confirmPasswordInput = page.getByLabel("Confirm Password");
+    this.passwordInput = page.locator("input[autocomplete='new-password']").first();
+    this.passwordToggle = page.getByRole("button", { name: /show password|hide password/i }).first();
+    this.confirmPasswordInput = page.locator("input[autocomplete='new-password']").last();
+    this.confirmPasswordToggle = page.getByRole("button", { name: /show password|hide password/i }).last();
     this.submitButton = page.getByRole("button", { name: /create account/i });
     this.toastMessage = page.locator("[data-sonner-toast]");
     this.loginLink = page.getByRole("link", { name: /sign in/i });

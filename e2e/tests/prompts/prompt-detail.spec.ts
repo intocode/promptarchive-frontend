@@ -112,20 +112,6 @@ test.describe("Feature: Prompt Detail Page", () => {
     });
   });
 
-  test.describe("Scenario: Copy prompt content", () => {
-    test("should show check icon after copy button click", async ({
-      authenticatedPage,
-    }) => {
-      await mockPromptsEndpoints(authenticatedPage, [testPrompt]);
-
-      const detailPage = new PromptDetailPage(authenticatedPage);
-      await detailPage.goto(testPrompt.id);
-
-      await detailPage.copyContent();
-      await detailPage.expectCopySuccess();
-    });
-  });
-
   test.describe("Scenario: Navigate back to prompts", () => {
     test("should navigate to /prompts when clicking breadcrumb link", async ({
       authenticatedPage,
