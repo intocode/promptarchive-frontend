@@ -23,25 +23,6 @@
   ],
   "tasks": [
     {
-      "id": "design-001",
-      "title": "Configure typography system",
-      "category": "design-system",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Import Inter font from Google Fonts for UI elements",
-        "Import Spectral font from Google Fonts for prompt content",
-        "Update globals.css with font-family definitions",
-        "Create CSS utility classes .font-ui and .font-content",
-        "Apply Inter as default font for the application"
-      ],
-      "tests": [
-        "E2E: Inter font loads correctly",
-        "E2E: Spectral font loads correctly",
-        "E2E: .font-content class applies serif font"
-      ]
-    },
-    {
       "id": "design-001-tests",
       "title": "Write tests for: Configure typography system",
       "category": "testing",
@@ -55,26 +36,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "design-002",
-      "title": "Update header with full navigation",
-      "category": "design-system",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Add navigation links: My Prompts, Gallery, Settings",
-        "Style active state for current route",
-        "Logo click navigates to /prompts (auth) or /login (unauth)",
-        "Mobile: hide nav links and show burger menu",
-        "Navigation items follow design spec styling"
-      ],
-      "tests": [
-        "E2E: navigation links render correctly",
-        "E2E: active route is highlighted",
-        "E2E: logo click navigates correctly based on auth state",
-        "E2E: mobile view shows burger menu"
       ]
     },
     {
@@ -92,23 +53,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "design-003",
-      "title": "Configure home page redirect",
-      "category": "design-system",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Authenticated users redirect to /prompts",
-        "Unauthenticated users redirect to /gallery",
-        "Remove Next.js template content from home page",
-        "Redirect happens server-side or immediately on load"
-      ],
-      "tests": [
-        "E2E: authenticated user redirected to /prompts",
-        "E2E: unauthenticated user redirected to /gallery"
       ]
     },
     {
@@ -159,27 +103,6 @@
       ]
     },
     {
-      "id": "design-005",
-      "title": "Create base modal/dialog component",
-      "category": "design-system",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Add shadcn Dialog component to project",
-        "Configure standard sizes (sm: 400px, md: 500-600px, lg: 800px)",
-        "Style per design spec (500-600px for create modal)",
-        "Close on backdrop click",
-        "Close on Escape key press",
-        "Full screen on mobile (< 768px)"
-      ],
-      "tests": [
-        "E2E: modal opens and closes correctly",
-        "E2E: escape key closes modal",
-        "E2E: backdrop click closes modal",
-        "E2E: modal is full screen on mobile"
-      ]
-    },
-    {
       "id": "design-005-tests",
       "title": "Write tests for: Create base modal/dialog component",
       "category": "testing",
@@ -190,149 +113,6 @@
         "E2E: escape key closes modal",
         "E2E: backdrop click closes modal",
         "E2E: modal is full screen on mobile"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "auth-001",
-      "title": "Implement login form with API integration",
-      "category": "authentication",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Login form validates email and password with Zod schema",
-        "Form submits to POST /auth/login endpoint",
-        "Access and refresh tokens stored in localStorage",
-        "User redirected to /prompts on success",
-        "Loading state shown during request"
-      ],
-      "tests": [
-        "E2E: loginSchema validates correct email format",
-        "E2E: loginSchema requires password min 6 chars",
-        "E2E: successful login stores tokens",
-        "E2E: invalid credentials shows error toast",
-        "E2E: network error shows error toast"
-      ]
-    },
-    {
-      "id": "auth-001-tests",
-      "title": "Write tests for: Implement login form with API integration",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: loginSchema validates correct email format",
-        "E2E: loginSchema requires password min 6 chars",
-        "E2E: successful login stores tokens",
-        "E2E: invalid credentials shows error toast",
-        "E2E: network error shows error toast"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "auth-002",
-      "title": "Implement registration form with API integration",
-      "category": "authentication",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Registration form validates name, email, password",
-        "Form submits to POST /auth/register endpoint",
-        "User redirected to /login on success",
-        "Success toast shown after registration"
-      ],
-      "tests": [
-        "E2E: registerSchema validates all required fields",
-        "E2E: registerSchema validates password confirmation match",
-        "E2E: successful registration redirects to login",
-        "E2E: duplicate email shows error"
-      ]
-    },
-    {
-      "id": "auth-002-tests",
-      "title": "Write tests for: Implement registration form with API integration",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: registerSchema validates all required fields",
-        "E2E: registerSchema validates password confirmation match",
-        "E2E: successful registration redirects to login",
-        "E2E: duplicate email shows error"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "auth-003",
-      "title": "Create auth context/state management",
-      "category": "authentication",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "AuthContext provides user, isAuthenticated, isLoading states",
-        "useAuth hook returns context values",
-        "GET /auth/me called on app mount to restore session",
-        "User state cleared on logout"
-      ],
-      "tests": [
-        "E2E: AuthProvider initializes with null user",
-        "E2E: valid token restores user session",
-        "E2E: invalid token clears localStorage"
-      ]
-    },
-    {
-      "id": "auth-003-tests",
-      "title": "Write tests for: Create auth context/state management",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: AuthProvider initializes with null user",
-        "E2E: valid token restores user session",
-        "E2E: invalid token clears localStorage"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "auth-004",
-      "title": "Add protected route middleware",
-      "category": "authentication",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Middleware checks auth state for protected routes",
-        "Unauthenticated users redirected to /login",
-        "Login/register pages redirect authenticated users to /prompts",
-        "Original URL preserved for post-login redirect"
-      ],
-      "tests": [
-        "E2E: unauthenticated user redirected from /prompts",
-        "E2E: authenticated user redirected from /login",
-        "E2E: redirect preserves original destination"
-      ]
-    },
-    {
-      "id": "auth-004-tests",
-      "title": "Write tests for: Add protected route middleware",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: unauthenticated user redirected from /prompts",
-        "E2E: authenticated user redirected from /login",
-        "E2E: redirect preserves original destination"
       ],
       "tests": [
         "All tests pass",
@@ -371,24 +151,6 @@
       ]
     },
     {
-      "id": "auth-006",
-      "title": "Handle auth errors with toast notifications",
-      "category": "authentication",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Invalid credentials shows error toast",
-        "Network errors show appropriate message",
-        "Rate limit errors show retry message",
-        "Validation errors shown inline on form"
-      ],
-      "tests": [
-        "E2E: 401 error shows invalid credentials toast",
-        "E2E: 429 error shows rate limit toast",
-        "E2E: network error shows connection toast"
-      ]
-    },
-    {
       "id": "auth-006-tests",
       "title": "Write tests for: Handle auth errors with toast notifications",
       "category": "testing",
@@ -405,24 +167,6 @@
       ]
     },
     {
-      "id": "auth-007",
-      "title": "Implement logout functionality",
-      "category": "authentication",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Logout button in header dropdown",
-        "POST /auth/logout called",
-        "Tokens cleared from localStorage",
-        "User redirected to /login"
-      ],
-      "tests": [
-        "E2E: logout clears tokens",
-        "E2E: logout redirects to login",
-        "E2E: logout invalidates session on server"
-      ]
-    },
-    {
       "id": "auth-007-tests",
       "title": "Write tests for: Implement logout functionality",
       "category": "testing",
@@ -436,56 +180,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-list-001",
-      "title": "Create PromptCard component (compact view)",
-      "category": "prompts-list",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Card displays: title, folder badge, tags (max 3 visible + counter)",
-        "Shows visibility icon (lock for private, globe for public/unlisted)",
-        "Displays relative date (e.g., '2 days ago')",
-        "Shows usage counter (use_count field)",
-        "Quick copy button on card (copies content to clipboard)",
-        "Hover state with subtle shadow elevation",
-        "Click navigates to /prompts/{id}",
-        "NO content preview in compact mode"
-      ],
-      "tests": [
-        "E2E: renders title, folder, tags correctly",
-        "E2E: shows correct visibility icon",
-        "E2E: displays usage counter",
-        "E2E: copy button copies prompt content",
-        "E2E: compact card has NO content preview"
-      ]
-    },
-    {
-      "id": "prompts-list-001-bugfix",
-      "title": "BUGFIX: Convert PromptCard from card grid to compact row list",
-      "category": "prompts-list",
-      "priority": "critical",
-      "passed": true,
-      "description": "Current implementation mismatch: UI-UX-DESIGN.md specifies that compact mode should display prompts as ROWS (table-like list), while expanded mode should display prompts as CARDS. However, the current PromptCard implementation uses Card component in a grid layout (visually expanded/card style) but without content preview (functionally compact). This is a hybrid that doesn't match either specification. The fix should convert the current view to a proper row/list layout as specified for compact mode in the design system.",
-      "dod": [
-        "Replace grid card layout with row-based list layout",
-        "Each prompt displayed as a horizontal row, not a card",
-        "Row contains: title, folder badge, tags (max 3 + counter), visibility icon, relative date, use_count, copy button",
-        "NO Card component wrapper - use simple row/flex layout",
-        "Maintain hover state (subtle background change instead of shadow)",
-        "Click on row navigates to /prompts/{id}",
-        "Copy button aligned to the right of the row",
-        "Responsive: stack elements on smaller screens if needed",
-        "Remove PromptCardSkeleton or update to row skeleton"
-      ],
-      "tests": [
-        "E2E: prompts displayed as horizontal rows, not cards",
-        "E2E: row layout matches compact mode specification",
-        "E2E: all data fields visible in row",
-        "E2E: copy button works in row layout",
-        "E2E: click navigates to prompt detail"
       ]
     },
     {
@@ -507,27 +201,6 @@
       ]
     },
     {
-      "id": "prompts-list-002",
-      "title": "Create PromptCard component (expanded view)",
-      "category": "prompts-list",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Includes all compact mode elements (title, folder, tags, visibility icon, date, usage counter, copy button)",
-        "Shows description field (if exists)",
-        "Content preview truncated at 100-200 characters with ellipsis",
-        "Full statistics: usage count, view count, fork count",
-        "Copy button only (edit/delete on prompt detail page, NOT on card)",
-        "Expanded card uses more vertical space for content"
-      ],
-      "tests": [
-        "E2E: expanded card shows description",
-        "E2E: content preview 100-200 chars with ellipsis",
-        "E2E: displays full statistics",
-        "E2E: NO edit/delete buttons on card"
-      ]
-    },
-    {
       "id": "prompts-list-002-tests",
       "title": "Write tests for: Create PromptCard component (expanded view)",
       "category": "testing",
@@ -542,24 +215,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-list-003",
-      "title": "Implement prompts list page with data fetching",
-      "category": "prompts-list",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "GET /prompts called with useQuery",
-        "List renders PromptCard components",
-        "Loading skeleton shown during fetch",
-        "Error state with retry button"
-      ],
-      "tests": [
-        "E2E: fetches and displays prompts",
-        "E2E: shows skeleton during loading",
-        "E2E: shows error state on failure"
       ]
     },
     {
@@ -579,24 +234,6 @@
       ]
     },
     {
-      "id": "prompts-list-004",
-      "title": "Add pagination (infinite scroll)",
-      "category": "prompts-list",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "useInfiniteQuery for paginated fetching",
-        "Load more triggered on scroll near bottom",
-        "Loading indicator at bottom during fetch",
-        "Handles end of list gracefully"
-      ],
-      "tests": [
-        "E2E: loads next page on scroll",
-        "E2E: stops loading at end of list",
-        "E2E: maintains scroll position"
-      ]
-    },
-    {
       "id": "prompts-list-004-tests",
       "title": "Write tests for: Add pagination (infinite scroll)",
       "category": "testing",
@@ -610,25 +247,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-list-005",
-      "title": "Implement search functionality",
-      "category": "prompts-list",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Search input in header or above list",
-        "Debounced search query (300ms)",
-        "Search passed to API as query param",
-        "Clear search button",
-        "Empty search results state"
-      ],
-      "tests": [
-        "E2E: search filters results",
-        "E2E: debounce prevents excessive requests",
-        "E2E: clear button resets search"
       ]
     },
     {
@@ -738,28 +356,6 @@
       ]
     },
     {
-      "id": "prompts-list-009",
-      "title": "Add sort dropdown for My Prompts",
-      "category": "prompts-list",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Sort dropdown in My Prompts page header",
-        "Options: Recently Modified (default), Date Created, Most Used, Most Forked",
-        "Recently Modified = sorted by -updated_at",
-        "Date Created = sorted by -created_at",
-        "Most Used = sorted by -use_count",
-        "Most Forked = sorted by fork count",
-        "Selected sort persisted in URL params"
-      ],
-      "tests": [
-        "E2E: default sort is Recently Modified",
-        "E2E: sort changes list order",
-        "E2E: sort persists in URL",
-        "E2E: all four sort options work"
-      ]
-    },
-    {
       "id": "prompts-list-009-tests",
       "title": "Write tests for: Add sort dropdown for My Prompts",
       "category": "testing",
@@ -770,37 +366,6 @@
         "E2E: sort changes list order",
         "E2E: sort persists in URL",
         "E2E: all four sort options work"
-      ],
-      "tests": [
-        "All tests pass",
-        "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-list-010",
-      "title": "Implement empty state with CTA",
-      "category": "prompts-list",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Illustration and message when no prompts",
-        "Create first prompt CTA button",
-        "Different message for filtered empty state"
-      ],
-      "tests": [
-        "E2E: shows empty state when no prompts",
-        "E2E: shows filtered empty state with filters active"
-      ]
-    },
-    {
-      "id": "prompts-list-010-tests",
-      "title": "Write tests for: Implement empty state with CTA",
-      "category": "testing",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "E2E: shows empty state when no prompts",
-        "E2E: shows filtered empty state with filters active"
       ],
       "tests": [
         "All tests pass",
@@ -839,19 +404,6 @@
       ]
     },
     {
-      "id": "prompts-list-012",
-      "title": "Add New Prompt button",
-      "category": "prompts-list",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Prominent button above list",
-        "Opens create prompt modal on click",
-        "Plus icon with text"
-      ],
-      "tests": ["E2E: button opens create modal"]
-    },
-    {
       "id": "prompts-list-012-tests",
       "title": "Write tests for: Add New Prompt button",
       "category": "testing",
@@ -863,25 +415,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-list-013",
-      "title": "Add view mode toggle (compact/expanded)",
-      "category": "prompts-list",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Toggle button in My Prompts page header",
-        "Two modes: compact (default) and expanded",
-        "Icon indicates current mode (list icon / grid icon)",
-        "Saves preference to localStorage",
-        "Hidden on mobile (< 768px) - always compact"
-      ],
-      "tests": [
-        "E2E: toggle switches between modes",
-        "E2E: preference saved to localStorage",
-        "E2E: toggle hidden on mobile viewport"
       ]
     },
     {
@@ -901,24 +434,6 @@
       ]
     },
     {
-      "id": "prompts-crud-001",
-      "title": "Create prompt creation modal",
-      "category": "prompts-crud",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Modal 500-600px width on desktop",
-        "Full screen on mobile",
-        "Close on backdrop click or X button",
-        "Escape key closes modal"
-      ],
-      "tests": [
-        "E2E: modal opens and closes correctly",
-        "E2E: escape key closes modal",
-        "E2E: backdrop click closes modal"
-      ]
-    },
-    {
       "id": "prompts-crud-001-tests",
       "title": "Write tests for: Create prompt creation modal",
       "category": "testing",
@@ -932,31 +447,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-crud-002",
-      "title": "Build prompt creation form with validation",
-      "category": "prompts-crud",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "Title field (required, max 200 chars)",
-        "Content textarea (required, max 50KB, auto-expanding height)",
-        "Description field (optional, max 1000 chars)",
-        "Visibility select with 3 options: private/public/unlisted",
-        "NO folder selector in creation form (added on prompt detail page)",
-        "NO tag input in creation form (added on prompt detail page)",
-        "Zod validation with inline errors shown on submit (not real-time)",
-        "Submit button disabled when form invalid"
-      ],
-      "tests": [
-        "E2E: validation rejects empty title",
-        "E2E: validation rejects title > 200 chars",
-        "E2E: content field auto-expands",
-        "E2E: visibility has unlisted option",
-        "E2E: NO folder/tag fields in form",
-        "E2E: errors shown on submit, not real-time"
       ]
     },
     {
@@ -979,24 +469,6 @@
       ]
     },
     {
-      "id": "prompts-crud-005",
-      "title": "Implement prompt creation API integration",
-      "category": "prompts-crud",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "POST /prompts on form submit",
-        "Success toast and modal close",
-        "List refreshed with new prompt",
-        "Error handling with toast"
-      ],
-      "tests": [
-        "E2E: creates prompt successfully",
-        "E2E: shows error on failure",
-        "E2E: refreshes list after creation"
-      ]
-    },
-    {
       "id": "prompts-crud-005-tests",
       "title": "Write tests for: Implement prompt creation API integration",
       "category": "testing",
@@ -1013,22 +485,6 @@
       ]
     },
     {
-      "id": "prompts-crud-006",
-      "title": "Implement prompt update API integration",
-      "category": "prompts-crud",
-      "priority": "critical",
-      "passed": true,
-      "dod": [
-        "PATCH /prompts/{id} on form submit",
-        "Optimistic update with rollback on error",
-        "Success toast shown"
-      ],
-      "tests": [
-        "E2E: updates prompt successfully",
-        "E2E: rolls back on error"
-      ]
-    },
-    {
       "id": "prompts-crud-006-tests",
       "title": "Write tests for: Implement prompt update API integration",
       "category": "testing",
@@ -1041,23 +497,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-crud-007",
-      "title": "Implement prompt deletion",
-      "category": "prompts-crud",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Delete button with confirmation dialog",
-        "DELETE /prompts/{id} on confirm",
-        "Prompt removed from list",
-        "Success toast shown"
-      ],
-      "tests": [
-        "E2E: deletes prompt on confirm",
-        "E2E: cancellation prevents deletion"
       ]
     },
     {
@@ -1107,23 +546,6 @@
       ]
     },
     {
-      "id": "prompts-detail-001",
-      "title": "Create prompt detail page",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Route: /prompts/[id]",
-        "GET /prompts/{id} on page load",
-        "Display title, content, metadata",
-        "Breadcrumb navigation back to list"
-      ],
-      "tests": [
-        "E2E: loads and displays prompt",
-        "E2E: handles not found error"
-      ]
-    },
-    {
       "id": "prompts-detail-001-tests",
       "title": "Write tests for: Create prompt detail page",
       "category": "testing",
@@ -1167,24 +589,6 @@
       ]
     },
     {
-      "id": "prompts-detail-003",
-      "title": "Implement copy functionality",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Copy dropdown with options",
-        "Copy as plain text",
-        "Copy with variables (if template)",
-        "Copy as markdown",
-        "Success toast on copy"
-      ],
-      "tests": [
-        "E2E: copies to clipboard",
-        "E2E: shows success toast"
-      ]
-    },
-    {
       "id": "prompts-detail-003-tests",
       "title": "Write tests for: Implement copy functionality",
       "category": "testing",
@@ -1200,22 +604,6 @@
       ]
     },
     {
-      "id": "prompts-detail-004",
-      "title": "Add edit/delete actions",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Edit button opens inline edit mode",
-        "Delete button with confirmation",
-        "Actions in dropdown menu on mobile"
-      ],
-      "tests": [
-        "E2E: edit mode activates",
-        "E2E: delete with confirmation works"
-      ]
-    },
-    {
       "id": "prompts-detail-004-tests",
       "title": "Write tests for: Add edit/delete actions",
       "category": "testing",
@@ -1228,24 +616,6 @@
       "tests": [
         "All tests pass",
         "Code coverage meets requirements"
-      ]
-    },
-    {
-      "id": "prompts-detail-005",
-      "title": "Implement inline editing",
-      "category": "prompts-detail",
-      "priority": "high",
-      "passed": true,
-      "dod": [
-        "Title and content become editable",
-        "Save/cancel buttons appear",
-        "Escape cancels edit mode",
-        "Changes saved on blur or save click"
-      ],
-      "tests": [
-        "E2E: edit mode enables editing",
-        "E2E: save persists changes",
-        "E2E: cancel discards changes"
       ]
     },
     {
@@ -1372,7 +742,7 @@
       "title": "Implement inline tag selection on prompt detail page",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Tags section on prompt detail page shows current tags as badges",
         "Click on tags section opens dropdown with search/autocomplete",
@@ -1413,7 +783,7 @@
       "title": "Implement inline folder selection on prompt detail page",
       "category": "prompts-detail",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Folder badge on prompt detail page shows current folder",
         "Click on folder badge opens dropdown",
@@ -1452,7 +822,7 @@
       "title": "Create variable extraction UI",
       "category": "template-variables",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Detect {{variable}} syntax in content",
         "Display list of extracted variables",
@@ -1484,7 +854,7 @@
       "title": "Build variable input form",
       "category": "template-variables",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Form field for each variable",
         "Required indicator for all variables",
@@ -2056,7 +1426,7 @@
       "title": "Build tag autocomplete component",
       "category": "tags",
       "priority": "high",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Input with dropdown suggestions",
         "GET /tags?search={query} for autocomplete",

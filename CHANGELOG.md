@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Variable input form for templates (template-002)
+  - Form on prompt detail page to fill in template variables
+  - Input field for each detected `{{variable}}` with required indicator (*)
+  - Default values pre-populated from `{{variable:default}}` syntax
+  - "Remember values" checkbox persists values in localStorage per prompt
+  - "Clear all" button resets form to defaults
+  - VariableInputForm component with shadcn Card, Input, Checkbox
+- Template variable extraction UI (template-001)
+  - Highlights `{{variable}}` and `{{variable:default}}` syntax in prompt content preview
+  - Variables displayed with terracotta-tinted background in view mode
+  - "Template Variables" section below content shows extracted variable badges
+  - Variable badges show name and default value (e.g., `topic`, `audience = general`)
+  - Client-side extraction for immediate feedback, API fetch for authoritative data
+  - Shared template constants and utilities in `/src/lib/constants/templates.ts` and `/src/lib/utils/templates.ts`
 - Inline editing on prompt detail page (prompts-detail-005)
   - Click Edit to transform title, content, description into editable fields in place
   - Visibility selector shown inline during edit mode
