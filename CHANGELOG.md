@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Password visibility toggle on auth forms (auth-005)
+  - Eye icon button toggles password field type between password and text
+  - Icon changes between Eye and EyeOff based on visibility state
+  - Works on login form (1 field) and registration form (2 fields)
+  - Screen reader accessible with sr-only labels
+- Custom 404 and error pages (ui-006)
+  - Global not-found.tsx page with FileQuestion icon and navigation buttons
+  - Global error.tsx boundary with AlertCircle icon and Try Again button
+  - Consistent styling with existing error patterns (prompt-detail-error)
+  - Error boundary logs errors to console for debugging
+- Sign out all devices feature (settings-001)
+  - Security section added to Settings page
+  - SignOutAllDialog component with AlertDialog confirmation
+  - POST /auth/logout-all API integration via usePostAuthLogoutAll hook
+  - Success toast notification on sign out
+  - Redirects to login page after successful sign out
+  - Loading state with Loader2 spinner during API call
 - Public gallery page with infinite scroll (gallery-002)
   - Gallery page at `/gallery` with grid card layout (1/2/3 columns responsive)
   - Infinite scroll pagination using react-intersection-observer

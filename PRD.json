@@ -124,7 +124,7 @@
       "title": "Add password visibility toggle",
       "category": "authentication",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Eye icon button toggles password field type",
         "Icon changes between eye and eye-off",
@@ -1851,7 +1851,7 @@
       "title": "Implement sign out all devices",
       "category": "settings",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button in settings page with confirmation dialog",
         "POST /auth/logout-all",
@@ -2042,7 +2042,7 @@
       "title": "Add 404 and error pages",
       "category": "ui-polish",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Custom 404 page with navigation",
         "Generic error page",
