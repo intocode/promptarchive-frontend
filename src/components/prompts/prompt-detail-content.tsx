@@ -1,21 +1,21 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Folder, Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 
 import type { GithubComIntocodePromptarchiveInternalServicePromptResponse } from "@/types/api";
 import { formatRelativeDate } from "@/lib/utils";
 import { getVisibilityConfig } from "@/lib/utils/visibility";
+import { extractVariables } from "@/lib/utils/templates";
 import {
   updatePromptSchema,
   type UpdatePromptFormData,
 } from "@/lib/validations/prompt";
 import { VISIBILITY_OPTIONS } from "@/lib/constants";
 import { useUpdatePrompt } from "@/hooks/use-update-prompt";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AutoExpandTextarea } from "@/components/ui/auto-expand-textarea";
@@ -29,6 +29,11 @@ import {
 import { CopyPromptDropdown } from "./copy-prompt-dropdown";
 import { DeletePromptDialog } from "./delete-prompt-dialog";
 import { PromptActionsDropdown } from "./prompt-actions-dropdown";
+import { HighlightedContent } from "./highlighted-content";
+import { VariablesList } from "./variables-list";
+import { VariableInputForm } from "./variable-input-form";
+import { InlineTagEditor } from "@/components/tags/inline-tag-editor";
+import { InlineFolderEditor } from "@/components/folders/inline-folder-editor";
 
 interface PromptDetailContentProps {
   prompt: GithubComIntocodePromptarchiveInternalServicePromptResponse;
@@ -57,6 +62,14 @@ export function PromptDetailContent({
 
   const visibilityConfig = getVisibilityConfig(visibility);
   const VisibilityIcon = visibilityConfig.icon;
+
+  // Extract variables client-side for immediate feedback
+  const clientVariables = useMemo(() => {
+    if (!content) return [];
+    return extractVariables(content);
+  }, [content]);
+
+  const promptHasVariables = clientVariables.length > 0;
 
   const form = useForm<UpdatePromptFormData>({
     resolver: zodResolver(updatePromptSchema),
@@ -238,12 +251,11 @@ export function PromptDetailContent({
             </div>
           )}
 
-          {folder && (
-            <Badge variant="outline" className="gap-1">
-              <Folder className="h-3 w-3" />
-              {folder.name}
-            </Badge>
-          )}
+          <InlineFolderEditor
+            promptId={prompt.id!}
+            currentFolder={folder ?? null}
+            disabled={isEditing}
+          />
 
           <span>{formatRelativeDate(updated_at)}</span>
 
@@ -254,15 +266,11 @@ export function PromptDetailContent({
           )}
         </div>
 
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge key={tag.id} variant="secondary">
-                {tag.name}
-              </Badge>
-            ))}
-          </div>
-        )}
+        <InlineTagEditor
+          promptId={prompt.id!}
+          currentTags={tags ?? []}
+          disabled={isEditing}
+        />
 
         {isEditing ? (
           <Input
@@ -295,12 +303,31 @@ export function PromptDetailContent({
               minRows={5}
               maxRows={20}
             />
+          ) : promptHasVariables ? (
+            <HighlightedContent content={content ?? ""} className="pr-10" />
           ) : (
             <pre className="font-content whitespace-pre-wrap text-sm leading-relaxed pr-10">
               {content}
             </pre>
           )}
         </div>
+
+        {/* Variables list and input form - shown below content in view mode */}
+        {!isEditing && promptHasVariables && (
+          <>
+            <VariablesList
+              promptId={prompt.id!}
+              clientVariables={clientVariables}
+            />
+            <VariableInputForm
+              promptId={prompt.id!}
+              variables={clientVariables.map((v) => ({
+                name: v.name,
+                defaultValue: v.defaultValue,
+              }))}
+            />
+          </>
+        )}
       </div>
 
       <p className="text-xs text-muted-foreground">
