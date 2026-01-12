@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import {
   registerSchema,
@@ -15,6 +15,7 @@ import { usePostAuthRegister } from "@/lib/api/generated/endpoints/authenticatio
 import { handleAuthError } from "@/lib/utils/auth-error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import {
   Form,
   FormControl,
@@ -36,8 +37,6 @@ function getButtonText(
 export function RegisterForm(): React.ReactElement {
   const router = useRouter();
   const [rateLimitSeconds, setRateLimitSeconds] = useState(0);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -136,29 +135,11 @@ export function RegisterForm(): React.ReactElement {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <div className="relative">
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Create a password"
-                    autoComplete="new-password"
-                    className="pr-10"
-                    {...field}
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
-                    )}
-                  </Button>
-                </div>
+                <PasswordInput
+                  placeholder="Create a password"
+                  autoComplete="new-password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -172,29 +153,11 @@ export function RegisterForm(): React.ReactElement {
             <FormItem>
               <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <div className="relative">
-                  <Input
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm your password"
-                    autoComplete="new-password"
-                    className="pr-10"
-                    {...field}
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-                  >
-                    {showConfirmPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
-                    )}
-                  </Button>
-                </div>
+                <PasswordInput
+                  placeholder="Confirm your password"
+                  autoComplete="new-password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
