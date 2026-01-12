@@ -1,17 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-import {
-  registerSchema,
-  type RegisterFormData,
-} from "@/lib/validations/auth";
+import { registerSchema, type RegisterFormData } from "@/lib/validations/auth";
 import { usePostAuthRegister } from "@/lib/api/generated/endpoints/authentication/authentication";
+import { useRateLimitCountdown } from "@/hooks/use-rate-limit-countdown";
 import { handleAuthError } from "@/lib/utils/auth-error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,10 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-function getButtonText(
-  isPending: boolean,
-  rateLimitSeconds: number
-): string {
+function getButtonText(isPending: boolean, rateLimitSeconds: number): string {
   if (isPending) return "Creating account...";
   if (rateLimitSeconds > 0) return `Try again in ${rateLimitSeconds}s`;
   return "Create account";
@@ -36,7 +30,7 @@ function getButtonText(
 
 export function RegisterForm(): React.ReactElement {
   const router = useRouter();
-  const [rateLimitSeconds, setRateLimitSeconds] = useState(0);
+  const { seconds: rateLimitSeconds, setSeconds: setRateLimitSeconds } = useRateLimitCountdown();
 
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -47,17 +41,6 @@ export function RegisterForm(): React.ReactElement {
       confirmPassword: "",
     },
   });
-
-  // Countdown timer for rate limit
-  useEffect(() => {
-    if (rateLimitSeconds <= 0) return;
-
-    const timer = setInterval(() => {
-      setRateLimitSeconds((prev) => Math.max(0, prev - 1));
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [rateLimitSeconds]);
 
   const { mutate: register, isPending } = usePostAuthRegister({
     mutation: {

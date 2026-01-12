@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 
 import { useGetPromptsId } from "@/lib/api/generated/endpoints/prompts/prompts";
 import { PromptDetailSkeleton } from "@/components/prompts/prompt-detail-skeleton";
-import { PromptDetailError } from "@/components/prompts/prompt-detail-error";
+import { PromptDetailError } from "@/components/error/error-fallback";
 import { PromptDetailContent } from "@/components/prompts/prompt-detail-content";
 
 interface PromptDetailPageProps {

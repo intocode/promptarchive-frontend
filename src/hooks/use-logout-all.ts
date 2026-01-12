@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+
 import { usePostAuthLogoutAll } from "@/lib/api/generated/endpoints/authentication/authentication";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -15,7 +15,7 @@ export function useLogoutAll(): UseLogoutAllResult {
   const router = useRouter();
   const { logout: clearAuthState } = useAuth();
 
-  const { mutate: logoutAllMutation, isPending } = usePostAuthLogoutAll({
+  const { mutate, isPending } = usePostAuthLogoutAll({
     mutation: {
       onSuccess: () => {
         clearAuthState();
@@ -28,9 +28,9 @@ export function useLogoutAll(): UseLogoutAllResult {
     },
   });
 
-  const logoutAll = useCallback(() => {
-    logoutAllMutation();
-  }, [logoutAllMutation]);
+  function logoutAll(): void {
+    mutate();
+  }
 
   return { logoutAll, isPending };
 }

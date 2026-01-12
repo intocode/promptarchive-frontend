@@ -1,7 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
 import { usePostPromptsIdGenerateDescription } from "@/lib/api/generated/endpoints/ai/ai";
+import { handleApiError } from "@/lib/utils/api-error";
 import type { GithubComIntocodePromptarchiveInternalServiceGenerateDescriptionResponse } from "@/types/api";
 
 interface UseGenerateDescriptionOptions {
@@ -18,11 +18,7 @@ export function useGenerateDescription(options?: UseGenerateDescriptionOptions) 
         }
       },
       onError: (error) => {
-        const errorMessage =
-          (error as { response?: { status?: number } })?.response?.status === 429
-            ? "Rate limit reached, please try again later"
-            : "Failed to generate description. Please try again.";
-        toast.error(errorMessage);
+        handleApiError(error, "Failed to generate description. Please try again.");
         options?.onError?.();
       },
     },

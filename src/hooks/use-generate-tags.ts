@@ -1,7 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
 import { usePostPromptsIdGenerateTags } from "@/lib/api/generated/endpoints/ai/ai";
+import { handleApiError } from "@/lib/utils/api-error";
 
 interface UseGenerateTagsOptions {
   onSuccess?: (suggestedTags: string[]) => void;
@@ -25,11 +25,7 @@ export function useGenerateTags(options?: UseGenerateTagsOptions): UseGenerateTa
         }
       },
       onError: (error) => {
-        const errorMessage =
-          (error as { response?: { status?: number } })?.response?.status === 429
-            ? "Rate limit reached, please try again later"
-            : "Failed to generate tags. Please try again.";
-        toast.error(errorMessage);
+        handleApiError(error, "Failed to generate tags. Please try again.");
         options?.onError?.();
       },
     },

@@ -4,7 +4,7 @@ import { use } from "react";
 
 import { useGetSharedShareToken } from "@/lib/api/generated/endpoints/sharing/sharing";
 import { SharedPromptDetailSkeleton } from "@/components/shared/shared-prompt-detail-skeleton";
-import { SharedPromptDetailError } from "@/components/shared/shared-prompt-detail-error";
+import { SharedPromptDetailError } from "@/components/error/error-fallback";
 import { SharedPromptDetailContent } from "@/components/shared/shared-prompt-detail-content";
 
 interface SharedPromptPageProps {
