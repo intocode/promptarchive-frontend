@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Complete Feature-Sliced Design (FSD) architecture migration**
+  - Reorganized entire codebase to follow FSD principles with strict layer hierarchy
+  - Created dedicated layers: `app/`, `widgets/`, `features/`, `entities/`, `shared/`
+  - Moved components to appropriate FSD layers based on responsibility:
+    - `shared/`: UI primitives, utilities, API client, generic hooks
+    - `entities/`: Prompt, user, folder, tag business models with UI and hooks
+    - `features/`: User interactions (auth, CRUD, filters, AI tools, folder/tag management, sharing)
+    - `widgets/`: Page sections (header, folder sidebar, gallery, prompt detail, error handling)
+    - `app/`: Next.js routes and pages
+  - Updated all imports across 150+ files to use new FSD path aliases
+  - Created comprehensive documentation:
+    - `/docs/FSD.md` - Main FSD architecture guide
+    - Layer-specific READMEs in `shared/`, `entities/`, `features/`, `widgets/`
+  - Added public exports via index.ts barrel files for clean imports
+  - Updated CLAUDE.md with FSD structure and import rules
+  - Updated tsconfig.json with new path aliases (@app, @widgets, @features, @entities, @shared)
+  - Removed deprecated directories (components/, hooks/, lib/)
 - Consolidated error fallback components to use shared ErrorFallback component
   - Enhanced ErrorFallback with backLink and containerClassName props
   - Updated prompt-detail-error, public-prompt-detail-error, shared-prompt-detail-error

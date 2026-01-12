@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { ErrorFallback } from "@/components/error/error-fallback";
+import { ErrorFallback } from "@widgets/error";
 
 interface ErrorPageProps {
   error: Error & { digest?: string };

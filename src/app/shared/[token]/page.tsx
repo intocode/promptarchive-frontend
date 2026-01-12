@@ -2,10 +2,10 @@
 
 import { use } from "react";
 
-import { useGetSharedShareToken } from "@/lib/api/generated/endpoints/sharing/sharing";
-import { SharedPromptDetailSkeleton } from "@/components/shared/shared-prompt-detail-skeleton";
-import { SharedPromptDetailError } from "@/components/error/error-fallback";
-import { SharedPromptDetailContent } from "@/components/shared/shared-prompt-detail-content";
+import { useGetSharedShareToken } from "@shared/api/generated/endpoints/sharing/sharing";
+import { SharedPromptDetailSkeleton } from "@widgets/gallery";
+import { SharedPromptDetailError } from "@widgets/error";
+import { SharedPromptDetailContent } from "@widgets/gallery";
 
 interface SharedPromptPageProps {
   params: Promise<{ token: string }>;

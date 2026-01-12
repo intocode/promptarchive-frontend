@@ -4,10 +4,10 @@ import { use } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import { useGetPublicPromptsId } from "@/lib/api/generated/endpoints/public-gallery/public-gallery";
-import { PublicPromptDetailSkeleton } from "@/components/gallery/public-prompt-detail-skeleton";
-import { PublicPromptDetailError } from "@/components/error/error-fallback";
-import { PublicPromptDetailContent } from "@/components/gallery/public-prompt-detail-content";
+import { useGetPublicPromptsId } from "@shared/api/generated/endpoints/public-gallery/public-gallery";
+import { PublicPromptDetailSkeleton } from "@widgets/gallery";
+import { PublicPromptDetailError } from "@widgets/error";
+import { PublicPromptDetailContent } from "@widgets/gallery";
 
 interface PublicPromptDetailPageProps {
   params: Promise<{ id: string }>;

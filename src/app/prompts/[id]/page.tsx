@@ -4,10 +4,9 @@ import { use } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import { useGetPromptsId } from "@/lib/api/generated/endpoints/prompts/prompts";
-import { PromptDetailSkeleton } from "@/components/prompts/prompt-detail-skeleton";
-import { PromptDetailError } from "@/components/error/error-fallback";
-import { PromptDetailContent } from "@/components/prompts/prompt-detail-content";
+import { useGetPromptsId } from "@shared/api/generated/endpoints/prompts/prompts";
+import { PromptDetailSkeleton, PromptDetailContent } from "@widgets/prompt-detail";
+import { PromptDetailError } from "@widgets/error";
 
 interface PromptDetailPageProps {
   params: Promise<{ id: string }>;

@@ -2,22 +2,33 @@
   "project": {
     "name": "PromptArchive Frontend",
     "description": "Next.js web app for storing, organizing, and sharing AI prompts",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "migration": {
+      "name": "FSD Architecture Migration",
+      "totalTasks": 1,
+      "phases": 1
+    }
   },
   "categories": [
-    "design-system",
-    "authentication",
-    "prompts-list",
-    "prompts-detail",
-    "template-variables",
-    "ai-features",
-    "folders",
-    "tags",
-    "sharing",
-    "public-gallery",
-    "shared-view",
-    "settings",
-    "ui-polish"
+    "cleanup"
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": "FSD-047",
+      "title": "Final Verification",
+      "description": "Comprehensive testing of all functionality after migration.",
+      "passed": true,
+      "dependencies": ["FSD-044", "FSD-046"],
+      "phase": 7,
+      "category": "cleanup",
+      "priority": "high",
+      "estimatedEffort": "high",
+      "files": {
+        "create": [],
+        "move": {},
+        "modify": []
+      },
+      "verification": "All tests pass: Login/Register, Route protection, Prompt CRUD, Folder operations (including drag-and-drop), Tag operations, AI tools, Version history, Prompt sharing, Gallery browsing, Search and filtering, Keyboard shortcuts, Mobile responsiveness, Error boundaries, Build succeeds, No TypeScript errors, No ESLint errors"
+    }
+  ]
 }

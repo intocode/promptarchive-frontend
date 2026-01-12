@@ -3,9 +3,9 @@
 import { useState, type ReactElement } from "react";
 import { Loader2, LogOut, Shield } from "lucide-react";
 
-import { useLogoutAll } from "@/hooks/use-logout-all";
-import { TagsManagement } from "@/components/tags/tags-management";
-import { Button } from "@/components/ui/button";
+import { useLogoutAll } from "@features/auth";
+import { TagsManagement } from "@features/tag-management";
+import { Button } from "@shared/ui";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,7 +15,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@shared/ui";
 
 function SecuritySection(): ReactElement {
   const [showConfirm, setShowConfirm] = useState(false);

@@ -7,13 +7,13 @@ export default defineConfig({
     },
     output: {
       mode: "tags-split",
-      target: "./src/lib/api/generated/endpoints",
+      target: "./src/shared/api/generated/endpoints",
       schemas: "./src/types/api",
       client: "react-query",
       httpClient: "axios",
       override: {
         mutator: {
-          path: "./src/lib/api/axios.ts",
+          path: "./src/shared/api/axios.ts",
           name: "apiClient",
         },
         query: {
