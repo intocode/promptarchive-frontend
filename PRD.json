@@ -21,25 +21,11 @@
   ],
   "tasks": [
     {
-      "id": "prompts-detail-002",
-      "title": "Display prompt metadata",
-      "category": "prompts-detail",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Folder badge with link",
-        "Tags as clickable badges",
-        "Created and updated dates",
-        "Visibility status"
-      ],
-      "tests": ["E2E: renders all metadata correctly"]
-    },
-    {
       "id": "prompts-detail-008",
       "title": "Add diff view for comparing versions",
       "category": "prompts-detail",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Side-by-side or inline diff view",
         "Additions highlighted in green",
@@ -52,156 +38,11 @@
       ]
     },
     {
-      "id": "ai-005",
-      "title": "Implement Generate Description feature",
-      "category": "ai-features",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Button to generate description",
-        "POST /prompts/{id}/generate-description",
-        "Display suggested description",
-        "Accept or edit before saving"
-      ],
-      "tests": ["E2E: generates description", "E2E: saves accepted description"]
-    },
-    {
-      "id": "folders-001",
-      "title": "Create folders sidebar/dropdown",
-      "category": "folders",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "GET /folders to fetch user folders",
-        "Display as sidebar on desktop, dropdown on mobile",
-        "Show prompt count per folder",
-        "Click to filter prompts by folder"
-      ],
-      "tests": [
-        "E2E: loads and displays folders",
-        "E2E: filters prompts on click"
-      ]
-    },
-    {
-      "id": "folders-002",
-      "title": "Implement create folder modal",
-      "category": "folders",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Form with folder name input",
-        "POST /folders on submit",
-        "Folder added to list without refresh",
-        "Success toast shown"
-      ],
-      "tests": [
-        "E2E: creates folder successfully",
-        "E2E: new folder appears in list"
-      ]
-    },
-    {
-      "id": "folders-003",
-      "title": "Add rename folder functionality",
-      "category": "folders",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Edit button on folder item",
-        "Inline rename input",
-        "PATCH /folders/{id} on save",
-        "Escape to cancel"
-      ],
-      "tests": ["E2E: renames folder successfully"]
-    },
-    {
-      "id": "folders-004",
-      "title": "Add delete folder functionality",
-      "category": "folders",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Delete button with confirmation",
-        "Option to move prompts or delete them",
-        "DELETE /folders/{id}",
-        "Folder removed from list"
-      ],
-      "tests": [
-        "E2E: deletes folder successfully",
-        "E2E: handles prompts in folder"
-      ]
-    },
-    {
-      "id": "folders-005",
-      "title": "Implement drag-drop folder reordering",
-      "category": "folders",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Drag handle on folder items",
-        "Visual feedback during drag",
-        "PATCH /folders/reorder on drop",
-        "Optimistic UI update"
-      ],
-      "tests": ["E2E: reorders folders on drag-drop"]
-    },
-    {
-      "id": "tags-001",
-      "title": "Create tags management UI",
-      "category": "tags",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Tags section in settings or dedicated page",
-        "GET /tags to list all tags",
-        "Show usage count per tag"
-      ],
-      "tests": ["E2E: loads and displays tags"]
-    },
-    {
-      "id": "tags-002",
-      "title": "Implement create tag functionality",
-      "category": "tags",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Input to create new tag",
-        "POST /tags on submit",
-        "Tag added to list"
-      ],
-      "tests": ["E2E: creates tag successfully"]
-    },
-    {
-      "id": "tags-003",
-      "title": "Add rename tag functionality",
-      "category": "tags",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Edit button on tag item",
-        "PATCH /tags/{id} on save",
-        "All prompts updated with new tag name"
-      ],
-      "tests": ["E2E: renames tag successfully"]
-    },
-    {
-      "id": "tags-004",
-      "title": "Add delete tag functionality",
-      "category": "tags",
-      "priority": "low",
-      "passed": true,
-      "dod": [
-        "Delete button with confirmation",
-        "DELETE /tags/{id}",
-        "Tag removed from all prompts"
-      ],
-      "tests": ["E2E: deletes tag successfully"]
-    },
-    {
       "id": "sharing-004",
       "title": "Implement share link deletion",
       "category": "sharing",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Delete button per share link",
         "DELETE /prompts/{id}/share",
@@ -215,7 +56,7 @@
       "title": "Add gallery sorting options",
       "category": "public-gallery",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Sort dropdown in gallery header",
         "Options: Popular (default), Newest, Most Viewed",
@@ -235,7 +76,7 @@
       "title": "Show create account CTA",
       "category": "shared-view",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Banner prompting to create account",
         "Link to register page",
@@ -248,7 +89,7 @@
       "title": "Implement sign out all devices",
       "category": "settings",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button in settings page with confirmation dialog",
         "POST /auth/logout-all",
@@ -265,7 +106,7 @@
       "title": "Implement dark mode toggle",
       "category": "ui-polish",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Toggle in header or settings",
         "next-themes integration",
@@ -279,7 +120,7 @@
       "title": "Add keyboard shortcuts",
       "category": "ui-polish",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Cmd+K for search",
         "Cmd+N for new prompt",
@@ -289,63 +130,11 @@
       "tests": ["E2E: shortcuts trigger actions"]
     },
     {
-      "id": "ui-003",
-      "title": "Implement mobile responsive design with limited functionality",
-      "category": "ui-polish",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Mobile breakpoint: < 768px",
-        "Burger menu navigation (already implemented)",
-        "Touch-friendly tap targets (min 44x44px)",
-        "Full-screen modals on mobile",
-        "Cards: ONLY compact mode (no view toggle on mobile)",
-        "HIDE 'New Prompt' button on mobile",
-        "HIDE edit/delete actions on mobile",
-        "Viewing, browsing, copying ONLY allowed on mobile",
-        "Responsive card grid (1 column on mobile)"
-      ],
-      "tests": [
-        "E2E: renders correctly on mobile viewport",
-        "E2E: burger menu shows navigation",
-        "E2E: create button hidden on mobile",
-        "E2E: edit/delete hidden on mobile",
-        "E2E: cards show compact mode only on mobile",
-        "E2E: copy functionality works on mobile"
-      ]
-    },
-    {
-      "id": "ui-004",
-      "title": "Add loading states for all async operations",
-      "category": "ui-polish",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Button loading spinners",
-        "Skeleton loaders for content",
-        "Disable interactions during loading"
-      ],
-      "tests": ["E2E: loading states render correctly"]
-    },
-    {
-      "id": "ui-005",
-      "title": "Implement error boundaries",
-      "category": "ui-polish",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "React error boundary component",
-        "Fallback UI for crashes",
-        "Error reporting integration"
-      ],
-      "tests": ["E2E: error boundary catches errors"]
-    },
-    {
       "id": "ui-006",
       "title": "Add 404 and error pages",
       "category": "ui-polish",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Custom 404 page with navigation",
         "Generic error page",

@@ -4,14 +4,29 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AlertCircle, FileText, Loader2, RefreshCw, Search } from "lucide-react";
 
+import type { GetPublicPromptsSort } from "@/types/api";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useInfinitePublicPrompts } from "@/hooks/use-infinite-public-prompts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   PublicPromptCard,
   PublicPromptCardSkeleton,
 } from "@/components/gallery/public-prompt-card";
+
+const SORT_OPTIONS = [
+  { value: "-likes_count", label: "Popular" },
+  { value: "-created_at", label: "Newest" },
+] as const;
+
+const DEFAULT_SORT: GetPublicPromptsSort = "-likes_count";
 
 const SKELETON_COUNT = 6;
 
@@ -80,9 +95,10 @@ function EmptyState({ search }: EmptyStateProps): React.ReactElement {
 
 interface GalleryContentProps {
   search?: string;
+  sort?: GetPublicPromptsSort;
 }
 
-function GalleryContent({ search }: GalleryContentProps): React.ReactElement {
+function GalleryContent({ search, sort }: GalleryContentProps): React.ReactElement {
   const {
     data,
     fetchNextPage,
@@ -91,7 +107,7 @@ function GalleryContent({ search }: GalleryContentProps): React.ReactElement {
     isLoading,
     isError,
     refetch,
-  } = useInfinitePublicPrompts({ search });
+  } = useInfinitePublicPrompts({ search, sort });
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -137,6 +153,7 @@ function GalleryContent({ search }: GalleryContentProps): React.ReactElement {
 
 export default function GalleryPage(): React.ReactElement {
   const [searchInput, setSearchInput] = useState("");
+  const [sort, setSort] = useState<GetPublicPromptsSort>(DEFAULT_SORT);
   const debouncedSearch = useDebounce(searchInput, 300);
 
   return (
@@ -148,8 +165,8 @@ export default function GalleryPage(): React.ReactElement {
         </p>
       </div>
 
-      <div className="mb-6">
-        <div className="relative max-w-md">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative max-w-md flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="search"
@@ -159,9 +176,21 @@ export default function GalleryPage(): React.ReactElement {
             className="pl-9"
           />
         </div>
+        <Select value={sort} onValueChange={(value) => setSort(value as GetPublicPromptsSort)}>
+          <SelectTrigger className="w-[140px]">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            {SORT_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
-      <GalleryContent search={debouncedSearch} />
+      <GalleryContent search={debouncedSearch} sort={sort} />
     </div>
   );
 }

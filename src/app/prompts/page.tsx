@@ -237,16 +237,39 @@ function PromptsContent({
   );
 }
 
+function getInitialModalState(searchParams: URLSearchParams): boolean {
+  return searchParams.get("new") === "true";
+}
+
 export default function PromptsPage(): React.ReactElement {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(() =>
+    getInitialModalState(new URLSearchParams(searchParams.toString()))
+  );
   const [searchInput, setSearchInput] = useState("");
   const { viewMode, toggleViewMode } = useViewMode();
   const isMobile = useIsMobile();
 
   // Force compact view on mobile
   const effectiveViewMode: ViewMode = isMobile ? "compact" : viewMode;
+
+  // Handle keyboard shortcut for creating prompt
+  useEffect(() => {
+    const handleCreatePrompt = () => setIsCreateModalOpen(true);
+    window.addEventListener("create-prompt", handleCreatePrompt);
+    return () => window.removeEventListener("create-prompt", handleCreatePrompt);
+  }, []);
+
+  // Clean up ?new=true from URL after modal is shown
+  useEffect(() => {
+    if (searchParams.get("new") === "true") {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("new");
+      const query = params.toString();
+      router.replace(query ? `?${query}` : "/prompts", { scroll: false });
+    }
+  }, [searchParams, router]);
 
   const {
     filters,

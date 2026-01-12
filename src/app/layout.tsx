@@ -28,7 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spectral.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spectral.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased">
         <Providers>{children}</Providers>
         <Toaster richColors position="top-right" />
