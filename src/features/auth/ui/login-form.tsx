@@ -1,0 +1,136 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+
+import { loginSchema, type LoginFormData } from "../model/validation";
+import { usePostAuthLogin } from "@shared/api/generated/endpoints/authentication/authentication";
+import { useAuth } from "@entities/user";
+import { useRateLimitCountdown } from "../model/use-rate-limit-countdown";
+import { setAuthCookie } from "@shared/lib";
+import { handleAuthError } from "../lib/auth-error";
+import { Button } from "@shared/ui";
+import { Input } from "@shared/ui";
+import { PasswordInput } from "@shared/ui";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@shared/ui";
+
+function getButtonText(isPending: boolean, rateLimitSeconds: number): string {
+  if (isPending) return "Signing in...";
+  if (rateLimitSeconds > 0) return `Try again in ${rateLimitSeconds}s`;
+  return "Sign in";
+}
+
+function getRedirectPath(): string {
+  const searchParams = new URLSearchParams(window.location.search);
+  const redirectTo = searchParams.get("redirect");
+  const isValidRedirect =
+    redirectTo && redirectTo.startsWith("/") && !redirectTo.startsWith("//");
+  return isValidRedirect ? redirectTo : "/prompts";
+}
+
+export function LoginForm(): React.ReactElement {
+  const router = useRouter();
+  const { login } = useAuth();
+  const { seconds: rateLimitSeconds, setSeconds: setRateLimitSeconds } = useRateLimitCountdown();
+
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const { mutate: loginMutation, isPending } = usePostAuthLogin({
+    mutation: {
+      onSuccess: (response) => {
+        const tokens = response.data?.tokens;
+        if (tokens?.access_token) {
+          localStorage.setItem("access_token", tokens.access_token);
+        }
+        if (tokens?.refresh_token) {
+          localStorage.setItem("refresh_token", tokens.refresh_token);
+        }
+        setAuthCookie();
+        if (response.data?.user) {
+          login(response.data.user);
+        }
+        router.push(getRedirectPath());
+      },
+      onError: (error) => {
+        const { isRateLimited, retryAfter } = handleAuthError<LoginFormData>({
+          error,
+          defaultMessage: "Invalid email or password",
+        });
+        if (isRateLimited && retryAfter) {
+          setRateLimitSeconds(retryAfter);
+        }
+      },
+    },
+  });
+
+  function onSubmit(data: LoginFormData) {
+    loginMutation({ data });
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  type="email"
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <PasswordInput
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isPending || rateLimitSeconds > 0}
+        >
+          {isPending && <Loader2 className="animate-spin" />}
+          {getButtonText(isPending, rateLimitSeconds)}
+        </Button>
+      </form>
+    </Form>
+  );
+}

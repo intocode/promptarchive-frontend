@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/use-auth";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { useAuth } from "@entities/user";
+import { LoadingSpinner } from "@shared/ui";
 
 export default function HomePage(): React.ReactElement {
   const router = useRouter();

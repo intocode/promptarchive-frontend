@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FileQuestion, Home, ArrowLeft } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@shared/ui";
 
 export default function NotFound(): React.ReactElement {
   const router = useRouter();

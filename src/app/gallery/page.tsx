@@ -4,22 +4,22 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { AlertCircle, FileText, Loader2, RefreshCw, Search } from "lucide-react";
 
-import type { GetPublicPromptsSort } from "@/types/api";
-import { useDebounce } from "@/hooks/use-debounce";
-import { useInfinitePublicPrompts } from "@/hooks/use-infinite-public-prompts";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import type { GetPublicPromptsSort } from "@shared/types";
+import { useDebounce } from "@shared/hooks";
+import { useInfinitePublicPrompts } from "@widgets/gallery";
+import { Button } from "@shared/ui";
+import { Input } from "@shared/ui";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@shared/ui";
 import {
   PublicPromptCard,
   PublicPromptCardSkeleton,
-} from "@/components/gallery/public-prompt-card";
+} from "@widgets/gallery";
 
 const SORT_OPTIONS = [
   { value: "-likes_count", label: "Popular" },

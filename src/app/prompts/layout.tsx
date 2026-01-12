@@ -1,4 +1,4 @@
-import { AuthenticatedLayout } from "@/components/layout/authenticated-layout";
+import { AuthenticatedLayout } from "@widgets/header";
 
 interface PromptsLayoutProps {
   children: React.ReactNode;
