@@ -1,18 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { usePostAuthLogin } from "@/lib/api/generated/endpoints/authentication/authentication";
 import { useAuth } from "@/hooks/use-auth";
+import { useRateLimitCountdown } from "@/hooks/use-rate-limit-countdown";
 import { setAuthCookie } from "@/lib/utils/auth-cookie";
 import { handleAuthError } from "@/lib/utils/auth-error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import {
   Form,
   FormControl,
@@ -22,10 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-function getButtonText(
-  isPending: boolean,
-  rateLimitSeconds: number
-): string {
+function getButtonText(isPending: boolean, rateLimitSeconds: number): string {
   if (isPending) return "Signing in...";
   if (rateLimitSeconds > 0) return `Try again in ${rateLimitSeconds}s`;
   return "Sign in";
@@ -42,8 +40,7 @@ function getRedirectPath(): string {
 export function LoginForm(): React.ReactElement {
   const router = useRouter();
   const { login } = useAuth();
-  const [rateLimitSeconds, setRateLimitSeconds] = useState(0);
-  const [showPassword, setShowPassword] = useState(false);
+  const { seconds: rateLimitSeconds, setSeconds: setRateLimitSeconds } = useRateLimitCountdown();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -52,17 +49,6 @@ export function LoginForm(): React.ReactElement {
       password: "",
     },
   });
-
-  // Countdown timer for rate limit
-  useEffect(() => {
-    if (rateLimitSeconds <= 0) return;
-
-    const timer = setInterval(() => {
-      setRateLimitSeconds((prev) => Math.max(0, prev - 1));
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [rateLimitSeconds]);
 
   const { mutate: loginMutation, isPending } = usePostAuthLogin({
     mutation: {
@@ -125,29 +111,11 @@ export function LoginForm(): React.ReactElement {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <div className="relative">
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
-                    autoComplete="current-password"
-                    className="pr-10"
-                    {...field}
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
-                    )}
-                  </Button>
-                </div>
+                <PasswordInput
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

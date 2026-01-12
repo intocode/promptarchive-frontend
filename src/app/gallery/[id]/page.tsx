@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 
 import { useGetPublicPromptsId } from "@/lib/api/generated/endpoints/public-gallery/public-gallery";
 import { PublicPromptDetailSkeleton } from "@/components/gallery/public-prompt-detail-skeleton";
-import { PublicPromptDetailError } from "@/components/gallery/public-prompt-detail-error";
+import { PublicPromptDetailError } from "@/components/error/error-fallback";
 import { PublicPromptDetailContent } from "@/components/gallery/public-prompt-detail-content";
 
 interface PublicPromptDetailPageProps {

@@ -1,4 +1,4 @@
-import { VARIABLE_PATTERN, HAS_VARIABLES_PATTERN } from "@/lib/constants/templates";
+import { VARIABLE_PATTERN } from "@/lib/constants/templates";
 
 export interface ExtractedVariable {
   name: string;
@@ -33,13 +33,6 @@ export function extractVariables(content: string): ExtractedVariable[] {
   }
 
   return variables;
-}
-
-/**
- * Check if content contains any template variables
- */
-export function hasVariables(content: string): boolean {
-  return HAS_VARIABLES_PATTERN.test(content);
 }
 
 /**

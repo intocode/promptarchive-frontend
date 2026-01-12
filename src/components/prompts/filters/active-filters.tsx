@@ -1,10 +1,11 @@
 "use client";
 
-import { X, Folder, Eye } from "lucide-react";
+import { X, Folder } from "lucide-react";
 
 import type { GetPromptsVisibility } from "@/types/api";
 import { useGetFolders } from "@/lib/api/generated/endpoints/folders/folders";
 import { useGetTags } from "@/lib/api/generated/endpoints/tags/tags";
+import { getVisibilityConfig } from "@/lib/utils/visibility";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -42,12 +43,8 @@ export function ActiveFilters({
 
   const selectedFolder = folders.find((f) => f.id === folderId);
   const selectedTags = tags.filter((t) => t.id && tagIds.includes(t.id));
-
-  const visibilityLabels: Record<GetPromptsVisibility, string> = {
-    public: "Public",
-    private: "Private",
-    unlisted: "Unlisted",
-  };
+  const visibilityConfig = visibility ? getVisibilityConfig(visibility) : null;
+  const VisibilityIcon = visibilityConfig?.icon;
 
   return (
     <div className="flex flex-wrap items-center gap-2">
@@ -82,10 +79,10 @@ export function ActiveFilters({
         </Badge>
       ))}
 
-      {visibility && (
+      {visibilityConfig && VisibilityIcon && (
         <Badge variant="secondary" className="gap-1 pr-1">
-          <Eye className="h-3 w-3" />
-          {visibilityLabels[visibility]}
+          <VisibilityIcon className="h-3 w-3" />
+          {visibilityConfig.label}
           <button
             type="button"
             className="ml-1 rounded-full p-0.5 hover:bg-muted-foreground/20"

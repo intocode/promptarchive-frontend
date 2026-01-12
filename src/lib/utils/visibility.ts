@@ -18,8 +18,6 @@ export const VISIBILITY_OPTIONS = (
   Object.entries(VISIBILITY_CONFIG) as [VisibilityType, VisibilityConfigItem][]
 ).map(([value, { label }]) => ({ value, label }));
 
-export type VisibilityValue = (typeof VISIBILITY_OPTIONS)[number]["value"];
-
 // For display with icons
 export function getVisibilityConfig(
   visibility: string | undefined
