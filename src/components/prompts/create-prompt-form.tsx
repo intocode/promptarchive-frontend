@@ -11,7 +11,7 @@ import {
 } from "@/lib/validations/prompt";
 import { VISIBILITY_OPTIONS } from "@/lib/constants";
 import { usePostPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
-import { Button } from "@/components/ui/button";
+import { LoadingButton } from "@/components/ui/loading-button";
 import { Input } from "@/components/ui/input";
 import { AutoExpandTextarea } from "@/components/ui/auto-expand-textarea";
 import {
@@ -157,13 +157,13 @@ export function CreatePromptForm({
 
         <div className="flex justify-end gap-2 pt-4">
           {onCancel && (
-            <Button type="button" variant="outline" onClick={onCancel}>
+            <LoadingButton type="button" variant="outline" onClick={onCancel}>
               Cancel
-            </Button>
+            </LoadingButton>
           )}
-          <Button type="submit" disabled={isPending}>
-            {isPending ? "Creating..." : "Create Prompt"}
-          </Button>
+          <LoadingButton type="submit" isLoading={isPending} loadingText="Creating...">
+            Create Prompt
+          </LoadingButton>
         </div>
       </form>
     </Form>

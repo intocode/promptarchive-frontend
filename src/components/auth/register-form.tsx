@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 import {
   registerSchema,
@@ -206,6 +206,7 @@ export function RegisterForm(): React.ReactElement {
           className="w-full"
           disabled={isPending || rateLimitSeconds > 0}
         >
+          {isPending && <Loader2 className="animate-spin" />}
           {getButtonText(isPending, rateLimitSeconds)}
         </Button>
       </form>

@@ -25,7 +25,7 @@
       "title": "Display prompt metadata",
       "category": "prompts-detail",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Folder badge with link",
         "Tags as clickable badges",
@@ -56,7 +56,7 @@
       "title": "Implement Generate Description feature",
       "category": "ai-features",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button to generate description",
         "POST /prompts/{id}/generate-description",
@@ -293,7 +293,7 @@
       "title": "Implement mobile responsive design with limited functionality",
       "category": "ui-polish",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Mobile breakpoint: < 768px",
         "Burger menu navigation (already implemented)",
@@ -319,7 +319,7 @@
       "title": "Add loading states for all async operations",
       "category": "ui-polish",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Button loading spinners",
         "Skeleton loaders for content",
@@ -332,7 +332,7 @@
       "title": "Implement error boundaries",
       "category": "ui-polish",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "React error boundary component",
         "Fallback UI for crashes",
