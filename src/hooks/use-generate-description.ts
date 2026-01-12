@@ -31,8 +31,5 @@ export function useGenerateDescription(options?: UseGenerateDescriptionOptions) 
   return {
     generateDescription,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    data: mutation.data?.data,
-    reset: mutation.reset,
   };
 }

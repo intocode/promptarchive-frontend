@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+
 import { usePostAuthLogout } from "@/lib/api/generated/endpoints/authentication/authentication";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -15,16 +15,13 @@ export function useLogout(): UseLogoutResult {
   const router = useRouter();
   const { logout: clearAuthState } = useAuth();
 
-  const performLogout = useCallback(
-    (showError = false) => {
-      clearAuthState();
-      router.push("/login");
-      if (showError) {
-        toast.error("Logged out locally. Session may still be active on server.");
-      }
-    },
-    [clearAuthState, router]
-  );
+  function performLogout(showError = false): void {
+    clearAuthState();
+    router.push("/login");
+    if (showError) {
+      toast.error("Logged out locally. Session may still be active on server.");
+    }
+  }
 
   const { mutate: logoutMutation, isPending } = usePostAuthLogout({
     mutation: {
@@ -33,7 +30,7 @@ export function useLogout(): UseLogoutResult {
     },
   });
 
-  const logout = useCallback(() => {
+  function logout(): void {
     const refreshToken = localStorage.getItem("refresh_token");
 
     if (!refreshToken) {
@@ -42,7 +39,7 @@ export function useLogout(): UseLogoutResult {
     }
 
     logoutMutation({ data: { refresh_token: refreshToken } });
-  }, [logoutMutation, performLogout]);
+  }
 
   return { logout, isPending };
 }

@@ -31,8 +31,6 @@ export function useSharePrompt(options?: UseSharePromptOptions) {
   return {
     sharePrompt,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    data: mutation.data?.data,
     reset: mutation.reset,
   };
 }

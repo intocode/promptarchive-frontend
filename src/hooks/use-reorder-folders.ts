@@ -84,7 +84,5 @@ export function useReorderFolders(options?: UseReorderFoldersOptions) {
   return {
     reorderFolders,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

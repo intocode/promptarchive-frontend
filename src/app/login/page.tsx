@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { LoginForm } from "@/components/auth/login-form";
-import { GuestGuard } from "@/components/auth/guest-guard";
+import { GuestGuard } from "@/components/auth/route-guard";
 
 export default function LoginPage(): React.ReactElement {
   return (

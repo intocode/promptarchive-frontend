@@ -11,8 +11,6 @@ interface UseGenerateTagsOptions {
 interface UseGenerateTagsReturn {
   generateTags: (promptId: string) => void;
   isPending: boolean;
-  isError: boolean;
-  suggestedTags: string[];
   reset: () => void;
 }
 
@@ -38,8 +36,6 @@ export function useGenerateTags(options?: UseGenerateTagsOptions): UseGenerateTa
   return {
     generateTags,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    suggestedTags: mutation.data?.data?.suggested_tags ?? [],
     reset: mutation.reset,
   };
 }

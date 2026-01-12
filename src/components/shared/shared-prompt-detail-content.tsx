@@ -24,10 +24,10 @@ function CreateAccountBanner(): React.ReactElement | null {
   const { user, isLoading } = useAuth();
   const [isDismissed, setIsDismissed] = useState(getInitialDismissed);
 
-  const handleDismiss = () => {
+  function handleDismiss(): void {
     localStorage.setItem(CTA_DISMISSED_KEY, "true");
     setIsDismissed(true);
-  };
+  }
 
   // Don't show if loading, user is logged in, or banner was dismissed
   if (isLoading || user || isDismissed) {
