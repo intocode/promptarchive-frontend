@@ -9,6 +9,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Custom 404 page with navigation (ui-006)
+  - not-found.tsx with "Go back" and "Go home" buttons
+  - Consistent styling with error-fallback component
+- Dark mode toggle with next-themes integration (ui-001)
+  - ThemeProvider with system preference detection
+  - ThemeToggle submenu in user dropdown
+  - Light/Dark/System theme options with localStorage persistence
+  - suppressHydrationWarning for hydration fix
+- Share link deletion functionality (sharing-004)
+  - Delete button in share modal
+  - Confirmation dialog before deletion
+  - Uses useDeletePromptsIdShare hook
+  - Toast notification on success/error
+- Gallery sorting options (gallery-003)
+  - Sort dropdown in gallery header
+  - Options: Popular (likes), Newest (created_at)
+  - Sort parameter passed to API via useInfinitePublicPrompts
+- Create account CTA banner on shared view (shared-003)
+  - Banner prompting unauthenticated users to register
+  - Dismissible with localStorage persistence
+  - Hidden for logged-in users
+- Sign out all devices feature (settings-001)
+  - Security section in settings page
+  - Confirmation dialog before logout
+  - useLogoutAll hook with toast notifications
+  - Redirect to login after success
+- Keyboard shortcuts system (ui-002)
+  - Cmd/Ctrl+K to focus search
+  - Cmd/Ctrl+N to create new prompt
+  - ? to show shortcuts help dialog
+  - KeyboardShortcutsDialog component with shortcut list
+  - useKeyboardShortcuts hook for global shortcuts
 - Error boundaries for route-level error handling (ui-005)
   - ErrorFallback component with retry button and home navigation
   - error.tsx files for /app, /prompts, /prompts/[id], /gallery, /settings routes

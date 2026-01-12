@@ -21,6 +21,7 @@ export function PromptsSearch({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="pl-9 pr-9"
+        data-search-input="true"
       />
       {value && (
         <Button

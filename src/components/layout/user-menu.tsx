@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { LogOut, Settings } from "lucide-react";
 
+import { ThemeToggle } from "./theme-toggle";
+
 import { useAuth } from "@/hooks/use-auth";
 import { useLogout } from "@/hooks/use-logout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -61,6 +63,7 @@ export function UserMenu(): React.ReactElement | null {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <ThemeToggle />
         <DropdownMenuItem asChild>
           <Link href="/settings" className="cursor-pointer">
             <Settings className="mr-2 h-4 w-4" />
