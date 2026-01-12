@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Custom Google Fonts (Inter, Spectral) to fix Turbopack build errors
+  - Removed font link tags from layout.tsx
+  - Switched to system font stack for both sans and serif fonts
+  - This resolves `@next/next/no-page-custom-font` linting warning and Turbopack font loading failures
+
 ### Changed
 
 - **Complete Feature-Sliced Design (FSD) architecture migration**
