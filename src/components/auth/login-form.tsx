@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { usePostAuthLogin } from "@/lib/api/generated/endpoints/authentication/authentication";
@@ -159,6 +159,7 @@ export function LoginForm(): React.ReactElement {
           className="w-full"
           disabled={isPending || rateLimitSeconds > 0}
         >
+          {isPending && <Loader2 className="animate-spin" />}
           {getButtonText(isPending, rateLimitSeconds)}
         </Button>
       </form>

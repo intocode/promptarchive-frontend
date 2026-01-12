@@ -35,7 +35,10 @@ import { VariablesList } from "./variables-list";
 import { VariableInputForm } from "./variable-input-form";
 import { InlineTagEditor } from "@/components/tags/inline-tag-editor";
 import { InlineFolderEditor } from "@/components/folders/inline-folder-editor";
+import { FolderLinkBadge } from "./folder-link-badge";
+import { TagLinkBadges } from "./tag-link-badges";
 import { ImprovePromptModal } from "./improve-prompt-modal";
+import { GenerateDescriptionModal } from "./generate-description-modal";
 import { VersionHistorySheet } from "./version-history-sheet";
 import { ShareModal } from "./share-modal";
 
@@ -50,6 +53,7 @@ export function PromptDetailContent({
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [showImproveModal, setShowImproveModal] = useState(false);
+  const [showGenerateDescriptionModal, setShowGenerateDescriptionModal] = useState(false);
   const [showHistorySheet, setShowHistorySheet] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const editContainerRef = useRef<HTMLDivElement>(null);
@@ -257,14 +261,12 @@ export function PromptDetailContent({
                     Delete
                   </Button>
                 </div>
-                {/* Mobile: Dropdown menu */}
+                {/* Mobile: Dropdown menu - only read-only actions */}
                 <div className="md:hidden">
                   <PromptActionsDropdown
-                    onEdit={() => setIsEditing(true)}
-                    onDelete={() => setShowDeleteDialog(true)}
-                    onImprove={() => setShowImproveModal(true)}
                     onHistory={() => setShowHistorySheet(true)}
                     onShare={() => setShowShareModal(true)}
+                    hideEditActions
                   />
                 </div>
               </>
@@ -298,11 +300,14 @@ export function PromptDetailContent({
             </div>
           )}
 
-          <InlineFolderEditor
-            promptId={prompt.id!}
-            currentFolder={folder ?? null}
-            disabled={isEditing}
-          />
+          {isEditing ? (
+            <InlineFolderEditor
+              promptId={prompt.id!}
+              currentFolder={folder ?? null}
+            />
+          ) : (
+            folder && <FolderLinkBadge folder={folder} />
+          )}
 
           <span>{formatRelativeDate(updated_at)}</span>
 
@@ -313,18 +318,32 @@ export function PromptDetailContent({
           )}
         </div>
 
-        <InlineTagEditor
-          promptId={prompt.id!}
-          currentTags={tags ?? []}
-          disabled={isEditing}
-        />
+        {isEditing ? (
+          <InlineTagEditor
+            promptId={prompt.id!}
+            currentTags={tags ?? []}
+          />
+        ) : (
+          <TagLinkBadges tags={tags ?? []} />
+        )}
 
         {isEditing ? (
-          <Input
-            {...form.register("description")}
-            placeholder="Add a description (optional)"
-            className="text-muted-foreground"
-          />
+          <div className="flex gap-2">
+            <Input
+              {...form.register("description")}
+              placeholder="Add a description (optional)"
+              className="text-muted-foreground flex-1"
+            />
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setShowGenerateDescriptionModal(true)}
+            >
+              <Sparkles className="h-4 w-4 mr-1" />
+              Generate
+            </Button>
+          </div>
         ) : (
           description && (
             <p className="text-muted-foreground">{description}</p>
@@ -427,6 +446,15 @@ export function PromptDetailContent({
           onOpenChange={setShowImproveModal}
           promptId={prompt.id ?? ""}
           currentContent={content ?? ""}
+        />
+      )}
+
+      {showGenerateDescriptionModal && (
+        <GenerateDescriptionModal
+          open={showGenerateDescriptionModal}
+          onOpenChange={setShowGenerateDescriptionModal}
+          promptId={prompt.id ?? ""}
+          currentDescription={description}
         />
       )}
 

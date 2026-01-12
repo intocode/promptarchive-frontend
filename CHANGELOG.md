@@ -9,6 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Error boundaries for route-level error handling (ui-005)
+  - ErrorFallback component with retry button and home navigation
+  - error.tsx files for /app, /prompts, /prompts/[id], /gallery, /settings routes
+  - Consistent error UI matching design system
+- LoadingButton component for async operations (ui-004)
+  - Extends Button with isLoading and loadingText props
+  - Spinner animation with Loader2 icon
+  - Updated auth forms (login, register) and create prompt form with loading spinners
+- Clickable metadata badges on prompt detail page (prompts-detail-002)
+  - FolderLinkBadge component linking to filtered prompts list
+  - TagLinkBadges component with clickable tags navigating to filtered list
+  - Folder and tag badges now navigate to /prompts with filter params
+- Generate Description AI feature (ai-005)
+  - "Generate" button next to description field in edit mode
+  - GenerateDescriptionModal with preview/edit/accept workflow
+  - useGenerateDescription hook wrapping POST /prompts/{id}/generate-description
+  - Accept/Edit/Reject buttons for suggested description
+- Mobile responsive design with limited functionality (ui-003)
+  - useMediaQuery and useIsMobile hooks for responsive behavior
+  - Forced compact view mode on mobile viewports (< 768px)
+  - Edit/Delete/Improve actions hidden on mobile in PromptActionsDropdown
+  - Only viewing, browsing, and copying allowed on mobile
+
 - Folders management system (folders-001 through folders-005)
   - Desktop sidebar (240px) with folder list and prompt counts
   - Mobile sheet/dropdown for folder selection

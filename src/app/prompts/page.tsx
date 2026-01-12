@@ -9,6 +9,7 @@ import type { ViewMode } from "@/hooks/use-view-mode";
 import type { GetPromptsSort, GetPromptsVisibility } from "@/types/api";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useInfinitePrompts } from "@/hooks/use-infinite-prompts";
+import { useIsMobile } from "@/hooks/use-media-query";
 import { usePromptsFilters } from "@/hooks/use-prompts-filters";
 import { useViewMode } from "@/hooks/use-view-mode";
 import { Button } from "@/components/ui/button";
@@ -242,6 +243,10 @@ export default function PromptsPage(): React.ReactElement {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const { viewMode, toggleViewMode } = useViewMode();
+  const isMobile = useIsMobile();
+
+  // Force compact view on mobile
+  const effectiveViewMode: ViewMode = isMobile ? "compact" : viewMode;
 
   const {
     filters,
@@ -351,7 +356,7 @@ export default function PromptsPage(): React.ReactElement {
           </div>
 
           <PromptsContent
-            viewMode={viewMode}
+            viewMode={effectiveViewMode}
             search={debouncedSearch}
             sort={sort}
             folderId={filters.folderId}

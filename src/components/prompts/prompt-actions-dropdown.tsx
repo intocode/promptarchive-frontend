@@ -12,11 +12,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface PromptActionsDropdownProps {
-  onEdit: () => void;
-  onDelete: () => void;
+  onEdit?: () => void;
+  onDelete?: () => void;
   onImprove?: () => void;
   onHistory?: () => void;
   onShare?: () => void;
+  hideEditActions?: boolean;
 }
 
 export function PromptActionsDropdown({
@@ -25,7 +26,10 @@ export function PromptActionsDropdown({
   onImprove,
   onHistory,
   onShare,
+  hideEditActions = false,
 }: PromptActionsDropdownProps): React.ReactElement {
+  const showEditActions = !hideEditActions && onEdit && onDelete;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -39,7 +43,7 @@ export function PromptActionsDropdown({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {onImprove && (
+        {!hideEditActions && onImprove && (
           <DropdownMenuItem onClick={onImprove}>
             <Sparkles className="h-4 w-4 mr-2" />
             Improve with AI
@@ -57,15 +61,19 @@ export function PromptActionsDropdown({
             Share
           </DropdownMenuItem>
         )}
-        <DropdownMenuItem onClick={onEdit}>
-          <Pencil className="h-4 w-4 mr-2" />
-          Edit
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive" onClick={onDelete}>
-          <Trash2 className="h-4 w-4 mr-2" />
-          Delete
-        </DropdownMenuItem>
+        {showEditActions && (
+          <>
+            <DropdownMenuItem onClick={onEdit}>
+              <Pencil className="h-4 w-4 mr-2" />
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem variant="destructive" onClick={onDelete}>
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete
+            </DropdownMenuItem>
+          </>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
