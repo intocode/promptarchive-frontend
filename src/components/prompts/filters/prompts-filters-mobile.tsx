@@ -28,6 +28,7 @@ interface PromptsFiltersMobileProps {
   onVisibilityChange: (v: GetPromptsVisibility | undefined) => void;
   onClearAll: () => void;
   activeFilterCount: number;
+  hideFolderFilter?: boolean;
 }
 
 export function PromptsFiltersMobile({
@@ -39,6 +40,7 @@ export function PromptsFiltersMobile({
   onVisibilityChange,
   onClearAll,
   activeFilterCount,
+  hideFolderFilter = false,
 }: PromptsFiltersMobileProps): React.ReactElement {
   return (
     <Sheet>
@@ -59,10 +61,12 @@ export function PromptsFiltersMobile({
         </SheetHeader>
 
         <div className="flex flex-col gap-6 py-4">
-          <div className="space-y-2">
-            <Label>Folder</Label>
-            <FolderFilter value={folderId} onChange={onFolderChange} />
-          </div>
+          {!hideFolderFilter && (
+            <div className="space-y-2">
+              <Label>Folder</Label>
+              <FolderFilter value={folderId} onChange={onFolderChange} />
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label>Tags</Label>

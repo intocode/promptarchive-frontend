@@ -9,6 +9,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Folders management system (folders-001 through folders-005)
+  - Desktop sidebar (240px) with folder list and prompt counts
+  - Mobile sheet/dropdown for folder selection
+  - Create folder modal with form validation
+  - Inline rename functionality (Enter to save, Escape to cancel)
+  - Delete folder confirmation dialog
+  - Drag-and-drop reordering using @dnd-kit
+  - Optimistic updates with rollback on error
+  - Custom hooks: useCreateFolder, useUpdateFolder, useDeleteFolder, useReorderFolders
+  - Components: FoldersSidebar, FoldersMobileSheet, FolderItem, CreateFolderModal, DeleteFolderDialog, DraggableFolderList
+- Tags management UI in settings page (tags-001 through tags-004)
+  - TagsManagement component with tag list and usage counts
+  - CreateTagInput for adding new tags
+  - Inline rename functionality for existing tags
+  - Delete tag confirmation dialog
+  - Custom hooks: useUpdateTag, useDeleteTag
+  - Components: TagItem, CreateTagInput, DeleteTagDialog, TagsManagement
+- Updated prompts page layout with sidebar for folders on desktop
+  - Two-column layout: sidebar (hidden on mobile) + main content
+  - FoldersMobileSheet shown on mobile for folder selection
+  - Updated PromptsFilters and PromptsFiltersMobile with hideFolderFilter prop
+
+### Fixed
+
+- Linting errors in FolderItem and TagItem components
+  - Replaced useEffect setState pattern with startEditing function to avoid cascading renders
+  - Removed unused `cn` import from TagItem
+  - Removed unused `selectedTags` variable from TagFilter
+
+### Changed
+
+- Settings page now includes Tags Management section
+- Removed obsolete E2E tests for settings page description
+
+### Dependencies
+
+- Added @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities for drag-and-drop
+
+### Added (previous features in this release)
+
 - Shared prompt page (shared-001, shared-002)
   - `/shared/[token]` route for viewing shared prompts via token
   - SharedPromptDetailContent component with title, author, description, content

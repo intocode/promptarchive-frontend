@@ -25,6 +25,8 @@ import {
 import { PromptsSearch } from "@/components/prompts/prompts-search";
 import { PromptsSortDropdown, DEFAULT_SORT } from "@/components/prompts/prompts-sort";
 import { ViewModeToggle } from "@/components/prompts/view-mode-toggle";
+import { FoldersSidebar } from "@/components/folders/folders-sidebar";
+import { FoldersMobileSheet } from "@/components/folders/folders-mobile-sheet";
 
 const SKELETON_COUNT = 6;
 
@@ -268,75 +270,99 @@ export default function PromptsPage(): React.ReactElement {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold">My Prompts</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Manage and organize your AI prompts
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <PromptsSortDropdown value={sort} onChange={handleSortChange} />
-          <ViewModeToggle viewMode={viewMode} onToggle={toggleViewMode} />
-          <Button onClick={() => setIsCreateModalOpen(true)} className="hidden md:flex">
-            <Plus className="h-4 w-4" />
-            New Prompt
-          </Button>
-        </div>
-      </div>
+      <div className="flex gap-6">
+        {/* Desktop Sidebar */}
+        <aside className="hidden w-60 shrink-0 md:block">
+          <div className="sticky top-20 rounded-lg border bg-card">
+            <FoldersSidebar
+              selectedFolderId={filters.folderId}
+              onFolderSelect={setFolderId}
+            />
+          </div>
+        </aside>
 
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <PromptsFilters
-          folderId={filters.folderId}
-          tagIds={filters.tagIds}
-          visibility={filters.visibility}
-          onFolderChange={setFolderId}
-          onTagsChange={setTagIds}
-          onVisibilityChange={setVisibility}
-          onClearAll={clearAllFilters}
-          hasActiveFilters={hasActiveFilters}
-        />
-        <PromptsFiltersMobile
-          folderId={filters.folderId}
-          tagIds={filters.tagIds}
-          visibility={filters.visibility}
-          onFolderChange={setFolderId}
-          onTagsChange={setTagIds}
-          onVisibilityChange={setVisibility}
-          onClearAll={clearAllFilters}
-          activeFilterCount={activeFilterCount}
-        />
-      </div>
+        {/* Main Content */}
+        <div className="min-w-0 flex-1">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold">My Prompts</h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Manage and organize your AI prompts
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <PromptsSortDropdown value={sort} onChange={handleSortChange} />
+              <ViewModeToggle viewMode={viewMode} onToggle={toggleViewMode} />
+              <Button onClick={() => setIsCreateModalOpen(true)} className="hidden md:flex">
+                <Plus className="h-4 w-4" />
+                New Prompt
+              </Button>
+            </div>
+          </div>
 
-      {hasActiveFilters && (
-        <div className="mb-4 hidden md:block">
-          <ActiveFilters
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            {/* Mobile Folders Sheet */}
+            <div className="md:hidden">
+              <FoldersMobileSheet
+                selectedFolderId={filters.folderId}
+                onFolderSelect={setFolderId}
+              />
+            </div>
+            <PromptsFilters
+              folderId={filters.folderId}
+              tagIds={filters.tagIds}
+              visibility={filters.visibility}
+              onFolderChange={setFolderId}
+              onTagsChange={setTagIds}
+              onVisibilityChange={setVisibility}
+              onClearAll={clearAllFilters}
+              hasActiveFilters={hasActiveFilters}
+              hideFolderFilter
+            />
+            <PromptsFiltersMobile
+              folderId={filters.folderId}
+              tagIds={filters.tagIds}
+              visibility={filters.visibility}
+              onFolderChange={setFolderId}
+              onTagsChange={setTagIds}
+              onVisibilityChange={setVisibility}
+              onClearAll={clearAllFilters}
+              activeFilterCount={activeFilterCount}
+              hideFolderFilter
+            />
+          </div>
+
+          {hasActiveFilters && (
+            <div className="mb-4 hidden md:block">
+              <ActiveFilters
+                folderId={filters.folderId}
+                tagIds={filters.tagIds}
+                visibility={filters.visibility}
+                onRemoveFolder={() => setFolderId(undefined)}
+                onRemoveTag={(id) => setTagIds(filters.tagIds.filter((t) => t !== id))}
+                onRemoveVisibility={() => setVisibility(undefined)}
+                onClearAll={clearAllFilters}
+              />
+            </div>
+          )}
+
+          <div className="mb-4">
+            <PromptsSearch value={searchInput} onChange={setSearchInput} />
+          </div>
+
+          <PromptsContent
+            viewMode={viewMode}
+            search={debouncedSearch}
+            sort={sort}
             folderId={filters.folderId}
             tagIds={filters.tagIds}
             visibility={filters.visibility}
-            onRemoveFolder={() => setFolderId(undefined)}
-            onRemoveTag={(id) => setTagIds(filters.tagIds.filter((t) => t !== id))}
-            onRemoveVisibility={() => setVisibility(undefined)}
-            onClearAll={clearAllFilters}
+            hasActiveFilters={hasActiveFilters}
+            onCreatePrompt={() => setIsCreateModalOpen(true)}
+            onClearFilters={clearAllFilters}
           />
         </div>
-      )}
-
-      <div className="mb-4">
-        <PromptsSearch value={searchInput} onChange={setSearchInput} />
       </div>
-
-      <PromptsContent
-        viewMode={viewMode}
-        search={debouncedSearch}
-        sort={sort}
-        folderId={filters.folderId}
-        tagIds={filters.tagIds}
-        visibility={filters.visibility}
-        hasActiveFilters={hasActiveFilters}
-        onCreatePrompt={() => setIsCreateModalOpen(true)}
-        onClearFilters={clearAllFilters}
-      />
 
       <CreatePromptModal
         open={isCreateModalOpen}

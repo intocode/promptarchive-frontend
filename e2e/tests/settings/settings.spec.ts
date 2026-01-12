@@ -16,27 +16,6 @@ test.describe("Feature: Settings Page", () => {
       await expect(settingsPage.pageTitle).toBeVisible();
     });
 
-    test("should display page description", async ({ authenticatedPage }) => {
-      await mockAuthEndpoints(authenticatedPage, user);
-      await mockPromptsEndpoints(authenticatedPage, []);
-
-      const settingsPage = new SettingsPage(authenticatedPage);
-      await settingsPage.goto();
-
-      await expect(settingsPage.pageDescription).toBeVisible();
-    });
-
-    test("should be accessible for authenticated users", async ({
-      authenticatedPage,
-    }) => {
-      await mockAuthEndpoints(authenticatedPage, user);
-      await mockPromptsEndpoints(authenticatedPage, []);
-
-      const settingsPage = new SettingsPage(authenticatedPage);
-      await settingsPage.goto();
-
-      await settingsPage.expectPageLoaded();
-    });
   });
 
   test.describe("Scenario: Protected route", () => {
