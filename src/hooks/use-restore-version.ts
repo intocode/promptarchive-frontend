@@ -20,8 +20,6 @@ interface UseRestoreVersionOptions {
 interface UseRestoreVersionReturn {
   restoreVersion: (versionId: string) => void;
   isPending: boolean;
-  isError: boolean;
-  isSuccess: boolean;
 }
 
 export function useRestoreVersion(
@@ -61,7 +59,5 @@ export function useRestoreVersion(
   return {
     restoreVersion,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

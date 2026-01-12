@@ -41,12 +41,12 @@ export function FolderItem({
     }
   }, [isEditing]);
 
-  const startEditing = () => {
+  function startEditing(): void {
     setEditName(folder.name ?? "");
     setIsEditing(true);
-  };
+  }
 
-  const handleSave = () => {
+  function handleSave(): void {
     const trimmedName = editName.trim();
     if (trimmedName && trimmedName !== folder.name) {
       updateFolder({ name: trimmedName });
@@ -54,14 +54,14 @@ export function FolderItem({
       setIsEditing(false);
       setEditName(folder.name ?? "");
     }
-  };
+  }
 
-  const handleCancel = () => {
+  function handleCancel(): void {
     setIsEditing(false);
     setEditName(folder.name ?? "");
-  };
+  }
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  function handleKeyDown(e: KeyboardEvent): void {
     if (e.key === "Enter") {
       e.preventDefault();
       handleSave();
@@ -69,7 +69,7 @@ export function FolderItem({
       e.preventDefault();
       handleCancel();
     }
-  };
+  }
 
   const FolderIcon = isActive ? FolderOpen : Folder;
 

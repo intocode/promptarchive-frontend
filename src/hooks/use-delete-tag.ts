@@ -71,7 +71,5 @@ export function useDeleteTag(options?: UseDeleteTagOptions) {
   return {
     deleteTag,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

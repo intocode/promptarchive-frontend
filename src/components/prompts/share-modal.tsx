@@ -73,17 +73,17 @@ export function ShareModal({
     }
   }, [open, promptId, sharePrompt, shareUrl, isPending]);
 
-  const handleOpenChange = (newOpen: boolean) => {
+  function handleOpenChange(newOpen: boolean): void {
     if (!newOpen) {
       setShareUrl(null);
       reset();
     }
     onOpenChange(newOpen);
-  };
+  }
 
-  const handleDelete = () => {
+  function handleDelete(): void {
     deleteShare({ id: promptId });
-  };
+  }
 
   return (
     <>

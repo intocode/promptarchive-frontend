@@ -31,8 +31,5 @@ export function useImprovePrompt(options?: UseImprovePromptOptions) {
   return {
     improvePrompt,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    data: mutation.data?.data,
-    reset: mutation.reset,
   };
 }

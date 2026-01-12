@@ -42,7 +42,5 @@ export function useCreateFolder(options?: UseCreateFolderOptions) {
   return {
     createFolder,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

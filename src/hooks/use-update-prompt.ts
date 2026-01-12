@@ -84,7 +84,5 @@ export function useUpdatePrompt(
   return {
     updatePrompt,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

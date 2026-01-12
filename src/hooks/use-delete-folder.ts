@@ -76,7 +76,5 @@ export function useDeleteFolder(options?: UseDeleteFolderOptions) {
   return {
     deleteFolder,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

@@ -81,7 +81,5 @@ export function useUpdateTag(
   return {
     updateTag,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

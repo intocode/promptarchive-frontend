@@ -82,7 +82,5 @@ export function useUpdateFolder(
   return {
     updateFolder,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

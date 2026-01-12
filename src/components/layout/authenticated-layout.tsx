@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthGuard } from "@/components/auth/auth-guard";
+import { AuthGuard } from "@/components/auth/route-guard";
 import { Header } from "@/components/layout/header";
 import { KeyboardShortcutsDialog } from "@/components/keyboard-shortcuts-dialog";
 import {

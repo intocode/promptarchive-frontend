@@ -45,7 +45,5 @@ export function useDeletePrompt(
   return {
     deletePrompt,
     isPending: mutation.isPending,
-    isError: mutation.isError,
-    isSuccess: mutation.isSuccess,
   };
 }

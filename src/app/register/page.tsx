@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { RegisterForm } from "@/components/auth/register-form";
-import { GuestGuard } from "@/components/auth/guest-guard";
+import { GuestGuard } from "@/components/auth/route-guard";
 
 export default function RegisterPage(): React.ReactElement {
   return (

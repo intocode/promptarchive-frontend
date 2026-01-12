@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 
 export type ViewMode = "compact" | "expanded";
 
@@ -23,12 +23,9 @@ function subscribe(callback: () => void): () => void {
   return () => window.removeEventListener("storage", callback);
 }
 
-function getSnapshot(): ViewMode {
-  return getStoredViewMode();
-}
-
-function getServerSnapshot(): ViewMode {
-  return DEFAULT_MODE;
+function persistViewMode(mode: ViewMode): void {
+  localStorage.setItem(STORAGE_KEY, mode);
+  window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
 }
 
 interface UseViewModeResult {
@@ -38,19 +35,16 @@ interface UseViewModeResult {
 }
 
 export function useViewMode(): UseViewModeResult {
-  const viewMode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const viewMode = useSyncExternalStore(subscribe, getStoredViewMode, () => DEFAULT_MODE);
 
-  const setViewMode = useCallback((mode: ViewMode) => {
-    localStorage.setItem(STORAGE_KEY, mode);
-    window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
-  }, []);
+  function setViewMode(mode: ViewMode): void {
+    persistViewMode(mode);
+  }
 
-  const toggleViewMode = useCallback(() => {
-    const current = getStoredViewMode();
-    const next = current === "compact" ? "expanded" : "compact";
-    localStorage.setItem(STORAGE_KEY, next);
-    window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
-  }, []);
+  function toggleViewMode(): void {
+    const next = getStoredViewMode() === "compact" ? "expanded" : "compact";
+    persistViewMode(next);
+  }
 
   return { viewMode, setViewMode, toggleViewMode };
 }
