@@ -21,23 +21,6 @@
   ],
   "tasks": [
     {
-      "id": "design-004",
-      "title": "Apply typography to PromptCard",
-      "category": "design-system",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Prompt content preview uses serif font (Spectral)",
-        "Title uses UI font (Inter)",
-        "Ensure consistent typography across all card instances",
-        "Typography matches design spec for prompt content"
-      ],
-      "tests": [
-        "E2E: prompt content uses serif font",
-        "E2E: title uses UI font"
-      ]
-    },
-    {
       "id": "prompts-detail-002",
       "title": "Display prompt metadata",
       "category": "prompts-detail",
@@ -69,22 +52,6 @@
       ]
     },
     {
-      "id": "template-004",
-      "title": "Add variable validation",
-      "category": "template-variables",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "All variables required before copy",
-        "Warning for unfilled variables",
-        "Disable copy button until all filled"
-      ],
-      "tests": [
-        "E2E: copy disabled with empty variables",
-        "E2E: warning shown for empty variables"
-      ]
-    },
-    {
       "id": "ai-005",
       "title": "Implement Generate Description feature",
       "category": "ai-features",
@@ -99,29 +66,11 @@
       "tests": ["E2E: generates description", "E2E: saves accepted description"]
     },
     {
-      "id": "ai-006",
-      "title": "Handle API rate limits",
-      "category": "ai-features",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Rate limit info NOT shown in UI proactively",
-        "429 error shows error message in toast",
-        "Message: 'Rate limit reached, please try again later'",
-        "AI buttons remain enabled (no cooldown timer in UI)"
-      ],
-      "tests": [
-        "E2E: 429 shows error toast",
-        "E2E: no rate limit counter in UI",
-        "E2E: buttons stay enabled after error"
-      ]
-    },
-    {
       "id": "folders-001",
       "title": "Create folders sidebar/dropdown",
       "category": "folders",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "GET /folders to fetch user folders",
         "Display as sidebar on desktop, dropdown on mobile",
@@ -138,7 +87,7 @@
       "title": "Implement create folder modal",
       "category": "folders",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Form with folder name input",
         "POST /folders on submit",
@@ -155,7 +104,7 @@
       "title": "Add rename folder functionality",
       "category": "folders",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Edit button on folder item",
         "Inline rename input",
@@ -169,7 +118,7 @@
       "title": "Add delete folder functionality",
       "category": "folders",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Delete button with confirmation",
         "Option to move prompts or delete them",
@@ -186,7 +135,7 @@
       "title": "Implement drag-drop folder reordering",
       "category": "folders",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Drag handle on folder items",
         "Visual feedback during drag",
@@ -200,7 +149,7 @@
       "title": "Create tags management UI",
       "category": "tags",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Tags section in settings or dedicated page",
         "GET /tags to list all tags",
@@ -213,7 +162,7 @@
       "title": "Implement create tag functionality",
       "category": "tags",
       "priority": "medium",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Input to create new tag",
         "POST /tags on submit",
@@ -226,7 +175,7 @@
       "title": "Add rename tag functionality",
       "category": "tags",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Edit button on tag item",
         "PATCH /tags/{id} on save",
@@ -239,7 +188,7 @@
       "title": "Add delete tag functionality",
       "category": "tags",
       "priority": "low",
-      "passed": false,
+      "passed": true,
       "dod": [
         "Delete button with confirmation",
         "DELETE /tags/{id}",
@@ -262,19 +211,6 @@
       "tests": ["E2E: deletes share link"]
     },
     {
-      "id": "gallery-002",
-      "title": "Implement search in public prompts",
-      "category": "public-gallery",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "Search input in gallery header",
-        "Debounced search query",
-        "Results filtered by search term"
-      ],
-      "tests": ["E2E: search filters gallery results"]
-    },
-    {
       "id": "gallery-003",
       "title": "Add gallery sorting options",
       "category": "public-gallery",
@@ -293,31 +229,6 @@
         "E2E: sort changes result order",
         "E2E: all three sort options work"
       ]
-    },
-    {
-      "id": "shared-001",
-      "title": "Connect shared prompt page to API",
-      "category": "shared-view",
-      "priority": "medium",
-      "passed": true,
-      "dod": [
-        "GET /shared/{token}",
-        "Display prompt content",
-        "Handle invalid/expired token error"
-      ],
-      "tests": [
-        "E2E: loads shared prompt",
-        "E2E: shows error for invalid token"
-      ]
-    },
-    {
-      "id": "shared-002",
-      "title": "Add copy functionality to shared view",
-      "category": "shared-view",
-      "priority": "medium",
-      "passed": true,
-      "dod": ["Copy button copies content", "Success toast shown"],
-      "tests": ["E2E: copies to clipboard"]
     },
     {
       "id": "shared-003",

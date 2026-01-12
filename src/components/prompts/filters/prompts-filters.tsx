@@ -17,6 +17,7 @@ interface PromptsFiltersProps {
   onVisibilityChange: (v: GetPromptsVisibility | undefined) => void;
   onClearAll: () => void;
   hasActiveFilters: boolean;
+  hideFolderFilter?: boolean;
 }
 
 export function PromptsFilters({
@@ -28,10 +29,13 @@ export function PromptsFilters({
   onVisibilityChange,
   onClearAll,
   hasActiveFilters,
+  hideFolderFilter = false,
 }: PromptsFiltersProps): React.ReactElement {
   return (
     <div className="hidden items-center gap-2 md:flex">
-      <FolderFilter value={folderId} onChange={onFolderChange} />
+      {!hideFolderFilter && (
+        <FolderFilter value={folderId} onChange={onFolderChange} />
+      )}
       <TagFilter value={tagIds} onChange={onTagsChange} />
       <VisibilityFilter value={visibility} onChange={onVisibilityChange} />
 

@@ -40,11 +40,6 @@ export function TagFilter({ value, onChange }: TagFilterProps): React.ReactEleme
     [tagsResponse?.data]
   );
 
-  const selectedTags = React.useMemo(
-    () => allTags.filter((tag) => tag.id && value.includes(tag.id)),
-    [allTags, value]
-  );
-
   const handleToggleTag = (tagId: string | undefined) => {
     if (!tagId) return;
 

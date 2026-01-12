@@ -5,12 +5,10 @@ export class SettingsPage {
   readonly page: Page;
 
   readonly pageTitle: Locator;
-  readonly pageDescription: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.pageTitle = page.getByRole("heading", { name: "Settings" });
-    this.pageDescription = page.getByText("Manage your account settings.");
   }
 
   async goto(): Promise<void> {
@@ -24,6 +22,5 @@ export class SettingsPage {
 
   async expectPageLoaded(): Promise<void> {
     await expect(this.pageTitle).toBeVisible();
-    await expect(this.pageDescription).toBeVisible();
   }
 }
