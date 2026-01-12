@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Consolidated error fallback components to use shared ErrorFallback component
+  - Enhanced ErrorFallback with backLink and containerClassName props
+  - Updated prompt-detail-error, public-prompt-detail-error, shared-prompt-detail-error
+- Consolidated visibility utilities into single module
+  - Merged constants.ts into visibility.ts
+  - Single source of truth for visibility config (icons, labels, form options)
+  - Deleted deprecated constants.ts file
 - Cleaned up PRD.json by removing all 8 completed tasks (prompts-detail-008, sharing-004, gallery-003, shared-003, settings-001, ui-001, ui-002, ui-006)
 
 ### Added

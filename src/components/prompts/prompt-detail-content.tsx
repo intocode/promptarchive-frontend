@@ -15,7 +15,7 @@ import {
   updatePromptSchema,
   type UpdatePromptFormData,
 } from "@/lib/validations/prompt";
-import { VISIBILITY_OPTIONS } from "@/lib/constants";
+import { VISIBILITY_OPTIONS } from "@/lib/utils/visibility";
 import { useUpdatePrompt } from "@/hooks/use-update-prompt";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

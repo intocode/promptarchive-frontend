@@ -9,7 +9,7 @@ import {
   createPromptSchema,
   type CreatePromptFormData,
 } from "@/lib/validations/prompt";
-import { VISIBILITY_OPTIONS } from "@/lib/constants";
+import { VISIBILITY_OPTIONS } from "@/lib/utils/visibility";
 import { usePostPrompts } from "@/lib/api/generated/endpoints/prompts/prompts";
 import { LoadingButton } from "@/components/ui/loading-button";
 import { Input } from "@/components/ui/input";
