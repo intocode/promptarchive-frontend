@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Cleaned up PRD.json by removing all 8 completed tasks (prompts-detail-008, sharing-004, gallery-003, shared-003, settings-001, ui-001, ui-002, ui-006)
+
 ### Added
 
 - Custom 404 page with navigation (ui-006)
